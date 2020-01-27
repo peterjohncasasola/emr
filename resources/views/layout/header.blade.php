@@ -52,10 +52,10 @@
         <li class="nav-item">
             <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ui-sref="facility_profile({reporting_year:2019})">
             <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ui-sref="general_info({reporting_year:2019})">
             <a href="general-information.html" class="nav-link"><i class="far fa-list-alt"></i><span>General Information</span></a>
         </li>
 
@@ -70,13 +70,13 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a href="staffing-pattern.html" class="nav-link"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
+            <a href="#" class="nav-link"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
         </li>
-        <li class="nav-item active">
-            <a href="expenses.html" class="nav-link"><i class="far fa-check-square"></i><span>Expenses</span></a>
+        <li class="nav-item active" ui-sref="expenses({reporting_year:2019})">
+            <a href="#" class="nav-link"><i class="far fa-check-square"></i><span>Expenses</span></a>
         </li>
-        <li class="nav-item">
-            <a href="revenues.html" class="nav-link"><i class="far fa-money-bill-alt"></i><span>Revenues</span></a>
+        <li class="nav-item" ui-sref="revenues({reporting_year:2019})">
+            <a href="#" class="nav-link"><i class="far fa-money-bill-alt"></i><span>Revenues</span></a>
         </li>
         </ul>
     </div>
