@@ -146,7 +146,7 @@ class RevenuesController extends Controller {
     public function send_data_doh(){
 
         $revenue = DB::table('revenues as revenue')
-            ->select( 
+            ->select(
                 'revenue.id',
                 'revenue.hfhudcode',
                 'revenue.amountfromdoh',
@@ -168,7 +168,15 @@ class RevenuesController extends Controller {
         });
 
         $data = [
-            "hfhudcode" => "DOH000000000000000", 
+            'login' => 'NEHEHRSV201900093',
+            'password' => '123456'
+        ];
+        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+
+        $data = [
+            // "hfhudcode" => "DOH000000000000000", 
+            "hfhudcode" => "NEHEHRSV201900093", 
             "amountfromdoh" => $revenue->amountfromdoh, 
             "amountfromlgu" => $revenue->amountfromlgu, 
             "amountfromdonor" => $revenue->amountfromdonor, 
@@ -183,7 +191,6 @@ class RevenuesController extends Controller {
 
         $response = $this->soapWrapper->call('Emr.revenues', $data);
         return response($response, 200)->header('Content-Type', 'application/xml');
-
         exit;
     }
   	

@@ -39,7 +39,7 @@ class SoapController extends Controller {
         // return response($response, 200)->header('Content-Type', 'application/xml');
 
         $data2 = [
-            "hfhudcode" => "DOH000000000000000", 
+            "hfhudcode" => "NEHEHRSV201900093", 
             "servicecapability" => 1, 
             "general" => 1, 
             "specialty" => "", 
@@ -58,7 +58,7 @@ class SoapController extends Controller {
 
         
         //get data
-        $data3 = ["hfhudcode" => "DOH000000000000000", "year" => 2017, "table" => "genInfoClassification"];
+        $data3 = ["hfhudcode" => "NEHEHRSV201900093", "year" => 2017, "table" => "genInfoClassification"];
         $response3 = $this->soapWrapper->call('Emr.getDataTable', $data3);
         return response($response3, 200)->header('Content-Type', 'application/xml');
     
@@ -74,7 +74,7 @@ class SoapController extends Controller {
             ->trace(false);
         });
         
-        $data3 = ["hfhudcode" => "DOH000000000000000", "year" => 2017, "table" => "revenues"];
+        $data3 = ["hfhudcode" => "NEHEHRSV201900093", "year" => 2017, "table" => "revenues"];
         $response3 = $this->soapWrapper->call('Emr.getDataTable', $data3);
         return response($response3, 200)->header('Content-Type', 'application/xml');
     }
