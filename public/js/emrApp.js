@@ -74,6 +74,8 @@
                 templateUrl: 'expenses.view'
             })
 
+            // GENERAL INFO
+
             .state('general-info', {
                 url: '/general-info/:reporting_year',
                 controller: 'GeneralInfoCtrl as generalInfoCtrl',
@@ -98,6 +100,20 @@
                 templateUrl: 'general_info.view'
             })
 
+            // HOSPITAL OPERATIONS -> DISCHARGES
+
+            .state('hospital-operations-discharges-number-deliveries', {
+                url: '/hospital-operations/discharges-number-deliveries/:reporting_year',
+                controller: 'DischargesNumberDeliveriesCtrl as dischargesNumberDeliveriesCtrl',
+                templateUrl: 'discharges_number_deliveries.view'
+            })
+
+            .state('hospital-operations-discharges-number-deliveries-details', {
+                url: '/hospital-operations/discharges-number-deliveries/:reporting_year/details',
+                controller: 'DischargesNumberDeliveriesCreateCtrl as dischargesNumberDeliveriesCreateCtrl',
+                templateUrl: 'discharges_number_deliveries.view'
+            })
+
             .state('facility_profile', {
                 url: '/facility-profile/:reporting_year',
                 controller: 'ExpensesCtrl as expensesCtrl',
@@ -106,7 +122,8 @@
 
             
             
-            $urlRouterProvider.otherwise('/index');
+            $urlRouterProvider.otherwise('/hospital-operations-discharges-number-deliveries/2019');
+            // $urlRouterProvider.otherwise('/index');
 
         }
 

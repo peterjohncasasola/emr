@@ -20,6 +20,10 @@
     @include('revenues.revenues')
 </script>
 
+<script type="text/ng-template" id="discharges_number_deliveries.view">
+    @include('hospital_operations.discharges.discharges_number_deliveries')
+</script>
+
 @endsection
 @section('additionalScripts')
 @endsection

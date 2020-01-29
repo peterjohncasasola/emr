@@ -102,6 +102,19 @@ Route::post('/api/v1/quality-management/update','QualityManagementController@upd
 Route::get('/api/v1/quality-management/send_data_doh','QualityManagementController@send_data_doh');
 
 
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> NUMBER OF DELIVERIES //
+
+Route::get('/hospital-operations/discharges-number-deliveries','DischargesNumberDeliveriesController@index');
+Route::get('/hospital-operations/discharges-number-deliveries/{reporting_year}','DischargesNumberDeliveriesController@index');
+Route::get('/hospital-operations/discharges-number-deliveries/{reporting_year}/details','DischargesNumberDeliveriesController@index');
+
+Route::get('/api/v1/discharges-number-deliveries','DischargesNumberDeliveriesController@show');
+Route::post('/api/v1/discharges-number-delivery/store','DischargesNumberDeliveriesController@store');
+Route::post('/api/v1/discharges-number-delivery/update','DischargesNumberDeliveriesController@update');
+//SEND TO DOH
+Route::get('/api/v1/discharges-number-delivery/send_data_doh','DischargesNumberDeliveriesController@send_data_doh');
+
+
 // -- SOAP -- //
 
 Route::get('/soap','SoapController@show');
