@@ -114,7 +114,7 @@
             })
 
 
-            // HOSPITAL OPERATIONS -> DISCHARGES
+            // HOSPITAL OPERATIONS -> DISCHARGES -> Deliveries
             .state('hospital-operations-discharges-number-deliveries', {
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year',
                 controller: 'DischargesNumberDeliveriesCtrl as dischargesNumberDeliveriesCtrl',
@@ -125,6 +125,19 @@
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year/details',
                 controller: 'DischargesNumberDeliveriesCreateCtrl as dischargesNumberDeliveriesCtrl',
                 templateUrl: 'discharges_number_deliveries.view'
+            })
+
+            // HOSPITAL OPERATIONS -> DISCHARGES -> OPV
+            .state('hospital-operations-discharges-opv', {
+                url: '/hospital-operations/discharges-opv/:reporting_year',
+                controller: 'DischargesOPVCtrl as dischargesOPVCtrl',
+                templateUrl: 'discharges_opv.view'
+            })
+
+            .state('hospital-operations-discharges-opv-details', {
+                url: '/hospital-operations/discharges-opv/:reporting_year/details',
+                controller: 'DischargesOPVCreateCtrl as dischargesOPVCtrl',
+                templateUrl: 'discharges_opv.view'
             })
 
             .state('facility_profile', {

@@ -30,6 +30,10 @@
     @include('hospital_operations.discharges.discharges_number_deliveries')
 </script>
 
+<script type="text/ng-template" id="discharges_opv.view">
+    @include('hospital_operations.discharges.discharges_opv')
+</script>
+
 
 
 @endsection

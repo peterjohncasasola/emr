@@ -124,6 +124,17 @@ Route::post('/api/v1/discharges-number-delivery/update','DischargesNumberDeliver
 //SEND TO DOH
 Route::get('/api/v1/discharges-number-delivery/send_data_doh','DischargesNumberDeliveriesController@send_data_doh');
 
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> OPV //
+Route::get('/hospital-operations/discharges-opv','DischargesOPVController@index');
+Route::get('/hospital-operations/discharges-opv/{reporting_year}','DischargesOPVController@index');
+Route::get('/hospital-operations/discharges-opv/{reporting_year}/details','DischargesOPVController@index');
+
+Route::get('/api/v1/discharges-opv','DischargesOPVController@show');
+Route::post('/api/v1/discharges-opv/store','DischargesOPVController@store');
+Route::post('/api/v1/discharges-opv/update','DischargesOPVController@update');
+//SEND TO DOH
+Route::get('/api/v1/discharges-opv/send_data_doh','DischargesOPVController@send_data_doh');
+
 
 
 // -- SOAP -- //

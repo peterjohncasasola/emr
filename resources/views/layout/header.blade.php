@@ -61,13 +61,13 @@
         <li class="nav-item dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Hospital Operations</span></a>
             <ul class="dropdown-menu">
-            <li class="nav-item"><a href="hospital-operations/summary.html" class="nav-link">Summary of Patients in the Hospital</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-summary-of-patients({reporting_year:2019})"><a href="#" class="nav-link">Summary of Patients in the Hospital</a></li>
             <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Discharges</a>
                 <ul class="dropdown-menu">
                 <li class="nav-item"><a href="hospital-operations/discharges-a.html" class="nav-link">Type of Service and Total Discharges According to Specialty</a></li>
                 <li class="nav-item"><a href="hospital-operations/discharges-b.html" class="nav-link">Ten Leading causes of Morbidity/Diseases Disaggregated as to Age and Sex</a></li>
-                <li class="nav-item"><a href="hospital-operations/discharges-c.html" class="nav-link">Total Number of Deliveries</a></li>
-                <li class="nav-item"><a href="hospital-operations/discharges-d.html" class="nav-link">Outpatient Visits</a></li>
+                <li class="nav-item" ui-sref="hospital-operations-discharges-number-deliveries({reporting_year:2019})"> <a href="#" class="nav-link">Total Number of Deliveries</a></li>
+                <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reporting_year:2019})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
                 <li class="nav-item"><a href="hospital-operations/discharges-e.html" class="nav-link">Ten Leading OPD Consultations</a></li>
                 <li class="nav-item"><a href="hospital-operations/discharges-f.html" class="nav-link">Ten Leading ER Consultations</a></li>
                 <li class="nav-item"><a href="hospital-operations/discharges-g.html" class="nav-link">Testing and Other Services</a></li>

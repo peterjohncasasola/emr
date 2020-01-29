@@ -39,6 +39,7 @@
 <script src="{{URL::to('js/controllers/qualitymanagement.ctrl.js')}}"></script>
 
 <script src="{{URL::to('js/controllers/dischargesnumberdeliveries.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/dischargesopv.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/summaryofpatients.ctrl.js')}}"></script>
 
 <!-- Services -->
@@ -49,6 +50,7 @@
 <script src="{{URL::to('js/services/qualitymanagement.srvcs.js')}}"></script>
 
 <script src="{{URL::to('js/services/dischargesnumberdeliveries.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/dischargesopv.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/summaryofpatients.srvcs.js')}}"></script>
 
 @yield('additionalScripts')
