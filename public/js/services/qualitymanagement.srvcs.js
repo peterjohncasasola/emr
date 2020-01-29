@@ -2,22 +2,22 @@
     'use strict';
     angular
         .module('emrApp')
-        .factory('ExpensesSrvcs', ExpensesSrvcs)
-        ExpensesSrvcs.$inject = ['$http'];
-        function ExpensesSrvcs($http) {
+        .factory('QualityManagementSrvcs', QualityManagementSrvcs)
+        QualityManagementSrvcs.$inject = ['$http'];
+        function QualityManagementSrvcs($http) {
             return {
                 list: function(data) {
                     return $http({
                         method: 'GET',
                         data: data,
-                        url: '/api/v1/expenses?id='+data.id+'&reporting_year='+data.reporting_year,
+                        url: '/api/v1/quality-management?id='+data.id+'&reporting_year='+data.reporting_year,
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
                 store: function(data) {
                     return $http({
                         method: 'POST',
-                        url: '/api/v1/expense/store',
+                        url: '/api/v1/quality-management/store',
                         data: data,
                         headers: {'Content-Type': 'application/json'}
                     })
@@ -25,7 +25,7 @@
                 update: function(data) {
                     return $http({
                         method: 'POST',
-                        url: '/api/v1/expense/update',
+                        url: '/api/v1/quality-management/update',
                         data: data,
                         headers: {'Content-Type': 'application/json'}
                     })
@@ -33,7 +33,7 @@
                 send_data_doh: function(data) {
                     return $http({
                         method: 'GET',
-                        url: '/api/v1/expense/send_data_doh',
+                        url: '/api/v1/quality-management/send_data_doh',
                         data: data,
                         headers: {'Content-Type': 'application/json'}
                     })
@@ -41,7 +41,7 @@
                 // remove: function(data) {
                 //     return $http({
                 //         method: 'POST',
-                //         url: '/api/v1/expense/remove',
+                //         url: '/api/v1/classification/remove',
                 //         data: data,
                 //         headers: {'Content-Type': 'application/json'}
                 //     })

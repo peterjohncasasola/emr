@@ -8,8 +8,16 @@ use App\Classification;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Artisaninweb\SoapWrapper\SoapWrapper;
 
 class ClassificationsController extends Controller {
+
+    protected $soapWrapper;
+ 
+    public function __construct(SoapWrapper $soapWrapper)
+    {
+      $this->soapWrapper = $soapWrapper;
+    }
     
 	public function index(){
         return view('layout.index');
@@ -21,36 +29,34 @@ class ClassificationsController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $expenses = DB::table('expenses as expense')
+        $classification = DB::table('geninfoclassification as classification')
             ->select( 
-                'expense.id',
-                'expense.hfhudcode',
-                'expense.salarieswages',
-                'expense.employeebenefits',
-                'expense.allowances',
-                'expense.totalps',
-                'expense.totalamountmedicine',
-                'expense.totalamountmedicalsupplies',
-                'expense.totalamountutilities',
-                'expense.totalamountnonmedicalservice',
-                'expense.totalmooe',
-                'expense.amountinfrastructure',
-                'expense.amountequipment',
-                'expense.totalco',
-                'expense.grandtotal',
-                'expense.reportingyear'
+                'classification.id',
+                'classification.hfhudcode',
+                'classification.servicecapability',
+                'classification.general',
+                'classification.specialty',
+                'classification.specialtyspecify',
+                'classification.traumacapability',
+                'classification.natureofownership',
+                'classification.government',
+                'classification.national',
+                'classification.local',
+                'classification.private',
+                'classification.ownershipothers',
+                'classification.reportingyear'
             );
 
         if ($data['id']){
-            $expenses = $expenses->where('expense.id', $data['id']);
+            $classification = $classification->where('classification.id', $data['id']);
         }
 
-        $expenses = $expenses->get();
+        $classification = $classification->get();
 
         return response()->json([
             'status'=>200,
-            'data'=>$expenses,
-            'count'=>$expenses->count(),
+            'data'=>$classification,
+            'count'=>$classification->count(),
             'message'=>''
         ]);
     }
@@ -60,28 +66,53 @@ class ClassificationsController extends Controller {
         $fields = Input::post();
 
         $transaction = DB::transaction(function($field) use($fields){
-            try{
+            // try{
 
-                $expense = new Expense;
-                $expense->hfhudcode                     = "SAMPLECODE01";
-                $expense->salarieswages                 = $fields['salarieswages'];
-                $expense->employeebenefits              = $fields['employeebenefits'];
-                $expense->allowances                    = $fields['allowances'];
-                // $expense->totalps                       = $fields['totalps'];
-                $expense->totalps                       = $fields['salarieswages']+$fields['employeebenefits']+$fields['allowances'];
-                $expense->totalamountmedicine           = $fields['totalamountmedicine'];
-                $expense->totalamountmedicalsupplies    = $fields['totalamountmedicalsupplies'];
-                $expense->totalamountutilities          = $fields['totalamountutilities'];
-                $expense->totalamountnonmedicalservice  = $fields['totalamountnonmedicalservice'];
-                // $expense->totalmooe                     = $fields['totalmooe'];
-                $expense->totalmooe                     = $fields['totalamountmedicine']+$fields['totalamountmedicalsupplies']+$fields['totalamountutilities']+$fields['totalamountnonmedicalservice'];
-                $expense->amountinfrastructure          = $fields['amountinfrastructure'];
-                $expense->amountequipment               = $fields['amountequipment'];
-                // $expense->totalco                       = $fields['totalco'];
-                $expense->totalco                       = $fields['amountinfrastructure']+$fields['amountequipment'];
-                $expense->grandtotal                    = $expense->totalps+$expense->totalmooe+$expense->totalco;
-                $expense->reportingyear                 = $fields['reportingyear'];
-                $expense->save();
+                $classification = new Classification;
+                $classification->hfhudcode                     = "NEHEHRSV201900093";
+                $classification->servicecapability             = $fields['servicecapability'];
+
+                if($fields['servicecapability']==1){
+                    $classification->general                   = $fields['general'];
+                    $classification->specialty                 = 0; 
+                    $classification->specialtyspecify          = 'NA';
+                }elseif($fields['servicecapability']==2){
+                    $classification->general                   = 0;
+                    $classification->specialty                 = $fields['specialty']; 
+                    $classification->specialtyspecify          = $fields['specialtyspecify'];
+                }else{
+                    $classification->general                   = 0;
+                    $classification->specialty                 = 0; 
+                    $classification->specialtyspecify          = 'NA';
+                }
+                
+                $classification->traumacapability              = $fields['traumacapability'];
+                $classification->natureofownership             = $fields['natureofownership'];
+
+                if($fields['natureofownership']==1){
+                    $classification->government                = $fields['government'];
+                    $classification->private                   = 0;
+
+                    if($fields['government']==1){
+                        $classification->national              = $fields['national'];
+                        $classification->local                 = 0;
+                    }elseif($fields['government']==1){
+                        $classification->national              = 0;
+                        $classification->local                 = $fields['local'];
+                    }else{
+                        $classification->national              = 0;
+                        $classification->local                 = 0;
+                    }
+                }else{
+                    $classification->government                = 0;
+                    $classification->national                  = 0;
+                    $classification->local                     = 0;
+                    $classification->private                   = $fields['private'];
+                }
+
+                $classification->ownershipothers               = (!is_null($fields['ownershipothers']))?$fields['ownershipothers']:'NA';
+                $classification->reportingyear                 = $fields['reportingyear'];
+                $classification->save();
 
                 return response()->json([
                     'status' => 200,
@@ -89,15 +120,15 @@ class ClassificationsController extends Controller {
                     'message' => 'Successfully saved.'
                 ]);
 
-            }
-            catch (\Exception $e) 
-            {
-                return response()->json([
-                    'status' => 500,
-                    'data' => null,
-                    'message' => 'Error, please try again!'
-                ]);
-            }
+            // }
+            // catch (\Exception $e) 
+            // {
+            //     return response()->json([
+            //         'status' => 500,
+            //         'data' => null,
+            //         'message' => 'Error, please try again!'
+            //     ]);
+            // }
         });
 
         return $transaction;
@@ -108,24 +139,56 @@ class ClassificationsController extends Controller {
         $fields = Input::post();
 
         $transaction = DB::transaction(function($field) use($fields){
-        try{
+        // try{
 
-            $expense = Expense::where('reportingyear', $fields['reportingyear'])->first();
-            $expense->hfhudcode                     = "SAMPLECODE01";
-            $expense->salarieswages                 = $fields['salarieswages'];
-            $expense->employeebenefits              = $fields['employeebenefits'];
-            $expense->allowances                    = $fields['allowances'];
-            $expense->totalps                       = $fields['salarieswages']+$fields['employeebenefits']+$fields['allowances'];
-            $expense->totalamountmedicine           = $fields['totalamountmedicine'];
-            $expense->totalamountmedicalsupplies    = $fields['totalamountmedicalsupplies'];
-            $expense->totalamountutilities          = $fields['totalamountutilities'];
-            $expense->totalamountnonmedicalservice  = $fields['totalamountnonmedicalservice'];
-            $expense->totalmooe                     = $fields['totalamountmedicine']+$fields['totalamountmedicalsupplies']+$fields['totalamountutilities']+$fields['totalamountnonmedicalservice'];
-            $expense->amountinfrastructure          = $fields['amountinfrastructure'];
-            $expense->amountequipment               = $fields['amountequipment'];
-            $expense->totalco                       = $fields['amountinfrastructure']+$fields['amountequipment'];
-            $expense->grandtotal                    = $expense->totalps+$expense->totalmooe+$expense->totalco;
-            $expense->save();
+            $classification = Classification::where('reportingyear', $fields['reportingyear'])->first();
+            $classification->servicecapability             = $fields['servicecapability'];
+
+                if($fields['servicecapability']==1){
+                    $classification->general                   = $fields['general'];
+                    $classification->specialty                 = 0; 
+                    $classification->specialtyspecify          = 'NA';
+                    $classification->traumacapability          = $fields['traumacapability'];
+                }elseif($fields['servicecapability']==2){
+                    $classification->general                   = 0;
+                    $classification->specialty                 = $fields['specialty']; 
+                    $classification->specialtyspecify          = $fields['specialtyspecify'];
+                    $classification->traumacapability          = $fields['traumacapability'];
+                }else{
+                    $classification->general                   = 0;
+                    $classification->specialty                 = 0; 
+                    $classification->specialtyspecify          = 'NA';
+                    $classification->traumacapability          = 0;
+                }
+                
+                
+                $classification->natureofownership             = $fields['natureofownership'];
+
+                if($fields['natureofownership']==1){
+                    $classification->government                = $fields['government'];
+                    $classification->private                   = 0;
+
+                    if($fields['government']==1){
+                        $classification->national              = $fields['national'];
+                        $classification->local                 = 0;
+                    }elseif($fields['government']==1){
+                        $classification->national              = 0;
+                        $classification->local                 = $fields['local'];
+                    }else{
+                        $classification->national              = 0;
+                        $classification->local                 = 0;
+                    }
+                }else{
+                    $classification->government                = 0;
+                    $classification->national                  = 0;
+                    $classification->local                     = 0;
+                    $classification->private                   = $fields['private'];
+                }
+
+                $classification->ownershipothers               = (!is_null($fields['ownershipothers']))?$fields['ownershipothers']:'NA';
+                $classification->reportingyear                 = $fields['reportingyear'];
+                $classification->save();
+            $classification->save();
 
             return response()->json([
                 'status' => 200,
@@ -133,18 +196,72 @@ class ClassificationsController extends Controller {
                 'message' => 'Successfully updated.'
             ]);
 
-          }
-          catch (\Exception $e) 
-          {
-            return response()->json([
-              'status' => 500,
-              'data' => null,
-              'message' => 'Error, please try again!'
-            ]);
-          }
+        //   }
+        //   catch (\Exception $e) 
+        //   {
+        //     return response()->json([
+        //       'status' => 500,
+        //       'data' => null,
+        //       'message' => 'Error, please try again!'
+        //     ]);
+        //   }
         });
 
         return $transaction;
+    }
+
+    public function send_data_doh(){
+
+        $classification = DB::table('geninfoclassification as classification')
+            ->select( 
+                'classification.id',
+                'classification.hfhudcode',
+                'classification.servicecapability',
+                'classification.general',
+                'classification.specialty',
+                'classification.specialtyspecify',
+                'classification.traumacapability',
+                'classification.natureofownership',
+                'classification.government',
+                'classification.national',
+                'classification.local',
+                'classification.private',
+                'classification.ownershipothers',
+                'classification.reportingyear'
+            )->where('reportingyear', 2019)->first();
+
+        $request = $this->soapWrapper->add('Emr', function ($service) {
+            $service
+            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+            ->trace(false);
+        });
+
+        $data = [
+            'login' => 'NEHEHRSV201900093',
+            'password' => '123456'
+        ];
+        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+
+        $data = [
+            "hfhudcode" => "NEHEHRSV201900093", 
+            "servicecapability" => $classification->servicecapability, 
+            "general" => $classification->general, 
+            "specialty" => $classification->specialty, 
+            "specialtyspecify" => $classification->specialtyspecify, 
+            "traumacapability" => $classification->traumacapability, 
+            "natureofownership" => $classification->natureofownership, 
+            "government" => $classification->government, 
+            "national" => $classification->national, 
+            "local" => $classification->local, 
+            "private" => $classification->private,
+            "reportingyear" => 2017,
+            "ownershipothers" => $classification->ownershipothers, 
+        ];
+
+        $response = $this->soapWrapper->call('Emr.genInfoClassification', $data);
+        return response($response, 200)->header('Content-Type', 'application/xml');
+        exit;
     }
   	
 }

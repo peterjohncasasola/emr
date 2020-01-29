@@ -20,6 +20,12 @@
                 }
             }, function (){ alert('Bad Request!!!') })
 
+            vm.sendDataDoh = function(){
+                ExpensesSrvcs.send_data_doh().then (function (response) {
+                    alert('Success!')
+                }, function (){ alert('Bad Request!!!') })
+            }
+
             vm.routeTo = function(route){
                 $window.location.href = route;
             }; 

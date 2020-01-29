@@ -55,10 +55,9 @@
         <li class="nav-item" ui-sref="facility_profile({reporting_year:2019})">
             <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
         </li>
-        <li class="nav-item" ui-sref="general_info({reporting_year:2019})">
+        <li class="nav-item" ui-sref="general-info({reporting_year:2019})">
             <a href="general-information.html" class="nav-link"><i class="far fa-list-alt"></i><span>General Information</span></a>
         </li>
-
         <li class="nav-item dropdown">
             <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Hospital Operations</span></a>
             <ul class="dropdown-menu">

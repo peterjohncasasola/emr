@@ -76,19 +76,25 @@
 
             .state('general-info', {
                 url: '/general-info/:reporting_year',
-                controller: 'ExpensesCtrl as expensesCtrl',
+                controller: 'GeneralInfoCtrl as generalInfoCtrl',
                 templateUrl: 'general_info.view'
             })
 
             .state('general-info-classification', {
                 url: '/general-info/classifications/:reporting_year/details',
-                controller: 'ExpensesCtrl as expensesCtrl',
+                controller: 'ClassificationsCreateCtrl as classificationsCtrl',
                 templateUrl: 'general_info.view'
             })
 
             .state('general-info-bed-capacity', {
                 url: '/general-info/bed-capacity/:reporting_year/details',
-                controller: 'ExpensesCtrl as expensesCtrl',
+                controller: 'BedCapacitiesCreateCtrl as bedCapacityCtrl',
+                templateUrl: 'general_info.view'
+            })
+
+            .state('general-info-quality-management', {
+                url: '/general-info/quality-management/:reporting_year/details',
+                controller: 'QualityManagementCreateCtrl as qualityManagementCtrl',
                 templateUrl: 'general_info.view'
             })
 

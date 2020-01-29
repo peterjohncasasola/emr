@@ -29,6 +29,9 @@ Route::get('/api/v1/expenses/{id}','ExpensesController@show');
 Route::post('/api/v1/expense/store','ExpensesController@store');
 Route::post('/api/v1/expense/update','ExpensesController@update');
 
+//SEND TO DOH
+Route::get('/api/v1/expense/send_data_doh','ExpensesController@send_data_doh');
+
 // -- REVENUES -- //
 
 Route::get('/revenues','RevenuesController@index');
@@ -44,12 +47,25 @@ Route::post('/api/v1/revenue/update','RevenuesController@update');
 Route::get('/api/v1/revenue/send_data_doh','RevenuesController@send_data_doh');
 
 
+// -- BED CAPACITIES -- //
+
+// Route::get('/bed-capacities','BedCapacitiesController@index');
+// Route::get('/bed-capacities/{reporting_year}','BedCapacitiesController@index');
+// Route::get('/bed-capacities/{reporting_year}/details','BedCapacitiesController@index');
+
+// Route::get('/api/v1/bed-capacities','BedCapacitiesController@show');
+// Route::get('/api/v1/bed-capacities/{bed_capacity_code}','BedCapacitiesController@show');
+// Route::post('/api/v1/bed-capacity/store','BedCapacitiesController@store');
+// Route::post('/api/v1/bed-capacity/update','BedCapacitiesController@update');
 
 
-// -- GENERAL INFO -- CLASSIFICATION //
+// -- GENERAL INFO -- //
 
 Route::get('/general-info','ClassificationsController@index');
 Route::get('/general-info/{reporting_year}','ClassificationsController@index');
+
+
+// -- GENERAL INFO -- CLASSIFICATION //
 
 Route::get('/general-info/classifications','ClassificationsController@index');
 Route::get('/general-info/classifications/{reporting_year}','ClassificationsController@index');
@@ -58,6 +74,32 @@ Route::get('/general-info/classifications/{reporting_year}/details','Classificat
 Route::get('/api/v1/classifications','ClassificationsController@show');
 Route::post('/api/v1/classification/store','ClassificationsController@store');
 Route::post('/api/v1/classification/update','ClassificationsController@update');
+//SEND TO DOH
+Route::get('/api/v1/classification/send_data_doh','ClassificationsController@send_data_doh');
+
+// -- GENERAL INFO -- BED CAPACITY //
+
+Route::get('/general-info/bed-capacity','BedCapacitiesController@index');
+Route::get('/general-info/bed-capacity/{reporting_year}','BedCapacitiesController@index');
+Route::get('/general-info/bed-capacity/{reporting_year}/details','BedCapacitiesController@index');
+
+Route::get('/api/v1/bed-capacities','BedCapacitiesController@show');
+Route::post('/api/v1/bed-capacity/store','BedCapacitiesController@store');
+Route::post('/api/v1/bed-capacity/update','BedCapacitiesController@update');
+//SEND TO DOH
+Route::get('/api/v1/bed-capacity/send_data_doh','BedCapacitiesController@send_data_doh');
+
+// -- GENERAL INFO --  QUALITY MANAGEMENT //
+
+Route::get('/general-info/quality-management','QualityManagementController@index');
+Route::get('/general-info/quality-management/{reporting_year}','QualityManagementController@index');
+Route::get('/general-info/quality-management/{reporting_year}/details','QualityManagementController@index');
+
+Route::get('/api/v1/quality-management','QualityManagementController@show');
+Route::post('/api/v1/quality-management/store','QualityManagementController@store');
+Route::post('/api/v1/quality-management/update','QualityManagementController@update');
+//SEND TO DOH
+Route::get('/api/v1/quality-management/send_data_doh','QualityManagementController@send_data_doh');
 
 
 // -- SOAP -- //

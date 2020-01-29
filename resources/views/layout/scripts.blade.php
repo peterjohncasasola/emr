@@ -30,13 +30,20 @@
 <script src="{{URL::to('js/emrApp.js')}}"></script>
 
 <!-- Controllers -->
-<script src="{{URL::to('js/controllers/expenses.ctrl.js')}}"></script> 
-<script src="{{URL::to('js/controllers/revenues.ctrl.js')}}"></script> 
-<script src="{{URL::to('js/controllers/classifications.ctrl.js')}}"></script> 
+<script src="{{URL::to('js/controllers/expenses.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/revenues.ctrl.js')}}"></script>
+
+<script src="{{URL::to('js/controllers/generalinfo.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/classifications.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/bedcapacities.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/qualitymanagement.ctrl.js')}}"></script>
+
 
 <!-- Services -->
-<script src="{{URL::to('js/services/expenses.srvcs.js')}}"></script> 
-<script src="{{URL::to('js/services/revenues.srvcs.js')}}"></script> 
-<script src="{{URL::to('js/services/classifications.srvcs.js')}}"></script> 
+<script src="{{URL::to('js/services/expenses.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/revenues.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/classifications.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/bedcapacities.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/qualitymanagement.srvcs.js')}}"></script>
 
 @yield('additionalScripts')

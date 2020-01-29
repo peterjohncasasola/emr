@@ -22,7 +22,7 @@
             <h4></h4>
             <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputexpenses" ui-sref="expenses-details({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes=""><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="expensesCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
             </div>
             </div>
             <div class="card-body">

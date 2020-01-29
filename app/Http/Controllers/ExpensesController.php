@@ -8,8 +8,16 @@ use App\Expense;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Artisaninweb\SoapWrapper\SoapWrapper;
 
 class ExpensesController extends Controller {
+
+    protected $soapWrapper;
+ 
+    public function __construct(SoapWrapper $soapWrapper)
+    {
+      $this->soapWrapper = $soapWrapper;
+    }
     
 	public function index(){
         return view('layout.index');
@@ -63,7 +71,7 @@ class ExpensesController extends Controller {
             try{
 
                 $expense = new Expense;
-                $expense->hfhudcode                     = "SAMPLECODE01";
+                $expense->hfhudcode                     = "NEHEHRSV201900093";
                 $expense->salarieswages                 = $fields['salarieswages'];
                 $expense->employeebenefits              = $fields['employeebenefits'];
                 $expense->allowances                    = $fields['allowances'];
@@ -111,7 +119,7 @@ class ExpensesController extends Controller {
         try{
 
             $expense = Expense::where('reportingyear', $fields['reportingyear'])->first();
-            $expense->hfhudcode                     = "SAMPLECODE01";
+            $expense->hfhudcode                     = "NEHEHRSV201900093";
             $expense->salarieswages                 = $fields['salarieswages'];
             $expense->employeebenefits              = $fields['employeebenefits'];
             $expense->allowances                    = $fields['allowances'];
@@ -145,6 +153,64 @@ class ExpensesController extends Controller {
         });
 
         return $transaction;
+    }
+
+    public function send_data_doh(){
+
+        $revenue = DB::table('expenses as expense')
+            ->select(
+                'expense.id',
+                'expense.hfhudcode',
+                'expense.salarieswages',
+                'expense.employeebenefits',
+                'expense.allowances',
+                'expense.totalps',
+                'expense.totalamountmedicine',
+                'expense.totalamountmedicalsupplies',
+                'expense.totalamountutilities',
+                'expense.totalamountnonmedicalservice',
+                'expense.totalmooe',
+                'expense.amountinfrastructure',
+                'expense.amountequipment',
+                'expense.totalco',
+                'expense.grandtotal',
+                'expense.reportingyear'
+            )->where('reportingyear', 2019)->first();
+
+        $request = $this->soapWrapper->add('Emr', function ($service) {
+            $service
+            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+            ->trace(false);
+        });
+
+        $data = [
+            'login' => 'NEHEHRSV201900093',
+            'password' => '123456'
+        ];
+        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+
+        $data = [
+            "hfhudcode" => "NEHEHRSV201900093", 
+            "salarieswages" => $revenue->salarieswages, 
+            "employeebenefits" => $revenue->employeebenefits, 
+            "allowances" => $revenue->allowances, 
+            "totalps" => $revenue->totalps, 
+            "totalamountmedicine" => $revenue->totalamountmedicine, 
+            "totalamountmedicalsupplies" => $revenue->totalamountmedicalsupplies, 
+            "totalamountutilities" => $revenue->totalamountutilities, 
+            "totalamountnonmedicalservice" => $revenue->totalamountnonmedicalservice, 
+            "totalmooe" => $revenue->totalmooe, 
+            "amountinfrastructure" => $revenue->amountinfrastructure, 
+            "amountequipment" => $revenue->amountequipment, 
+            "totalco" => $revenue->totalco, 
+            "grandtotal" => $revenue->grandtotal, 
+            "reportingyear" => 2017
+        ];
+
+        $response = $this->soapWrapper->call('Emr.expenses', $data);
+        return response($response, 200)->header('Content-Type', 'application/xml');
+        exit;
     }
   	
 }
