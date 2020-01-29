@@ -4,13 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use DB;
-use App\DischargesNumberDelivery;
+use App\SummaryOfPatient;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
-class DischargesNumberDeliveriesController extends Controller {
+class SummaryOfPatientsController extends Controller {
 
     protected $soapWrapper;
  
@@ -38,10 +38,10 @@ class DischargesNumberDeliveriesController extends Controller {
                 'summaryOfPatients.totaldischarges',
                 'summaryOfPatients.totalpad',
                 'summaryOfPatients.totalibd',
-                'summaryOfPatients.totalibd',
-                'summaryOfPatients.totalibd',
-                'summaryOfPatients.totalibd',
-                'summaryOfPatients.totalibd'
+                'summaryOfPatients.totalinpatienttransto',
+                'summaryOfPatients.totalinpatienttransfrom',
+                'summaryOfPatients.totalpatientsremaining',
+                'summaryOfPatients.reportingyear'
             );
 
         if ($data['id']){
@@ -65,12 +65,16 @@ class DischargesNumberDeliveriesController extends Controller {
         $transaction = DB::transaction(function($field) use($fields){
             // try{
 
-                $summary_of_patients = new DischargesNumberDelivery;
+                $summary_of_patients = new SummaryOfPatient;
                 $summary_of_patients->hfhudcode                     = "NEHEHRSV201900093";
-                $summary_of_patients->totalifdelivery               = $fields['totalifdelivery'];
-                $summary_of_patients->totallbvdelivery              = $fields['totallbvdelivery'];
-                $summary_of_patients->totallbcdelivery              = $fields['totallbcdelivery'];
-                $summary_of_patients->totalotherdelivery            = $fields['totalotherdelivery'];
+                $summary_of_patients->totalinpatients               = $fields['totalinpatients'];
+                $summary_of_patients->totalnewborn                  = $fields['totalnewborn'];
+                $summary_of_patients->totaldischarges               = $fields['totaldischarges'];
+                $summary_of_patients->totalpad                      = $fields['totalpad'];
+                $summary_of_patients->totalibd                      = $fields['totalibd'];
+                $summary_of_patients->totalinpatienttransto         = $fields['totalinpatienttransto'];
+                $summary_of_patients->totalinpatienttransfrom       = $fields['totalinpatienttransfrom'];
+                $summary_of_patients->totalpatientsremaining        = $fields['totalpatientsremaining'];
                 $summary_of_patients->reportingyear                 = 2019;
                 $summary_of_patients->save();
 
@@ -101,12 +105,16 @@ class DischargesNumberDeliveriesController extends Controller {
         $transaction = DB::transaction(function($field) use($fields){
         try{
 
-            $summary_of_patients = DischargesNumberDelivery::where('reportingyear', $fields['reportingyear'])->first();
+            $summary_of_patients = SummaryOfPatient::where('reportingyear', $fields['reportingyear'])->first();
             $summary_of_patients->hfhudcode                     = "NEHEHRSV201900093";
-            $summary_of_patients->totalifdelivery               = $fields['totalifdelivery'];
-            $summary_of_patients->totallbvdelivery              = $fields['totallbvdelivery'];
-            $summary_of_patients->totallbcdelivery              = $fields['totallbcdelivery'];
-            $summary_of_patients->totalotherdelivery            = $fields['totalotherdelivery'];
+            $summary_of_patients->totalinpatients               = $fields['totalinpatients'];
+            $summary_of_patients->totalnewborn                  = $fields['totalnewborn'];
+            $summary_of_patients->totaldischarges               = $fields['totaldischarges'];
+            $summary_of_patients->totalpad                      = $fields['totalpad'];
+            $summary_of_patients->totalibd                      = $fields['totalibd'];
+            $summary_of_patients->totalinpatienttransto         = $fields['totalinpatienttransto'];
+            $summary_of_patients->totalinpatienttransfrom       = $fields['totalinpatienttransfrom'];
+            $summary_of_patients->totalpatientsremaining        = $fields['totalpatientsremaining'];
             $summary_of_patients->save();
 
             return response()->json([
@@ -131,15 +139,19 @@ class DischargesNumberDeliveriesController extends Controller {
 
     public function send_data_doh(){
 
-        $summary_of_patients = DB::table('hospOptDischargesNumberDeliveries as dischargesNumberDeliveries')
+        $summary_of_patients = DB::table('hospOptSummaryOfPatients as summaryOfPatients')
             ->select( 
-                'dischargesNumberDeliveries.id',
-                'dischargesNumberDeliveries.hfhudcode',
-                'dischargesNumberDeliveries.totalifdelivery',
-                'dischargesNumberDeliveries.totallbvdelivery',
-                'dischargesNumberDeliveries.totallbcdelivery',
-                'dischargesNumberDeliveries.totalotherdelivery',
-                'dischargesNumberDeliveries.reportingyear'
+                'summaryOfPatients.id',
+                'summaryOfPatients.hfhudcode',
+                'summaryOfPatients.totalinpatients',
+                'summaryOfPatients.totalnewborn',
+                'summaryOfPatients.totaldischarges',
+                'summaryOfPatients.totalpad',
+                'summaryOfPatients.totalibd',
+                'summaryOfPatients.totalinpatienttransto',
+                'summaryOfPatients.totalinpatienttransfrom',
+                'summaryOfPatients.totalpatientsremaining',
+                'summaryOfPatients.reportingyear'
             )->where('reportingyear', 2019)->first();
 
         $request = $this->soapWrapper->add('Emr', function ($service) {
@@ -157,14 +169,18 @@ class DischargesNumberDeliveriesController extends Controller {
 
         $data = [
             "hfhudcode" => "NEHEHRSV201900093", 
-            "totalifdelivery" => $summary_of_patients->totalifdelivery, 
-            "totallbvdelivery" => $summary_of_patients->totallbvdelivery, 
-            "totallbcdelivery" => $summary_of_patients->totallbcdelivery,
-            "totalotherdelivery" => $summary_of_patients->totalotherdelivery,
+            "totalinpatients" => $summary_of_patients->totalinpatients, 
+            "totalnewborn" => $summary_of_patients->totalnewborn, 
+            "totaldischarges" => $summary_of_patients->totaldischarges,
+            "totalpad" => $summary_of_patients->totalpad,
+            "totalibd" => $summary_of_patients->totalibd,
+            "totalinpatienttransto" => $summary_of_patients->totalinpatienttransto,
+            "totalinpatienttransfrom" => $summary_of_patients->totalinpatienttransfrom,
+            "totalpatientsremaining" => $summary_of_patients->totalpatientsremaining,
             "reportingyear" => 2017
         ];
 
-        $response = $this->soapWrapper->call('Emr.hospOptDischargesNumberDeliveries', $data);
+        $response = $this->soapWrapper->call('Emr.hospOptSummaryOfPatients', $data);
         return response($response, 200)->header('Content-Type', 'application/xml');
         exit;
     }

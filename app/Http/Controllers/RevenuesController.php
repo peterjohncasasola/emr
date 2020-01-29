@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Artisaninweb\SoapWrapper\SoapWrapper;
 
 class RevenuesController extends Controller {
+    
     protected $soapWrapper;
  
     public function __construct(SoapWrapper $soapWrapper)

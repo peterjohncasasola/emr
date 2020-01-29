@@ -20,9 +20,17 @@
     @include('revenues.revenues')
 </script>
 
+
+<!-- HOSPITAL OPERATIONS -->
+<script type="text/ng-template" id="summary_of_patient.view">
+    @include('hospital_operations.summary_of_patients')
+</script>
+
 <script type="text/ng-template" id="discharges_number_deliveries.view">
     @include('hospital_operations.discharges.discharges_number_deliveries')
 </script>
+
+
 
 @endsection
 @section('additionalScripts')

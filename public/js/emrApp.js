@@ -100,8 +100,21 @@
                 templateUrl: 'general_info.view'
             })
 
-            // HOSPITAL OPERATIONS -> DISCHARGES
+            // HOSPITAL OPERATIONS
+            .state('hospital-operations-summary-of-patients', {
+                url: '/hospital-operations/summary-of-patients/:reporting_year',
+                controller: 'SummaryOfPatientsCtrl as summaryOfPatientsCtrl',
+                templateUrl: 'summary_of_patient.view'
+            })
 
+            .state('hospital-operations-summary-of-patients-details', {
+                url: '/hospital-operations/summary-of-patients/:reporting_year/details',
+                controller: 'SummaryOfPatientsCreateCtrl as SummaryOfPatientsCtrl',
+                templateUrl: 'summary_of_patient.view'
+            })
+
+
+            // HOSPITAL OPERATIONS -> DISCHARGES
             .state('hospital-operations-discharges-number-deliveries', {
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year',
                 controller: 'DischargesNumberDeliveriesCtrl as dischargesNumberDeliveriesCtrl',
@@ -110,7 +123,7 @@
 
             .state('hospital-operations-discharges-number-deliveries-details', {
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year/details',
-                controller: 'DischargesNumberDeliveriesCreateCtrl as dischargesNumberDeliveriesCreateCtrl',
+                controller: 'DischargesNumberDeliveriesCreateCtrl as dischargesNumberDeliveriesCtrl',
                 templateUrl: 'discharges_number_deliveries.view'
             })
 
