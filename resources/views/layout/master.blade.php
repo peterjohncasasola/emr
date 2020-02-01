@@ -21,10 +21,10 @@
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-  <link rel="stylesheet" href="{{public/asset('assets/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('public/asset('assets/css/style.css')}}">
 
   <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
-  <link rel="stylesheet" href="{{public/asset('assets/css/components.css')}}">
+  <link rel="stylesheet" href="{{asset('public/asset('assets/css/components.css')}}">
   <style type="text/css">
     label{
       color:black;
@@ -84,29 +84,14 @@
   <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="assets/modules/moment.min.js"></script>
   <script src="assets/js/stisla.js"></script>
-  
-
-   <!-- General JS Scripts -->
-  <script src="public/assets/modules/jquery.min.js"></script>
-  <script src="public/assets/modules/popper.js"></script>
-  <script src="public/assets/modules/tooltip.js"></script>
-  <script src="public/assets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="public/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="public/assets/modules/moment.min.js"></script>
-  <script src="public/assets/js/stisla.js"></script>
-
-  <!-- JS Libraies -->
 
   <!-- Page Specific JS File -->
   <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
-  <script src="public/assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
   
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
-  <script src="public/assets/js/scripts.js"></script>
 
-  <script src="assets/js/custom.js"></script>
-  <script src="public/assets/js/custom.js"></script>
+  <script src="assets/js/custom.js"></script>=
 
   @include('layout.scripts')
 </body>
