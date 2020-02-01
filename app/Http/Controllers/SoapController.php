@@ -74,9 +74,20 @@ class SoapController extends Controller {
             ->trace(false);
         });
         
-        $data3 = ["hfhudcode" => "NEHEHRSV201900093", "year" => 2017, "table" => "revenues"];
+        $data3 = ["hfhudcode" => "NEHEHRSV201900093", "year" => 2017, "table" => "hospitalOperationsHAI"];
         $response3 = $this->soapWrapper->call('Emr.getDataTable', $data3);
         return response($response3, 200)->header('Content-Type', 'application/xml');
+
+
+        // $data4 = ["hfhudcode" => "NEHEHRSV201900093", "numhai" => "", 
+        // "numdischarges" => "", "infectionrate" => 0.60, "patientnumvap" => "",
+        //  "totalventilatordays" => "", "resultvap" => 13.60, "patientnumbsi" => "", 
+        //  "totalnumcentralline" => "", "resultbsi" => 11.10, "patientnumuti" => "", 
+        //  "totalcatheterdays" => "", "resultuti" => 0.00, "numssi" => "", 
+        //  "totalproceduresdone" => "", "resultssi" => 123.00, "reportingyear" => 2017];
+
+        // $response3 = $this->soapWrapper->call('Emr.hospitalOperationsHAI', $data4);
+        // return response($response3, 200)->header('Content-Type', 'application/xml');
     }
   	
 }

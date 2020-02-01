@@ -26,12 +26,30 @@
     @include('hospital_operations.summary_of_patients')
 </script>
 
+<script type="text/ng-template" id="operations_hai.view">
+    @include('hospital_operations.operations_hai')
+</script>
+
+<!-- Discharges -->
 <script type="text/ng-template" id="discharges_number_deliveries.view">
     @include('hospital_operations.discharges.discharges_number_deliveries')
 </script>
 
 <script type="text/ng-template" id="discharges_opv.view">
     @include('hospital_operations.discharges.discharges_opv')
+</script>
+
+<script type="text/ng-template" id="discharges_ev.view">
+    @include('hospital_operations.discharges.discharges_emergency_visits')
+</script>
+
+<!-- Surgical Operations -->
+<script type="text/ng-template" id="surgical_major.view">
+    @include('hospital_operations.surgical_operations.surgical_major')
+</script>
+
+<script type="text/ng-template" id="surgical_minor.view">
+    @include('hospital_operations.surgical_operations.surgical_minor')
 </script>
 
 

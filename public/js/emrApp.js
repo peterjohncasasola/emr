@@ -100,7 +100,7 @@
                 templateUrl: 'general_info.view'
             })
 
-            // HOSPITAL OPERATIONS
+            // HOSPITAL OPERATIONS -> SUMMARY
             .state('hospital-operations-summary-of-patients', {
                 url: '/hospital-operations/summary-of-patients/:reporting_year',
                 controller: 'SummaryOfPatientsCtrl as summaryOfPatientsCtrl',
@@ -111,6 +111,19 @@
                 url: '/hospital-operations/summary-of-patients/:reporting_year/details',
                 controller: 'SummaryOfPatientsCreateCtrl as SummaryOfPatientsCtrl',
                 templateUrl: 'summary_of_patient.view'
+            })
+
+            // HOSPITAL OPERATIONS -> HAI
+            .state('hospital-operations-hai', {
+                url: '/hospital-operations/hai/:reporting_year',
+                controller: 'OperationsHAICtrl as operationsHAICtrl',
+                templateUrl: 'operations_hai.view'
+            })
+
+            .state('hospital-operations-hai-details', {
+                url: '/hospital-operations/hai/:reporting_year/details',
+                controller: 'OperationsHAICreateCtrl as operationsHAICtrl',
+                templateUrl: 'operations_hai.view'
             })
 
 
@@ -140,6 +153,33 @@
                 templateUrl: 'discharges_opv.view'
             })
 
+            // HOSPITAL OPERATIONS -> DISCHARGES -> EV
+            .state('hospital-operations-discharges-ev', {
+                url: '/hospital-operations/discharges-ev/:reporting_year',
+                controller: 'DischargesEVCtrl as dischargesEVCtrl',
+                templateUrl: 'discharges_ev.view'
+            })
+
+            .state('hospital-operations-discharges-ev-details', {
+                url: '/hospital-operations/discharges-ev/:reporting_year/details',
+                controller: 'DischargesEVCreateCtrl as dischargesEVCtrl',
+                templateUrl: 'discharges_ev.view'
+            })
+
+            // HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> SURGICAL MAJOR
+            .state('hospital-operations-surgical-operations-major', {
+                url: '/hospital-operations/surgical-operations-major/:reporting_year',
+                controller: 'SurgicalOperationsMajorCtrl as surgicalOperationsMajorCtrl',
+                templateUrl: 'surgical_major.view'
+            })
+
+            // HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> SURGICAL MINOR
+            .state('hospital-operations-surgical-operations-minor', {
+                url: '/hospital-operations/surgical-operations-minor/:reporting_year',
+                controller: 'SurgicalOperationsMinorCtrl as surgicalOperationsMinorCtrl',
+                templateUrl: 'surgical_minor.view'
+            })
+
             .state('facility_profile', {
                 url: '/facility-profile/:reporting_year',
                 controller: 'ExpensesCtrl as expensesCtrl',
@@ -148,7 +188,7 @@
 
             
             
-            $urlRouterProvider.otherwise('/hospital-operations-discharges-number-deliveries/2019');
+            $urlRouterProvider.otherwise('/hospital-operations/discharges-number-deliveries/2019');
             // $urlRouterProvider.otherwise('/index');
 
         }

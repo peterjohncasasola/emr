@@ -140,7 +140,6 @@
             };
 
             vm.close = function() {
-                $state.go('employees');
                 $uibModalInstance.close();
             };
         }
