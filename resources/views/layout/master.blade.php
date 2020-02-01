@@ -21,10 +21,10 @@
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('public/asset('assets/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('public/assets/css/style.css')}}">
 
   <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
-  <link rel="stylesheet" href="{{asset('public/asset('assets/css/components.css')}}">
+  <link rel="stylesheet" href="{{asset('public/assets/css/components.css')}}">
   <style type="text/css">
     label{
       color:black;
