@@ -152,6 +152,26 @@ Route::post('/api/v1/discharges-ev/store','DischargesEVController@store');
 Route::post('/api/v1/discharges-ev/update','DischargesEVController@update');
 Route::get('/api/v1/discharges-ev/send_data_doh','DischargesEVController@send_data_doh');//SEND TO DOH
 
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> ER //
+Route::get('/hospital-operations/discharges-er','DischargesERController@index');
+Route::get('/hospital-operations/discharges-er/{reporting_year}','DischargesERController@index');
+Route::get('/hospital-operations/discharges-er/{reporting_year}/details','DischargesERController@index');
+
+Route::get('/api/v1/discharges-er','DischargesERController@show');
+Route::post('/api/v1/discharges-er/store','DischargesERController@store');
+Route::post('/api/v1/discharges-er/update','DischargesERController@update');
+Route::get('/api/v1/discharges-er/send_data_doh','DischargesERController@send_data_doh');//SEND TO DOH
+
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> ER //
+Route::get('/hospital-operations/discharges-opd','DischargesOPDController@index');
+Route::get('/hospital-operations/discharges-opd/{reporting_year}','DischargesOPDController@index');
+Route::get('/hospital-operations/discharges-opd/{reporting_year}/details','DischargesOPDController@index');
+
+Route::get('/api/v1/discharges-opd','DischargesOPDController@show');
+Route::post('/api/v1/discharges-opd/store','DischargesOPDController@store');
+Route::post('/api/v1/discharges-opd/update','DischargesOPDController@update');
+Route::get('/api/v1/discharges-opd/send_data_doh','DischargesOPDController@send_data_doh');//SEND TO DOH
+
 // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MAJOR OPERATIONS //
 Route::get('/hospital-operations/surgical-operations-major','SurgicalOperationsMajorController@index');
 Route::get('/hospital-operations/surgical-operations-major/{reporting_year}','SurgicalOperationsMajorController@index');
@@ -176,11 +196,16 @@ Route::get('/api/v1/surgical-operation-minor/send_data_doh','SurgicalOperationsM
 Route::get('/api/v1/surgeries','SurgeriesController@show');
 Route::post('/api/v1/surgery/store','SurgeriesController@store');
 
+Route::get('/api/v1/ricd','RicdController@show');
+Route::post('/api/v1/ricd/store','RicdController@store');
+
 
 
 // -- SOAP -- //
 
 Route::get('/soap','SoapController@show');
 Route::get('/soap/gettable','SoapController@gettable');
+
+Route::get('/icd','DischargesERController@geticd');
 
 

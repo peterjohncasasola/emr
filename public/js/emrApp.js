@@ -166,6 +166,32 @@
                 templateUrl: 'discharges_ev.view'
             })
 
+            // HOSPITAL OPERATIONS -> DISCHARGES -> ER
+            .state('hospital-operations-discharges-er', {
+                url: '/hospital-operations/discharges-er/:reporting_year',
+                controller: 'DischargesERCtrl as dischargesERCtrl',
+                templateUrl: 'discharges_er.view'
+            })
+
+            .state('hospital-operations-discharges-er-details', {
+                url: '/hospital-operations/discharges-er/:reporting_year/details',
+                controller: 'DischargesERCreateCtrl as dischargesERCtrl',
+                templateUrl: 'discharges_er.view'
+            })
+
+            // HOSPITAL OPERATIONS -> DISCHARGES -> OPD
+            .state('hospital-operations-discharges-opd', {
+                url: '/hospital-operations/discharges-opd/:reporting_year',
+                controller: 'DischargesOPDCtrl as dischargesOPDCtrl',
+                templateUrl: 'discharges_opd.view'
+            })
+
+            .state('hospital-operations-discharges-opd-details', {
+                url: '/hospital-operations/discharges-opd/:reporting_year/details',
+                controller: 'DischargesOPDCreateCtrl as dischargesOPDCtrl',
+                templateUrl: 'discharges_opd.view'
+            })
+
             // HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> SURGICAL MAJOR
             .state('hospital-operations-surgical-operations-major', {
                 url: '/hospital-operations/surgical-operations-major/:reporting_year',
@@ -186,8 +212,6 @@
                 templateUrl: 'facility_profile.view'
             })
 
-            
-            
             $urlRouterProvider.otherwise('/hospital-operations/discharges-number-deliveries/2019');
             // $urlRouterProvider.otherwise('/index');
 

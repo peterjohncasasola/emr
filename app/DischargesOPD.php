@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class Surgery extends Model
+class DischargesOPD extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = "rsurgeries_lib";
+    protected $table = "hospOptDischargesOPD";
 
 }

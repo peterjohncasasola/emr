@@ -43,6 +43,14 @@
     @include('hospital_operations.discharges.discharges_emergency_visits')
 </script>
 
+<script type="text/ng-template" id="discharges_er.view">
+    @include('hospital_operations.discharges.discharges_er')
+</script>
+
+<script type="text/ng-template" id="discharges_opd.view">
+    @include('hospital_operations.discharges.discharges_opd')
+</script>
+
 <!-- Surgical Operations -->
 <script type="text/ng-template" id="surgical_major.view">
     @include('hospital_operations.surgical_operations.surgical_major')
