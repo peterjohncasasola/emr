@@ -16,9 +16,9 @@
             DischargesEVSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
-                    vm.opv = response.data.data[0];
-                    vm.opv_count = response.data.count;
-                    console.log(vm.opv)
+                    vm.ev = response.data.data[0];
+                    vm.ev_count = response.data.count;
+                    console.log(vm.ev)
                 }
             }, function (){ alert('Bad Request!!!') })
 

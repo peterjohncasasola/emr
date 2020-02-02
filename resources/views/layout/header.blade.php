@@ -68,10 +68,10 @@
             <li class="nav-item"><a href="hospital-operations/discharges-b.html" class="nav-link">Ten Leading causes of Morbidity/Diseases Disaggregated as to Age and Sex</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-number-deliveries({reporting_year:2019})"> <a href="#" class="nav-link">Total Number of Deliveries</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reporting_year:2019})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
-            <li class="nav-item"><a href="hospital-operations/discharges-e.html" class="nav-link">Ten Leading OPD Consultations</a></li>
-            <li class="nav-item"><a href="hospital-operations/discharges-f.html" class="nav-link">Ten Leading ER Consultations</a></li>
-            <li class="nav-item"><a href="hospital-operations/discharges-g.html" class="nav-link">Testing and Other Services</a></li>
-            <li class="nav-item"><a href="hospital-operations/discharges-h.html" class="nav-link">Emergency Visits</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-opd({reporting_year:2019})"><a href="#l" class="nav-link">Ten Leading OPD Consultations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-er({reporting_year:2019})"><a href="#" class="nav-link">Ten Leading ER Consultations</a></li>
+            <li class="nav-item" ><a href="hospital-operations/discharges-g.html" class="nav-link">Testing and Other Services</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-ev({reporting_year:2019})"><a href="#" class="nav-link">Emergency Visits</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Deaths</a>
@@ -83,8 +83,8 @@
         <li class="nav-item"><a href="hospital-operations/hai.html" class="nav-link">Healthcare Associated Infections (HAI)</a></li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Surgical Operations</a>
             <ul class="dropdown-menu">
-            <li class="nav-item"><a href="hospital-operations/surgical-a.html" class="nav-link">Ten Leading Major Operations (Not Applicable for Infirmary)</a></li>
-            <li class="nav-item"><a href="hospital-operations/surgical-b.html" class="nav-link">Ten Leading Minor Operations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-major({reporting_year:2019})"><a href="hospital-operations/surgical-a.html" class="nav-link">Ten Leading Major Operations (Not Applicable for Infirmary)</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-minor({reporting_year:2019})"><a href="hospital-operations/surgical-b.html" class="nav-link">Ten Leading Minor Operations</a></li>
             </ul>
         </li>
         </ul>
