@@ -29,7 +29,7 @@ class OperationsHAIController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $operations_HAI = DB::table('hospitalOperationsHAI as operationsHAI')
+        $operations_HAI = DB::table('hospitaloperationshai as operationsHAI')
             ->select( 
                 'operationsHAI.id',
                 'operationsHAI.hfhudcode',
@@ -162,7 +162,7 @@ class OperationsHAIController extends Controller {
 
     public function send_data_doh(){
 
-        $operations_HAI = DB::table('hospitalOperationsHAI as operationsHAI')
+        $operations_HAI = DB::table('hospitaloperationshai as operationsHAI')
             ->select( 
                 'operationsHAI.id',
                 'operationsHAI.hfhudcode',

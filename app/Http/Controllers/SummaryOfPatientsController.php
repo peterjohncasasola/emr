@@ -29,7 +29,7 @@ class SummaryOfPatientsController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $summary_of_patients = DB::table('hospOptSummaryOfPatients as summaryOfPatients')
+        $summary_of_patients = DB::table('hospoptsummaryofpatients as summaryOfPatients')
             ->select( 
                 'summaryOfPatients.id',
                 'summaryOfPatients.hfhudcode',
@@ -139,7 +139,7 @@ class SummaryOfPatientsController extends Controller {
 
     public function send_data_doh(){
 
-        $summary_of_patients = DB::table('hospOptSummaryOfPatients as summaryOfPatients')
+        $summary_of_patients = DB::table('hospoptsummaryofpatients as summaryOfPatients')
             ->select( 
                 'summaryOfPatients.id',
                 'summaryOfPatients.hfhudcode',

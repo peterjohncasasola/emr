@@ -29,7 +29,7 @@ class SurgicalOperationsMajorController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $operations_major = DB::table('hospitalOperationsMajorOpt as operationsMajorOpt')
+        $operations_major = DB::table('hospitaloperationsmajoropt as operationsMajorOpt')
             ->select( 
                 'operationsMajorOpt.id',
                 'operationsMajorOpt.hfhudcode',
@@ -147,7 +147,7 @@ class SurgicalOperationsMajorController extends Controller {
 
     public function send_data_doh(){
 
-        $major_operations = DB::table('hospitalOperationsMajorOpt as operationsMajorOpt')
+        $major_operations = DB::table('hospitaloperationsmajoropt as operationsMajorOpt')
             ->select( 
                 'operationsMajorOpt.id',
                 'operationsMajorOpt.hfhudcode',

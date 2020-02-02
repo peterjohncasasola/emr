@@ -29,7 +29,7 @@ class DischargesERController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $discharges_ER = DB::table('hospOptDischargesER as dischargesER')
+        $discharges_ER = DB::table('hospoptdischargeser as dischargesER')
             ->select( 
                 'dischargesER.id',
                 'dischargesER.hfhudcode',
@@ -152,7 +152,7 @@ class DischargesERController extends Controller {
 
     public function send_data_doh(){
 
-        $discharges_ER = DB::table('hospOptDischargesER as dischargesER')
+        $discharges_ER = DB::table('hospoptdischargeser as dischargesER')
             ->select( 
                 'dischargesER.id',
                 'dischargesER.hfhudcode',

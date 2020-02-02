@@ -29,7 +29,7 @@ class DischargesNumberDeliveriesController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $discharges_number_delivery = DB::table('hospOptDischargesNumberDeliveries as dischargesNumberDeliveries')
+        $discharges_number_delivery = DB::table('hospoptdischargesnumberdeliveries as dischargesNumberDeliveries')
             ->select( 
                 'dischargesNumberDeliveries.id',
                 'dischargesNumberDeliveries.hfhudcode',
@@ -127,7 +127,7 @@ class DischargesNumberDeliveriesController extends Controller {
 
     public function send_data_doh(){
 
-        $discharges_number_delivery = DB::table('hospOptDischargesNumberDeliveries as dischargesNumberDeliveries')
+        $discharges_number_delivery = DB::table('hospoptdischargesnumberdeliveries as dischargesNumberDeliveries')
             ->select( 
                 'dischargesNumberDeliveries.id',
                 'dischargesNumberDeliveries.hfhudcode',

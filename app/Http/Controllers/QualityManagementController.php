@@ -29,7 +29,7 @@ class QualityManagementController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $qualityManagement = DB::table('genInfoQualityManagement as qualityManagement')
+        $qualityManagement = DB::table('geninfoqualitymanagement as qualityManagement')
             ->select( 
                 'qualityManagement.id',
                 'qualityManagement.hfhudcode',
@@ -134,7 +134,7 @@ class QualityManagementController extends Controller {
 
     public function send_data_doh(){
 
-        $qualityManagement = DB::table('genInfoQualityManagement as qualityManagement')
+        $qualityManagement = DB::table('geninfoqualitymanagement as qualityManagement')
             ->select( 
                 'qualityManagement.id',
                 'qualityManagement.hfhudcode',

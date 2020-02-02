@@ -8,6 +8,6 @@ use DB;
 class QualityManagement extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = "genInfoQualityManagement";
+    protected $table = "geninfoqualitymanagement";
 
 }

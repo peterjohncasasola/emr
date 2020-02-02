@@ -125,7 +125,7 @@ class BedCapacitiesController extends Controller {
 
     public function send_data_doh(){
 
-        $bed_capacity = DB::table('genInfoBedCapacity as bedCapacity')
+        $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
             ->select( 
                 'bedCapacity.id',
                 'bedCapacity.hfhudcode',

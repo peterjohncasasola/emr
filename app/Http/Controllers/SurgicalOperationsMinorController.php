@@ -29,7 +29,7 @@ class SurgicalOperationsMinorController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $operations_minor = DB::table('hospitalOperationsMinorOpt as operationsMInorOpt')
+        $operations_minor = DB::table('hospitaloperationsminoropt as operationsMInorOpt')
             ->select( 
                 'operationsMInorOpt.id',
                 'operationsMInorOpt.hfhudcode',
@@ -147,7 +147,7 @@ class SurgicalOperationsMinorController extends Controller {
 
     public function send_data_doh(){
 
-        $minor_operations = DB::table('hospitaloperationsMInorOpt as operationsMInorOpt')
+        $minor_operations = DB::table('hospitaloperationsminoropt as operationsMInorOpt')
             ->select( 
                 'operationsMInorOpt.id',
                 'operationsMInorOpt.hfhudcode',

@@ -8,6 +8,6 @@ use DB;
 class BedCapacity extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = "genInfoBedCapacity";
+    protected $table = "geninfobedcapacity";
 
 }

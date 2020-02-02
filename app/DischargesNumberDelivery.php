@@ -8,6 +8,6 @@ use DB;
 class DischargesNumberDelivery extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = "hospOptDischargesNumberDeliveries";
+    protected $table = "hospoptdischargesnumberdeliveries";
 
 }

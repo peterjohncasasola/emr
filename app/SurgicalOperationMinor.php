@@ -8,6 +8,6 @@ use DB;
 class SurgicalOperationMinor extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = "hospitalOperationsMinorOpt";
+    protected $table = "hospitaloperationsminoropt";
 
 }

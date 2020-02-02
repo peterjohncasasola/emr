@@ -8,6 +8,6 @@ use DB;
 class SummaryOfPatient extends Model
 {
     protected $primaryKey = 'id';
-    protected $table = "hospOptSummaryOfPatients";
+    protected $table = "hospoptsummaryofpatients";
 
 }
