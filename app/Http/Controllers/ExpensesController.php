@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Config;
 
 use DB;
 use App\Expense;
@@ -211,6 +212,11 @@ class ExpensesController extends Controller {
         $response = $this->soapWrapper->call('Emr.expenses', $data);
         return response($response, 200)->header('Content-Type', 'application/xml');
         exit;
+    }
+
+
+    public function sample(){
+        echo Config::get('defaults.default.is_local');
     }
   	
 }
