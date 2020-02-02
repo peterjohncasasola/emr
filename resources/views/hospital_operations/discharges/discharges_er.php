@@ -66,7 +66,7 @@
                             <td><%discharges_er.number%></td>
                             <td><%discharges_er.icd10code%></td>
                             <td><%discharges_er.icd10category%></td>
-                            <td></td>
+                            <td><a href="" class="fas fa-trash-alt text-danger" ng-click="dischargesERCtrl.deleteDischargeERBtn(discharges_er.id)"></a></td>
                         </tr>
                     </tbody>
                     </table>

@@ -51,6 +51,7 @@
                         <th width="4%">Rank  </th>
                         <th width="83%">Surgical Operations </th>
                         <th width="13%">Number  </th>
+                        <th width="13%">Actions  </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,7 @@
                         <td><% $index+1 %></td>
                         <td><%surgical_operation.surgicaloperation%></td>
                         <td><%surgical_operation.number%></td>
+                        <td><a href="" class="fas fa-trash-alt text-danger" ng-click="surgicalOperationsMajorCtrl.deleteSurgicalOperationtBtn(surgical_operation.id)"></a></td>
                     </tr>
                 </tbody>
                 </table>

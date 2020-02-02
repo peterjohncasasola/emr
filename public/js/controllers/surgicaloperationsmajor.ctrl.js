@@ -66,6 +66,29 @@
                 });
             };
 
+            vm.deleteSurgicalOperationtBtn = function(id){
+                
+                data['id'] = id;
+                data['reportingyear'] = $stateParams.reporting_year;
+                console.log(data);
+                SurgicalOperationsMajorSrvcs.remove(data).then(function(response){
+                    if (response.data.status == 200) {
+                        alert(response.data.message);
+                        SurgicalOperationsMajorSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                            if(response.data.status == 200)
+                            {
+                                vm.surgical_operations = response.data.data;
+                                console.log(vm.surgical_operations)
+                            }
+                        }, function (){ alert('Bad Request!!!') })
+                    }
+                    else {
+                        alert(response.data.message);
+                    }
+                    console.log(response.data);
+                });
+            };
+
 
             vm.sendDataDoh = function(){
                 SurgicalOperationsMajorSrvcs.send_data_doh().then (function (response) {

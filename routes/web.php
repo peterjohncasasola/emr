@@ -159,7 +159,8 @@ Route::get('/hospital-operations/discharges-er/{reporting_year}/details','Discha
 
 Route::get('/api/v1/discharges-er','DischargesERController@show');
 Route::post('/api/v1/discharges-er/store','DischargesERController@store');
-Route::post('/api/v1/discharges-er/update','DischargesERController@update');
+// Route::post('/api/v1/discharges-er/update','DischargesERController@update');
+Route::post('/api/v1/discharges-er/remove','DischargesERController@remove');
 Route::get('/api/v1/discharges-er/send_data_doh','DischargesERController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> ER //
@@ -169,7 +170,8 @@ Route::get('/hospital-operations/discharges-opd/{reporting_year}/details','Disch
 
 Route::get('/api/v1/discharges-opd','DischargesOPDController@show');
 Route::post('/api/v1/discharges-opd/store','DischargesOPDController@store');
-Route::post('/api/v1/discharges-opd/update','DischargesOPDController@update');
+// Route::post('/api/v1/discharges-opd/update','DischargesOPDController@update');
+Route::post('/api/v1/discharges-opd/remove','DischargesOPDController@remove');
 Route::get('/api/v1/discharges-opd/send_data_doh','DischargesOPDController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MAJOR OPERATIONS //
@@ -179,7 +181,8 @@ Route::get('/hospital-operations/surgical-operations-major/{reporting_year}/{ind
 
 Route::get('/api/v1/surgical-operations-major','SurgicalOperationsMajorController@show');
 Route::post('/api/v1/surgical-operation-major/store','SurgicalOperationsMajorController@store');
-Route::post('/api/v1/surgical-operation-major/update','SurgicalOperationsMajorController@update');
+// Route::post('/api/v1/surgical-operation-major/update','SurgicalOperationsMajorController@update');
+Route::post('/api/v1/surgical-operation-major/remove','SurgicalOperationsMajorController@remove');
 Route::get('/api/v1/surgical-operation-major/send_data_doh','SurgicalOperationsMajorController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MINOR OPERATIONS //
@@ -189,7 +192,8 @@ Route::get('/hospital-operations/surgical-operations-minor/{reporting_year}/{ind
 
 Route::get('/api/v1/surgical-operations-minor','SurgicalOperationsMinorController@show');
 Route::post('/api/v1/surgical-operation-minor/store','SurgicalOperationsMinorController@store');
-Route::post('/api/v1/surgical-operation-minor/update','SurgicalOperationsMinorController@update');
+// Route::post('/api/v1/surgical-operation-minor/update','SurgicalOperationsMinorController@update');
+Route::post('/api/v1/surgical-operation-minor/remove','SurgicalOperationsMinorController@remove');
 Route::get('/api/v1/surgical-operation-minor/send_data_doh','SurgicalOperationsMinorController@send_data_doh');//SEND TO DOH
 
 // LIBRARIES //

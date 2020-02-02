@@ -114,41 +114,70 @@ class DischargesERController extends Controller {
         return $transaction;
     }
 
-    public function update(Request $request){
+    // public function update(Request $request){
 
-        $fields = Input::post();
+    //     $fields = Input::post();
 
-        $transaction = DB::transaction(function($field) use($fields){
-        try{
+    //     $transaction = DB::transaction(function($field) use($fields){
+    //     try{
 
-            $discharges_ER = DischargesER::where('reportingyear', $fields['reportingyear'])->first();
-            $discharges_ER->hfhudcode                       = "NEHEHRSV201900093";
-            $discharges_ER->erconsultations                 = $fields['erconsultations'];
-            $discharges_ER->number                          = $fields['number'];
-            $discharges_ER->icd10code                       = $fields['icd10code'];
-            $discharges_ER->icd10category                   = $fields['icd10category'];
-            $discharges_ER->reportingyear                    = 2019;
-            $discharges_ER->save();
+    //         $discharges_ER = DischargesER::where('reportingyear', $fields['reportingyear'])->first();
+    //         $discharges_ER->hfhudcode                       = "NEHEHRSV201900093";
+    //         $discharges_ER->erconsultations                 = $fields['erconsultations'];
+    //         $discharges_ER->number                          = $fields['number'];
+    //         $discharges_ER->icd10code                       = $fields['icd10code'];
+    //         $discharges_ER->icd10category                   = $fields['icd10category'];
+    //         $discharges_ER->reportingyear                    = 2019;
+    //         $discharges_ER->save();
 
-            return response()->json([
-                'status' => 200,
-                'data' => null,
-                'message' => 'Successfully updated.'
-            ]);
+    //         return response()->json([
+    //             'status' => 200,
+    //             'data' => null,
+    //             'message' => 'Successfully updated.'
+    //         ]);
 
-          }
-          catch (\Exception $e) 
-          {
-            return response()->json([
-              'status' => 500,
-              'data' => null,
-              'message' => 'Error, please try again!'
-            ]);
-          }
-        });
+    //       }
+    //       catch (\Exception $e) 
+    //       {
+    //         return response()->json([
+    //           'status' => 500,
+    //           'data' => null,
+    //           'message' => 'Error, please try again!'
+    //         ]);
+    //       }
+    //     });
 
-        return $transaction;
-    }
+    //     return $transaction;
+    // }
+
+    public function remove(Request $request){
+
+	    $data = Input::post();
+
+	    $transaction = DB::transaction(function($data) use($data){
+	    try{
+
+			DischargesER::where('id', $data['id'])->firstOrFail()->delete();
+
+	        return response()->json([
+	            'status' => 200,
+	            'data' => 'null',
+	            'message' => 'Successfully deleted.'
+	        ]);
+
+	      }
+	      catch (\Exception $e) 
+	      {
+	          return response()->json([
+	            'status' => 500,
+	            'data' => 'null',
+	            'message' => 'Error, please try again!'
+	        ]);
+	      }
+	    });
+
+   	 	return $transaction;
+  	}
 
     public function send_data_doh(){
 

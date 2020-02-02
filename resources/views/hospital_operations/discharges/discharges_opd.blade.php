@@ -21,7 +21,7 @@
                 <div class="card-header">
                 <h4>Ten Leading OPD Consultations</h4>
                 <div class="card-header-action">
-                    <a href="#" class="btn btn-icon icon-left btn-primary" ng-click="dischargesOPDCtrl.createDischargeERBtn(dischargesOPDCtrl.ricd10_details)"><i class="far fa-plus-square"></i> Add</a>
+                    <a href="#" class="btn btn-icon icon-left btn-primary" ng-click="dischargesOPDCtrl.createDischargeOPDBtn(dischargesOPDCtrl.ricd10_details)"><i class="far fa-plus-square"></i> Add</a>
                     <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="dischargesOPDCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
                 </div>
                 </div>
@@ -36,7 +36,7 @@
                         <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPDCtrl.ricd10_details.icd10cat">
                     </div>
                     <div class="col-sm-6">
-                        <textarea class="form-control" data-toggle="modal" 
+                        <textarea class="form-control" 
                         ng-model="dischargesOPDCtrl.ricd10_details.icd10desc" 
                         ng-click="dischargesOPDCtrl.selectIcdType()" 
                         data-target="#input10er" readonly="" placeholder="Select ER Consultations"></textarea>
@@ -60,13 +60,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="discharges_er in dischargesOPDCtrl.discharges_er">
+                        <tr ng-repeat="discharges_opd in dischargesOPDCtrl.discharges_opd">
                             <td><% $index+1 %></td>
-                            <td><%discharges_er.erconsultations%></td>
-                            <td><%discharges_er.number%></td>
-                            <td><%discharges_er.icd10code%></td>
-                            <td><%discharges_er.icd10category%></td>
-                            <td></td>
+                            <td><%discharges_opd.erconsultations%></td>
+                            <td><%discharges_opd.number%></td>
+                            <td><%discharges_opd.icd10code%></td>
+                            <td><%discharges_opd.icd10category%></td>
+                            <td><a href="" class="fas fa-trash-alt text-danger" ng-click="dischargesOPDCtrl.deleteDischargeOPDBtn(discharges_opd.id)"></a></td>
                         </tr>
                     </tbody>
                     </table>
@@ -81,6 +81,44 @@
         </div>
     </section>
 
+    <a href="#" data-toggle="modal" data-target="#input10er">sho pop </a>
+
+    
+    <div class="modal fade" tabindex="-1" role="dialog" id="input10er">
+          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">ICD-10 | PHILIPPINE MODIFICATION</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="table-responsive">
+                  <table class="table table-striped" id="table-1">
+                    <thead>                                 
+                      <tr>
+                        <th>ICD-10 Code</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                      </tr>
+                        </thead>
+                        <tbody>                                 
+                          <tr>
+                            <td><a href=""> A00 </a></td>
+                            <td>Cholera</td>
+                            <td>A00-A09</td>
+                          </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="modal-footer bg-whitesmoke br">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 
     <script type="text/ng-template" id="add-discharges-er-modal">
@@ -125,5 +163,12 @@
             <button type="button" class="btn btn-primary" ng-if="dischargesOPDCtrl.collection_copy" ng-click="dischargesOPDCtrl.updateDischargeOPVBtn(dischargesOPDCtrl.collection)">Update changes</button> -->
         </div>
     </div>
+
+
+
+
+
+    <hr>
+
 
 </script>

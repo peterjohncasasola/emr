@@ -11,6 +11,10 @@
 <script src="assets/modules/moment.min.js"></script>
 <script src="assets/js/stisla.js"></script>
 
+<!-- JS Libraies -->
+<script src="assets/modules/datatables/datatables.min.js"></script>
+<script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
 <!-- Page Specific JS File -->
 <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
 
@@ -193,6 +197,7 @@
 
 <!-- Libraries -->
 <script src="{{asset('public/js/services/surgerieslib.srvcs.js')}}"></script>
+<script src="{{asset('public/js/services/ricdlib.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/message.srvcs.js')}}"></script>
 
 

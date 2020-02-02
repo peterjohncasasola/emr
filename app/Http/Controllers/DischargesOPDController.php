@@ -60,14 +60,14 @@ class DischargesOPDController extends Controller {
 
         $transaction = DB::transaction(function($field) use($fields){
             // try{
-                $discharges_OPD_count = dischargesOPD::count();
+                $discharges_OPD_count = DischargesOPD::count();
 
                 if($discharges_OPD_count<10){
 
-                    $check_duplicate = dischargesOPD::where('icd10code', $fields['icd10code'])->count();
+                    $check_duplicate = DischargesOPD::where('icd10code', $fields['icd10code'])->count();
                     if($check_duplicate<=0){
 
-                        $discharges_OPD = new dischargesOPD;
+                        $discharges_OPD = new DischargesOPD;
                         $discharges_OPD->hfhudcode                       = "NEHEHRSV201900093";
                         $discharges_OPD->erconsultations                 = $fields['icd10desc'];
                         $discharges_OPD->number                          = $fields['number'];
@@ -114,41 +114,70 @@ class DischargesOPDController extends Controller {
         return $transaction;
     }
 
-    public function update(Request $request){
+    // public function update(Request $request){
 
-        $fields = Input::post();
+    //     $fields = Input::post();
 
-        $transaction = DB::transaction(function($field) use($fields){
-        try{
+    //     $transaction = DB::transaction(function($field) use($fields){
+    //     try{
 
-            $discharges_OPD = dischargesOPD::where('reportingyear', $fields['reportingyear'])->first();
-            $discharges_OPD->hfhudcode                       = "NEHEHRSV201900093";
-            $discharges_OPD->erconsultations                 = $fields['erconsultations'];
-            $discharges_OPD->number                          = $fields['number'];
-            $discharges_OPD->icd10code                       = $fields['icd10code'];
-            $discharges_OPD->icd10category                   = $fields['icd10category'];
-            $discharges_OPD->reportingyear                    = 2019;
-            $discharges_OPD->save();
+    //         $discharges_OPD = DischargesOPD::where('reportingyear', $fields['reportingyear'])->first();
+    //         $discharges_OPD->hfhudcode                       = "NEHEHRSV201900093";
+    //         $discharges_OPD->erconsultations                 = $fields['erconsultations'];
+    //         $discharges_OPD->number                          = $fields['number'];
+    //         $discharges_OPD->icd10code                       = $fields['icd10code'];
+    //         $discharges_OPD->icd10category                   = $fields['icd10category'];
+    //         $discharges_OPD->reportingyear                    = 2019;
+    //         $discharges_OPD->save();
 
-            return response()->json([
-                'status' => 200,
-                'data' => null,
-                'message' => 'Successfully updated.'
-            ]);
+    //         return response()->json([
+    //             'status' => 200,
+    //             'data' => null,
+    //             'message' => 'Successfully updated.'
+    //         ]);
 
-          }
-          catch (\Exception $e) 
-          {
-            return response()->json([
-              'status' => 500,
-              'data' => null,
-              'message' => 'Error, please try again!'
-            ]);
-          }
-        });
+    //       }
+    //       catch (\Exception $e) 
+    //       {
+    //         return response()->json([
+    //           'status' => 500,
+    //           'data' => null,
+    //           'message' => 'Error, please try again!'
+    //         ]);
+    //       }
+    //     });
 
-        return $transaction;
-    }
+    //     return $transaction;
+    // }
+
+    public function remove(Request $request){
+
+	    $data = Input::post();
+
+	    $transaction = DB::transaction(function($data) use($data){
+	    try{
+
+			DischargesOPD::where('id', $data['id'])->firstOrFail()->delete();
+
+	        return response()->json([
+	            'status' => 200,
+	            'data' => 'null',
+	            'message' => 'Successfully deleted.'
+	        ]);
+
+	      }
+	      catch (\Exception $e) 
+	      {
+	          return response()->json([
+	            'status' => 500,
+	            'data' => 'null',
+	            'message' => 'Error, please try again!'
+	        ]);
+	      }
+	    });
+
+   	 	return $transaction;
+  	}
 
     public function send_data_doh(){
 

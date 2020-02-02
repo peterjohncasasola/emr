@@ -13,9 +13,9 @@
             DischargesOPDSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
-                    vm.discharges_er = response.data.data;
-                    vm.discharges_er_count = response.data.count;
-                    console.log(vm.discharges_er)
+                    vm.discharges_opd = response.data.data;
+                    vm.discharges_opd_count = response.data.count;
+                    console.log(vm.discharges_opd)
                 }
             }, function (){ alert('Bad Request!!!') })
 
@@ -44,7 +44,7 @@
                 })
             }
 
-            vm.createDischargeERBtn = function(data){
+            vm.createDischargeOPDBtn = function(data){
                 
                 data['reportingyear'] = $stateParams.reporting_year;
                 console.log(data);
@@ -65,18 +65,19 @@
                 });
             };
 
-            vm.deleteDischargeERBtn = function(data){
-                
+            vm.deleteDischargeOPDBtn = function(id){
+                alert(id)
+                data['id'] = id;
                 data['reportingyear'] = $stateParams.reporting_year;
                 console.log(data);
-                DischargesOPDSrvcs.store(data).then(function(response){
+                DischargesOPDSrvcs.remove(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
                         DischargesOPDSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                             if(response.data.status == 200)
                             {
-                                vm.surgical_operations = response.data.data;
-                                console.log(vm.surgical_operations)
+                                vm.discharges_opd = response.data.data;
+                                console.log(vm.discharges_opd)
                             }
                         }, function (){ alert('Bad Request!!!') })
                     }

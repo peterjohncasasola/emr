@@ -184,5 +184,34 @@ class SurgicalOperationsMinorController extends Controller {
         }
         
     }
+
+    public function remove(Request $request){
+
+	    $data = Input::post();
+
+	    $transaction = DB::transaction(function($data) use($data){
+	    try{
+
+			SurgicalOperationMinor::where('id', $data['id'])->firstOrFail()->delete();
+
+	        return response()->json([
+	            'status' => 200,
+	            'data' => 'null',
+	            'message' => 'Successfully deleted.'
+	        ]);
+
+	      }
+	      catch (\Exception $e) 
+	      {
+	          return response()->json([
+	            'status' => 500,
+	            'data' => 'null',
+	            'message' => 'Error, please try again!'
+	        ]);
+	      }
+	    });
+
+   	 	return $transaction;
+  	}
   	
 }

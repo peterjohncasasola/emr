@@ -65,18 +65,19 @@
                 });
             };
 
-            vm.deleteDischargeERBtn = function(data){
+            vm.deleteDischargeERBtn = function(id){
                 
+                data['id'] = id;
                 data['reportingyear'] = $stateParams.reporting_year;
                 console.log(data);
-                DischargesERSrvcs.store(data).then(function(response){
+                DischargesERSrvcs.remove(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
                         DischargesERSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                             if(response.data.status == 200)
                             {
-                                vm.surgical_operations = response.data.data;
-                                console.log(vm.surgical_operations)
+                                vm.discharges_er = response.data.data;
+                                console.log(vm.discharges_er)
                             }
                         }, function (){ alert('Bad Request!!!') })
                     }
