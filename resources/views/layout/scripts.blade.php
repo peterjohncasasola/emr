@@ -2,6 +2,23 @@
 
 <!-- scripit init-->
 
+<!-- General JS Scripts -->
+<script src="assets/modules/jquery.min.js"></script>
+<script src="assets/modules/popper.js"></script>
+<script src="assets/modules/tooltip.js"></script>
+<script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="assets/modules/moment.min.js"></script>
+<script src="assets/js/stisla.js"></script>
+
+<!-- Page Specific JS File -->
+<script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
+
+<!-- Template JS File -->
+<script src="assets/js/scripts.js"></script>
+
+<script src="assets/js/custom.js"></script>
+
 <!-- Additional plugins -->
 
 <!-- Angularjs -->
@@ -86,6 +103,22 @@
 
 
 <!-- scripit init-->
+<!-- General JS Scripts -->
+<script src="public/assets/modules/jquery.min.js"></script>
+<script src="public/assets/modules/popper.js"></script>
+<script src="public/assets/modules/tooltip.js"></script>
+<script src="public/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+<script src="public/assets/modules/moment.min.js"></script>
+<script src="public/assets/js/stisla.js"></script>
+
+<!-- Page Specific JS File -->
+<script src="public/assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
+
+<!-- Template JS File -->
+<script src="public/assets/js/scripts.js"></script>
+
+<script src="public/assets/js/custom.js"></script>
 
 <!-- Additional plugins -->
 
@@ -99,7 +132,7 @@
 <script type="text/javascript" src="{{asset('public/node_modules/angular-sanitize/angular-sanitize.min.js')}}"></script>
 
 <!-- Auto Complete -->
-<script type="text/javascript" src="{{asset('node_modules/angular-auto-complete/angular-auto-complete.js')}}"></script>
+<!-- <script type="text/javascript" src="{{asset('node_modules/angular-auto-complete/angular-auto-complete.js')}}"></script> -->
 
 <!-- Angular-dynamic-number -->
 <script type="text/javascript" src="{{asset('public/node_modules/angular-dynamic-number/release/dynamic-number.min.js')}}"></script>
@@ -161,6 +194,8 @@
 <!-- Libraries -->
 <script src="{{asset('public/js/services/surgerieslib.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/message.srvcs.js')}}"></script>
+
+
 
 @endif
 

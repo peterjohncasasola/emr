@@ -29,7 +29,7 @@ class BedCapacitiesController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $bed_capacity = DB::table('genInfoBedCapacity as bedCapacity')
+        $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
             ->select( 
                 'bedCapacity.id',
                 'bedCapacity.hfhudcode',
