@@ -116,79 +116,79 @@
     <div class="modal-body">
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.salarieswages">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.salarieswages">
             </div>
             <label for="" class="col-sm-9 col-form-label">Amount spent on personnel salaries and wages </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.employeebenefits">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.employeebenefits">
             </div>
             <label for="" class="col-sm-9 col-form-label">Amount spent on benefits for employees (benefits are in addition to wages/salaries. Benefits include for example: social security contributions, health insurance)  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.allowances">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.allowances">
             </div>
             <label for="" class="col-sm-9 col-form-label">Allowances provided to employees at this facility (Allowances are in addition to wages/salaries. Allowances include for example: clothing allowance, PERA, vehicle maintenance allowance and hazard pay.)    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" disabled="" placeholder="" ng-model="expensesCtrl.collection.totalps" ng-value="expensesCtrl.collection.salarieswages+expensesCtrl.collection.employeebenefits+expensesCtrl.collection.allowances">
+            <input type="text" class="form-control" id="" disabled="" placeholder="" ng-model="expensesCtrl.collection.totalps" ng-value="expensesCtrl.collection.salarieswages+expensesCtrl.collection.employeebenefits+expensesCtrl.collection.allowances">
             </div>
             <label for="" class="col-sm-9 col-form-label"><b>TOTAL amount spent on all personnel including wages, salaries, benefits and allowances for last year (PS)    </b></label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountmedicine">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountmedicine">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total amount spent on medicines    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountmedicalsupplies">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountmedicalsupplies">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total amount spent on medical supplies (i.e. syringe, gauze, etc.; exclude pharmaceuticals)    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountutilities">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountutilities">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total amount spent on utilities    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountnonmedicalservice">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.totalamountnonmedicalservice">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total amount spent on non-medical services (For example: security, food service, laundry, waste management)    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" disabled="" placeholder="" ng-model="expensesCtrl.collection.totalmooe" ng-value="expensesCtrl.collection.totalamountmedicine+expensesCtrl.collection.totalamountmedicalsupplies+expensesCtrl.collection.totalamountutilities+expensesCtrl.collection.totalamountnonmedicalservice">
+            <input type="text" class="form-control" id="" disabled="" placeholder="" ng-model="expensesCtrl.collection.totalmooe" ng-value="expensesCtrl.collection.totalamountmedicine+expensesCtrl.collection.totalamountmedicalsupplies+expensesCtrl.collection.totalamountutilities+expensesCtrl.collection.totalamountnonmedicalservice">
             </div>
             <label for="" class="col-sm-9 col-form-label"><b>TOTAL amount spent on maintenance and other operating expenditures (MOOE)</b></label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.amountinfrastructure">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.amountinfrastructure">
             </div>
             <label for="" class="col-sm-9 col-form-label">Amount spent on infrastructure (i.e., new hospital wing, installation of ramps)    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.amountequipment">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.amountequipment">
             </div>
             <label for="" class="col-sm-9 col-form-label">Amount spent on equipment (i.e. x-ray machine, CT scan)  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" disabled="" placeholder="" ng-model="expensesCtrl.collection.totalco" ng-value="expensesCtrl.collection.amountinfrastructure+expensesCtrl.collection.amountequipment">
+            <input type="text" class="form-control" id="" disabled="" placeholder="" ng-model="expensesCtrl.collection.totalco" ng-value="expensesCtrl.collection.amountinfrastructure+expensesCtrl.collection.amountequipment">
             </div>
             <label for="" class="col-sm-9 col-form-label"><b>TOTAL amount spent on capital outlay (CO)</b></label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" disabled="" ng-value="expensesCtrl.collection.salarieswages+
+            <input type="text" class="form-control" id="" placeholder="" disabled="" ng-value="expensesCtrl.collection.salarieswages+
                 expensesCtrl.collection.employeebenefits+
                 expensesCtrl.collection.allowances+
                 expensesCtrl.collection.totalamountmedicine+
