@@ -70,28 +70,27 @@ class ExpensesController extends Controller {
             'id'=>$request->input('id'),
         );
 
-        $expenses = Expenses::table('expenses as expense')
-            ->select( 
-                'expense.id',
-                'expense.hfhudcode',
-                'expense.salarieswages',
-                'expense.employeebenefits',
-                'expense.allowances',
-                'expense.totalps',
-                'expense.totalamountmedicine',
-                'expense.totalamountmedicalsupplies',
-                'expense.totalamountutilities',
-                'expense.totalamountnonmedicalservice',
-                'expense.totalmooe',
-                'expense.amountinfrastructure',
-                'expense.amountequipment',
-                'expense.totalco',
-                'expense.grandtotal',
-                'expense.reportingyear'
+        $expenses = Expense::select( 
+                'expenses.id',
+                'expenses.hfhudcode',
+                'expenses.salarieswages',
+                'expenses.employeebenefits',
+                'expenses.allowances',
+                'expenses.totalps',
+                'expenses.totalamountmedicine',
+                'expenses.totalamountmedicalsupplies',
+                'expenses.totalamountutilities',
+                'expenses.totalamountnonmedicalservice',
+                'expenses.totalmooe',
+                'expenses.amountinfrastructure',
+                'expenses.amountequipment',
+                'expenses.totalco',
+                'expenses.grandtotal',
+                'expenses.reportingyear'
             );
 
         if ($data['id']){
-            $expenses = $expenses->where('expense.id', $data['id']);
+            $expenses = $expenses->where('expenses.id', $data['id']);
         }
 
         $expenses = $expenses->get();
