@@ -206,6 +206,6 @@ Route::post('/api/v1/ricd/store','RicdController@store');
 Route::get('/soap','SoapController@show');
 Route::get('/soap/gettable','SoapController@gettable');
 
-Route::get('/icd','DischargesERController@geticd');
+Route::get('/sample','ExpensesController@sample');
 
 
