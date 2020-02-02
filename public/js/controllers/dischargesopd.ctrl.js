@@ -54,7 +54,7 @@
                         DischargesOPDSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                             if(response.data.status == 200)
                             {
-                                vm.discharges_er = response.data.data;
+                                vm.discharges_opd = response.data.data;
                             }
                         }, function (){ alert('Bad Request!!!') })
                     }

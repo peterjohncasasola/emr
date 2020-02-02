@@ -81,45 +81,25 @@
         </div>
     </section>
 
-    <a href="#" data-toggle="modal" data-target="#input10er">sho pop </a>
-
-    
-    <div class="modal fade" tabindex="-1" role="dialog" id="input10er">
-          <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">ICD-10 | PHILIPPINE MODIFICATION</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="table-responsive">
-                  <table class="table table-striped" id="table-1">
-                    <thead>                                 
-                      <tr>
-                        <th>ICD-10 Code</th>
-                        <th>Description</th>
-                        <th>Category</th>
-                      </tr>
-                        </thead>
-                        <tbody>                                 
-                          <tr>
-                            <td><a href=""> A00 </a></td>
-                            <td>Cholera</td>
-                            <td>A00-A09</td>
-                          </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="modal-footer bg-whitesmoke br">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
+  <!--  -->
+   
+<table class="table table-striped" id="table-1">
+<thead>                                 
+    <tr>
+    <th>ICD-10 Code</th>
+    <th>Description</th>
+    <th>Category</th>
+    </tr>
+    </thead>
+    <tbody>                                 
+        <tr>
+        <td><a href=""> A00 </a></td>
+        <td>Cholera</td>
+        <td>A00-A09</td>
+        </tr>
+</tbody>
+</table> 
+        <!--  -->
 
     <script type="text/ng-template" id="add-discharges-er-modal">
     <div class="modal-content">
@@ -132,7 +112,7 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="table-1">
+            <table class="table table-striped" >
             <thead>                                 
                 <tr>
                     <th>ICD-10 Code</th>

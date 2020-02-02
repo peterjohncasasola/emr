@@ -64,6 +64,46 @@ class ExpensesController extends Controller {
         ]);
     }
 
+    public function show2(Request $request){
+
+        $data = array(
+            'id'=>$request->input('id'),
+        );
+
+        $expenses = Expenses::table('expenses as expense')
+            ->select( 
+                'expense.id',
+                'expense.hfhudcode',
+                'expense.salarieswages',
+                'expense.employeebenefits',
+                'expense.allowances',
+                'expense.totalps',
+                'expense.totalamountmedicine',
+                'expense.totalamountmedicalsupplies',
+                'expense.totalamountutilities',
+                'expense.totalamountnonmedicalservice',
+                'expense.totalmooe',
+                'expense.amountinfrastructure',
+                'expense.amountequipment',
+                'expense.totalco',
+                'expense.grandtotal',
+                'expense.reportingyear'
+            );
+
+        if ($data['id']){
+            $expenses = $expenses->where('expense.id', $data['id']);
+        }
+
+        $expenses = $expenses->get();
+
+        return response()->json([
+            'status'=>200,
+            'data'=>$expenses,
+            'count'=>$expenses->count(),
+            'message'=>''
+        ]);
+    }
+
     public function store(Request $request){
 
         $fields = Input::post();

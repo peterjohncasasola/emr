@@ -551,13 +551,13 @@ $(function() {
   if(jQuery().daterangepicker) {
     if($(".datepicker").length) {
       $('.datepicker').daterangepicker({
-        locale: {format: 'YYYY-MM-DD'},
+        locale: {format: 'MM-DD-YYYY'},
         singleDatePicker: true,
       });
     }
     if($(".datetimepicker").length) {
       $('.datetimepicker').daterangepicker({
-        locale: {format: 'YYYY-MM-DD hh:mm'},
+        locale: {format: 'MM-DD-YYYY hh:mm'},
         singleDatePicker: true,
         timePicker: true,
         timePicker24Hour: true,
@@ -565,7 +565,7 @@ $(function() {
     }
     if($(".daterange").length) {
       $('.daterange').daterangepicker({
-        locale: {format: 'YYYY-MM-DD'},
+        locale: {format: 'MM-DD-YYYY'},
         drops: 'down',
         opens: 'right'
       });
