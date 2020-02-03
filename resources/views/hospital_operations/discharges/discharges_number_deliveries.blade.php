@@ -79,25 +79,25 @@
     <div class="modal-body">
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totalifdelivery">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totalifdelivery">
             </div>
             <label for="" class="col-sm-8 col-form-label">Total number of in-facility deliveries  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totallbvdelivery">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totallbvdelivery">
             </div>
             <label for="" class="col-sm-8 col-form-label">Total number of live-birth vaginal deliveries (normal)  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totallbcdelivery">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totallbcdelivery">
             </div>
             <label for="" class="col-sm-8 col-form-label">Total number of live-birth C-section deliveries (Caesarians)  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totalotherdelivery">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesNumberDeliveriesCtrl.collection.totalotherdelivery">
             </div>
             <label for="" class="col-sm-8 col-form-label">Total number of other deliveries  </label>
         </div>

@@ -99,55 +99,55 @@
     <div class="modal-body">
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.newpatient">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.newpatient">
             </div>
             <label for="" class="col-sm- col-form-label">Number of outpatient visits, new patient  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.revisit">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.revisit">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of outpatient visits, re-visit   </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.adult">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.adult">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of outpatient visits, adult    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.pediatric">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.pediatric">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of outpatient visits, pediatric    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.adultgeneralmedicine">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.adultgeneralmedicine">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of adult general medicine outpatient visits    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.specialtynonsurgical">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.specialtynonsurgical">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of specialty (non-surgical) outpatient visits    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.surgical">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.surgical">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of surgical outpatient visits    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.antenatal">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.antenatal">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of antenatal/prenatal care visits    </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.postnatal">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPVCtrl.collection.postnatal">
             </div>
             <label for="" class="col-sm-8 col-form-label">Number of postnatal care visits   </label>
         </div>

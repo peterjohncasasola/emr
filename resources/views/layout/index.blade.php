@@ -60,6 +60,10 @@
     @include('hospital_operations.surgical_operations.surgical_minor')
 </script>
 
+<!-- Deaths -->
+<script type="text/ng-template" id="operations_death.view">
+    @include('hospital_operations.deaths.operations_deaths')
+</script>
 
 
 @endsection

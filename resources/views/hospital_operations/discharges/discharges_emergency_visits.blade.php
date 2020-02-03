@@ -84,19 +84,19 @@
                     </thead>
                     <tbody>
                         <tr>
-                        <td><input type="number" class="form-control" id="" ng-model="dischargesEVCtrl.collection.emergencyvisits"></td>
+                        <td><input type="text" class="form-control" id="" ng-model="dischargesEVCtrl.collection.emergencyvisits"></td>
                         <td>Total number of emergency department visits  </td>
                         </tr>
                         <tr>
-                        <td><input type="number" class="form-control" id="" ng-model="dischargesEVCtrl.collection.emergencyvisitsadult"></td>
+                        <td><input type="text" class="form-control" id="" ng-model="dischargesEVCtrl.collection.emergencyvisitsadult"></td>
                         <td>Total number of emergency department visits, adult  </td>
                         </tr>
                         <tr>
-                        <td><input type="number" class="form-control" id="" ng-model="dischargesEVCtrl.collection.emergencyvisitspediatric"></td>
+                        <td><input type="text" class="form-control" id="" ng-model="dischargesEVCtrl.collection.emergencyvisitspediatric"></td>
                         <td>Total number of emergency department visits, pediatric  </td>
                         </tr>
                         <tr>
-                        <td><input type="number" class="form-control" id="" ng-model="dischargesEVCtrl.collection.evfromfacilitytoanother"></td>
+                        <td><input type="text" class="form-control" id="" ng-model="dischargesEVCtrl.collection.evfromfacilitytoanother"></td>
                         <td>Total number of patients transported <b>FROM THIS FACILITY'S EMERGENCY DEPARTMENT</b> to another facility for inpatient care </td>
                         </tr>
 

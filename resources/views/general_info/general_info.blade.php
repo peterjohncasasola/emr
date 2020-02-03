@@ -128,34 +128,26 @@
                 <table class="table table-bordered table-hover table-md">
                 <thead>
                     <tr>
-                    <th>#</th>
-                    <th>Quality Management Type</th>
-                    <th>ISO Certifying Body</th>
-                    <th>Description</th>
-                    <th>PhilHealth Accreditation</th>
-                    <th>Validity From</th>
-                    <th>Validity To</th>
+                        <th>#</th>
+                        <th>Quality Management Type</th>
+                        <th>ISO Certifying Body</th>
+                        <th>Description</th>
+                        <th>PhilHealth Accreditation</th>
+                        <th>Validity From</th>
+                        <th>Validity To</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>ISO Certified</td>
-                    <td>Certifying body 123123</td>
-                    <td>Description</td>
-                    <td>Accreditated</td>
-                    <td>01/17/2020</td>
-                    <td>01/28/2020</td>
+                    <tr ng-repeat="quality_management in generalInfoCtrl.quality_management">
+                        <td> <% $index %> </td>
+                        <td><%quality_management.qualitymgmttype%></td>
+                        <td><%quality_management.certifyingbody%></td>
+                        <td><%quality_management.description%></td>
+                        <td><%quality_management.philhealthaccreditation%></td>
+                        <td><%quality_management.validityfrom%></td>
+                        <td><%quality_management.validityto%></td>
                     </tr>
                     <tr>
-                    <td>1</td>
-                    <td>ISO Certified</td>
-                    <td>Certifying body 123123</td>
-                    <td>Description</td>
-                    <td>Accreditated</td>
-                    <td>01/17/2020</td>
-                    <td>01/28/2020</td>
-                    </tr>
                 </tbody>
                 </table>
             </div>
@@ -182,15 +174,15 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="">Authorized Bed Capacity [ Refer to current License to Operate(LTO) ] *   </label>
-            <input type="number" class="form-control" id="" placeholder="" ng-model="bedCapacityCtrl.collection.abc">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="bedCapacityCtrl.collection.abc">
         </div>
         <div class="form-group">
             <label for="">Implementing Beds *  </label>
-            <input type="number" class="form-control" id="" placeholder="" ng-model="bedCapacityCtrl.collection.implementingbeds">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="bedCapacityCtrl.collection.implementingbeds">
         </div>
         <div class="form-group">
             <label for="">Bed Occupancy Rate (BOR) Based on Authorized Beds  </label>
-            <input type="number" class="form-control" id="" placeholder="" ng-model="bedCapacityCtrl.collection.bor">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="bedCapacityCtrl.collection.bor">
         </div>
         <div class="modal-footer bg-whitesmoke br">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="bedCapacityCtrl.close()" ui-sref="general-info({reporting_year:2019})">Close</button>
@@ -388,8 +380,8 @@
     </div>
     <div class="modal-footer bg-whitesmoke br">
 <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="qualityManagementCtrl.close()" ui-sref="general-info({reporting_year:2019})">Close</button>
-<button type="button" class="btn btn-primary" ng-if="!qualityManagementCtrl.collection_copy" ng-click="qualityManagementCtrl.createQualityManagementBtn(qualityManagementCtrl.collection)">Save changes</button>
-<button type="button" class="btn btn-primary" ng-if="qualityManagementCtrl.collection_copy" ng-click="qualityManagementCtrl.updateQualityManagementBtn(qualityManagementCtrl.collection)">Update changes</button>
+<button type="button" class="btn btn-primary" ng-click="qualityManagementCtrl.createQualityManagementBtn(qualityManagementCtrl.collection)">Save changes</button>
+<!-- <button type="button" class="btn btn-primary" ng-if="qualityManagementCtrl.collection_copy" ng-click="qualityManagementCtrl.updateQualityManagementBtn(qualityManagementCtrl.collection)">Update changes</button> -->
 </div>
 </div>
 </script>

@@ -14,9 +14,9 @@
             OperationsHAISrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
-                    vm.opv = response.data.data[0];
-                    vm.opv_count = response.data.count;
-                    console.log(vm.opv)
+                    vm.hai = response.data.data[0];
+                    vm.hai_count = response.data.count;
+                    console.log(vm.hai)
                 }
             }, function (){ alert('Bad Request!!!') })
 

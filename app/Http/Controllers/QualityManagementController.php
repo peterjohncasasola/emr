@@ -64,11 +64,21 @@ class QualityManagementController extends Controller {
             // try{
 
                 $qualityManagement = new QualityManagement;
-                $qualityManagement->hfhudcode                    = "NEHEHRSV201900093";
-                $qualityManagement->qualitymgmttype              = $fields['qualitymgmttype'];
-                $qualityManagement->description                  = $fields['description'];
-                $qualityManagement->certifyingbody               = (!empty($fields['certifyingbody']))?$fields['certifyingbody']:null;
-                $qualityManagement->philhealthaccreditation      = (!empty($fields['philhealthaccreditation']))?$fields['philhealthaccreditation']:null;
+                $qualityManagement->hfhudcode                       = "NEHEHRSV201900093";
+                $qualityManagement->qualitymgmttype                 = $fields['qualitymgmttype'];
+                $qualityManagement->description                     = $fields['description'];
+
+                if($fields['qualitymgmttype']==1){
+                    $qualityManagement->certifyingbody               = (!empty($fields['certifyingbody']))?$fields['certifyingbody']:"";
+                    $qualityManagement->philhealthaccreditation      = 0;
+                }elseif($fields['qualitymgmttype']==3){
+                    $qualityManagement->certifyingbody               = "";
+                    $qualityManagement->philhealthaccreditation      = (!empty($fields['philhealthaccreditation']))?$fields['philhealthaccreditation']:0;
+                }else{
+                    $qualityManagement->certifyingbody               = "";
+                    $qualityManagement->philhealthaccreditation      = 0;
+                }
+
                 $qualityManagement->validityfrom                 = date('Y-m-d', strtotime($fields['validityfrom']));
                 $qualityManagement->validityto                   = date('Y-m-d', strtotime($fields['validityto']));
                 $qualityManagement->reportingyear                = $fields['reportingyear'];
@@ -134,7 +144,7 @@ class QualityManagementController extends Controller {
 
     public function send_data_doh(){
 
-        $qualityManagement = DB::table('geninfoqualitymanagement as qualityManagement')
+        $qualityManagements = DB::table('geninfoqualitymanagement as qualityManagement')
             ->select( 
                 'qualityManagement.id',
                 'qualityManagement.hfhudcode',
@@ -145,7 +155,7 @@ class QualityManagementController extends Controller {
                 'qualityManagement.validityfrom',
                 'qualityManagement.validityto',
                 'qualityManagement.reportingyear'
-            )->where('reportingyear', 2019)->first();
+            )->where('reportingyear', 2019)->get();
 
         $request = $this->soapWrapper->add('Emr', function ($service) {
             $service
@@ -160,20 +170,21 @@ class QualityManagementController extends Controller {
         $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
         // return response($response, 200)->header('Content-Type', 'application/xml');
 
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "qualitymgmttype" => $qualityManagement->qualitymgmttype, 
-            "description" => $qualityManagement->description, 
-            "certifyingbody" => $qualityManagement->certifyingbody, 
-            "philhealthaccreditation" => $qualityManagement->philhealthaccreditation, 
-            "validityfrom" => $qualityManagement->validityfrom, 
-            "validityto" => $qualityManagement->validityto,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.genInfoqualityManagement', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
+        foreach ($qualityManagements as $qualityManagement) {
+            // code
+            $data = [
+                "hfhudcode" => "NEHEHRSV201900093", 
+                "qualitymgmttype" => $qualityManagement->qualitymgmttype, 
+                "description" => $qualityManagement->description, 
+                "certifyingbody" => $qualityManagement->certifyingbody, 
+                "philhealthaccreditation" => $qualityManagement->philhealthaccreditation, 
+                "validityfrom" => $qualityManagement->validityfrom, 
+                "validityto" => $qualityManagement->validityto,
+                "reportingyear" => 2017
+            ];
+        
+            $response = $this->soapWrapper->call('Emr.genInfoqualityManagement', $data);
+        }
     }
   	
 }

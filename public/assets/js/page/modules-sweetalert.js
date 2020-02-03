@@ -1,23 +1,41 @@
 "use strict";
 
+$("#swal-success").click(function() {
+	swal('Submission Success', 'Data has been successfuly sent to the database. Code#104 (January 3, 2020 1:43 AM)', 'success');
+});
+
+$("#swal-error").click(function() {
+	swal('Submission Error', 'There has been a problem in transmiting the form. Code#103 (January 3, 2020 1:43 AM)', 'error');
+});
+
+$("#swal-confirm").click(function() {
+  swal('Confirmation', 'Once submitted, you will not be able to resend data.', 'warning', {
+    buttons: ["Cancel", "Confirm"],
+  });
+});
+
+
+
+"use strict";
+
 $("#swal-1").click(function() {
-	swal('Hello');
+  swal('Hello');
 });
 
 $("#swal-2").click(function() {
-	swal('Good Job', 'You clicked the button!', 'success');
+  swal('Good Job', 'You clicked the button!', 'success');
 });
 
 $("#swal-3").click(function() {
-	swal('Good Job', 'You clicked the button!', 'warning');
+  swal('Good Job', 'You clicked the button!', 'warning');
 });
 
 $("#swal-4").click(function() {
-	swal('Good Job', 'You clicked the button!', 'info');
+  swal('Good Job', 'You clicked the button!', 'info');
 });
 
 $("#swal-5").click(function() {
-	swal('Good Job', 'You clicked the button!', 'error');
+  swal('Good Job', 'You clicked the button!', 'error');
 });
 
 $("#swal-6").click(function() {

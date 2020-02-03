@@ -41,9 +41,9 @@
                         </tr>
                             <tr align="center">
                             <td rowspan="2" class="align-middle">1</td>
-                            <td rowspan="2" class="align-middle">1000.00</td>
+                            <td rowspan="2" class="align-middle"><%operationsHAICtrl.hai.resultvap%></td>
                             <td rowspan="2" class="align-middle">=</td>
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.patientnumvap%></td>
                             <td rowspan="2" class="align-middle">x1000</td>
                             <td rowspan="2" class="align-middle"><b>Ventilator Acquired Pneumonia (VAP)</b></td>
                             <td rowspan="2" class="align-middle">=</td>
@@ -51,14 +51,14 @@
                             <td rowspan="2" class="align-middle">x1000</td>
                         </tr>
                         <tr align="center">
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.totalventilatordays%></td>
                             <td>Total Number of Ventilator Days </td>
                         </tr>
                         <tr align="center">
                             <td rowspan="2" class="align-middle">2</td>
-                            <td rowspan="2" class="align-middle">1000.00</td>
+                            <td rowspan="2" class="align-middle"><%operationsHAICtrl.hai.resultbsi%></td>
                             <td rowspan="2" class="align-middle">=</td>
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.patientnumbsi%></td>
                             <td rowspan="2" class="align-middle">x1000</td>
                             <td rowspan="2" class="align-middle"><b>Blood Stream Infection (BSI) </b></td>
                             <td rowspan="2" class="align-middle">=</td>
@@ -66,14 +66,14 @@
                             <td rowspan="2" class="align-middle">x1000</td>
                         </tr>
                         <tr align="center">
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.totalnumcentralline%></td>
                             <td>Total Number of Central Line</td>
                         </tr>
                         <tr align="center">
                             <td rowspan="2" class="align-middle">3</td>
-                            <td rowspan="2" class="align-middle">1000.00</td>
+                            <td rowspan="2" class="align-middle"><%operationsHAICtrl.hai.resultuti%></td>
                             <td rowspan="2" class="align-middle">=</td>
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.patientnumuti%></td>
                             <td rowspan="2" class="align-middle">x1000</td>
                             <td rowspan="2" class="align-middle"><b>Urinary Tract Infection (UTI) </b></td>
                             <td rowspan="2" class="align-middle">=</td>
@@ -81,7 +81,7 @@
                             <td rowspan="2" class="align-middle">x1000</td>
                         </tr>
                         <tr align="center">
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.totalcatheterdays%></td>
                             <td>Total Number of Catheter Days </td>
                         </tr>
 
@@ -90,9 +90,9 @@
                         </tr>
                         <tr align="center">
                             <td rowspan="2" class="align-middle">4</td>
-                            <td rowspan="2" class="align-middle">1000.00</td>
+                            <td rowspan="2" class="align-middle"><%operationsHAICtrl.hai.resultssi%></td>
                             <td rowspan="2" class="align-middle">=</td>
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.numssi%></td>
                             <td rowspan="2" class="align-middle">x1000</td>
                             <td rowspan="2" class="align-middle"><b>Surgical Site Infections (SSI) </b></td>
                             <td rowspan="2" class="align-middle">=</td>
@@ -100,7 +100,7 @@
                             <td rowspan="2" class="align-middle">x1000</td>
                         </tr>
                         <tr align="center">
-                            <td>100.00</td>
+                            <td align="right"><%operationsHAICtrl.hai.totalproceduresdone%></td>
                             <td>Total number of Procedures done </td>
                         </tr>
 
@@ -144,12 +144,12 @@
                 </tr>
                 <tr align="center">
                 <td rowspan="2" class="align-middle">1</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled=""
+                <td rowspan="2" class="align-middle"><input type="text" class="form-control" id="" disabled=""
                 ng-init="operationsHAICtrl.collection.resultvap=(operationsHAICtrl.collection.patientnumvap*1000)/operationsHAICtrl.collection.totalventilatordays"
                 ng-model="operationsHAICtrl.collection.resultvap">
                 </td>
                 <td rowspan="2" class="align-middle">=</td>
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumvap"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumvap"></td>
                 <td rowspan="2" class="align-middle">x1000</td>
                 <td rowspan="2" class="align-middle"><b>Ventilator Acquired Pneumonia (VAP)</b></td>
                 <td rowspan="2" class="align-middle">=</td>
@@ -157,15 +157,15 @@
                 <td rowspan="2" class="align-middle">x1000</td>
                 </tr>
                 <tr align="center">
-                <td><input type="number" class="form-control" ng-model="operationsHAICtrl.collection.totalventilatordays"></td>
+                <td><input type="text" class="form-control" ng-model="operationsHAICtrl.collection.totalventilatordays"></td>
                 <td>Total Number of Ventilator Days </td>
                 </tr>
 
                 <tr align="center">
                 <td rowspan="2" class="align-middle">2</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultbsi"></td>
+                <td rowspan="2" class="align-middle"><input type="text" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultbsi"></td>
                 <td rowspan="2" class="align-middle">=</td>
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumbsi"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumbsi"></td>
                 <td rowspan="2" class="align-middle">x1000</td>
                 <td rowspan="2" class="align-middle"><b>Blood Stream Infection (BSI) </b></td>
                 <td rowspan="2" class="align-middle">=</td>
@@ -173,15 +173,15 @@
                 <td rowspan="2" class="align-middle">x1000</td>
                 </tr>
                 <tr align="center">
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalnumcentralline"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalnumcentralline"></td>
                 <td>Total Number of Central Line</td>
                 </tr>
 
                 <tr align="center">
                 <td rowspan="2" class="align-middle">3</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultuti"></td>
+                <td rowspan="2" class="align-middle"><input type="text" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultuti"></td>
                 <td rowspan="2" class="align-middle">=</td>
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumuti"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumuti"></td>
                 <td rowspan="2" class="align-middle">x1000</td>
                 <td rowspan="2" class="align-middle"><b>Urinary Tract Infection (UTI) </b></td>
                 <td rowspan="2" class="align-middle">=</td>
@@ -189,7 +189,7 @@
                 <td rowspan="2" class="align-middle">x1000</td>
                 </tr>
                 <tr align="center">
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalcatheterdays"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalcatheterdays"></td>
                 <td>Total Number of Catheter Days </td>
                 </tr>
 
@@ -198,9 +198,9 @@
                 </tr>
                 <tr align="center">
                 <td rowspan="2" class="align-middle">4</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultssi"></td>
+                <td rowspan="2" class="align-middle"><input type="text" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultssi"></td>
                 <td rowspan="2" class="align-middle">=</td>
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.numssi"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.numssi"></td>
                 <td rowspan="2" class="align-middle">x1000</td>
                 <td rowspan="2" class="align-middle"><b>Surgical Site Infections (SSI) </b></td>
                 <td rowspan="2" class="align-middle">=</td>
@@ -208,7 +208,7 @@
                 <td rowspan="2" class="align-middle">x1000</td>
                 </tr>
                 <tr align="center">
-                <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalproceduresdone"></td>
+                <td><input type="text" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalproceduresdone"></td>
                 <td>Total number of Procedures done </td>
                 </tr>
             </tbody>

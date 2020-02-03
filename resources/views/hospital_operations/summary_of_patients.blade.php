@@ -94,49 +94,49 @@
     <div class="modal-body">
     <div class="form-group row">
         <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalinpatients">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalinpatients">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total number of inpatients*  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalnewborn">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalnewborn">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total Newborn (In facility deliveries)*   </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totaldischarges">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totaldischarges">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total Discharges (Alive)*  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalpad">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalpad">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total patients admitted and discharged on the same day*  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalibd">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalibd">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total number of inpatient bed days (service days)* </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalinpatienttransto">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalinpatienttransto">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total number of inpatients transferred TO THIS FACILITY from another facility for inpatient care*  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalinpatienttransfrom">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalinpatienttransfrom">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total number of inpatients transferred FROM THIS FACILITY to another facility for inpatient care*  </label>
         </div>
         <div class="form-group row">
             <div class="col-sm-3">
-            <input type="number" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalpatientsremaining">
+            <input type="text" class="form-control" id="" placeholder="" ng-model="summaryOfPatientsCtrl.collection.totalpatientsremaining">
             </div>
             <label for="" class="col-sm-9 col-form-label">Total number of patients remaining in the hospital as of midnight last day of previous year* </label>
         </div>

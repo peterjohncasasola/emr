@@ -25,11 +25,11 @@ class ExpensesController extends Controller {
     }
     
     public function show(Request $request){
-
+        
         $data = array(
             'id'=>$request->input('id'),
         );
-
+        
         $expenses = DB::table('expenses as expense')
             ->select( 
                 'expense.id',

@@ -67,6 +67,8 @@
 <script src="{{URL::to('js/controllers/dischargeser.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargesopd.ctrl.js')}}"></script>
 
+<script src="{{URL::to('js/controllers/operationsdeath.ctrl.js')}}"></script>
+
 <script src="{{URL::to('js/controllers/surgicaloperationsmajor.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/surgicaloperationsminor.ctrl.js')}}"></script>
 
@@ -88,6 +90,8 @@
 <script src="{{URL::to('js/services/dischargesev.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargeser.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargesopd.srvcs.js')}}"></script>
+
+<script src="{{URL::to('js/services/operationsdeath.srvcs.js')}}"></script>
 
 <script src="{{URL::to('js/services/surgicaloperationsmajor.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/surgicaloperationsminor.srvcs.js')}}"></script>
@@ -168,6 +172,8 @@
 <script src="{{asset('public/js/controllers/dischargeser.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/dischargesopd.ctrl.js')}}"></script>
 
+<script src="{{asset('public/js/controllers/operationsdeath.ctrl.js')}}"></script>
+
 <script src="{{asset('public/js/controllers/surgicaloperationsmajor.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/surgicaloperationsminor.ctrl.js')}}"></script>
 
@@ -189,6 +195,8 @@
 <script src="{{asset('public/js/services/dischargesev.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargeser.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargesopd.srvcs.js')}}"></script>
+
+<script src="{{asset('public/js/services/operationsdeath.srvcs.js')}}"></script>
 
 <script src="{{asset('public/js/services/surgicaloperationsmajor.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/surgicaloperationsminor.srvcs.js')}}"></script>

@@ -27,6 +27,15 @@
                     console.log(vm.classification)
                 }
             }, function (){ alert('Bad Request!!!') })
+
+            QualityManagementSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                if(response.data.status == 200)
+                {
+                    vm.quality_management = response.data.data;
+                    vm.quality_management_count = response.data.count;
+                    console.log(vm.quality_management)
+                }
+            }, function (){ alert('Bad Request!!!') })
             
             vm.sendDataClassificationDoh = function(){
                 alert('send classification')

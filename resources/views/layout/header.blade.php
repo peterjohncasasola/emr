@@ -70,17 +70,17 @@
             <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reporting_year:2019})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-opd({reporting_year:2019})"><a href="#l" class="nav-link">Ten Leading OPD Consultations</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-er({reporting_year:2019})"><a href="#" class="nav-link">Ten Leading ER Consultations</a></li>
-            <li class="nav-item" ><a href="hospital-operations/discharges-g.html" class="nav-link">Testing and Other Services</a></li>
+            <li class="nav-item" ><a href="#" class="nav-link">Testing and Other Services</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-ev({reporting_year:2019})"><a href="#" class="nav-link">Emergency Visits</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Deaths</a>
             <ul class="dropdown-menu">
-            <li class="nav-item"><a href="hospital-operations/deaths-a.html" class="nav-link">Total Number of Deaths</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-death({reporting_year:2019})"><a href="#" class="nav-link">Total Number of Deaths</a></li>
             <li class="nav-item"><a href="hospital-operations/deaths-b.html" class="nav-link">Ten Leading causes of Mortality/Deaths Disaggregated as to Age and Sex</a></li>
             </ul>
         </li>
-        <li class="nav-item"><a href="hospital-operations/hai.html" class="nav-link">Healthcare Associated Infections (HAI)</a></li>
+        <li class="nav-item" ui-sref="hospital-operations-hai({reporting_year:2019})"><a href="#" class="nav-link">Healthcare Associated Infections (HAI)</a></li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Surgical Operations</a>
             <ul class="dropdown-menu">
             <li class="nav-item" ui-sref="hospital-operations-surgical-operations-major({reporting_year:2019})"><a href="hospital-operations/surgical-a.html" class="nav-link">Ten Leading Major Operations (Not Applicable for Infirmary)</a></li>

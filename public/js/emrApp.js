@@ -125,8 +125,7 @@
                 controller: 'OperationsHAICreateCtrl as operationsHAICtrl',
                 templateUrl: 'operations_hai.view'
             })
-
-
+            
             // HOSPITAL OPERATIONS -> DISCHARGES -> Deliveries
             .state('hospital-operations-discharges-number-deliveries', {
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year',
@@ -190,6 +189,19 @@
                 url: '/hospital-operations/discharges-opd/:reporting_year/details',
                 controller: 'DischargesOPDCreateCtrl as dischargesOPDCtrl',
                 templateUrl: 'discharges_opd.view'
+            })
+
+            // HOSPITAL OPERATIONS -> DEATH -> OPERATIONS DEATH
+            .state('hospital-operations-death', {
+                url: '/hospital-operations/death/:reporting_year',
+                controller: 'OperationsDeathCtrl as operationsDeathCtrl',
+                templateUrl: 'operations_death.view'
+            })
+
+            .state('hospital-operations-death-details', {
+                url: '/hospital-operations/death/:reporting_year/details',
+                controller: 'OperationsDeathCreateCtrl as operationsDeathCtrl',
+                templateUrl: 'operations_death.view'
             })
 
             // HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> SURGICAL MAJOR
