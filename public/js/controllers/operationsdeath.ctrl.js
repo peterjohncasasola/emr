@@ -36,7 +36,6 @@
             var vm = this;
             var data = {}; 
 
-            alert('operations dtail')
         
             if($stateParams.reporting_year){
 
@@ -77,6 +76,22 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+
+            vm.computeTotalDeaths = function(data){
+                console.log(data)
+
+                vm.totalDeaths = parseInt(data.totaldeaths48down)+
+                                parseInt(data.totaldeaths48up)+
+                                parseInt(data.totalerdeaths)+
+                                parseInt(data.totaldoa)+
+                                parseInt(data.totalstillbirths)+
+                                parseInt(data.totalneonataldeaths)+
+                                parseInt(data.totalmaternaldeaths);
+
+                console.log(vm.totalDeaths)
+
+                vm.collection.totaldeaths = vm.totalDeaths;
+            }
 
             vm.createOperationsDeathBtn = function(data){
                 

@@ -145,41 +145,35 @@
             <tbody>
                 <tr>
                 <td class="text-bold">Total number of inpatient deaths  </td>
-                <td><input type="text" disabled="" class="form-control" id="" ng-value="operationsDeathCtrl.collection.totaldeaths48down+
-                    operationsDeathCtrl.collection.totaldeaths48up+
-                    operationsDeathCtrl.collection.totalerdeaths+
-                    operationsDeathCtrl.collection.totaldoa+
-                    operationsDeathCtrl.collection.totalstillbirths+
-                    operationsDeathCtrl.collection.totalneonataldeaths+
-                    operationsDeathCtrl.collection.totalmaternaldeaths"></td>
+                <td><input type="text" disabled="" class="form-control" ng-model="operationsDeathCtrl.collection.totaldeaths"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">▪ Total deaths < 48 hours </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totaldeaths48down"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totaldeaths48down"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">▪ Total deaths ≥ 48 hours  </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totaldeaths48up"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totaldeaths48up"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">Total number of emergency room deaths  </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totalerdeaths"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totalerdeaths"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">Total number of cases declared 'dead on arrival'   </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totaldoa"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totaldoa"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">Total number of stillbirths  </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totalstillbirths"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totalstillbirths"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">Total number of neonatal deaths   </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totalneonataldeaths"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totalneonataldeaths"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">Total number of maternal deaths    </td>
-                <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totalmaternaldeaths"></td>
+                <td><input type="text" class="form-control" ng-keyup="operationsDeathCtrl.computeTotalDeaths(operationsDeathCtrl.collection)" ng-model="operationsDeathCtrl.collection.totalmaternaldeaths"></td>
                 </tr>
             </tbody>
             </table>
@@ -195,9 +189,9 @@
                 </thead>
                 <tbody>
                     <tr align="center">
-                    <td rowspan="2" class="align-middle"><input type="text" class="form-control" id="" disabled="" ng-value="(operationsDeathCtrl.collection.totaldeathsnewborn*100)/operationsDeathCtrl.collection.totaldischargedeaths"></td>
+                    <td rowspan="2" class="align-middle"><input type="text" class="form-control" disabled="" ng-value="(operationsDeathCtrl.collection.totaldeathsnewborn*100)/operationsDeathCtrl.collection.totaldischargedeaths"></td>
                     <td rowspan="2" class="align-middle">=</td>
-                    <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totaldeathsnewborn"></td>
+                    <td><input type="text" class="form-control" ng-model="operationsDeathCtrl.collection.totaldeathsnewborn"></td>
                     <td rowspan="2" class="align-middle">x100</td>
                     <td rowspan="2" class="align-middle"><b>Gross Death Rate  </b></td>
                     <td rowspan="2" class="align-middle">=</td>
@@ -205,14 +199,14 @@
                     <td rowspan="2" class="align-middle">x100</td>
                     </tr>
                     <tr align="center">
-                    <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.totaldischargedeaths"></td>
+                    <td><input type="text" class="form-control" ng-model="operationsDeathCtrl.collection.totaldischargedeaths"></td>
                     <td>Total Discharge Deaths  </td>
                     </tr>
 
                     <tr align="center">
-                    <td rowspan="2" class="align-middle"><input type="text" class="form-control" id="" disabled="" ng-value="(operationsDeathCtrl.collection.ndrnumerator*100)/operationsDeathCtrl.collection.ndrdenominator"></td>
+                    <td rowspan="2" class="align-middle"><input type="text" class="form-control" disabled="" ng-value="(operationsDeathCtrl.collection.ndrnumerator*100)/operationsDeathCtrl.collection.ndrdenominator"></td>
                     <td rowspan="2" class="align-middle">=</td>
-                    <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.ndrnumerator"></td>
+                    <td><input type="text" class="form-control" ng-model="operationsDeathCtrl.collection.ndrnumerator"></td>
                     <td rowspan="2" class="align-middle">x100</td>
                     <td rowspan="2" class="align-middle"><b>Net Death Rate    </b></td>
                     <td rowspan="2" class="align-middle">=</td>
@@ -220,7 +214,7 @@
                     <td rowspan="2" class="align-middle">x100</td>
                     </tr>
                     <tr align="center">
-                    <td><input type="text" class="form-control" id="" ng-model="operationsDeathCtrl.collection.ndrdenominator"></td>
+                    <td><input type="text" class="form-control" ng-model="operationsDeathCtrl.collection.ndrdenominator"></td>
                     <td>Total Discharges (including deaths and newborn) - death < 48 hours for the period </td>
                     </tr>
                 </tbody>
