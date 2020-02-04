@@ -1,9 +1,5 @@
 @if(Config::get('defaults.default.is_local')==1)
 
-
-
-
-
 <!-- scripit init-->
 
 <!-- General JS Scripts -->
@@ -45,21 +41,13 @@
 <script type="text/javascript" src="{{URL::to('node_modules/angular-dynamic-number/release/dynamic-number.min.js')}}"></script>
 
 <!-- bootstrap -->
-<!-- <script type="text/javascript" src="{{URL::to('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script> -->
+<script type="text/javascript" src="{{URL::to('node_modules/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
 <!-- angular-ui -->
 <script type="text/javascript" src="{{URL::to('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js')}}"></script>
 
 <!-- DataTables -->
 <script type="text/javascript" src="{{URL::to('node_modules/angular-datatables/dist/angular-datatables.min.js')}}"></script>
-<!-- <script type="text/javascript" src="{{URL::to('node_modules/datatables.net/js/jquery.dataTables.min.js')}}"></script> -->
-<!-- angular-datatables -->
-
- <!-- <script type="text/javascript" src="{{URL::to('node_modules/angular-datatables/dist/plugins/bootstrap/angular-datatables.bootstrap.min.js')}}"></script> -->
-
-<!-- <script type="text/javascript" src="{{URL::to('node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>  -->
-<!-- <script type="text/javascript" src="{{URL::to('node_modules/datatables.net/js/jquery.dataTables.min.js')}}"></script>   -->
-
 
 <!-- Main App -->
 <script src="{{URL::to('js/emrApp.js')}}"></script>
@@ -137,13 +125,18 @@
 <script src="public/assets/modules/moment.min.js"></script>
 <script src="public/assets/js/stisla.js"></script>
 
+
+<!-- JS Libraies -->
+<script src="public/assets/modules/datatables/datatables.min.js"></script>
+<script src="public/assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script> 
+
 <!-- Page Specific JS File -->
 <script src="public/assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
 
 <!-- Template JS File -->
 <script src="public/assets/js/scripts.js"></script>
-
 <script src="public/assets/js/custom.js"></script>
+<script src="public/assets/js/page/modules-datatables.js"></script>
 
 <!-- Additional plugins -->
 
@@ -169,6 +162,8 @@
 <!-- angular-ui -->
 <script type="text/javascript" src="{{asset('public/node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js')}}"></script>
 
+<!-- DataTables -->
+<script type="text/javascript" src="{{URL::to('public/node_modules/angular-datatables/dist/angular-datatables.min.js')}}"></script>
 
 <!-- Main App -->
 <script src="{{asset('public/js/emrApp.js')}}"></script>
