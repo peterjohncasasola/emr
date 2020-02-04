@@ -66,6 +66,7 @@
 <script src="{{URL::to('js/controllers/dischargesev.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargeser.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargesopd.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/dischargesmorbidity.ctrl.js')}}"></script>
 
 <script src="{{URL::to('js/controllers/operationsdeath.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/operationsmortalitydeath.ctrl.js')}}"></script>
@@ -91,6 +92,7 @@
 <script src="{{URL::to('js/services/dischargesev.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargeser.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargesopd.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/dischargesmorbidity.srvcs.js')}}"></script>
 
 <script src="{{URL::to('js/services/operationsdeath.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/operationsmortalitydeath.srvcs.js')}}"></script>
@@ -173,6 +175,7 @@
 <script src="{{asset('public/js/controllers/dischargesev.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/dischargeser.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/dischargesopd.ctrl.js')}}"></script>
+<script src="{{asset('public/js/controllers/dischargesmorbidity.ctrl.js')}}"></script>
 
 <script src="{{asset('public/js/controllers/operationsdeath.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/operationsmortalitydeath.ctrl.js')}}"></script>
@@ -198,6 +201,7 @@
 <script src="{{asset('public/js/services/dischargesev.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargeser.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargesopd.srvcs.js')}}"></script>
+<script src="{{asset('public/js/services/dischargesmorbidity.srvcs.js')}}"></script>
 
 <script src="{{asset('public/js/services/operationsdeath.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/operationsmortalitydeath.srvcs.js')}}"></script>

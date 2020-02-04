@@ -148,6 +148,19 @@ Route::post('/api/v1/discharges-opd/store','DischargesOPDController@store');
 Route::post('/api/v1/discharges-opd/remove','DischargesOPDController@remove');
 Route::get('/api/v1/discharges-opd/send_data_doh','DischargesOPDController@send_data_doh');//SEND TO DOH
 
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> MORBIDITY //
+Route::get('/hospital-operations/discharges-morbidity','DischargesMorbidityController@index');
+Route::get('/hospital-operations/discharges-morbidity/{reporting_year}','DischargesMorbidityController@index');
+Route::get('/hospital-operations/discharges-morbidity/{reporting_year}/{icd_code}','DischargesMorbidityController@index');
+Route::get('/hospital-operations/discharges-morbidity/{reporting_year}/{icd_code}/{action}','DischargesMorbidityController@index');
+Route::get('/hospital-operations/discharges-morbidity/{reporting_year}/details','DischargesMorbidityController@index');
+
+Route::get('/api/v1/discharges-morbidity','DischargesMorbidityController@show');
+Route::post('/api/v1/discharges-morbidity/store','DischargesMorbidityController@store');
+Route::post('/api/v1/discharges-morbidity/update','DischargesMorbidityController@update');
+Route::post('/api/v1/discharges-morbidity/remove','DischargesMorbidityController@remove');
+Route::get('/api/v1/discharges-morbidity/send_data_doh','DischargesMorbidityController@send_data_doh');//SEND TO DOH
+
 // -- HOSPITAL OPERATIONS -> DEATH -> OPERATIONS DEATH //
 Route::get('/hospital-operations/death','OperationsDeathsController@index');
 Route::get('/hospital-operations/death/{reporting_year}','OperationsDeathsController@index');

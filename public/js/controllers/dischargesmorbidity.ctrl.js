@@ -2,25 +2,26 @@
     'use strict';
     angular
         .module('emrApp')
-        .controller('OperationsMortalityDeathCtrl', OperationsMortalityDeathCtrl)
-        .controller('OperationsMortalityDeathActionModalInsatanceCtrl', OperationsMortalityDeathActionModalInsatanceCtrl) 
+        .controller('DischargesMorbidityCtrl', DischargesMorbidityCtrl)
+        .controller('DischargesMorbidityActionModalInsatanceCtrl', DischargesMorbidityActionModalInsatanceCtrl) 
 
-        OperationsMortalityDeathCtrl.$inject = ['OperationsMortalityDeathSrvcs','RicbSrvcs', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$scope'];
-        function OperationsMortalityDeathCtrl(OperationsMortalityDeathSrvcs, RicbSrvcs, $stateParams, $state, $uibModal, $window, $rootScope, $scope){
+        DischargesMorbidityCtrl.$inject = ['DischargesMorbiditySrvcs','RicbSrvcs', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$scope'];
+        function DischargesMorbidityCtrl(DischargesMorbiditySrvcs, RicbSrvcs, $stateParams, $state, $uibModal, $window, $rootScope, $scope){
             var vm = this;
             var data = {};
 
-            OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+            DischargesMorbiditySrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
                 if(response.data.status == 200)
                 {
-                    vm.mortality_deaths = response.data.data;
-                    vm.mortality_deaths_count = response.data.count;
-                    console.log(vm.mortality_deaths)
+                    vm.discharges_morbidity = response.data.data;
+                    vm.discharges_morbidity_count = response.data.count;
+                    console.log(vm.discharges_morbidity)
                 }
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
-                OperationsMortalityDeathSrvcs.send_data_doh().then (function (response) {
+                
+                DischargesMorbiditySrvcs.send_data_doh().then (function (response) {
                     alert('Success!')
                 }, function (){ alert('Bad Request!!!') })
             }
@@ -28,9 +29,9 @@
             vm.selectIcdType =  function(){
         
                 var uibModal = $uibModal.open({
-                    templateUrl: 'select-mortality-death-modal',
-                    controller: 'OperationsMortalityDeathActionModalInsatanceCtrl',
-                    controllerAs: 'operationsMortalityDeathCtrl',
+                    templateUrl: 'select-discharges-morbidity-modal',
+                    controller: 'DischargesMorbidityActionModalInsatanceCtrl',
+                    controllerAs: 'dischargesMorbidityCtrl',
                     backdrop: 'static',
                     keyboard  : false,
                     resolve :{
@@ -46,24 +47,24 @@
                 uibModal.result.then(function(result) {
                     console.log(result);
                     vm.ricd10_details = result;
-                    $state.go('hospital-operations-mortality-death-select', {reporting_year:$stateParams.reporting_year, icd10code:result.icd10code});
+                    $state.go('hospital-operations-discharges-morbidity-select', {reporting_year:$stateParams.reporting_year, icd10code:result.icd10code});
                 })
             }
 
-            vm.deleteOperationsMortalityDeathBtn = function(id){
+            vm.deleteDischargesMorbidityBtn = function(id){
 
                 data['id'] = id;
                 data['reportingyear'] = $stateParams.reporting_year;
 
-                OperationsMortalityDeathSrvcs.remove(data).then (function (response) {
+                DischargesMorbiditySrvcs.remove(data).then (function (response) {
                     if(response.data.status == 200)
                     {
-                        OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+                        DischargesMorbiditySrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
                             if(response.data.status == 200)
                             {
-                                vm.mortality_deaths = response.data.data;
-                                vm.mortality_deaths_count = response.data.count;
-                                console.log(vm.mortality_deaths)
+                                vm.discharges_morbidity = response.data.data;
+                                vm.discharges_morbidity_count = response.data.count;
+                                console.log(vm.discharges_morbidity)
                             }
                         }, function (){ alert('Bad Request!!!') })
                     }
@@ -79,9 +80,9 @@
                         console.log(vm.ricb)
             
                         $uibModal.open({
-                            templateUrl: 'add-mortality-death-modal',
-                            controller: 'OperationsMortalityDeathActionModalInsatanceCtrl',
-                            controllerAs: 'operationsMortalityDeathCtrl',
+                            templateUrl: 'add-discharges-morbidity-modal',
+                            controller: 'DischargesMorbidityActionModalInsatanceCtrl',
+                            controllerAs: 'dischargesMorbidityCtrl',
                             backdrop: 'static',
                             keyboard  : false,
                             resolve :{
@@ -100,7 +101,7 @@
 
             if($stateParams.icd10code!=null && $stateParams.action=='edit'){
 
-                OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:$stateParams.icd10code}).then (function (response) {
+                DischargesMorbiditySrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:$stateParams.icd10code}).then (function (response) {
  
                     if(response.data.status == 200)
                     {
@@ -108,9 +109,9 @@
                         console.log(vm.ricb)
             
                         $uibModal.open({
-                            templateUrl: 'edit-mortality-death-modal',
-                            controller: 'OperationsMortalityDeathActionModalInsatanceCtrl',
-                            controllerAs: 'operationsMortalityDeathCtrl',
+                            templateUrl: 'edit-discharges-morbidity-modal',
+                            controller: 'DischargesMorbidityActionModalInsatanceCtrl',
+                            controllerAs: 'dischargesMorbidityCtrl',
                             backdrop: 'static',
                             keyboard  : false,
                             resolve :{
@@ -133,8 +134,8 @@
 
         }
 
-        OperationsMortalityDeathActionModalInsatanceCtrl.$inject = ['collection', 'OperationsMortalityDeathSrvcs', 'RicbSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope'];
-        function OperationsMortalityDeathActionModalInsatanceCtrl (collection, OperationsMortalityDeathSrvcs, RicbSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope) {
+        DischargesMorbidityActionModalInsatanceCtrl.$inject = ['collection', 'DischargesMorbiditySrvcs', 'RicbSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope'];
+        function DischargesMorbidityActionModalInsatanceCtrl (collection, DischargesMorbiditySrvcs, RicbSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope) {
 
             var vm = this;
             vm.collection = collection.data;
@@ -167,7 +168,7 @@
 
             }
 
-            vm.createOperationsMortalityDeathBtn = function(data){
+            vm.createDischargesMorbidityBtn = function(data){
  
                 data['reportingyear']   = $stateParams.reporting_year;
                 data['icd10desc']       = vm.collection.icd10desc;
@@ -176,14 +177,14 @@
 
                 console.log(data);
 
-                OperationsMortalityDeathSrvcs.store(data).then(function(response){
+                DischargesMorbiditySrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+                        DischargesMorbiditySrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
                             if(response.data.status == 200)
                             {
-                                vm.mortality_deaths = response.data.data;
-                                $state.go('hospital-operations-mortality-death', {reporting_year:$stateParams.reporting_year});
+                                vm.discharges_morbidity = response.data.data;
+                                $state.go('hospital-operations-discharges-morbidity', {reporting_year:$stateParams.reporting_year});
                                 vm.close();
                             }
                         }, function (){ alert('Bad Request!!!') })
@@ -196,7 +197,7 @@
 
             }
 
-            vm.updateOperationsMortalityDeathBtn = function(data){
+            vm.updateDischargesMorbidityBtn = function(data){
  
                 data['reportingyear']   = $stateParams.reporting_year;
                 data['icd10desc']       = vm.collection.icd10desc;
@@ -205,14 +206,14 @@
 
                 console.log(data);
 
-                OperationsMortalityDeathSrvcs.update(data).then(function(response){
+                DischargesMorbiditySrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+                        DischargesMorbiditySrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
                             if(response.data.status == 200)
                             {
-                                vm.mortality_deaths = response.data.data;
-                                $state.go('hospital-operations-mortality-death', {reporting_year:$stateParams.reporting_year});
+                                vm.discharges_morbidity = response.data.data;
+                                $state.go('hospital-operations-discharges-morbidity', {reporting_year:$stateParams.reporting_year});
                                 vm.close();
                             }
                         }, function (){ alert('Bad Request!!!') })

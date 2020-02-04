@@ -50,6 +50,10 @@
     @include('hospital_operations.discharges.discharges_opd')
 </script>
 
+<script type="text/ng-template" id="discharges_morbidity.view">
+    @include('hospital_operations.discharges.discharges_morbidity')
+</script>
+
 <!-- Surgical Operations -->
 <script type="text/ng-template" id="surgical_major.view">
     @include('hospital_operations.surgical_operations.surgical_major')

@@ -191,6 +191,25 @@
                 templateUrl: 'discharges_opd.view'
             })
 
+            // HOSPITAL OPERATIONS -> DISCHARGES -> MORBIDITY 
+            .state('hospital-operations-discharges-morbidity', {
+                url: '/hospital-operations/discharges-morbidity/:reporting_year',
+                controller: 'DischargesMorbidityCtrl as dischargesMorbidityCtrl',
+                templateUrl: 'discharges_morbidity.view'
+            })
+
+            .state('hospital-operations-discharges-morbidity-select', {
+                url: '/hospital-operations/discharges-morbidity/:reporting_year/:icd10code',
+                controller: 'DischargesMorbidityCtrl as dischargesMorbidityCtrl',
+                templateUrl: 'discharges_morbidity.view'
+            })
+
+            .state('hospital-operations-discharges-morbidity-details', {
+                url: '/hospital-operations/discharges-morbidity/:reporting_year/:icd10code/:action',
+                controller: 'DischargesMorbidityCtrl as dischargesMorbidityCtrl',
+                templateUrl: 'discharges_morbidity.view'
+            })
+
             // HOSPITAL OPERATIONS -> DEATH -> OPERATIONS DEATH
             .state('hospital-operations-death', {
                 url: '/hospital-operations/death/:reporting_year',
