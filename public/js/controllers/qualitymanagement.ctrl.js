@@ -88,7 +88,7 @@
                     if (response.data.status == 200) {
                         alert(response.data.message);
                         $state.go('general-info', {reporting_year:$stateParams.reporting_year});
-                        $uibModalInstance.close();
+                        vm.close();
                     }
                     else {
                         alert(response.data.message);

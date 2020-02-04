@@ -14,6 +14,10 @@
 <link rel="stylesheet" href="{{URL::to('assets/css/style.css')}}">
 <link rel="stylesheet" href="{{URL::to('assets/css/components.css')}}">
 
+<!-- Datatables -->
+<link rel="stylesheet" href="{{URL::to('node_modules/angular-datatables/dist/css/angular-datatables.min.css')}}">
+<link rel="stylesheet" href="{{URL::to('node_modules/datatables.net/css/buttons.dataTables.min.css')}}">
+
 @else
 
 <link rel="stylesheet" href="{{asset('public/assets/modules/bootstrap/css/bootstrap.min.css')}}"> 
@@ -29,6 +33,12 @@
 <!-- Template CSS -->
 <link rel="stylesheet" href="{{asset('public/assets/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('public/assets/css/components.css')}}">
+
+<!-- Datatables -->
+<link rel="stylesheet" href="{{URL::to('public/node_modules/angular-datatables/dist/css/angular-datatables.min.css')}}">
+<link rel="stylesheet" href="{{URL::to('public/node_modules/datatables.net/css/buttons.dataTables.min.css')}}">
+
+
 
 @endif
 

@@ -215,6 +215,7 @@ Route::get('/api/v1/surgeries','SurgeriesController@show');
 Route::post('/api/v1/surgery/store','SurgeriesController@store');
 
 Route::get('/api/v1/ricd','RicdController@show');
+Route::post('/api/v1/ricd2','RicdController@show');
 Route::post('/api/v1/ricd/store','RicdController@store');
 
 // -- SOAP -- //

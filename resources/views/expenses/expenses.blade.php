@@ -26,8 +26,13 @@
             </div>
             </div>
             <div class="card-body">
+
+ 
+           
             <div class="table-responsive">
-                <table class="table table-bordered table-hover table-md">
+
+                
+                <table datatable="ng"class="table table-bordered table-hover table-md" >
                 <thead>
                     <tr>
                     <th>Expenses</th>
@@ -36,40 +41,40 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td>Amount spent on personnel salaries and wages  </td>
-                    <td align="right"><%expensesCtrl.expense.salarieswages | number:2%></td>
+                        <td>Amount spent on personnel salaries and wages  </td>
+                        <td align="right"><%expensesCtrl.expense.salarieswages | number:2%></td>
                     </tr>
                     <tr>
-                    <td>Amount spent on benefits for employees (benefits are in addition to wages/salaries. Benefits include for example: social security contributions, health insurance)  </td>
-                    <td align="right"><%expensesCtrl.expense.employeebenefits | number:2%></td>
+                        <td>Amount spent on benefits for employees (benefits are in addition to wages/salaries. Benefits include for example: social security contributions, health insurance)  </td>
+                        <td align="right"><%expensesCtrl.expense.employeebenefits | number:2%></td>
                     </tr>
                     <tr>
-                    <td>Allowances provided to employees at this facility (Allowances are in addition to wages/salaries. Allowances include for example: clothing allowance, PERA, vehicle maintenance allowance and hazard pay.)  </td>
-                    <td align="right"><%expensesCtrl.expense.allowances | number:2%></td>
+                        <td>Allowances provided to employees at this facility (Allowances are in addition to wages/salaries. Allowances include for example: clothing allowance, PERA, vehicle maintenance allowance and hazard pay.)  </td>
+                        <td align="right"><%expensesCtrl.expense.allowances | number:2%></td>
                     </tr>
                     <tr class="text-bold">
-                    <td>TOTAL amount spent on all personnel including wages, salaries, benefits and allowances for last year (PS) </td>
-                    <td align="right"><%expensesCtrl.expense.totalps | number:2%></td>
+                        <td>TOTAL amount spent on all personnel including wages, salaries, benefits and allowances for last year (PS) </td>
+                        <td align="right"><%expensesCtrl.expense.totalps | number:2%></td>
                     </tr>
                     <tr>
-                    <td>Total amount spent on medicines </td>
-                    <td align="right"><%expensesCtrl.expense.totalamountmedicine | number:2%></td>
+                        <td>Total amount spent on medicines </td>
+                        <td align="right"><%expensesCtrl.expense.totalamountmedicine | number:2%></td>
                     </tr>
                     <tr>
-                    <td>Total amount spent on medical supplies (i.e. syringe, gauze, etc.; exclude pharmaceuticals)  </td>
-                    <td align="right"><%expensesCtrl.expense.totalamountmedicalsupplies | number:2%></td>
+                        <td>Total amount spent on medical supplies (i.e. syringe, gauze, etc.; exclude pharmaceuticals)  </td>
+                        <td align="right"><%expensesCtrl.expense.totalamountmedicalsupplies | number:2%></td>
                     </tr>
                     <tr>
-                    <td>Total amount spent on utilities  </td>
-                    <td align="right"><%expensesCtrl.expense.totalamountutilities | number:2%></td>
+                        <td>Total amount spent on utilities  </td>
+                        <td align="right"><%expensesCtrl.expense.totalamountutilities | number:2%></td>
                     </tr>
                     <tr>
-                    <td>Total amount spent on non-medical services (For example: security, food service, laundry, waste management) </td>
-                    <td align="right"><%expensesCtrl.expense.totalamountnonmedicalservice | number:2%></td>
+                        <td>Total amount spent on non-medical services (For example: security, food service, laundry, waste management) </td>
+                        <td align="right"><%expensesCtrl.expense.totalamountnonmedicalservice | number:2%></td>
                     </tr>
                     <tr class="text-bold">
-                    <td>TOTAL amount spent on maintenance and other operating expenditures (MOOE)  </td>
-                    <td align="right"><%expensesCtrl.expense.totalmooe | number:2%></td>
+                        <td>TOTAL amount spent on maintenance and other operating expenditures (MOOE)  </td>
+                        <td align="right"><%expensesCtrl.expense.totalmooe | number:2%></td>
                     </tr>
                     <tr>
                     <td>Amount spent on infrastructure (i.e., new hospital wing, installation of ramps) </td>

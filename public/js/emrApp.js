@@ -7,8 +7,8 @@
           'ngSanitize',
           'dynamicNumber',
         //   'ui.mask',
-          'ui.bootstrap'
-        //   'datatables',
+          'ui.bootstrap',
+          'datatables',
           // 'datatables.tabletools', 
           // 'datatables.buttons'
           // 'ui.utils.masks', 

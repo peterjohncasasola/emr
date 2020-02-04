@@ -16,6 +16,7 @@ class RicdController extends Controller {
         $data = array(
             'id'=>$request->input('id'),
             'icd10code'=>$request->input('icd10code'),
+            'name'=>$request->input('name'),
         );
 
         $ricd = DB::table('ricd10_lib as ricd')
@@ -24,7 +25,7 @@ class RicdController extends Controller {
                 'ricd.icd10code',
                 'ricd.icd10desc',
                 'ricd.icd10cat'
-            );
+            )->limit(200);
 
         if ($data['id']){
             $ricd = $ricd->where('ricd.id', $data['id']);
@@ -34,14 +35,29 @@ class RicdController extends Controller {
             $ricd = $ricd->where('ricd.icd10code', $data['icd10code']);
         }
 
-        $ricd = $ricd->get();
+        // if ($data['name']){
+        //     $ricd = $ricd->where('ricd.icd10desc','LIKE', '%'.$data['name'].'%');
+        // }
 
+        $ricd = $ricd->get();
+        
         return response()->json([
+            // 'draw'=>1,
+            'recordsTotal'=>$ricd->count(),
+            // 'recordsFiltered'=>3,
             'status'=>200,
             'data'=>$ricd,
             'count'=>$ricd->count(),
             'message'=>''
         ],200,[], JSON_NUMERIC_CHECK);
+
+        // return response()->json([
+        //     'draw'=>1,
+        //     'recordsTotal'=>$ricd->count(),
+        //     'recordsFiltered'=>10,
+        //     'status'=>200,
+        //     'data'=>$ricd
+        // ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

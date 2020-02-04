@@ -88,7 +88,7 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="table-1">
+            <table class="table table-striped" id="table-1" datatable="ng">
             <thead>                                 
                 <tr>
                 <th>Code</th>
@@ -102,19 +102,6 @@
                     </tr>
             </tbody>
             </table>
-        </div>
-        <br>
-        <p> To add a new surgical operation, please use the form below. *Please note, once you added new surgical operation it can not be removed! </p>
-        <div class="form-group row">
-            <label for="text" class="col-sm-3 col-form-label">Add a New Surgical Operation</label>
-            <div class="col-sm-8"><input type="text" class="form-control" id=""></div>
-            <div class="col-sm-1"><a href="#" class="btn btn-icon btn-light"><i class="far fa-plus-square"></i></a></div>
-        </div>
-
-        <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="surgicalOperationsMajorCtrl.close()" ui-sref="hospital-operations-surgical-operations({reporting_year:2019})">Close</button>
-            <!-- <button type="button" class="btn btn-primary" ng-if="!surgicalOperationsMajorCtrl.collection_copy" ng-click="surgicalOperationsMajorCtrl.createDischargeOPVBtn(surgicalOperationsMajorCtrl.collection)">Save changes</button>
-            <button type="button" class="btn btn-primary" ng-if="surgicalOperationsMajorCtrl.collection_copy" ng-click="surgicalOperationsMajorCtrl.updateDischargeOPVBtn(surgicalOperationsMajorCtrl.collection)">Update changes</button> -->
         </div>
     </div>
 

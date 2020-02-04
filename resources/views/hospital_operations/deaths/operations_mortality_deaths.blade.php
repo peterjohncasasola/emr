@@ -155,7 +155,7 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="table-1">
+            <table class="table table-striped" id="table-1" datatable="ng">
             <thead>                                 
                 <tr>
                     <th>ICD-10 Code</th>

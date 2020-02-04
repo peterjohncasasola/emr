@@ -81,25 +81,35 @@
         </div>
     </section>
 
-  <!--  -->
-   
-<table class="table table-striped" id="table-1">
-<thead>                                 
-    <tr>
-    <th>ICD-10 Code</th>
-    <th>Description</th>
-    <th>Category</th>
-    </tr>
-    </thead>
-    <tbody>                                 
-        <tr>
-        <td><a href=""> A00 </a></td>
-        <td>Cholera</td>
-        <td>A00-A09</td>
-        </tr>
-</tbody>
-</table> 
-        <!--  -->
+
+    <!-- <hr>
+
+
+
+    <table datatable="" dt-options="dischargesOPDCtrl.dtOptions" dt-columns="dischargesOPDCtrl.dtColumns" class="row-border hover"></table>
+
+    <br>
+    end
+
+    <hr> -->
+
+    <!-- <table class="table table-striped" datatable="ng">
+            <thead>                                 
+                <tr>
+                    <th>ICD-10 Code</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                </tr>
+                </thead>
+                <tbody>                                 
+                    <tr ng-repeat="ricd10 in dischargesOPDCtrl.ricd10">
+                        <td><a href="" ng-click="dischargesOPDCtrl.chooseRicd10Code(ricd10.icd10code)"> <%ricd10.icd10code%> </a></td>
+                        <td><%ricd10.icd10desc%></td>
+                        <td><%ricd10.icd10cat%></td>
+                    </tr>
+            </tbody>
+            </table> -->
+
 
     <script type="text/ng-template" id="add-discharges-er-modal">
     <div class="modal-content">
@@ -112,7 +122,7 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" >
+            <table class="table table-striped" datatable="ng">
             <thead>                                 
                 <tr>
                     <th>ICD-10 Code</th>
@@ -129,26 +139,6 @@
             </tbody>
             </table>
         </div>
-        <br>
-        <p> To add a new surgical operation, please use the form below. *Please note, once you added new surgical operation it can not be removed! </p>
-        <div class="form-group row">
-            <label for="text" class="col-sm-3 col-form-label">Add a New Surgical Operation</label>
-            <div class="col-sm-8"><input type="text" class="form-control" id=""></div>
-            <div class="col-sm-1"><a href="#" class="btn btn-icon btn-light"><i class="far fa-plus-square"></i></a></div>
-        </div>
-
-        <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesOPDCtrl.close()" ui-sref="hospital-operations-surgical-operations({reporting_year:2019})">Close</button>
-            <!-- <button type="button" class="btn btn-primary" ng-if="!dischargesOPDCtrl.collection_copy" ng-click="dischargesOPDCtrl.createDischargeOPVBtn(dischargesOPDCtrl.collection)">Save changes</button>
-            <button type="button" class="btn btn-primary" ng-if="dischargesOPDCtrl.collection_copy" ng-click="dischargesOPDCtrl.updateDischargeOPVBtn(dischargesOPDCtrl.collection)">Update changes</button> -->
-        </div>
     </div>
-
-
-
-
-
-    <hr>
-
 
 </script>

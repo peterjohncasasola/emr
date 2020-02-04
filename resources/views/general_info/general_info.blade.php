@@ -324,7 +324,7 @@
     <div class="modal-content">
     <div class="modal-header">
         <h5 class="modal-title">Quality Management</h5>
-        <button type="button" class="close" ng-click="bedCapacityCtrl.close()" ui-sref="general-info({reporting_year:2019})">
+        <button type="button" class="close" ng-click="qualityManagementCtrl.close()" ui-sref="general-info({reporting_year:2019})">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>

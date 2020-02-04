@@ -33,6 +33,8 @@ class SurgeriesController extends Controller {
             $surgery = $surgery->where('surgery.proccode', $data['proccode']);
         }
 
+        $surgery = $surgery->limit(300);
+
         $surgery = $surgery->get();
 
         return response()->json([
