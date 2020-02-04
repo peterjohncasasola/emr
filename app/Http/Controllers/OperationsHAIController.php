@@ -27,6 +27,7 @@ class OperationsHAIController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $operations_HAI = DB::table('hospitaloperationshai as operationsHAI')
@@ -55,6 +56,10 @@ class OperationsHAIController extends Controller {
             $operations_HAI = $operations_HAI->where('operationsHAI.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $operations_HAI = $operations_HAI->get();
 
         return response()->json([
@@ -62,7 +67,7 @@ class OperationsHAIController extends Controller {
             'data'=>$operations_HAI,
             'count'=>$operations_HAI->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

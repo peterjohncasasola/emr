@@ -27,6 +27,7 @@ class DischargesNumberDeliveriesController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $discharges_number_delivery = DB::table('hospoptdischargesnumberdeliveries as dischargesNumberDeliveries')
@@ -44,6 +45,10 @@ class DischargesNumberDeliveriesController extends Controller {
             $discharges_number_delivery = $discharges_number_delivery->where('dischargesNumberDeliveries.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $discharges_number_delivery = $discharges_number_delivery->get();
 
         return response()->json([
@@ -51,7 +56,7 @@ class DischargesNumberDeliveriesController extends Controller {
             'data'=>$discharges_number_delivery,
             'count'=>$discharges_number_delivery->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

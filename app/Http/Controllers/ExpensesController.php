@@ -28,6 +28,7 @@ class ExpensesController extends Controller {
         
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
         
         $expenses = DB::table('expenses as expense')
@@ -54,6 +55,10 @@ class ExpensesController extends Controller {
             $expenses = $expenses->where('expense.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $expenses = $expenses->get();
 
         return response()->json([
@@ -61,7 +66,7 @@ class ExpensesController extends Controller {
             'data'=>$expenses,
             'count'=>$expenses->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function show2(Request $request){

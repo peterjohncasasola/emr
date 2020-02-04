@@ -27,6 +27,7 @@ class ClassificationsController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $classification = DB::table('geninfoclassification as classification')
@@ -51,6 +52,10 @@ class ClassificationsController extends Controller {
             $classification = $classification->where('classification.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $classification = $classification->get();
 
         return response()->json([
@@ -58,7 +63,7 @@ class ClassificationsController extends Controller {
             'data'=>$classification,
             'count'=>$classification->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

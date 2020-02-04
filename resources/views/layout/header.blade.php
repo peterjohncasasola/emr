@@ -49,9 +49,9 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
 <div class="container">
     <ul class="navbar-nav">
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
-    </li>
+    </li> -->
     <li class="nav-item" ui-sref="facility_profile({reporting_year:2019})">
         <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
     </li>
@@ -77,7 +77,7 @@
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Deaths</a>
             <ul class="dropdown-menu">
             <li class="nav-item" ui-sref="hospital-operations-death({reporting_year:2019})"><a href="#" class="nav-link">Total Number of Deaths</a></li>
-            <li class="nav-item"><a href="hospital-operations/deaths-b.html" class="nav-link">Ten Leading causes of Mortality/Deaths Disaggregated as to Age and Sex</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-mortality-death({reporting_year:2019})"><a href="hospital-operations/deaths-b.html" class="nav-link">Ten Leading causes of Mortality/Deaths Disaggregated as to Age and Sex</a></li>
             </ul>
         </li>
         <li class="nav-item" ui-sref="hospital-operations-hai({reporting_year:2019})"><a href="#" class="nav-link">Healthcare Associated Infections (HAI)</a></li>

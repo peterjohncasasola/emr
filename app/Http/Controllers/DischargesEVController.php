@@ -27,6 +27,7 @@ class DischargesEVController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $discharges_EV = DB::table('hospoptdischargesev as dischargesEV')
@@ -44,6 +45,10 @@ class DischargesEVController extends Controller {
             $discharges_EV = $discharges_EV->where('dischargesEV.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $discharges_EV = $discharges_EV->get();
 
         return response()->json([
@@ -51,7 +56,7 @@ class DischargesEVController extends Controller {
             'data'=>$discharges_EV,
             'count'=>$discharges_EV->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

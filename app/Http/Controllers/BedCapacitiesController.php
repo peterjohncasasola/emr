@@ -27,6 +27,7 @@ class BedCapacitiesController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
@@ -43,6 +44,10 @@ class BedCapacitiesController extends Controller {
             $bed_capacity = $bed_capacity->where('expense.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $bed_capacity = $bed_capacity->get();
 
         return response()->json([
@@ -50,7 +55,7 @@ class BedCapacitiesController extends Controller {
             'data'=>$bed_capacity,
             'count'=>$bed_capacity->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

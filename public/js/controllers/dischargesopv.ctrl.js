@@ -11,8 +11,6 @@
             var vm = this;
             var data = {};
 
-            alert('opv')
-
             DischargesOPVSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
@@ -38,8 +36,6 @@
             var vm = this;
             var data = {}; 
 
-            alert('opv details')
-        
             if($stateParams.reporting_year){
 
                 DischargesOPVSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {

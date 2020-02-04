@@ -27,6 +27,7 @@ class DischargesERController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $discharges_ER = DB::table('hospoptdischargeser as dischargesER')
@@ -44,6 +45,10 @@ class DischargesERController extends Controller {
             $discharges_ER = $discharges_ER->where('dischargesER.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $discharges_ER = $discharges_ER->get();
 
         return response()->json([
@@ -51,7 +56,7 @@ class DischargesERController extends Controller {
             'data'=>$discharges_ER,
             'count'=>$discharges_ER->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

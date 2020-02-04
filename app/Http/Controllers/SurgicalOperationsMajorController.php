@@ -27,6 +27,7 @@ class SurgicalOperationsMajorController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $operations_major = DB::table('hospitaloperationsmajoropt as operationsMajorOpt')
@@ -43,6 +44,10 @@ class SurgicalOperationsMajorController extends Controller {
             $operations_major = $operations_major->where('operationsMajorOpt.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $operations_major = $operations_major->get();
 
         return response()->json([
@@ -50,7 +55,7 @@ class SurgicalOperationsMajorController extends Controller {
             'data'=>$operations_major,
             'count'=>$operations_major->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

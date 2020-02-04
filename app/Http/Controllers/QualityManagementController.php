@@ -27,6 +27,7 @@ class QualityManagementController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $qualityManagement = DB::table('geninfoqualitymanagement as qualityManagement')
@@ -46,6 +47,10 @@ class QualityManagementController extends Controller {
             $qualityManagement = $qualityManagement->where('qualityManagement.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $qualityManagement = $qualityManagement->get();
 
         return response()->json([
@@ -53,7 +58,7 @@ class QualityManagementController extends Controller {
             'data'=>$qualityManagement,
             'count'=>$qualityManagement->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

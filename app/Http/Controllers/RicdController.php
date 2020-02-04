@@ -41,7 +41,7 @@ class RicdController extends Controller {
             'data'=>$ricd,
             'count'=>$ricd->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

@@ -40,7 +40,7 @@ class SurgeriesController extends Controller {
             'data'=>$surgery,
             'count'=>$surgery->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

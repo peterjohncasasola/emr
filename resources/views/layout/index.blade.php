@@ -20,7 +20,6 @@
     @include('revenues.revenues')
 </script>
 
-
 <!-- HOSPITAL OPERATIONS -->
 <script type="text/ng-template" id="summary_of_patient.view">
     @include('hospital_operations.summary_of_patients')
@@ -63,6 +62,10 @@
 <!-- Deaths -->
 <script type="text/ng-template" id="operations_death.view">
     @include('hospital_operations.deaths.operations_deaths')
+</script>
+
+<script type="text/ng-template" id="operations_mortality_death.view">
+    @include('hospital_operations.deaths.operations_mortality_deaths')
 </script>
 
 

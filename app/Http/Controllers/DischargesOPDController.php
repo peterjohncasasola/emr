@@ -27,6 +27,7 @@ class DischargesOPDController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $discharges_OPD = DB::table('hospoptdischargesopd as dischargesOPD')
@@ -44,6 +45,10 @@ class DischargesOPDController extends Controller {
             $discharges_OPD = $discharges_OPD->where('dischargesOPD.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $discharges_OPD = $discharges_OPD->get();
 
         return response()->json([
@@ -51,7 +56,7 @@ class DischargesOPDController extends Controller {
             'data'=>$discharges_OPD,
             'count'=>$discharges_OPD->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

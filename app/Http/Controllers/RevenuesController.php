@@ -27,6 +27,7 @@ class RevenuesController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $revenues = DB::table('revenues as revenue')
@@ -48,6 +49,10 @@ class RevenuesController extends Controller {
             $revenues = $revenues->where('revenue.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $revenues = $revenues->get();
 
         return response()->json([
@@ -55,7 +60,7 @@ class RevenuesController extends Controller {
             'data'=>$revenues,
             'count'=>$revenues->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

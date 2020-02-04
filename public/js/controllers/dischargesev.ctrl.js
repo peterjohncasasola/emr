@@ -10,9 +10,7 @@
         function DischargesEVCtrl(DischargesEVSrvcs, $stateParams, $uibModal, $window){
             var vm = this;
             var data = {};
-
-            alert('ev')
-
+            
             DischargesEVSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
@@ -38,7 +36,6 @@
             var vm = this;
             var data = {}; 
 
-            alert('ev details')
         
             if($stateParams.reporting_year){
 

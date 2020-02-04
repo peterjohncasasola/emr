@@ -27,6 +27,7 @@ class OperationsDeathsController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $perations_deaths = DB::table('hospitaloperationsdeaths as operationsDeaths')
@@ -54,6 +55,10 @@ class OperationsDeathsController extends Controller {
             $perations_deaths = $perations_deaths->where('operationsDeaths.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $perations_deaths = $perations_deaths->get();
 
         return response()->json([
@@ -61,7 +66,7 @@ class OperationsDeathsController extends Controller {
             'data'=>$perations_deaths,
             'count'=>$perations_deaths->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){

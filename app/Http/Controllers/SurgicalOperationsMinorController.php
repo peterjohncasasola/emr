@@ -27,6 +27,7 @@ class SurgicalOperationsMinorController extends Controller {
 
         $data = array(
             'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
         );
 
         $operations_minor = DB::table('hospitaloperationsminoropt as operationsMInorOpt')
@@ -43,6 +44,10 @@ class SurgicalOperationsMinorController extends Controller {
             $operations_minor = $operations_minor->where('operationsMInorOpt.id', $data['id']);
         }
 
+        if ($data['reportingyear']){
+            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+        }
+
         $operations_minor = $operations_minor->get();
 
         return response()->json([
@@ -50,7 +55,7 @@ class SurgicalOperationsMinorController extends Controller {
             'data'=>$operations_minor,
             'count'=>$operations_minor->count(),
             'message'=>''
-        ]);
+        ],200,[], JSON_NUMERIC_CHECK);
     }
 
     public function store(Request $request){
