@@ -29,11 +29,11 @@
                 <div class="form-group row">
                     <div class="col-sm-2">
                     Code:
-                        <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPDCtrl.ricd10_details.icd10code">
+                        <input type="text" class="form-control" readonly="" placeholder="" ng-model="dischargesOPDCtrl.ricd10_details.icd10code">
                     </div>
                     <div class="col-sm-2">
                     Category:
-                        <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesOPDCtrl.ricd10_details.icd10cat">
+                        <input type="text" class="form-control" readonly="" placeholder="" ng-model="dischargesOPDCtrl.ricd10_details.icd10cat">
                     </div>
                     <div class="col-sm-6">
                         <textarea class="form-control" 
@@ -81,36 +81,7 @@
         </div>
     </section>
 
-
-    <!-- <hr>
-
-
-
-    <table datatable="" dt-options="dischargesOPDCtrl.dtOptions" dt-columns="dischargesOPDCtrl.dtColumns" class="row-border hover"></table>
-
-    <br>
-    end
-
-    <hr> -->
-
-    <!-- <table class="table table-striped" datatable="ng">
-            <thead>                                 
-                <tr>
-                    <th>ICD-10 Code</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                </tr>
-                </thead>
-                <tbody>                                 
-                    <tr ng-repeat="ricd10 in dischargesOPDCtrl.ricd10">
-                        <td><a href="" ng-click="dischargesOPDCtrl.chooseRicd10Code(ricd10.icd10code)"> <%ricd10.icd10code%> </a></td>
-                        <td><%ricd10.icd10desc%></td>
-                        <td><%ricd10.icd10cat%></td>
-                    </tr>
-            </tbody>
-            </table> -->
-
-
+ 
     <script type="text/ng-template" id="add-discharges-er-modal">
     <div class="modal-content">
     <div class="modal-header">

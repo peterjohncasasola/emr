@@ -29,11 +29,11 @@
                 <div class="form-group row">
                     <div class="col-sm-2">
                     Code:
-                        <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesERCtrl.ricd10_details.icd10code">
+                        <input type="text" class="form-control" readonly="" placeholder="" ng-model="dischargesERCtrl.ricd10_details.icd10code">
                     </div>
                     <div class="col-sm-2">
                     Category:
-                        <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesERCtrl.ricd10_details.icd10cat">
+                        <input type="text" class="form-control" readonly="" placeholder="" ng-model="dischargesERCtrl.ricd10_details.icd10cat">
                     </div>
                     <div class="col-sm-6">
                         <textarea class="form-control" data-toggle="modal" 

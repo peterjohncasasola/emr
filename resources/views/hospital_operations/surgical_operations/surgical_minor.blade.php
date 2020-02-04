@@ -29,7 +29,7 @@
                 <div class="form-group row">
                     <div class="col-sm-2">
                     Code:
-                    <input type="text" class="form-control" id="" placeholder="" ng-model="surgicalOperationsMinorCtrl.surgical_operation.operationcode">
+                    <input type="text" class="form-control" readonly="" placeholder="" ng-model="surgicalOperationsMinorCtrl.surgical_operation.operationcode">
                     </div>
                     <div class="col-sm-8">
                     Desc
