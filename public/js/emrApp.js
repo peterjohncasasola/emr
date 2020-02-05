@@ -126,6 +126,27 @@
                 templateUrl: 'operations_hai.view'
             })
 
+            // HOSPITAL OPERATIONS -> DISCHARGES -> OPV
+            .state('hospital-operations-discharges-specialty', {
+                url: '/hospital-operations/discharges-specialty/:reporting_year',
+                controller: 'DischargesSpecialtyCtrl as dischargesSpecialtyCtrl',
+                templateUrl: 'discharges_specialty.view'
+            })
+
+            .state('hospital-operations-discharges-specialty-new', {
+                url: '/hospital-operations/discharges-specialty/:reporting_year/new',
+                controller: 'DischargesSpecialtyCreateCtrl as dischargesSpecialtyCtrl',
+                templateUrl: 'discharges_specialty.view'
+            })
+
+            .state('hospital-operations-discharges-specialty-edit', {
+                url: '/hospital-operations/discharges-specialty/:reporting_year/:service_type/edit',
+                controller: 'DischargesSpecialtyCreateCtrl as dischargesSpecialtyCtrl',
+                templateUrl: 'discharges_specialty.view'
+            })
+
+
+
             // HOSPITAL OPERATIONS -> DISCHARGES -> Deliveries
             .state('hospital-operations-discharges-number-deliveries', {
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year',

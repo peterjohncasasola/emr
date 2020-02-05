@@ -96,6 +96,20 @@ Route::post('/api/v1/operations-hai/store','OperationsHAIController@store');
 Route::post('/api/v1/operations-hai/update','OperationsHAIController@update');
 Route::get('/api/v1/operations-hai/send_data_doh','OperationsHAIController@send_data_doh');//SEND TO DOH
 
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> SPECIALTY //
+Route::get('/hospital-operations/discharges-specialty','DischargesSpecialtiesController@index');
+Route::get('/hospital-operations/discharges-specialty/{reporting_year}','DischargesSpecialtiesController@index');
+Route::get('/hospital-operations/discharges-specialty/{reporting_year}/details','DischargesSpecialtiesController@index');
+Route::get('/hospital-operations/discharges-specialty/{reporting_year}/new','DischargesSpecialtiesController@index');
+
+Route::get('/api/v1/discharges-specialty','DischargesSpecialtiesController@show');
+Route::get('/api/v1/discharges-specialty-others','DischargesSpecialtiesController@show_others');
+Route::post('/api/v1/discharges-specialty/store','DischargesSpecialtiesController@store');
+Route::post('/api/v1/discharges-specialty/update','DischargesSpecialtiesController@update');
+Route::post('/api/v1/discharges-specialty/remove','DischargesSpecialtiesController@remove');
+Route::get('/api/v1/discharges-specialty/send_data_doh','DischargesSpecialtiesController@send_data_doh');//SEND TO DOH
+
+
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> NUMBER OF DELIVERIES //
 Route::get('/hospital-operations/discharges-number-deliveries','DischargesNumberDeliveriesController@index');
 Route::get('/hospital-operations/discharges-number-deliveries/{reporting_year}','DischargesNumberDeliveriesController@index');

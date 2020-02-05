@@ -62,6 +62,7 @@
 <script src="{{URL::to('js/controllers/qualitymanagement.ctrl.js')}}"></script>
 
 <script src="{{URL::to('js/controllers/summaryofpatients.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/dischargesspecialty.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargesnumberdeliveries.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargesopv.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargesev.ctrl.js')}}"></script>
@@ -88,6 +89,7 @@
 <script src="{{URL::to('js/services/qualitymanagement.srvcs.js')}}"></script>
 
 <script src="{{URL::to('js/services/summaryofpatients.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/dischargesspecialty.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargesnumberdeliveries.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargesopv.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/dischargesev.srvcs.js')}}"></script>
@@ -178,6 +180,7 @@
 <script src="{{asset('public/js/controllers/qualitymanagement.ctrl.js')}}"></script>
 
 <script src="{{asset('public/js/controllers/summaryofpatients.ctrl.js')}}"></script>
+<script src="{{asset('public/js/controllers/dischargesspecialty.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/dischargesnumberdeliveries.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/dischargesopv.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/dischargesev.ctrl.js')}}"></script>
@@ -204,6 +207,7 @@
 <script src="{{asset('public/js/services/qualitymanagement.srvcs.js')}}"></script>
 
 <script src="{{asset('public/js/services/summaryofpatients.srvcs.js')}}"></script>
+<script src="{{asset('public/js/services/dischargesspecialty.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargesnumberdeliveries.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargesopv.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/dischargesev.srvcs.js')}}"></script>

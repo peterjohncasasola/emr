@@ -27,6 +27,13 @@
       filter: alpha(opacity=50);
       opacity: .5;
     }
+
+    @media (min-width: 768px) {
+      .modal-xlg {
+        width: 90%;
+        max-width:1200px;
+      }
+    }
     
   </style>
 

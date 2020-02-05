@@ -30,6 +30,10 @@
 </script>
 
 <!-- Discharges -->
+<script type="text/ng-template" id="discharges_specialty.view">
+    @include('hospital_operations.discharges.discharges_specialty')
+</script>
+
 <script type="text/ng-template" id="discharges_number_deliveries.view">
     @include('hospital_operations.discharges.discharges_number_deliveries')
 </script>
