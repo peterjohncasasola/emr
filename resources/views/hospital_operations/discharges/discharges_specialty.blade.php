@@ -612,6 +612,7 @@
 
 
 <script type="text/ng-template" id="add-discharges-specialty-modal">
+<form>
     <div class="modal-content">
     <div class="modal-header">
     <h5 class="modal-title">Type of Service and Total Discharges According to Specialty</h5>
@@ -722,7 +723,7 @@
             <div class="form-group row">
                 <label class="col-sm-1 col-form-label"> Remarks: </label>
                 <div class="col-sm-11">
-                <input type="text" class="form-control" id="" placeholder="" ng-model="dischargesSpecialtyCtrl.collection.remarks"></td>
+                <input type="text" class="form-control" id="" required="" placeholder="" ng-model="dischargesSpecialtyCtrl.collection.remarks"></td>
                 </div>
             </div>
 
@@ -731,10 +732,11 @@
             <button type="button" class="btn btn-primary" ng-if="!dischargesSpecialtyCtrl.collection_copy" ng-click="dischargesSpecialtyCtrl.createDischargeSpecialtyBtn(dischargesSpecialtyCtrl.collection)">Save changes</button>
         </div>
     </div>
+</form>
 
 </script>
 
-<script type="text/ng-template" id="edit-discharges-specialty-modal">
+<!-- <script type="text/ng-template" id="edit-discharges-specialty-modal">
     <div class="modal-content">
     <div class="modal-header">
     <h5 class="modal-title">Type of Service and Total Discharges According to Specialty</h5>
@@ -853,4 +855,4 @@
         </div>
     </div>
 
-</script>
+</script> -->
