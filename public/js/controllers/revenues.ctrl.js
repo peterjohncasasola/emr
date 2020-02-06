@@ -11,6 +11,9 @@
             var vm = this;
             var data = {};
 
+            vm.is_loader_disabled = false;
+            vm.is_submit_disabled = false;
+
             RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
@@ -20,10 +23,25 @@
                 }
             }, function (){ alert('Bad Request!!!') })
 
-
             vm.sendDataDoh = function(){
+                vm.is_loader_disabled = true;
+                vm.is_submit_disabled = true;
+
                 RevenuesSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                    alert('Successfully submitted!')
+
+                    RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        if(response.data.status == 200)
+                        {
+                            vm.revenue = response.data.data[0];
+                            vm.revenue_count = response.data.count;
+                            console.log(vm.expense)
+                        }
+                    }, function (){ alert('Bad Request!!!') })
+
+                    vm.is_loader_disabled = false;
+                    vm.is_submit_disabled = false;
+
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -140,7 +158,6 @@
             };
 
             vm.close = function() {
-                $state.go('employees');
                 $uibModalInstance.close();
             };
         }

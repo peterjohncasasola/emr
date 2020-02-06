@@ -45,7 +45,8 @@ class ClassificationsController extends Controller {
                 'classification.local',
                 'classification.private',
                 'classification.ownershipothers',
-                'classification.reportingyear'
+                'classification.reportingyear',
+                'classification.submitted_at'
             );
 
         if ($data['id']){
@@ -265,8 +266,13 @@ class ClassificationsController extends Controller {
         ];
 
         $response = $this->soapWrapper->call('Emr.genInfoClassification', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
+
+        $classification = Classification::where('reportingyear', 2019)->first();
+        $classification->submitted_at    = Carbon::now();
+        $classification->save();
+
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+        // exit;
     }
   	
 }

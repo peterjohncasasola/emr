@@ -190,6 +190,10 @@ class QualityManagementController extends Controller {
         
             $response = $this->soapWrapper->call('Emr.genInfoqualityManagement', $data);
         }
+
+        // $bed_capacity = BedCapacity::where('reportingyear', 2019)->first();
+        // $bed_capacity->submitted_at    = Carbon::now();
+        // $bed_capacity->save();
     }
   	
 }

@@ -37,7 +37,8 @@ class BedCapacitiesController extends Controller {
                 'bedCapacity.abc',
                 'bedCapacity.implementingbeds',
                 'bedCapacity.bor',
-                'bedCapacity.reportingyear'
+                'bedCapacity.reportingyear',
+                'bedCapacity.submitted_at'
             );
 
         if ($data['id']){
@@ -162,8 +163,14 @@ class BedCapacitiesController extends Controller {
         ];
 
         $response = $this->soapWrapper->call('Emr.genInfoBedCapacity', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
+
+        $bed_capacity = BedCapacity::where('reportingyear', 2019)->first();
+        $bed_capacity->submitted_at    = Carbon::now();
+        $bed_capacity->save();
+
+
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+        // exit;
     }
   	
 }

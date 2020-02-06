@@ -48,7 +48,8 @@ class ExpensesController extends Controller {
                 'expense.amountequipment',
                 'expense.totalco',
                 'expense.grandtotal',
-                'expense.reportingyear'
+                'expense.reportingyear',
+                'expense.submitted_at'
             );
 
         if ($data['id']){
@@ -254,13 +255,15 @@ class ExpensesController extends Controller {
         ];
 
         $response = $this->soapWrapper->call('Emr.expenses', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
-    }
 
+        $expense = Expense::where('reportingyear', 2019)->first();
+        $expense->submitted_at    = Carbon::now();
+        $expense->save();
+        
 
-    public function sample(){
-        echo Config::get('defaults.default.is_local');
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+
+        // exit;
     }
   	
 }

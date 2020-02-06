@@ -11,6 +11,9 @@
             var vm = this;
             var data = {};
 
+            vm.is_loader_disabled = false;
+            vm.is_submit_disabled = false;
+
             ExpensesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
@@ -21,14 +24,32 @@
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
+                vm.is_loader_disabled = true;
+                vm.is_submit_disabled = true;
+
                 ExpensesSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                    alert('Successfully submitted!')
+
+                    ExpensesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        if(response.data.status == 200)
+                        {
+                            vm.expense = response.data.data[0];
+                            vm.expense_count = response.data.count;
+                            console.log(vm.expense)
+                        }
+                    }, function (){ alert('Bad Request!!!') })
+                    
+                    vm.is_loader_disabled = false;
+                    vm.is_submit_disabled = false;
+
                 }, function (){ alert('Bad Request!!!') })
             }
 
             vm.routeTo = function(route){
                 $window.location.href = route;
             }; 
+
+         
         }
 
         ExpensesCreateCtrl.$inject = ['ExpensesSrvcs', '$stateParams', '$uibModal', '$window'];
@@ -134,6 +155,8 @@
                     console.log(response.data);
                 });
             };
+
+            
 
             vm.routeTo = function(route){
                 $window.location.href = route;

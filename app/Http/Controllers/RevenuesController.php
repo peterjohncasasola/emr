@@ -42,7 +42,8 @@ class RevenuesController extends Controller {
                 'revenue.amountfrompatient',
                 'revenue.amountfromreimbursement',
                 'revenue.amountfromothersources',
-                'revenue.grandtotal'
+                'revenue.grandtotal',
+                'revenue.submitted_at'
             );
 
         if ($data['id']){
@@ -196,8 +197,14 @@ class RevenuesController extends Controller {
         ];
 
         $response = $this->soapWrapper->call('Emr.revenues', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
+
+        $revenue = Revenue::where('reportingyear', 2019)->first(); 
+        $revenue->submitted_at    = Carbon::now();
+        $revenue->save();
+
+
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+        // exit;
     }
   	
 }

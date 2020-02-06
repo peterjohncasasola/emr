@@ -10,6 +10,9 @@
     </div>
 
     <div class="section-body">
+
+    <div id="cover-spin" ng-if="generalInfoCtrl.is_loader_disabled"></div>
+
     <!-- <h2 class="section-title">Cards</h2>
     <p class="section-lead">
         Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
@@ -22,7 +25,8 @@
             <h4>Classification</h4>
             <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputclassification" ui-sref="general-info-classification({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="generalInfoCtrl.sendDataClassificationDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <!-- <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="generalInfoCtrl.sendDataClassificationDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a> -->
+                <button class="btn btn-icon icon-left btn-info" ng-disabled="generalInfoCtrl.is_submit_disabled_classification" ng-click="generalInfoCtrl.sendDataClassificationDoh()"><i class="fas fa-paper-plane"></i> Submit Data </button>
             </div>
             </div>
             <div class="card-body">
@@ -76,7 +80,7 @@
             </div>
             </div>
             <div class="card-footer bg-whitesmoke">
-            Submission Status: <span class="badge badge-success">Success: Jan 20, 2020 07:07</span>
+            Submission Status: <span class="badge badge-success">Success: <%generalInfoCtrl.classification.submitted_at%></span>
             </div>
         </div>
         </div>
@@ -87,7 +91,7 @@
             <h4>Bed Capacity/Occupancy</h4>
             <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputoccupancy" ui-sref="general-info-bed-capacity({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="generalInfoCtrl.sendDataBedCapacityDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <a href="#" class="btn btn-icon icon-left btn-info" ng-disabled="generalInfoCtrl.is_submit_disabled_bed_capacity" ng-click="generalInfoCtrl.sendDataBedCapacityDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
             </div>
             </div>
             <div class="card-body">
@@ -109,7 +113,7 @@
             </div>
             </div>
             <div class="card-footer bg-whitesmoke">
-            Submission Status: <span class="badge badge-success">Success: Jan 20, 2020 07:07</span>
+            Submission Status: <span class="badge badge-success"><%generalInfoCtrl.general_info.submitted_at%></span>
             </div>
         </div>
         </div>
@@ -120,7 +124,7 @@
             <h4>Quality Management</h4>
             <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputquality" ui-sref="general-info-quality-management({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="generalInfoCtrl.sendDataQualityManagementDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <a href="#" class="btn btn-icon icon-left btn-info" ng-disabled="generalInfoCtrl.is_submit_disabled_quality_management" ng-click="generalInfoCtrl.sendDataQualityManagementDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
             </div>
             </div>
             <div class="card-body">

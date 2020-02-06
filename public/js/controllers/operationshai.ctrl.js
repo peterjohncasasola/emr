@@ -11,6 +11,9 @@
             var vm = this;
             var data = {};
 
+            vm.is_loader_disabled = false;
+            vm.is_submit_disabled = false;
+
             OperationsHAISrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
                 if(response.data.status == 200)
                 {
@@ -21,8 +24,24 @@
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
+                vm.is_loader_disabled = true;
+                vm.is_submit_disabled = true;
+
                 OperationsHAISrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                    alert('Successfully submitted!')
+
+                    OperationsHAISrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        if(response.data.status == 200)
+                        {
+                            vm.hai = response.data.data[0];
+                            vm.hai_count = response.data.count;
+                            console.log(vm.hai)
+                        }
+                    }, function (){ alert('Bad Request!!!') })
+                    
+                    vm.is_loader_disabled = false;
+                    vm.is_submit_disabled = false;
+
                 }, function (){ alert('Bad Request!!!') })
             }
 

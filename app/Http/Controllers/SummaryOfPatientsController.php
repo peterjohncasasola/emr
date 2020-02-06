@@ -42,15 +42,16 @@ class SummaryOfPatientsController extends Controller {
                 'summaryOfPatients.totalinpatienttransto',
                 'summaryOfPatients.totalinpatienttransfrom',
                 'summaryOfPatients.totalpatientsremaining',
-                'summaryOfPatients.reportingyear'
+                'summaryOfPatients.reportingyear',
+                'summaryOfPatients.submitted_at'
             );
 
         if ($data['id']){
-            $summary_of_patients = $summary_of_patients->where('dischargesNumberDeliveries.id', $data['id']);
+            $summary_of_patients = $summary_of_patients->where('summaryOfPatients.id', $data['id']);
         }
 
         if ($data['reportingyear']){
-            $summary_of_patients = $summary_of_patients->where('dischargesNumberDeliveries.reportingyear', $data['reportingyear']);
+            $summary_of_patients = $summary_of_patients->where('summaryOfPatients.reportingyear', $data['reportingyear']);
         }
 
         $summary_of_patients = $summary_of_patients->get();
@@ -186,8 +187,13 @@ class SummaryOfPatientsController extends Controller {
         ];
 
         $response = $this->soapWrapper->call('Emr.hospOptSummaryOfPatients', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
+
+        $summary_of_patients = SummaryOfPatient::where('reportingyear', 2019)->first(); 
+        $summary_of_patients->submitted_at    = Carbon::now();
+        $summary_of_patients->save();
+        
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+        // exit;
     }
   	
 }

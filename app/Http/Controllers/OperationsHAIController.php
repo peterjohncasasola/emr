@@ -49,7 +49,8 @@ class OperationsHAIController extends Controller {
                 'operationsHAI.numssi',
                 'operationsHAI.totalproceduresdone',
                 'operationsHAI.resultssi',
-                'operationsHAI.reportingyear'
+                'operationsHAI.reportingyear',
+                'operationsHAI.submitted_at'
             );
 
         if ($data['id']){
@@ -223,8 +224,13 @@ class OperationsHAIController extends Controller {
         ];
 
         $response = $this->soapWrapper->call('Emr.hospitalOperationsHAI', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
+
+        $operations_HAI = OperationsHAI::where('reportingyear', 2019)->first();
+        $operations_HAI->submitted_at    = Carbon::now();
+        $operations_HAI->save();
+
+        // return response($response, 200)->header('Content-Type', 'application/xml');
+        // exit;
  
     }
   	

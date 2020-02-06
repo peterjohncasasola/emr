@@ -9,6 +9,8 @@
     </div>
 
     <div class="section-body">
+
+    <div id="cover-spin" ng-if="revenuesCtrl.is_loader_disabled"></div>
     <!-- <h2 class="section-title">Cards</h2>
     <p class="section-lead">
         Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
@@ -21,7 +23,8 @@
             <h4> </h4>
             <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputhospital" ui-sref="revenues-details({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="revenuesCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <button class="btn btn-icon icon-left btn-info" ng-disabled="revenuesCtrl.is_submit_disabled" ng-click="revenuesCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="revenuesCtrl.is_loader_disabled"></div></button>
+                <!-- <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="revenuesCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a> -->
             </div>
             </div>
             <div class="card-body">
@@ -77,7 +80,7 @@
             </div>
             </div>
             <div class="card-footer bg-whitesmoke">
-            Submission Status: <span class="badge badge-success">Success: Jan 20, 2020 07:07</span>
+            Submission Status: <span class="badge badge-success">Success: <%revenuesCtrl.revenue.submitted_at%></span>
             </div>
         </div>
         </div>
