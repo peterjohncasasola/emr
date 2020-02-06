@@ -45,7 +45,7 @@ class SurgicalOperationsMajorController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $operations_major = $operations_major->where('operationsMajorOpt.reportingyear', $data['reportingyear']);
         }
 
         $operations_major = $operations_major->get();

@@ -46,7 +46,7 @@ class DischargesERController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $discharges_ER = $discharges_ER->where('dischargesER.reportingyear', $data['reportingyear']);
         }
 
         $discharges_ER = $discharges_ER->get();

@@ -41,11 +41,11 @@ class BedCapacitiesController extends Controller {
             );
 
         if ($data['id']){
-            $bed_capacity = $bed_capacity->where('expense.id', $data['id']);
+            $bed_capacity = $bed_capacity->where('bedCapacity.id', $data['id']);
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $bed_capacity = $bed_capacity->where('bedCapacity.reportingyear', $data['reportingyear']);
         }
 
         $bed_capacity = $bed_capacity->get();

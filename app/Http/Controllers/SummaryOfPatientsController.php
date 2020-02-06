@@ -50,7 +50,7 @@ class SummaryOfPatientsController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $summary_of_patients = $summary_of_patients->where('dischargesNumberDeliveries.reportingyear', $data['reportingyear']);
         }
 
         $summary_of_patients = $summary_of_patients->get();

@@ -50,7 +50,7 @@ class RevenuesController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $revenues = $revenues->where('revenue.reportingyear', $data['reportingyear']);
         }
 
         $revenues = $revenues->get();

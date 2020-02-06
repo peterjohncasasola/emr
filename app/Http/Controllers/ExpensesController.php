@@ -56,7 +56,7 @@ class ExpensesController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $expenses = $expenses->where('expense.reportingyear', $data['reportingyear']);
         }
 
         $expenses = $expenses->get();

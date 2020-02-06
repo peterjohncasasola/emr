@@ -34,6 +34,10 @@
     @include('hospital_operations.discharges.discharges_specialty')
 </script>
 
+<script type="text/ng-template" id="discharges_testing.view">
+    @include('hospital_operations.discharges.discharges_testing')
+</script>
+
 <script type="text/ng-template" id="discharges_number_deliveries.view">
     @include('hospital_operations.discharges.discharges_number_deliveries')
 </script>

@@ -57,7 +57,7 @@ class OperationsHAIController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $operations_HAI = $operations_HAI->where('operationsHAI.reportingyear', $data['reportingyear']);
         }
 
         $operations_HAI = $operations_HAI->get();

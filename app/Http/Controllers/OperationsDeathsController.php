@@ -56,7 +56,7 @@ class OperationsDeathsController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $perations_deaths = $perations_deaths->where('operationsDeaths.reportingyear', $data['reportingyear']);
         }
 
         $perations_deaths = $perations_deaths->get();

@@ -46,7 +46,7 @@ class DischargesNumberDeliveriesController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $discharges_number_delivery = $discharges_number_delivery->where('dischargesNumberDeliveries.reportingyear', $data['reportingyear']);
         }
 
         $discharges_number_delivery = $discharges_number_delivery->get();

@@ -51,7 +51,7 @@ class DischargesOPVController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $discharges_OPV = $discharges_OPV->where('dischargesOPV.reportingyear', $data['reportingyear']);
         }
 
         $discharges_OPV = $discharges_OPV->get();

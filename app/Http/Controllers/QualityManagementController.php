@@ -48,7 +48,7 @@ class QualityManagementController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $qualityManagement = $qualityManagement->where('qualityManagement.reportingyear', $data['reportingyear']);
         }
 
         $qualityManagement = $qualityManagement->get();

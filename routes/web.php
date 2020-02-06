@@ -120,6 +120,17 @@ Route::post('/api/v1/discharges-number-delivery/store','DischargesNumberDeliveri
 Route::post('/api/v1/discharges-number-delivery/update','DischargesNumberDeliveriesController@update');
 Route::get('/api/v1/discharges-number-delivery/send_data_doh','DischargesNumberDeliveriesController@send_data_doh');//SEND TO DOH
 
+
+// -- HOSPITAL OPERATIONS -> DISCHARGES -> TESTING //
+Route::get('/hospital-operations/discharges-testing','DischargesTestingController@index');
+Route::get('/hospital-operations/discharges-testing/{reporting_year}','DischargesTestingController@index');
+Route::get('/hospital-operations/discharges-testing/{reporting_year}/details','DischargesTestingController@index');
+
+Route::get('/api/v1/discharges-testing','DischargesTestingController@show');
+Route::post('/api/v1/discharges-testing/store','DischargesTestingController@store');
+Route::post('/api/v1/discharges-testing/update','DischargesTestingController@update');
+Route::get('/api/v1/discharges-testing/send_data_doh','DischargesTestingController@send_data_doh');//SEND TO DOH
+
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> OPV //
 Route::get('/hospital-operations/discharges-opv','DischargesOPVController@index');
 Route::get('/hospital-operations/discharges-opv/{reporting_year}','DischargesOPVController@index');

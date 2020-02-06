@@ -145,9 +145,7 @@
                 templateUrl: 'discharges_specialty.view'
             })
 
-
-
-            // HOSPITAL OPERATIONS -> DISCHARGES -> Deliveries
+            // HOSPITAL OPERATIONS -> DISCHARGES -> DELIVERIES
             .state('hospital-operations-discharges-number-deliveries', {
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year',
                 controller: 'DischargesNumberDeliveriesCtrl as dischargesNumberDeliveriesCtrl',
@@ -158,6 +156,19 @@
                 url: '/hospital-operations/discharges-number-deliveries/:reporting_year/details',
                 controller: 'DischargesNumberDeliveriesCreateCtrl as dischargesNumberDeliveriesCtrl',
                 templateUrl: 'discharges_number_deliveries.view'
+            })
+
+            // HOSPITAL OPERATIONS -> DISCHARGES -> TESTING
+            .state('hospital-operations-discharges-testing', {
+                url: '/hospital-operations/discharges-testing/:reporting_year',
+                controller: 'DischargesTestingCtrl as dischargesTestingCtrl',
+                templateUrl: 'discharges_testing.view'
+            })
+
+            .state('hospital-operations-discharges-testing-details', {
+                url: '/hospital-operations/discharges-testing/:reporting_year/details',
+                controller: 'DischargesTestingCreateCtrl as dischargesTestingCtrl',
+                templateUrl: 'discharges_testing.view'
             })
 
             // HOSPITAL OPERATIONS -> DISCHARGES -> OPV

@@ -45,7 +45,7 @@ class SurgicalOperationsMinorController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $classification = $classification->where('classification.reportingyear', $data['reportingyear']);
+            $operations_minor = $operations_minor->where('operationsMInorOpt.reportingyear', $data['reportingyear']);
         }
 
         $operations_minor = $operations_minor->get();
