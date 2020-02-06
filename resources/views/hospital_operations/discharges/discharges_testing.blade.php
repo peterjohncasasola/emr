@@ -225,7 +225,7 @@
 
         <div class="modal-footer bg-whitesmoke br">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesTestingCtrl.close()" ui-sref="hospital-operations-discharges-number-deliveries({reporting_year:2019})">Close</button>
-            <button type="button" class="btn btn-primary"  ng-if="!dischargesTestingCtrl.collection_copy" ng-click="dischargesTestingCtrl.createDischargeTestingBtn(dischargesTestingCtrl.collection)">Save changes</button>
+            <button type="button" class="btn btn-primary" ng-if="!dischargesTestingCtrl.collection_copy" ng-click="dischargesTestingCtrl.createDischargeTestingBtn(dischargesTestingCtrl.collection)">Save changes</button>
             <button type="button" class="btn btn-primary" ng-if="dischargesTestingCtrl.collection_copy" ng-click="dischargesTestingCtrl.updateDischargeTestingBtn(dischargesTestingCtrl.collection)">Update changes</button>
         </div>
     </div>

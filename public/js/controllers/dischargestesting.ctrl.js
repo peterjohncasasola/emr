@@ -45,6 +45,12 @@
                         vm.data_count = response.data.count;
                         console.log(vm.data)
 
+                        if(vm.data.length==0){
+                            vm.data = null;
+                        }
+
+                        console.log(vm.data)
+
                         $uibModal.open({
                             templateUrl: 'add-discharges-testing-modal',
                             controller: 'DischargesTestingActionModalInsatanceCtrl',
@@ -106,7 +112,6 @@
 
                 data['reportingyear'] = $stateParams.reporting_year;
                 console.log(data);
-
 
                 DischargesTestingSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {

@@ -85,7 +85,7 @@ class DischargesTestingController extends Controller {
             array('code'=>'numberofbloodunitstransfused', 'id'=>19, 'name'=>'Others', 'testinggroup'=>3)
         );
 
-        $final_data = [];
+        $final_data = array();
     
         foreach($discharges_testing as $discharge_testing){
             foreach($default_data as $default_datum){

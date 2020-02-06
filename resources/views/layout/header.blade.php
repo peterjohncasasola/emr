@@ -74,7 +74,7 @@
             <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reporting_year:2019})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-opd({reporting_year:2019})"><a href="#l" class="nav-link">Ten Leading OPD Consultations</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-er({reporting_year:2019})"><a href="#" class="nav-link">Ten Leading ER Consultations</a></li>
-            <li class="nav-item" ><a href="#" class="nav-link">Testing and Other Services</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-testing({reporting_year:2019})"><a href="#" class="nav-link">Testing and Other Services</a></li>
             <li class="nav-item" ui-sref="hospital-operations-discharges-ev({reporting_year:2019})"><a href="#" class="nav-link">Emergency Visits</a></li>
             </ul>
         </li>
