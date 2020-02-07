@@ -233,6 +233,21 @@ Route::post('/api/v1/surgical-operation-minor/remove','SurgicalOperationsMinorCo
 Route::get('/api/v1/surgical-operation-minor/send_data_doh','SurgicalOperationsMinorController@send_data_doh');//SEND TO DOH
 
 
+// --STAFFING PATTERN //
+Route::get('/staffing-pattern','StaffingPatternController@index');
+Route::get('/staffing-pattern/{reporting_year}','StaffingPatternController@index');
+Route::get('/staffing-pattern/{reporting_year}/{index}','StaffingPatternController@index');
+Route::get('/staffing-pattern-medical/{reporting_year}/{index}','StaffingPatternController@index');
+Route::get('/staffing-pattern-allied-medical/{reporting_year}/{index}','StaffingPatternController@index');
+Route::get('/staffing-pattern-non-medical/{reporting_year}/{index}','StaffingPatternController@index');
+
+Route::get('/api/v1/staffing-pattern','StaffingPatternController@show');
+Route::post('/api/v1/staffing-pattern/store','StaffingPatternController@store');
+Route::post('/api/v1/staffing-pattern/update','StaffingPatternController@update');
+Route::post('/api/v1/staffing-pattern/remove','StaffingPatternController@remove');
+Route::get('/api/v1/staffing-pattern/send_data_doh','StaffingPatternController@send_data_doh');//SEND TO DOH
+
+
 
 
 // LIBRARIES //

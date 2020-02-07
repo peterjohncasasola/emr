@@ -94,7 +94,7 @@
         </ul>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
+        <a href="#" class="nav-link" ui-sref="staffing-pattern({reporting_year:2019})"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
     </li>
     <li class="nav-item active" ui-sref="expenses({reporting_year:2019})">
         <a href="#" class="nav-link"><i class="far fa-check-square"></i><span>Expenses</span></a>

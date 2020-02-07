@@ -6,3 +6,18 @@
  */
 
 /*# sourceMappingURL=custom.css.map */
+
+/*Global Modal customized*/
+.modal-lg {max-width: 1300px !important;}
+.row-gray {background: #F0F0F0;}
+
+/*Custom CSS for longtable*/
+.table-inputage, .long-table td {text-align: center;}
+input.input-age  {height: 35px !important;}
+.m {background: #f1f1f6;}
+.f {background: #f6e5f5;}
+
+/*Custom CSS for Staffing Pattern*/
+.table-staffing thead {font-size: 13px;text-align: center;vertical-align: middle;}
+.table-staffing tbody {text-align: center;}
+.table-staffing .row-left {text-align: left;vertical-align: middle;}

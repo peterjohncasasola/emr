@@ -13,6 +13,8 @@
     </div>
 
     <div class="section-body">
+    <div id="cover-spin" ng-if="expensesCtrl.is_loader_disabled"></div>
+    
     <!-- <h2 class="section-title">Cards</h2>
     <p class="section-lead">
         Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
@@ -25,7 +27,7 @@
             <h4></h4>
             <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputexpenses" ui-sref="expenses-details({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
-                <button class="btn btn-icon icon-left btn-info" ng-disabled="expensesCtrl.is_submit_disabled" ng-click="expensesCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="expensesCtrl.is_loader_disabled"></div></button>
+                <button class="btn btn-icon icon-left btn-info" ng-disabled="expensesCtrl.is_submit_disabled" ng-click="expensesCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data </button>
             </div>
             </div>
             <div class="card-body">

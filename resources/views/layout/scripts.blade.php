@@ -79,6 +79,9 @@
 
 <script src="{{URL::to('js/controllers/operationshai.ctrl.js')}}"></script>
 
+<script src="{{URL::to('js/controllers/staffingpattern.ctrl.js')}}"></script>
+
+
 <!-- Libraries -->
 <script src="{{URL::to('js/controllers/surgerieslib.ctrl.js')}}"></script>
 
@@ -106,6 +109,7 @@
 <script src="{{URL::to('js/services/surgicaloperationsminor.srvcs.js')}}"></script>
 
 <script src="{{URL::to('js/services/operationshai.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/staffingpattern.srvcs.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{URL::to('js/services/surgerieslib.srvcs.js')}}"></script>
@@ -198,6 +202,7 @@
 <script src="{{asset('public/js/controllers/surgicaloperationsminor.ctrl.js')}}"></script>
 
 <script src="{{asset('public/js/controllers/operationshai.ctrl.js')}}"></script>
+<script src="{{asset('public/js/controllers/staffingpattern.ctrl.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{asset('public/js/controllers/surgerieslib.ctrl.js')}}"></script>
@@ -226,6 +231,7 @@
 <script src="{{asset('public/js/services/surgicaloperationsminor.srvcs.js')}}"></script>
 
 <script src="{{asset('public/js/services/operationshai.srvcs.js')}}"></script>
+<script src="{{asset('public/js/services/staffingpattern.srvcs.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{asset('public/js/services/surgerieslib.srvcs.js')}}"></script>

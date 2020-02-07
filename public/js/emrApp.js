@@ -288,6 +288,31 @@
                 templateUrl: 'surgical_minor.view'
             })
 
+            // HOSPITAL OPERATIONS -> STAFFING PATTERN
+            .state('staffing-pattern', {
+                url: '/staffing-pattern/:reporting_year',
+                controller: 'StaffingPatternCtrl as staffingPatternCtrl',
+                templateUrl: 'staffing_pattern.view'
+            })
+
+            .state('staffing-pattern-medical-details', {
+                url: '/staffing-pattern-medical/:reporting_year/details',
+                controller: 'StaffingPatternMedicalCreateCtrl as staffingPatternCtrl',
+                templateUrl: 'staffing_pattern.view'
+            })
+
+            .state('staffing-pattern-allied-medical-details', {
+                url: '/staffing-pattern-allied-medical/:reporting_year/details',
+                controller: 'StaffingPatternAlliedMedicalCreateCtrl as staffingPatternCtrl',
+                templateUrl: 'staffing_pattern.view'
+            })
+
+            .state('staffing-pattern-non-medical-details', {
+                url: '/staffing-pattern-non-medical/:reporting_year/details',
+                controller: 'StaffingPatternNonMedicalCreateCtrl as staffingPatternCtrl',
+                templateUrl: 'staffing_pattern.view'
+            })
+
             .state('facility_profile', {
                 url: '/facility-profile/:reporting_year',
                 controller: 'ExpensesCtrl as expensesCtrl',

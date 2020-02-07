@@ -80,6 +80,10 @@
     @include('hospital_operations.deaths.operations_mortality_deaths')
 </script>
 
+<!-- Staffing Pattern -->
+<script type="text/ng-template" id="staffing_pattern.view">
+    @include('staffing_pattern.staffing_pattern')
+</script>
 
 @endsection
 @section('additionalScripts')

@@ -120,7 +120,6 @@
     </div>
     </div>
 </section>
-
 </div>
 
 <script type="text/ng-template" id="add-discharges-testing-modal">
