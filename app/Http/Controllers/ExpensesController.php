@@ -201,69 +201,82 @@ class ExpensesController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $revenue = DB::table('expenses as expense')
-            ->select(
-                'expense.id',
-                'expense.hfhudcode',
-                'expense.salarieswages',
-                'expense.employeebenefits',
-                'expense.allowances',
-                'expense.totalps',
-                'expense.totalamountmedicine',
-                'expense.totalamountmedicalsupplies',
-                'expense.totalamountutilities',
-                'expense.totalamountnonmedicalservice',
-                'expense.totalmooe',
-                'expense.amountinfrastructure',
-                'expense.amountequipment',
-                'expense.totalco',
-                'expense.grandtotal',
-                'expense.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $expense = DB::table('expenses as expense')
+                ->select(
+                    'expense.id',
+                    'expense.hfhudcode',
+                    'expense.salarieswages',
+                    'expense.employeebenefits',
+                    'expense.allowances',
+                    'expense.totalps',
+                    'expense.totalamountmedicine',
+                    'expense.totalamountmedicalsupplies',
+                    'expense.totalamountutilities',
+                    'expense.totalamountnonmedicalservice',
+                    'expense.totalmooe',
+                    'expense.amountinfrastructure',
+                    'expense.amountequipment',
+                    'expense.totalco',
+                    'expense.grandtotal',
+                    'expense.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [
+                "hfhudcode" => $expense->hfhudcode, 
+                "salarieswages" => $expense->salarieswages, 
+                "employeebenefits" => $expense->employeebenefits, 
+                "allowances" => $expense->allowances, 
+                "totalps" => $expense->totalps, 
+                "totalamountmedicine" => $expense->totalamountmedicine, 
+                "totalamountmedicalsupplies" => $expense->totalamountmedicalsupplies, 
+                "totalamountutilities" => $expense->totalamountutilities, 
+                "totalamountnonmedicalservice" => $expense->totalamountnonmedicalservice, 
+                "totalmooe" => $expense->totalmooe, 
+                "amountinfrastructure" => $expense->amountinfrastructure, 
+                "amountequipment" => $expense->amountequipment, 
+                "totalco" => $expense->totalco, 
+                "grandtotal" => $expense->grandtotal, 
+                "reportingyear" => $expense->reportingyear, 
+            ];
+
+            $response = $this->soapWrapper->call('Emr.expenses', $data);
+
+            $expense = Expense::where('reportingyear', $fields['reportingyear'])->first();
+            $expense->submitted_at    = Carbon::now();
+            $expense->save();
+        
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
 
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "salarieswages" => $revenue->salarieswages, 
-            "employeebenefits" => $revenue->employeebenefits, 
-            "allowances" => $revenue->allowances, 
-            "totalps" => $revenue->totalps, 
-            "totalamountmedicine" => $revenue->totalamountmedicine, 
-            "totalamountmedicalsupplies" => $revenue->totalamountmedicalsupplies, 
-            "totalamountutilities" => $revenue->totalamountutilities, 
-            "totalamountnonmedicalservice" => $revenue->totalamountnonmedicalservice, 
-            "totalmooe" => $revenue->totalmooe, 
-            "amountinfrastructure" => $revenue->amountinfrastructure, 
-            "amountequipment" => $revenue->amountequipment, 
-            "totalco" => $revenue->totalco, 
-            "grandtotal" => $revenue->grandtotal, 
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.expenses', $data);
-
-        $expense = Expense::where('reportingyear', 2019)->first();
-        $expense->submitted_at    = Carbon::now();
-        $expense->save();
-        
-
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        // exit;
     }
   	
 }

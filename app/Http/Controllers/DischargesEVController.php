@@ -72,7 +72,7 @@ class DischargesEVController extends Controller {
                 $discharges_EV->emergencyvisitsadult                = $fields['emergencyvisitsadult'];
                 $discharges_EV->emergencyvisitspediatric            = $fields['emergencyvisitspediatric'];
                 $discharges_EV->evfromfacilitytoanother             = $fields['evfromfacilitytoanother'];
-                $discharges_EV->reportingyear                       = 2019;
+                $discharges_EV->reportingyear                       = $fields['reportingyear'];
                 $discharges_EV->save();
 
                 return response()->json([
@@ -129,44 +129,60 @@ class DischargesEVController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $discharges_EV = DB::table('hospoptdischargesev as dischargesEV')
-            ->select( 
-                'dischargesEV.id',
-                'dischargesEV.hfhudcode',
-                'dischargesEV.emergencyvisits',
-                'dischargesEV.emergencyvisitsadult',
-                'dischargesEV.emergencyvisitspediatric',
-                'dischargesEV.evfromfacilitytoanother',
-                'dischargesEV.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $discharges_EV = DB::table('hospoptdischargesev as dischargesEV')
+                ->select( 
+                    'dischargesEV.id',
+                    'dischargesEV.hfhudcode',
+                    'dischargesEV.emergencyvisits',
+                    'dischargesEV.emergencyvisitsadult',
+                    'dischargesEV.emergencyvisitspediatric',
+                    'dischargesEV.evfromfacilitytoanother',
+                    'dischargesEV.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [
+                "hfhudcode" => $discharges_EV->hfhudcode, 
+                "emergencyvisits" => $discharges_EV->emergencyvisits, 
+                "emergencyvisitsadult" => $discharges_EV->emergencyvisitsadult,
+                "emergencyvisitspediatric" => $discharges_EV->emergencyvisitspediatric,
+                "evfromfacilitytoanother" => $discharges_EV->evfromfacilitytoanother,
+                "reportingyear" => $discharges_EV->reportingyear
+            ];
+
+            $response = $this->soapWrapper->call('Emr.hospOptDischargesEV', $data);
+            
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "emergencyvisits" => $discharges_EV->emergencyvisits, 
-            "emergencyvisitsadult" => $discharges_EV->emergencyvisitsadult,
-            "emergencyvisitspediatric" => $discharges_EV->emergencyvisitspediatric,
-            "evfromfacilitytoanother" => $discharges_EV->evfromfacilitytoanother,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.hospOptDischargesEV', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
  
     }
   	

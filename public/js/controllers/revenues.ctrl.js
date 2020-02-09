@@ -6,15 +6,30 @@
         .controller('RevenuesCreateCtrl', RevenuesCreateCtrl)
         .controller('RevenueActionModalInsatanceCtrl', RevenueActionModalInsatanceCtrl)
 
-        RevenuesCtrl.$inject = ['RevenuesSrvcs', '$stateParams', '$uibModal', '$window'];
-        function RevenuesCtrl(RevenuesSrvcs, $stateParams, $uibModal, $window){
+        RevenuesCtrl.$inject = ['RevenuesSrvcs', '$stateParams', '$state', '$uibModal', '$window'];
+        function RevenuesCtrl(RevenuesSrvcs, $stateParams, $state, $uibModal, $window){
             var vm = this;
             var data = {};
+
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('revenues', {reportingyear:reportingyear});
+            }
 
             vm.is_loader_disabled = false;
             vm.is_submit_disabled = false;
 
-            RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            RevenuesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.revenue = response.data.data[0];
@@ -27,10 +42,12 @@
                 vm.is_loader_disabled = true;
                 vm.is_submit_disabled = true;
 
-                RevenuesSrvcs.send_data_doh().then (function (response) {
+                data['reportingyear'] = $stateParams.reportingyear;
+
+                RevenuesSrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
 
-                    RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                    RevenuesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
                         {
                             vm.revenue = response.data.data[0];
@@ -55,13 +72,13 @@
             var vm = this;
             var data = {};
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
                 vm.expense_data = {
-                    reporting_year:$stateParams.reporting_year
+                    reportingyear:$stateParams.reportingyear
                 }
 
-                RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                RevenuesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -99,13 +116,13 @@
             vm.collection_copy = collection.data;
 
             vm.createRevenueBtn = function(data){
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 RevenuesSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
 
-                        RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        RevenuesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.expense = response.data.data[0];
@@ -114,7 +131,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('revenues', {reporting_year:$stateParams.reporting_year});
+                        $state.go('revenues', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -126,7 +143,7 @@
 
             vm.updateRevenueBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
 
@@ -134,7 +151,7 @@
                     if (response.data.status == 200) {
                         alert(response.data.message);
 
-                        RevenuesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        RevenuesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.expense = response.data.data[0];
@@ -143,7 +160,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('revenues', {reporting_year:$stateParams.reporting_year});
+                        $state.go('revenues', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

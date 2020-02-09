@@ -10,9 +10,9 @@
             var vm = this;
             var data = {};
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                QualityManagementSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                QualityManagementSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -47,6 +47,8 @@
         function QualityManagementActionModalInsatanceCtrl (collection, QualityManagementSrvcs, $state, $stateParams, $uibModalInstance, $window) {
 
             var vm = this;
+
+            vm.reportingyear = $stateParams.reportingyear; 
             
             vm.qualitymgmttypes = [
                 {id:1, name:'ISO Certified'},
@@ -64,12 +66,12 @@
             vm.collection_copy = collection.data;
 
             vm.createQualityManagementBtn = function(data){
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 QualityManagementSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('general-info', {reporting_year:$stateParams.reporting_year});
+                        $state.go('general-info', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -81,13 +83,13 @@
 
             vm.updateQualityManagementBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 QualityManagementSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('general-info', {reporting_year:$stateParams.reporting_year});
+                        $state.go('general-info', {reportingyear:$stateParams.reportingyear});
                         vm.close();
                     }
                     else {

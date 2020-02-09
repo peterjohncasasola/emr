@@ -53,6 +53,7 @@
 <script src="{{URL::to('js/emrApp.js')}}"></script>
 
 <!-- Controllers -->
+
 <script src="{{URL::to('js/controllers/expenses.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/revenues.ctrl.js')}}"></script>
 

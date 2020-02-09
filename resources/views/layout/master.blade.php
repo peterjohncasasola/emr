@@ -75,10 +75,9 @@
 
 <body class="layout-3">
   <div id="app">
-    <div class="main-wrapper container">
+    <div class="main-wrapper container" ng-controller="MainCtrl as mc" ng-cloak>
       <div class="navbar-bg"></div>
       <!-- Header -->
-      @include('layout.header')
       <!-- Header -->
       
       <!-- Content Wrapper. Contains page content -->

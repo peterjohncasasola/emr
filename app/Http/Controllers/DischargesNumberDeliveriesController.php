@@ -72,7 +72,7 @@ class DischargesNumberDeliveriesController extends Controller {
                 $discharges_number_delivery->totallbvdelivery              = $fields['totallbvdelivery'];
                 $discharges_number_delivery->totallbcdelivery              = $fields['totallbcdelivery'];
                 $discharges_number_delivery->totalotherdelivery            = $fields['totalotherdelivery'];
-                $discharges_number_delivery->reportingyear                 = 2019;
+                $discharges_number_delivery->reportingyear                 = $fields['reportingyear'];
                 $discharges_number_delivery->save();
 
                 return response()->json([
@@ -130,44 +130,61 @@ class DischargesNumberDeliveriesController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $discharges_number_delivery = DB::table('hospoptdischargesnumberdeliveries as dischargesNumberDeliveries')
-            ->select( 
-                'dischargesNumberDeliveries.id',
-                'dischargesNumberDeliveries.hfhudcode',
-                'dischargesNumberDeliveries.totalifdelivery',
-                'dischargesNumberDeliveries.totallbvdelivery',
-                'dischargesNumberDeliveries.totallbcdelivery',
-                'dischargesNumberDeliveries.totalotherdelivery',
-                'dischargesNumberDeliveries.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+    
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $discharges_number_delivery = DB::table('hospoptdischargesnumberdeliveries as dischargesNumberDeliveries')
+                ->select( 
+                    'dischargesNumberDeliveries.id',
+                    'dischargesNumberDeliveries.hfhudcode',
+                    'dischargesNumberDeliveries.totalifdelivery',
+                    'dischargesNumberDeliveries.totallbvdelivery',
+                    'dischargesNumberDeliveries.totallbcdelivery',
+                    'dischargesNumberDeliveries.totalotherdelivery',
+                    'dischargesNumberDeliveries.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            
+
+            $data = [
+                "hfhudcode" => "NEHEHRSV201900093", 
+                "totalifdelivery" => $discharges_number_delivery->totalifdelivery, 
+                "totallbvdelivery" => $discharges_number_delivery->totallbvdelivery, 
+                "totallbcdelivery" => $discharges_number_delivery->totallbcdelivery,
+                "totalotherdelivery" => $discharges_number_delivery->totalotherdelivery,
+                "reportingyear" => $discharges_number_delivery->reportingyear
+            ];
+
+            $response = $this->soapWrapper->call('Emr.hospOptDischargesNumberDeliveries', $data);
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "totalifdelivery" => $discharges_number_delivery->totalifdelivery, 
-            "totallbvdelivery" => $discharges_number_delivery->totallbvdelivery, 
-            "totallbcdelivery" => $discharges_number_delivery->totallbcdelivery,
-            "totalotherdelivery" => $discharges_number_delivery->totalotherdelivery,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.hospOptDischargesNumberDeliveries', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
     }
   	
 }

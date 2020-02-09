@@ -6,12 +6,27 @@
         .controller('DischargesNumberDeliveriesCreateCtrl', DischargesNumberDeliveriesCreateCtrl)
         .controller('DischargesNumberDeliveriesActionModalInsatanceCtrl', DischargesNumberDeliveriesActionModalInsatanceCtrl)
 
-        DischargesNumberDeliveriesCtrl.$inject = ['DischargesNumberDeliveriesSrvcs', '$stateParams', '$uibModal', '$window'];
-        function DischargesNumberDeliveriesCtrl(DischargesNumberDeliveriesSrvcs, $stateParams, $uibModal, $window){
+        DischargesNumberDeliveriesCtrl.$inject = ['DischargesNumberDeliveriesSrvcs', '$stateParams', '$state', '$uibModal', '$window'];
+        function DischargesNumberDeliveriesCtrl(DischargesNumberDeliveriesSrvcs, $stateParams, $state, $uibModal, $window){
             var vm = this;
             var data = {};
 
-            DischargesNumberDeliveriesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-discharges-number-deliveries', {reportingyear:reportingyear});
+            }
+
+            DischargesNumberDeliveriesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.number_delivery = response.data.data[0];
@@ -21,8 +36,10 @@
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
-                DischargesNumberDeliveriesSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+
+                data['reportingyear'] = $stateParams.reportingyear;
+                DischargesNumberDeliveriesSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -36,9 +53,9 @@
             var vm = this;
             var data = {}; 
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                DischargesNumberDeliveriesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                DischargesNumberDeliveriesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -75,15 +92,16 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+            vm.reportingyear = $stateParams.reportingyear; 
 
             vm.createDischargeNumberDeliveryBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesNumberDeliveriesSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-discharges-number-deliveries', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-discharges-number-deliveries', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -95,13 +113,13 @@
 
             vm.updateDischargeNumberDeliveryBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 DischargesNumberDeliveriesSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-discharges-number-deliveries', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-discharges-number-deliveries', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

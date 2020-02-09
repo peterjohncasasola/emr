@@ -10,9 +10,9 @@
             var vm = this;
             var data = {};
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                ClassificationsSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                ClassificationsSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -48,6 +48,7 @@
 
             var vm = this;
             
+            vm.reportingyear = $stateParams.reportingyear; 
 
             vm.servicecapabilities = [
                 {id:1, name:'General'},
@@ -113,12 +114,12 @@
             vm.collection_copy = collection.data;
 
             vm.createClassificationBtn = function(data){
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 ClassificationsSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('general-info', {reporting_year:$stateParams.reporting_year});
+                        $state.go('general-info', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -130,13 +131,13 @@
 
             vm.updateClassificationBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 ClassificationsSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('general-info', {reporting_year:$stateParams.reporting_year});
+                        $state.go('general-info', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

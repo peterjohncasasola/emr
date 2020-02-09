@@ -10,7 +10,22 @@
             var vm = this;
             var data = {};
 
-            DischargesERSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-discharges-er', {reportingyear:reportingyear});
+            }
+
+            DischargesERSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.discharges_er = response.data.data;
@@ -46,12 +61,12 @@
 
             vm.createDischargeERBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesERSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        DischargesERSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesERSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.discharges_er = response.data.data;
@@ -68,12 +83,12 @@
             vm.deleteDischargeERBtn = function(id){
                 
                 data['id'] = id;
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesERSrvcs.remove(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        DischargesERSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesERSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.discharges_er = response.data.data;
@@ -90,9 +105,9 @@
 
 
             vm.sendDataDoh = function(){
-                alert('asdf')
-                DischargesERSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                data['reportingyear'] = $stateParams.reportingyear;
+                DischargesERSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -109,6 +124,7 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+            vm.reportingyear = $stateParams.reportingyear; 
 
             console.log(vm.collection)
 

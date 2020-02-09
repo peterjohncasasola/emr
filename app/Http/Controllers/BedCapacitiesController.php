@@ -71,7 +71,7 @@ class BedCapacitiesController extends Controller {
                 $bed_capacity->abc                           = $fields['abc'];
                 $bed_capacity->implementingbeds              = $fields['implementingbeds'];
                 $bed_capacity->bor                           = $fields['bor'];
-                $bed_capacity->reportingyear                 = 2019;
+                $bed_capacity->reportingyear                 = $fields['reportingyear'];;
                 $bed_capacity->save();
 
                 return response()->json([
@@ -129,48 +129,61 @@ class BedCapacitiesController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
-            ->select( 
-                'bedCapacity.id',
-                'bedCapacity.hfhudcode',
-                'bedCapacity.abc',
-                'bedCapacity.implementingbeds',
-                'bedCapacity.bor',
-                'bedCapacity.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
+                ->select( 
+                    'bedCapacity.id',
+                    'bedCapacity.hfhudcode',
+                    'bedCapacity.abc',
+                    'bedCapacity.implementingbeds',
+                    'bedCapacity.bor',
+                    'bedCapacity.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [
+                "hfhudcode" => $bed_capacity->hfhudcode, 
+                "abc" => $bed_capacity->abc, 
+                "implementingbeds" => $bed_capacity->implementingbeds, 
+                "bor" => $bed_capacity->bor,
+                "reportingyear" => $bed_capacity->reportingyear,
+            ];
+
+            $response = $this->soapWrapper->call('Emr.genInfoBedCapacity', $data);
+
+            $bed_capacity = BedCapacity::where('reportingyear', $fields['reportingyear'])->first();
+            $bed_capacity->submitted_at    = Carbon::now();
+            $bed_capacity->save();
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "abc" => $bed_capacity->abc, 
-            "implementingbeds" => $bed_capacity->implementingbeds, 
-            "bor" => $bed_capacity->bor,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.genInfoBedCapacity', $data);
-
-        $bed_capacity = BedCapacity::where('reportingyear', 2019)->first();
-        $bed_capacity->submitted_at    = Carbon::now();
-        $bed_capacity->save();
-
-
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-        // exit;
     }
   	
 }

@@ -11,6 +11,22 @@
             var vm = this;
             var data = {};
 
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+           
+                $state.go('hospital-operations-discharges-specialty', {reportingyear:reportingyear});
+            }
+
             vm.type_of_service_list = [
                 {id:1, desc:"Medicine", value:{}},
                 {id:2, desc:"Obstetrics", value:{}},
@@ -23,7 +39,7 @@
                 {id:9, desc:"Non-Pathologic / Well-baby", value:{}}
             ];
 
-            DischargesSpecialtySrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            DischargesSpecialtySrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.type_of_services = response.data.data;
@@ -42,7 +58,7 @@
                 }
             }, function (){ alert('Bad Request!!!') })
 
-            DischargesSpecialtySrvcs.list_others({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            DischargesSpecialtySrvcs.list_others({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.type_of_services = response.data.data;
@@ -58,7 +74,7 @@
             vm.deleteDischargeSpecialtyBtn = function(id, typeofservice){
                
                 data['id'] = id;
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 data['typeofservice'] = typeofservice;
                 console.log(data);
 
@@ -77,7 +93,7 @@
                             {id:9, desc:"Non-Pathologic / Well-baby", value:{}}
                         ];
             
-                        DischargesSpecialtySrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesSpecialtySrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.type_of_services = response.data.data;
@@ -96,7 +112,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
             
-                        DischargesSpecialtySrvcs.list_others({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesSpecialtySrvcs.list_others({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.type_of_services = response.data.data;
@@ -118,8 +134,10 @@
             };
 
             vm.sendDataDoh = function(){
-                DischargesSpecialtySrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+
+                data['reportingyear'] = $stateParams.reportingyear;
+                DischargesSpecialtySrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -133,7 +151,7 @@
             var vm = this;
             var data = {}; 
 
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
                  
                 $uibModal.open({
                     templateUrl: 'add-discharges-specialty-modal',
@@ -163,6 +181,7 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+            vm.reportingyear = $stateParams.reportingyear; 
 
             vm.type_of_services = [
                 {id:1, desc:"Medicine", value:{}},
@@ -178,12 +197,12 @@
 
             vm.createDischargeSpecialtyBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesSpecialtySrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-discharges-specialty', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-discharges-specialty', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -195,13 +214,13 @@
 
             vm.updateDischargeSpecialtyBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 DischargesSpecialtySrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-discharges-specialty', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-discharges-specialty', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

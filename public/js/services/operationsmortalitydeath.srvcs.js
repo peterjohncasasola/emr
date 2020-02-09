@@ -12,7 +12,7 @@
                     return $http({
                         method: 'GET',
                         data: data,
-                        url: '/api/v1/mortality-death?id='+data.id+'&reportingyear='+data.reporting_year+'&icd10code='+data.icd10code,
+                        url: '/api/v1/mortality-death?id='+data.id+'&reportingyear='+data.reportingyear+'&icd10code='+data.icd10code,
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
@@ -42,7 +42,7 @@
                 },
                 send_data_doh: function(data) {
                     return $http({
-                        method: 'GET',
+                        method: 'POST',
                         url: '/api/v1/mortality-death/send_data_doh',
                         data: data,
                         headers: {'Content-Type': 'application/json'}

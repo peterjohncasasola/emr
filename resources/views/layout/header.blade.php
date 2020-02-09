@@ -11,16 +11,21 @@
     <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
     </ul>
 </div>
-
+ 
 <form class="form-inline ml-auto">
-    <select class="form-control selectric">
-    <option>Reporting Year 2019</option>
-    <option>Option 2</option>
-    <option>Option 3</option>
-    <option>Option 4</option>
-    <option>Option 5</option>
-    <option>Option 6</option>
+    <select class="form-control selectric" ng-model="mc.reportingyear" ng-select="mc.selectReportingYear(mc.reportingyear)">
+        <option value="2019"> Reporting Year 2019 </option>
+        <option value="2018"> Reporting Year 2018 </option>
+        <option value="2017"> Reporting Year 2017 </option>
+        <option value="2016"> Reporting Year 2016 </option>
+        <option value="2015"> Reporting Year 2015 </option>
+        <option value="2014"> Reporting Year 2014 </option>
+        <option value="2013"> Reporting Year 2013 </option>
+        <option value="2012"> Reporting Year 2012 </option>
+        <option value="2011"> Reporting Year 2011 </option>
+        <option value="2010"> Reporting Year 2010 </option>
     </select>
+
 </form>
 
 <ul class="navbar-nav navbar-right">

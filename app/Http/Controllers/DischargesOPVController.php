@@ -82,7 +82,7 @@ class DischargesOPVController extends Controller {
                 $discharges_OPV->surgical                           = $fields['surgical'];
                 $discharges_OPV->antenatal                          = $fields['antenatal'];
                 $discharges_OPV->postnatal                          = $fields['postnatal'];
-                $discharges_OPV->reportingyear                      = 2019;
+                $discharges_OPV->reportingyear                      = $fields['reportingyear'];;
                 $discharges_OPV->save();
 
                 return response()->json([
@@ -144,54 +144,69 @@ class DischargesOPVController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $discharges_OPV = DB::table('hospoptdischargesopv as dischargesOPV')
-            ->select( 
-                'dischargesOPV.id',
-                'dischargesOPV.hfhudcode',
-                'dischargesOPV.newpatient',
-                'dischargesOPV.revisit',
-                'dischargesOPV.adult',
-                'dischargesOPV.pediatric',
-                'dischargesOPV.adultgeneralmedicine',
-                'dischargesOPV.specialtynonsurgical',
-                'dischargesOPV.surgical',
-                'dischargesOPV.antenatal',
-                'dischargesOPV.postnatal',
-                'dischargesOPV.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $discharges_OPV = DB::table('hospoptdischargesopv as dischargesOPV')
+                ->select( 
+                    'dischargesOPV.id',
+                    'dischargesOPV.hfhudcode',
+                    'dischargesOPV.newpatient',
+                    'dischargesOPV.revisit',
+                    'dischargesOPV.adult',
+                    'dischargesOPV.pediatric',
+                    'dischargesOPV.adultgeneralmedicine',
+                    'dischargesOPV.specialtynonsurgical',
+                    'dischargesOPV.surgical',
+                    'dischargesOPV.antenatal',
+                    'dischargesOPV.postnatal',
+                    'dischargesOPV.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [ 
+                "hfhudcode" => $discharges_OPV->hfhudcode, 
+                "newpatient" => $discharges_OPV->newpatient, 
+                "revisit" => $discharges_OPV->revisit,
+                "adult" => $discharges_OPV->adult,
+                "pediatric" => $discharges_OPV->pediatric,
+                "adultgeneralmedicine" => $discharges_OPV->adultgeneralmedicine,
+                "specialtynonsurgical" => $discharges_OPV->specialtynonsurgical,
+                "surgical" => $discharges_OPV->surgical,
+                "antenatal" => $discharges_OPV->antenatal,
+                "postnatal" => $discharges_OPV->postnatal,
+                "reportingyear" => $discharges_OPV->reportingyear
+            ];
+
+            $response = $this->soapWrapper->call('Emr.hospOptdischargesOPV', $data);
+            
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "newpatient" => $discharges_OPV->newpatient, 
-            "revisit" => $discharges_OPV->revisit,
-            "adult" => $discharges_OPV->adult,
-            "pediatric" => $discharges_OPV->pediatric,
-            "adultgeneralmedicine" => $discharges_OPV->adultgeneralmedicine,
-            "specialtynonsurgical" => $discharges_OPV->specialtynonsurgical,
-            "surgical" => $discharges_OPV->surgical,
-            "antenatal" => $discharges_OPV->antenatal,
-            "postnatal" => $discharges_OPV->postnatal,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.hospOptdischargesOPV', $data);
-        return response($response, 200)->header('Content-Type', 'application/xml');
-        exit;
     }
   	
 }

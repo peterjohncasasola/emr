@@ -5,12 +5,28 @@
         .controller('SurgicalOperationsMinorCtrl', SurgicalOperationsMinorCtrl)
         .controller('SurgicalOperationsMinorActionModalInsatanceCtrl', SurgicalOperationsMinorActionModalInsatanceCtrl)
 
-        SurgicalOperationsMinorCtrl.$inject = ['SurgicalOperationsMinorSrvcs','SurgeriesSrvcs', '$stateParams', '$uibModal', '$window', '$rootScope', '$scope'];
-        function SurgicalOperationsMinorCtrl(SurgicalOperationsMinorSrvcs, SurgeriesSrvcs, $stateParams, $uibModal, $window, $rootScope, $scope){
+        SurgicalOperationsMinorCtrl.$inject = ['SurgicalOperationsMinorSrvcs','SurgeriesSrvcs', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$scope'];
+        function SurgicalOperationsMinorCtrl(SurgicalOperationsMinorSrvcs, SurgeriesSrvcs, $stateParams, $state, $uibModal, $window, $rootScope, $scope){
             var vm = this;
             var data = {};
 
-            SurgicalOperationsMinorSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-surgical-operations-minor', {reportingyear:reportingyear});
+            }
+
+            SurgicalOperationsMinorSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.surgical_operations = response.data.data;
@@ -46,12 +62,12 @@
 
             vm.createSurgicalOperationtBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 SurgicalOperationsMinorSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        SurgicalOperationsMinorSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        SurgicalOperationsMinorSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.surgical_operations = response.data.data;
@@ -69,12 +85,12 @@
             vm.deleteSurgicalOperationtBtn = function(id){
                 
                 data['id'] = id;
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 SurgicalOperationsMinorSrvcs.remove(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        SurgicalOperationsMinorSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        SurgicalOperationsMinorSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.surgical_operations = response.data.data;
@@ -91,8 +107,9 @@
 
 
             vm.sendDataDoh = function(){
-                SurgicalOperationsMinorSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                data['reportingyear'] = $stateParams.reportingyear;
+                SurgicalOperationsMinorSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 

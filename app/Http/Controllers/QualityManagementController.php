@@ -147,53 +147,70 @@ class QualityManagementController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
-
-        $qualityManagements = DB::table('geninfoqualitymanagement as qualityManagement')
-            ->select( 
-                'qualityManagement.id',
-                'qualityManagement.hfhudcode',
-                'qualityManagement.qualitymgmttype',
-                'qualityManagement.description',
-                'qualityManagement.certifyingbody',
-                'qualityManagement.philhealthaccreditation',
-                'qualityManagement.validityfrom',
-                'qualityManagement.validityto',
-                'qualityManagement.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($qualityManagements as $qualityManagement) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "qualitymgmttype" => $qualityManagement->qualitymgmttype, 
-                "description" => $qualityManagement->description, 
-                "certifyingbody" => $qualityManagement->certifyingbody, 
-                "philhealthaccreditation" => $qualityManagement->philhealthaccreditation, 
-                "validityfrom" => $qualityManagement->validityfrom, 
-                "validityto" => $qualityManagement->validityto,
-                "reportingyear" => 2017
-            ];
+    public function send_data_doh(Request $request){
         
-            $response = $this->soapWrapper->call('Emr.genInfoqualityManagement', $data);
-        }
+        $fields = Input::post();
 
-        // $bed_capacity = BedCapacity::where('reportingyear', 2019)->first();
-        // $bed_capacity->submitted_at    = Carbon::now();
-        // $bed_capacity->save();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $qualityManagements = DB::table('geninfoqualitymanagement as qualityManagement')
+                ->select( 
+                    'qualityManagement.id',
+                    'qualityManagement.hfhudcode',
+                    'qualityManagement.qualitymgmttype',
+                    'qualityManagement.description',
+                    'qualityManagement.certifyingbody',
+                    'qualityManagement.philhealthaccreditation',
+                    'qualityManagement.validityfrom',
+                    'qualityManagement.validityto',
+                    'qualityManagement.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($qualityManagements as $qualityManagement) {
+                // code
+                $data = [
+                    "hfhudcode" => $qualityManagement->hfhudcode, 
+                    "qualitymgmttype" => $qualityManagement->qualitymgmttype, 
+                    "description" => $qualityManagement->description, 
+                    "certifyingbody" => $qualityManagement->certifyingbody, 
+                    "philhealthaccreditation" => $qualityManagement->philhealthaccreditation, 
+                    "validityfrom" => $qualityManagement->validityfrom, 
+                    "validityto" => $qualityManagement->validityto,
+                    "reportingyear" => $qualityManagement->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.genInfoqualityManagement', $data);
+            }
+
+            // $bed_capacity = BedCapacity::where('reportingyear', 2019)->first();
+            // $bed_capacity->submitted_at    = Carbon::now();
+            // $bed_capacity->save();
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
     }
   	
 }

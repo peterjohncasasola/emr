@@ -72,7 +72,7 @@ class RevenuesController extends Controller {
             // try{
 
                 $revenue = new Revenue;
-                $revenue->hfhudcode                     = "SAMPLECODE01";
+                $revenue->hfhudcode                     = "NEHEHRSV201900093";
                 $revenue->amountfromdoh                 = $fields['amountfromdoh'];
                 $revenue->amountfromlgu                 = $fields['amountfromlgu'];
                 $revenue->amountfromdonor               = $fields['amountfromdonor'];
@@ -150,61 +150,73 @@ class RevenuesController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $revenue = DB::table('revenues as revenue')
-            ->select(
-                'revenue.id',
-                'revenue.hfhudcode',
-                'revenue.amountfromdoh',
-                'revenue.amountfromlgu',
-                'revenue.amountfromdonor',
-                'revenue.amountfromprivateorg',
-                'revenue.amountfromphilhealth',
-                'revenue.amountfrompatient',
-                'revenue.amountfromreimbursement',
-                'revenue.amountfromothersources',
-                'revenue.grandtotal',
-                'revenue.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $revenue = DB::table('revenues as revenue')
+                ->select(
+                    'revenue.id',
+                    'revenue.hfhudcode',
+                    'revenue.amountfromdoh',
+                    'revenue.amountfromlgu',
+                    'revenue.amountfromdonor',
+                    'revenue.amountfromprivateorg',
+                    'revenue.amountfromphilhealth',
+                    'revenue.amountfrompatient',
+                    'revenue.amountfromreimbursement',
+                    'revenue.amountfromothersources',
+                    'revenue.grandtotal',
+                    'revenue.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [  
+                "hfhudcode" => $revenue->hfhudcode, 
+                "amountfromdoh" => $revenue->amountfromdoh, 
+                "amountfromlgu" => $revenue->amountfromlgu, 
+                "amountfromdonor" => $revenue->amountfromdonor, 
+                "amountfromprivateorg" => $revenue->amountfromprivateorg, 
+                "amountfromphilhealth" => $revenue->amountfromphilhealth, 
+                "amountfrompatient" => $revenue->amountfrompatient, 
+                "amountfromreimbursement" => $revenue->amountfromreimbursement, 
+                "amountfromothersources" => $revenue->amountfromothersources, 
+                "grandtotal" => $revenue->grandtotal, 
+                "reportingyear" => $revenue->reportingyear, 
+            ];
+
+            $response = $this->soapWrapper->call('Emr.revenues', $data);
+
+            $revenue = Revenue::where('reportingyear', $fields['reportingyear'])->first(); 
+            $revenue->submitted_at    = Carbon::now();
+            $revenue->save();
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            // "hfhudcode" => "DOH000000000000000", 
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "amountfromdoh" => $revenue->amountfromdoh, 
-            "amountfromlgu" => $revenue->amountfromlgu, 
-            "amountfromdonor" => $revenue->amountfromdonor, 
-            "amountfromprivateorg" => $revenue->amountfromprivateorg, 
-            "amountfromphilhealth" => $revenue->amountfromphilhealth, 
-            "amountfrompatient" => $revenue->amountfrompatient, 
-            "amountfromreimbursement" => $revenue->amountfromreimbursement, 
-            "amountfromothersources" => $revenue->amountfromothersources, 
-            "grandtotal" => $revenue->grandtotal, 
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.revenues', $data);
-
-        $revenue = Revenue::where('reportingyear', 2019)->first(); 
-        $revenue->submitted_at    = Carbon::now();
-        $revenue->save();
-
-
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-        // exit;
     }
   	
 }

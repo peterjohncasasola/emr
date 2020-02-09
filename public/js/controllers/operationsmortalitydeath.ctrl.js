@@ -10,7 +10,22 @@
             var vm = this;
             var data = {};
 
-            OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-mortality-death', {reportingyear:reportingyear});
+            }
+
+            OperationsMortalityDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear, icd10code:''}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.mortality_deaths = response.data.data;
@@ -20,8 +35,9 @@
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
-                OperationsMortalityDeathSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                data['reportingyear'] = $stateParams.reportingyear;
+                OperationsMortalityDeathSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -46,19 +62,19 @@
                 uibModal.result.then(function(result) {
                     console.log(result);
                     vm.ricd10_details = result;
-                    $state.go('hospital-operations-mortality-death-select', {reporting_year:$stateParams.reporting_year, icd10code:result.icd10code});
+                    $state.go('hospital-operations-mortality-death-select', {reportingyear:$stateParams.reportingyear, icd10code:result.icd10code});
                 })
             }
 
             vm.deleteOperationsMortalityDeathBtn = function(id){
 
                 data['id'] = id;
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
 
                 OperationsMortalityDeathSrvcs.remove(data).then (function (response) {
                     if(response.data.status == 200)
                     {
-                        OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+                        OperationsMortalityDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear, icd10code:''}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.mortality_deaths = response.data.data;
@@ -100,7 +116,7 @@
 
             if($stateParams.icd10code!=null && $stateParams.action=='edit'){
 
-                OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:$stateParams.icd10code}).then (function (response) {
+                OperationsMortalityDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear, icd10code:$stateParams.icd10code}).then (function (response) {
  
                     if(response.data.status == 200)
                     {
@@ -178,7 +194,7 @@
 
             vm.createOperationsMortalityDeathBtn = function(data){
  
-                data['reportingyear']   = $stateParams.reporting_year;
+                data['reportingyear']   = $stateParams.reportingyear;
                 data['icd10desc']       = vm.collection.icd10desc;
                 data['icd10code']       = vm.collection.icd10code;
                 data['icd10cat']        = vm.collection.icd10cat;
@@ -188,11 +204,11 @@
                 OperationsMortalityDeathSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+                        OperationsMortalityDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear, icd10code:''}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.mortality_deaths = response.data.data;
-                                $state.go('hospital-operations-mortality-death', {reporting_year:$stateParams.reporting_year});
+                                $state.go('hospital-operations-mortality-death', {reportingyear:$stateParams.reportingyear});
                                 vm.close();
                             }
                         }, function (){ alert('Bad Request!!!') })
@@ -207,7 +223,7 @@
 
             vm.updateOperationsMortalityDeathBtn = function(data){
  
-                data['reportingyear']   = $stateParams.reporting_year;
+                data['reportingyear']   = $stateParams.reportingyear;
                 data['icd10desc']       = vm.collection.icd10desc;
                 data['icd10code']       = vm.collection.icd10code;
                 data['icd10cat']        = vm.collection.icd10cat;
@@ -217,11 +233,11 @@
                 OperationsMortalityDeathSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        OperationsMortalityDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year, icd10code:''}).then (function (response) {
+                        OperationsMortalityDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear, icd10code:''}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.mortality_deaths = response.data.data;
-                                $state.go('hospital-operations-mortality-death', {reporting_year:$stateParams.reporting_year});
+                                $state.go('hospital-operations-mortality-death', {reportingyear:$stateParams.reportingyear});
                                 vm.close();
                             }
                         }, function (){ alert('Bad Request!!!') })

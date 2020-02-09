@@ -112,14 +112,6 @@ class DischargesTestingController extends Controller {
         $transaction = DB::transaction(function($field) use($fields){
             // try{
 
-                // $discharges_testing = new DischargesTesting;
-                // $discharges_testing->hfhudcode                              = "NEHEHRSV201900093";
-                // $discharges_testing->testinggroup                           = $fields['testinggroup'];
-                // $discharges_testing->testing                                = $fields['testing'];
-                // $discharges_testing->number                                 = $fields['number'];
-                // $discharges_testing->reportingyear                          = $fields['reportingyear'];
-                // $discharges_testing->save();
-
                 $default_data = array(
                     array('code'=>'xray', 'id'=>1, 'name'=>'X-Ray', 'testinggroup'=>1),
                     array('code'=>'ultrasound', 'id'=>2, 'name'=>'Ultrasound', 'testinggroup'=>1), 
@@ -269,43 +261,60 @@ class DischargesTestingController extends Controller {
    	 	return $transaction;
   	}
 
-    public function send_data_doh(){
-
-        $discharges_testing = DB::table('hospoptdischargestesting as dischargesTesting')
-            ->select( 
-                'dischargesTesting.id',
-                'dischargesTesting.hfhudcode',
-                'dischargesTesting.testinggroup',
-                'dischargesTesting.testing',
-                'dischargesTesting.number',
-                'dischargesTesting.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($discharges_testing as $discharges_testing) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "testinggroup" => $discharges_testing->testinggroup, 
-                "testing" => $discharges_testing->testing, 
-                "number" => $discharges_testing->number,
-                "reportingyear" => 2017
-            ];
+    public function send_data_doh(Request $request){
         
-            $response = $this->soapWrapper->call('Emr.hospOptDischargesTesting', $data);
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $discharges_testing = DB::table('hospoptdischargestesting as dischargesTesting')
+                ->select( 
+                    'dischargesTesting.id',
+                    'dischargesTesting.hfhudcode',
+                    'dischargesTesting.testinggroup',
+                    'dischargesTesting.testing',
+                    'dischargesTesting.number',
+                    'dischargesTesting.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($discharges_testing as $discharges_testing) {
+                // code
+                $data = [
+                    "hfhudcode" => $discharges_testing->hfhudcode, 
+                    "testinggroup" => $discharges_testing->testinggroup, 
+                    "testing" => $discharges_testing->testing, 
+                    "number" => $discharges_testing->number,
+                    "reportingyear" => $discharges_testing->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.hospOptDischargesTesting', $data);
+            }
+
         }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
     }
   	
 }

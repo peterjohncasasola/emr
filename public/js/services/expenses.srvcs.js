@@ -10,7 +10,7 @@
                     return $http({
                         method: 'GET',
                         data: data,
-                        url: '/api/v1/expenses?id='+data.id+'&reporting_year='+data.reporting_year,
+                        url: '/api/v1/expenses?id='+data.id+'&reportingyear='+data.reportingyear,
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
@@ -32,7 +32,7 @@
                 },
                 send_data_doh: function(data) {
                     return $http({
-                        method: 'GET',
+                        method: 'POST',
                         url: '/api/v1/expense/send_data_doh',
                         data: data,
                         headers: {'Content-Type': 'application/json'}

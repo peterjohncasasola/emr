@@ -64,11 +64,12 @@ class SurgicalOperationsMajorController extends Controller {
 
         $transaction = DB::transaction(function($field) use($fields){
             // try{
-                $operations_major_count = SurgicalOperationMajor::count();
+                $operations_major_count = SurgicalOperationMajor::where('reportingyear', $fields['reportingyear'])->count();
 
                 if($operations_major_count<10){
 
-                    $check_duplicate = SurgicalOperationMajor::where('operationcode', $fields['operationcode'])->count();
+                    $check_duplicate = SurgicalOperationMajor::where('operationcode', $fields['operationcode'])
+                                                                ->where('reportingyear', $fields['reportingyear'])->count();
                     if($check_duplicate<=0){
 
                         $operations_major = new SurgicalOperationMajor;
@@ -76,7 +77,7 @@ class SurgicalOperationsMajorController extends Controller {
                         $operations_major->operationcode                    = $fields['operationcode'];
                         $operations_major->surgicaloperation                = $fields['surgicaloperation'];
                         $operations_major->number                           = $fields['number'];
-                        $operations_major->reportingyear                    = 2019;
+                        $operations_major->reportingyear                    = $fields['reportingyear'];;
                         $operations_major->save();
 
                         return response()->json([
@@ -180,43 +181,63 @@ class SurgicalOperationsMajorController extends Controller {
   	}
 
 
-    public function send_data_doh(){
-
-        $major_operations = DB::table('hospitaloperationsmajoropt as operationsMajorOpt')
-            ->select( 
-                'operationsMajorOpt.id',
-                'operationsMajorOpt.hfhudcode',
-                'operationsMajorOpt.operationcode',
-                'operationsMajorOpt.surgicaloperation',
-                'operationsMajorOpt.number',
-                'operationsMajorOpt.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($major_operations as $major_operation) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "operationcode" => $major_operation->operationcode, 
-                "surgicaloperation" => $major_operation->surgicaloperation, 
-                "number" => $major_operation->number,
-                "reportingyear" => 2017
-            ];
+    public function send_data_doh(Request $request){
         
-            $response = $this->soapWrapper->call('Emr.hospitalOperationsMajorOpt', $data);
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+                
+            $major_operations = DB::table('hospitaloperationsmajoropt as operationsMajorOpt')
+                ->select( 
+                    'operationsMajorOpt.id',
+                    'operationsMajorOpt.hfhudcode',
+                    'operationsMajorOpt.operationcode',
+                    'operationsMajorOpt.surgicaloperation',
+                    'operationsMajorOpt.number',
+                    'operationsMajorOpt.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            
+
+            foreach ($major_operations as $major_operation) {
+                // code
+                $data = [
+                    "hfhudcode" => $major_operation->hfhudcode, 
+                    "operationcode" => $major_operation->operationcode, 
+                    "surgicaloperation" => $major_operation->surgicaloperation, 
+                    "number" => $major_operation->number,
+                    "reportingyear" => $major_operation->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.hospitalOperationsMajorOpt', $data);
+            }
+
         }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
         
     }
   	

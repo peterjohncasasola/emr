@@ -64,7 +64,7 @@ class DischargesSpecialtiesController extends Controller {
         }
 
         if ($data['reportingyear']){
-            $discharges_specialty = $discharges_specialty->where('classification.reportingyear', $data['reportingyear']);
+            $discharges_specialty = $discharges_specialty->where('dischargesSpecialty.reportingyear', $data['reportingyear']);
         }
 
         $discharges_specialty = $discharges_specialty->get();
@@ -389,139 +389,156 @@ class DischargesSpecialtiesController extends Controller {
   	}
 
  
-    public function send_data_doh(){
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $discharges_specialty = DB::table('hospoptdischargesspecialty as dischargesSpecialty')
-            ->select( 
-                'dischargesSpecialty.id',
-                'dischargesSpecialty.hfhudcode',
-                'dischargesSpecialty.typeofservice',
-                'dischargesSpecialty.nopatients',
-                'dischargesSpecialty.totallengthstay',
-                'dischargesSpecialty.nppay',
-                'dischargesSpecialty.nphservicecharity',
-                'dischargesSpecialty.nphtotal',
-                'dischargesSpecialty.phpay',
-                'dischargesSpecialty.phservice',
-                'dischargesSpecialty.phtotal',
-                'dischargesSpecialty.hmo',
-                'dischargesSpecialty.owwa',
-                'dischargesSpecialty.recoveredimproved',
-                'dischargesSpecialty.transferred',
-                'dischargesSpecialty.hama',
-                'dischargesSpecialty.absconded',
-                'dischargesSpecialty.unimproved',
-                'dischargesSpecialty.deathsbelow48',
-                'dischargesSpecialty.deathsover48',
-                'dischargesSpecialty.totaldeaths',
-                'dischargesSpecialty.totaldischarges',
-                'dischargesSpecialty.remarks',
-                'dischargesSpecialty.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        foreach ($discharges_specialty as $discharges_specialty) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "typeofservice" => $discharges_specialty->typeofservice, 
-                "nopatients" => $discharges_specialty->nopatients,
-                "totallengthstay" => $discharges_specialty->totallengthstay,
-                "nppay" => $discharges_specialty->nppay,
-                "nphservicecharity" => $discharges_specialty->nphservicecharity,
-                "nphtotal" => $discharges_specialty->nphtotal,
-                "phpay" => $discharges_specialty->phpay,
-                "phservice" => $discharges_specialty->phservice,
-                "phtotal" => $discharges_specialty->phtotal,
-                "hmo" => $discharges_specialty->hmo,
-                "owwa" => $discharges_specialty->owwa,
-                "recoveredimproved" => $discharges_specialty->recoveredimproved,
-                "transferred" => $discharges_specialty->transferred,
-                "hama" => $discharges_specialty->hama,
-                "absconded" => $discharges_specialty->absconded,
-                "unimproved" => $discharges_specialty->unimproved,
-                "deathsbelow48" => $discharges_specialty->deathsbelow48,
-                "deathsover48" => $discharges_specialty->deathsover48,
-                "totaldeaths" => $discharges_specialty->totaldeaths,
-                "totaldischarges" => $discharges_specialty->totaldischarges,
-                "remarks" => $discharges_specialty->remarks,
-                "reportingyear" => 2017
-            ];
-    
-            $response = $this->soapWrapper->call('Emr.hospOptDischargesSpecialty', $data);
-        }
-
-
-        $discharges_specialty_others = DB::table('hospoptdischargesspecialtyothers as dischargesSpecialtyOthers')
-            ->select( 
-                'dischargesSpecialtyOthers.id',
-                'dischargesSpecialtyOthers.hfhudcode',
-                'dischargesSpecialtyOthers.othertypeofservicespecify',
-                'dischargesSpecialtyOthers.nopatients',
-                'dischargesSpecialtyOthers.totallengthstay',
-                'dischargesSpecialtyOthers.nppay',
-                'dischargesSpecialtyOthers.nphservicecharity',
-                'dischargesSpecialtyOthers.nphtotal',
-                'dischargesSpecialtyOthers.phpay',
-                'dischargesSpecialtyOthers.phservice',
-                'dischargesSpecialtyOthers.phtotal',
-                'dischargesSpecialtyOthers.hmo',
-                'dischargesSpecialtyOthers.owwa',
-                'dischargesSpecialtyOthers.recoveredimproved',
-                'dischargesSpecialtyOthers.transferred',
-                'dischargesSpecialtyOthers.hama',
-                'dischargesSpecialtyOthers.absconded',
-                'dischargesSpecialtyOthers.unimproved',
-                'dischargesSpecialtyOthers.deathsbelow48',
-                'dischargesSpecialtyOthers.deathsover48',
-                'dischargesSpecialtyOthers.totaldeaths',
-                'dischargesSpecialtyOthers.totaldischarges',
-                'dischargesSpecialtyOthers.remarks',
-                'dischargesSpecialtyOthers.reportingyear'
-            )->where('reportingyear', 2019)->get();
+    public function send_data_doh(Request $request){
         
-        foreach ($discharges_specialty_others as $discharges_specialty_other) {
-            // code
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
             $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "othertypeofservicespecify" => $discharges_specialty_other->othertypeofservicespecify, 
-                "nopatients" => $discharges_specialty_other->nopatients,
-                "totallengthstay" => $discharges_specialty_other->totallengthstay,
-                "nppay" => $discharges_specialty_other->nppay,
-                "nphservicecharity" => $discharges_specialty_other->nphservicecharity,
-                "nphtotal" => $discharges_specialty_other->nphtotal,
-                "phpay" => $discharges_specialty_other->phpay,
-                "phservice" => $discharges_specialty_other->phservice,
-                "phtotal" => $discharges_specialty_other->phtotal,
-                "hmo" => $discharges_specialty_other->hmo,
-                "owwa" => $discharges_specialty_other->owwa,
-                "recoveredimproved" => $discharges_specialty_other->recoveredimproved,
-                "transferred" => $discharges_specialty_other->transferred,
-                "hama" => $discharges_specialty_other->hama,
-                "absconded" => $discharges_specialty_other->absconded,
-                "unimproved" => $discharges_specialty_other->unimproved,
-                "deathsbelow48" => $discharges_specialty_other->deathsbelow48,
-                "deathsover48" => $discharges_specialty_other->deathsover48,
-                "totaldeaths" => $discharges_specialty_other->totaldeaths,
-                "totaldischarges" => $discharges_specialty_other->totaldischarges,
-                "remarks" => $discharges_specialty_other->remarks,
-                "reportingyear" => 2017
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
             ];
-    
-            $response = $this->soapWrapper->call('Emr.hospOptDischargesSpecialtyOthers', $data);
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $discharges_specialty = DB::table('hospoptdischargesspecialty as dischargesSpecialty')
+                ->select( 
+                    'dischargesSpecialty.id',
+                    'dischargesSpecialty.hfhudcode',
+                    'dischargesSpecialty.typeofservice',
+                    'dischargesSpecialty.nopatients',
+                    'dischargesSpecialty.totallengthstay',
+                    'dischargesSpecialty.nppay',
+                    'dischargesSpecialty.nphservicecharity',
+                    'dischargesSpecialty.nphtotal',
+                    'dischargesSpecialty.phpay',
+                    'dischargesSpecialty.phservice',
+                    'dischargesSpecialty.phtotal',
+                    'dischargesSpecialty.hmo',
+                    'dischargesSpecialty.owwa',
+                    'dischargesSpecialty.recoveredimproved',
+                    'dischargesSpecialty.transferred',
+                    'dischargesSpecialty.hama',
+                    'dischargesSpecialty.absconded',
+                    'dischargesSpecialty.unimproved',
+                    'dischargesSpecialty.deathsbelow48',
+                    'dischargesSpecialty.deathsover48',
+                    'dischargesSpecialty.totaldeaths',
+                    'dischargesSpecialty.totaldischarges',
+                    'dischargesSpecialty.remarks',
+                    'dischargesSpecialty.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($discharges_specialty as $discharges_specialty) {
+                // code
+                $data = [
+                    "hfhudcode" => $discharges_specialty->hfhudcode, 
+                    "typeofservice" => $discharges_specialty->typeofservice, 
+                    "nopatients" => $discharges_specialty->nopatients,
+                    "totallengthstay" => $discharges_specialty->totallengthstay,
+                    "nppay" => $discharges_specialty->nppay,
+                    "nphservicecharity" => $discharges_specialty->nphservicecharity,
+                    "nphtotal" => $discharges_specialty->nphtotal,
+                    "phpay" => $discharges_specialty->phpay,
+                    "phservice" => $discharges_specialty->phservice,
+                    "phtotal" => $discharges_specialty->phtotal,
+                    "hmo" => $discharges_specialty->hmo,
+                    "owwa" => $discharges_specialty->owwa,
+                    "recoveredimproved" => $discharges_specialty->recoveredimproved,
+                    "transferred" => $discharges_specialty->transferred,
+                    "hama" => $discharges_specialty->hama,
+                    "absconded" => $discharges_specialty->absconded,
+                    "unimproved" => $discharges_specialty->unimproved,
+                    "deathsbelow48" => $discharges_specialty->deathsbelow48,
+                    "deathsover48" => $discharges_specialty->deathsover48,
+                    "totaldeaths" => $discharges_specialty->totaldeaths,
+                    "totaldischarges" => $discharges_specialty->totaldischarges,
+                    "remarks" => $discharges_specialty->remarks,
+                    "reportingyear" => $discharges_specialty->reportingyear
+                ];
+        
+                $response = $this->soapWrapper->call('Emr.hospOptDischargesSpecialty', $data);
+            }
+
+
+            $discharges_specialty_others = DB::table('hospoptdischargesspecialtyothers as dischargesSpecialtyOthers')
+                ->select( 
+                    'dischargesSpecialtyOthers.id',
+                    'dischargesSpecialtyOthers.hfhudcode',
+                    'dischargesSpecialtyOthers.othertypeofservicespecify',
+                    'dischargesSpecialtyOthers.nopatients',
+                    'dischargesSpecialtyOthers.totallengthstay',
+                    'dischargesSpecialtyOthers.nppay',
+                    'dischargesSpecialtyOthers.nphservicecharity',
+                    'dischargesSpecialtyOthers.nphtotal',
+                    'dischargesSpecialtyOthers.phpay',
+                    'dischargesSpecialtyOthers.phservice',
+                    'dischargesSpecialtyOthers.phtotal',
+                    'dischargesSpecialtyOthers.hmo',
+                    'dischargesSpecialtyOthers.owwa',
+                    'dischargesSpecialtyOthers.recoveredimproved',
+                    'dischargesSpecialtyOthers.transferred',
+                    'dischargesSpecialtyOthers.hama',
+                    'dischargesSpecialtyOthers.absconded',
+                    'dischargesSpecialtyOthers.unimproved',
+                    'dischargesSpecialtyOthers.deathsbelow48',
+                    'dischargesSpecialtyOthers.deathsover48',
+                    'dischargesSpecialtyOthers.totaldeaths',
+                    'dischargesSpecialtyOthers.totaldischarges',
+                    'dischargesSpecialtyOthers.remarks',
+                    'dischargesSpecialtyOthers.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+            
+            foreach ($discharges_specialty_others as $discharges_specialty_other) {
+                // code
+                $data = [
+                    "hfhudcode" => $discharges_specialty_other->hfhudcode, 
+                    "othertypeofservicespecify" => $discharges_specialty_other->othertypeofservicespecify, 
+                    "nopatients" => $discharges_specialty_other->nopatients,
+                    "totallengthstay" => $discharges_specialty_other->totallengthstay,
+                    "nppay" => $discharges_specialty_other->nppay,
+                    "nphservicecharity" => $discharges_specialty_other->nphservicecharity,
+                    "nphtotal" => $discharges_specialty_other->nphtotal,
+                    "phpay" => $discharges_specialty_other->phpay,
+                    "phservice" => $discharges_specialty_other->phservice,
+                    "phtotal" => $discharges_specialty_other->phtotal,
+                    "hmo" => $discharges_specialty_other->hmo,
+                    "owwa" => $discharges_specialty_other->owwa,
+                    "recoveredimproved" => $discharges_specialty_other->recoveredimproved,
+                    "transferred" => $discharges_specialty_other->transferred,
+                    "hama" => $discharges_specialty_other->hama,
+                    "absconded" => $discharges_specialty_other->absconded,
+                    "unimproved" => $discharges_specialty_other->unimproved,
+                    "deathsbelow48" => $discharges_specialty_other->deathsbelow48,
+                    "deathsover48" => $discharges_specialty_other->deathsover48,
+                    "totaldeaths" => $discharges_specialty_other->totaldeaths,
+                    "totaldischarges" => $discharges_specialty_other->totaldischarges,
+                    "remarks" => $discharges_specialty_other->remarks,
+                    "reportingyear" => $discharges_specialty_other->reportingyear
+                ];
+        
+                $response = $this->soapWrapper->call('Emr.hospOptDischargesSpecialtyOthers', $data);
+            }
+
         }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
  
     }
   	

@@ -65,11 +65,11 @@ class DischargesOPDController extends Controller {
 
         $transaction = DB::transaction(function($field) use($fields){
             // try{
-                $discharges_OPD_count = DischargesOPD::count();
+                $discharges_OPD_count = DischargesOPD::where('reportingyear', $fields['reportingyear'])->count();
 
                 if($discharges_OPD_count<10){
 
-                    $check_duplicate = DischargesOPD::where('icd10code', $fields['icd10code'])->count();
+                    $check_duplicate = DischargesOPD::where('icd10code', $fields['icd10code'])->where('reportingyear', $fields['reportingyear'])->count();
                     if($check_duplicate<=0){
 
                         $discharges_OPD = new DischargesOPD;
@@ -78,7 +78,7 @@ class DischargesOPDController extends Controller {
                         $discharges_OPD->number                          = $fields['number'];
                         $discharges_OPD->icd10code                       = $fields['icd10code'];
                         $discharges_OPD->icd10category                   = $fields['icd10cat'];
-                        $discharges_OPD->reportingyear                    = 2019;
+                        $discharges_OPD->reportingyear                   = $fields['reportingyear'];;
                         $discharges_OPD->save();
 
                         return response()->json([
@@ -184,45 +184,61 @@ class DischargesOPDController extends Controller {
    	 	return $transaction;
   	}
 
-    public function send_data_doh(){
-
-        $discharges_OPD = DB::table('hospoptdischargesopd as dischargesOPD')
-            ->select( 
-                'dischargesOPD.id',
-                'dischargesOPD.hfhudcode',
-                'dischargesOPD.erconsultations',
-                'dischargesOPD.number',
-                'dischargesOPD.icd10code',
-                'dischargesOPD.icd10category',
-                'dischargesOPD.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($discharges_OPD as $discharge_ER) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "erconsultations" => $discharge_ER->erconsultations, 
-                "number" => $discharge_ER->number, 
-                "icd10code" => $discharge_ER->icd10code,
-                "icd10category" => $discharge_ER->icd10category,
-                "reportingyear" => 2017
-            ];
+    public function send_data_doh(Request $request){
         
-            $response = $this->soapWrapper->call('Emr.hospOptdischargesOPD', $data);
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $discharges_OPD = DB::table('hospoptdischargesopd as dischargesOPD')
+                ->select( 
+                    'dischargesOPD.id',
+                    'dischargesOPD.hfhudcode',
+                    'dischargesOPD.erconsultations',
+                    'dischargesOPD.number',
+                    'dischargesOPD.icd10code',
+                    'dischargesOPD.icd10category',
+                    'dischargesOPD.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($discharges_OPD as $discharges_OPD) {
+                // code
+                $data = [
+                    "hfhudcode" => $discharges_OPD->hfhudcode, 
+                    "erconsultations" => $discharges_OPD->erconsultations, 
+                    "number" => $discharges_OPD->number, 
+                    "icd10code" => $discharges_OPD->icd10code,
+                    "icd10category" => $discharges_OPD->icd10category,
+                    "reportingyear" => $discharges_OPD->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.hospOptdischargesOPD', $data);
+            }
         }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
     }
   	
 }

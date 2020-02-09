@@ -8,15 +8,30 @@
         .controller('StaffingPatternNonMedicalCreateCtrl', StaffingPatternNonMedicalCreateCtrl)
         .controller('StaffingPatternActionModalInsatanceCtrl', StaffingPatternActionModalInsatanceCtrl)
 
-        StaffingPatternCtrl.$inject = ['StaffingPatternSrvcs', '$stateParams', '$uibModal', '$window'];
-        function StaffingPatternCtrl(StaffingPatternSrvcs, $stateParams, $uibModal, $window){
+        StaffingPatternCtrl.$inject = ['StaffingPatternSrvcs', '$stateParams', '$state', '$uibModal', '$window'];
+        function StaffingPatternCtrl(StaffingPatternSrvcs, $stateParams, $state, $uibModal, $window){
             var vm = this;
             var data = {};
+
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('staffing-pattern', {reportingyear:reportingyear});
+            }
 
             vm.is_loader_disabled = false;
             vm.is_submit_disabled = false;
 
-            StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.staffingPatterns = response.data.data;
@@ -28,10 +43,11 @@
                 vm.is_loader_disabled = true;
                 vm.is_submit_disabled = true;
 
-                StaffingPatternSrvcs.send_data_doh().then (function (response) {
+                data['reportingyear'] = $stateParams.reportingyear;
+                StaffingPatternSrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
 
-                    StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                    StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
                         {
                             vm.staffingPatterns = response.data.data;
@@ -55,9 +71,9 @@
             var vm = this;
             var data = {}; 
 
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data;
@@ -99,9 +115,9 @@
             var vm = this;
             var data = {}; 
 
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data;
@@ -143,9 +159,9 @@
             var vm = this;
             var data = {}; 
 
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data;
@@ -189,13 +205,15 @@
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
 
+            vm.reportingyear = $stateParams.reportingyear; 
+
             console.log(vm.collection)
 
             vm.createStaffingPatternBtn = function(data){
               
 
                 angular.forEach(data, function(v, k){
-                    v['reportingyear'] = $stateParams.reporting_year;
+                    v['reportingyear'] = $stateParams.reportingyear;
                 })
 
                 console.log(data)
@@ -207,7 +225,7 @@
                     if (response.data.status == 200) {
                         alert(response.data.message);
 
-                        StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.testing = response.data.data[0];
@@ -216,7 +234,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('staffing-pattern', {reporting_year:$stateParams.reporting_year});
+                        $state.go('staffing-pattern', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -230,14 +248,14 @@
 
 
                 angular.forEach(data, function(v, k){
-                    v['reportingyear'] = $stateParams.reporting_year;
+                    v['reportingyear'] = $stateParams.reportingyear;
                 })
 
                 StaffingPatternSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
 
-                        StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.testing = response.data.data[0];
@@ -246,7 +264,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('staffing-pattern', {reporting_year:$stateParams.reporting_year});
+                        $state.go('staffing-pattern', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

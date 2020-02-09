@@ -64,11 +64,12 @@ class SurgicalOperationsMinorController extends Controller {
 
         $transaction = DB::transaction(function($field) use($fields){
             // try{
-                $operations_minor_count = SurgicalOperationMinor::count();
+                $operations_minor_count = SurgicalOperationMinor::where('reportingyear', $fields['reportingyear'])->count();
 
                 if($operations_minor_count<10){
 
-                    $check_duplicate = SurgicalOperationMinor::where('operationcode', $fields['operationcode'])->count();
+                    $check_duplicate = SurgicalOperationMinor::where('operationcode', $fields['operationcode'])
+                                                                ->where('reportingyear', $fields['reportingyear'])->count();
                     if($check_duplicate<=0){
 
                         $operations_minor = new SurgicalOperationMinor;
@@ -76,7 +77,7 @@ class SurgicalOperationsMinorController extends Controller {
                         $operations_minor->operationcode                    = $fields['operationcode'];
                         $operations_minor->surgicaloperation                = $fields['surgicaloperation'];
                         $operations_minor->number                           = $fields['number'];
-                        $operations_minor->reportingyear                    = 2019;
+                        $operations_minor->reportingyear                    = $fields['reportingyear'];;
                         $operations_minor->save();
 
                         return response()->json([
@@ -150,46 +151,6 @@ class SurgicalOperationsMinorController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
-
-        $minor_operations = DB::table('hospitaloperationsminoropt as operationsMInorOpt')
-            ->select( 
-                'operationsMInorOpt.id',
-                'operationsMInorOpt.hfhudcode',
-                'operationsMInorOpt.operationcode',
-                'operationsMInorOpt.surgicaloperation',
-                'operationsMInorOpt.number',
-                'operationsMInorOpt.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($minor_operations as $minor_operation) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "operationcode" => $minor_operation->operationcode, 
-                "surgicaloperation" => $minor_operation->surgicaloperation, 
-                "number" => $minor_operation->number,
-                "reportingyear" => 2017
-            ];
-        
-            $response = $this->soapWrapper->call('Emr.hospitaloperationsMInorOpt', $data);
-        }
-        
-    }
-
     public function remove(Request $request){
 
 	    $data = Input::post();
@@ -218,5 +179,62 @@ class SurgicalOperationsMinorController extends Controller {
 
    	 	return $transaction;
   	}
+
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+                
+            $minor_operations = DB::table('hospitaloperationsminoropt as operationsMInorOpt')
+                ->select( 
+                    'operationsMInorOpt.id',
+                    'operationsMInorOpt.hfhudcode',
+                    'operationsMInorOpt.operationcode',
+                    'operationsMInorOpt.surgicaloperation',
+                    'operationsMInorOpt.number',
+                    'operationsMInorOpt.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($minor_operations as $minor_operation) {
+                // code
+                $data = [
+                    "hfhudcode" => $minor_operation->hfhudcode, 
+                    "operationcode" => $minor_operation->operationcode, 
+                    "surgicaloperation" => $minor_operation->surgicaloperation, 
+                    "number" => $minor_operation->number,
+                    "reportingyear" => $minor_operation->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.hospitaloperationsMInorOpt', $data);
+            }
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
+        
+    }
   	
 }

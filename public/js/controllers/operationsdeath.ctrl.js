@@ -6,12 +6,27 @@
         .controller('OperationsDeathCreateCtrl', OperationsDeathCreateCtrl)
         .controller('OperationsDeathActionModalInsatanceCtrl', OperationsDeathActionModalInsatanceCtrl)
 
-        OperationsDeathCtrl.$inject = ['OperationsDeathSrvcs', '$stateParams', '$uibModal', '$window'];
-        function OperationsDeathCtrl(OperationsDeathSrvcs, $stateParams, $uibModal, $window){
+        OperationsDeathCtrl.$inject = ['OperationsDeathSrvcs', '$stateParams', '$state', '$uibModal', '$window'];
+        function OperationsDeathCtrl(OperationsDeathSrvcs, $stateParams, $state, $uibModal, $window){
             var vm = this;
             var data = {};
 
-            OperationsDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-death', {reportingyear:reportingyear});
+            }
+
+            OperationsDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.operations_death = response.data.data[0];
@@ -21,8 +36,10 @@
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
-                OperationsDeathSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+
+                data['reportingyear'] = $stateParams.reportingyear;
+                OperationsDeathSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -37,9 +54,9 @@
             var data = {}; 
 
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                OperationsDeathSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                OperationsDeathSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -77,30 +94,30 @@
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
 
-            vm.computeTotalDeaths = function(data){
-                console.log(data)
+            // vm.computeTotalDeaths = function(data){
+            //     console.log(data)
 
-                vm.totalDeaths = parseInt(data.totaldeaths48down)+
-                                parseInt(data.totaldeaths48up)+
-                                parseInt(data.totalerdeaths)+
-                                parseInt(data.totaldoa)+
-                                parseInt(data.totalstillbirths)+
-                                parseInt(data.totalneonataldeaths)+
-                                parseInt(data.totalmaternaldeaths);
+            //     vm.totalDeaths = parseInt(data.totaldeaths48down)+
+            //                     parseInt(data.totaldeaths48up)+
+            //                     parseInt(data.totalerdeaths)+
+            //                     parseInt(data.totaldoa)+
+            //                     parseInt(data.totalstillbirths)+
+            //                     parseInt(data.totalneonataldeaths)+
+            //                     parseInt(data.totalmaternaldeaths);
 
-                console.log(vm.totalDeaths)
+            //     console.log(vm.totalDeaths)
 
-                vm.collection.totaldeaths = vm.totalDeaths;
-            }
+            //     vm.collection.totaldeaths = vm.totalDeaths;
+            // }
 
             vm.createOperationsDeathBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 OperationsDeathSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-death', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-death', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -112,13 +129,13 @@
 
             vm.updateOperationsDeathBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 OperationsDeathSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-death', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-death', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

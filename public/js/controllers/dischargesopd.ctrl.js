@@ -5,12 +5,27 @@
         .controller('DischargesOPDCtrl', DischargesOPDCtrl)
         .controller('DischargesOPDActionModalInsatanceCtrl', DischargesOPDActionModalInsatanceCtrl)
 
-        DischargesOPDCtrl.$inject = ['DischargesOPDSrvcs','RicbSrvcs', '$stateParams', '$uibModal', '$window', '$rootScope', '$scope', 'DTOptionsBuilder', 'DTColumnBuilder'];
-        function DischargesOPDCtrl(DischargesOPDSrvcs, RicbSrvcs, $stateParams, $uibModal, $window, $rootScope, $scope, DTOptionsBuilder, DTColumnBuilder){
+        DischargesOPDCtrl.$inject = ['DischargesOPDSrvcs','RicbSrvcs', '$stateParams', '$state', '$uibModal', '$window', '$rootScope', '$scope', 'DTOptionsBuilder', 'DTColumnBuilder'];
+        function DischargesOPDCtrl(DischargesOPDSrvcs, RicbSrvcs, $stateParams, $state, $uibModal, $window, $rootScope, $scope, DTOptionsBuilder, DTColumnBuilder){
             var vm = this;
             var data = {};
 
-            DischargesOPDSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-discharges-opd', {reportingyear:reportingyear});
+            }
+
+            DischargesOPDSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.discharges_opd = response.data.data;
@@ -76,12 +91,12 @@
 
             vm.createDischargeOPDBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesOPDSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        DischargesOPDSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesOPDSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.discharges_opd = response.data.data;
@@ -98,12 +113,12 @@
             vm.deleteDischargeOPDBtn = function(id){
                 alert(id)
                 data['id'] = id;
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesOPDSrvcs.remove(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        DischargesOPDSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesOPDSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.discharges_opd = response.data.data;
@@ -120,9 +135,10 @@
 
 
             vm.sendDataDoh = function(){
-                 
-                DischargesOPDSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                
+                data['reportingyear'] = $stateParams.reportingyear;
+                DischargesOPDSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -139,6 +155,7 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+            vm.reportingyear = $stateParams.reportingyear; 
 
             console.log(vm.collection)
  

@@ -216,63 +216,77 @@ class ClassificationsController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $classification = DB::table('geninfoclassification as classification')
-            ->select( 
-                'classification.id',
-                'classification.hfhudcode',
-                'classification.servicecapability',
-                'classification.general',
-                'classification.specialty',
-                'classification.specialtyspecify',
-                'classification.traumacapability',
-                'classification.natureofownership',
-                'classification.government',
-                'classification.national',
-                'classification.local',
-                'classification.private',
-                'classification.ownershipothers',
-                'classification.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $classification = DB::table('geninfoclassification as classification')
+                ->select( 
+                    'classification.id',
+                    'classification.hfhudcode',
+                    'classification.servicecapability',
+                    'classification.general',
+                    'classification.specialty',
+                    'classification.specialtyspecify',
+                    'classification.traumacapability',
+                    'classification.natureofownership',
+                    'classification.government',
+                    'classification.national',
+                    'classification.local',
+                    'classification.private',
+                    'classification.ownershipothers',
+                    'classification.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [
+                "hfhudcode" => $classification->hfhudcode, 
+                "servicecapability" => $classification->servicecapability, 
+                "general" => $classification->general, 
+                "specialty" => $classification->specialty, 
+                "specialtyspecify" => $classification->specialtyspecify, 
+                "traumacapability" => $classification->traumacapability, 
+                "natureofownership" => $classification->natureofownership, 
+                "government" => $classification->government, 
+                "national" => $classification->national, 
+                "local" => $classification->local, 
+                "private" => $classification->private,
+                "reportingyear" => $classification->reportingyear,
+                "ownershipothers" => $classification->ownershipothers, 
+            ];
+
+            $response = $this->soapWrapper->call('Emr.genInfoClassification', $data);
+
+            $classification = Classification::where('reportingyear', $fields['reportingyear'])->first();
+            $classification->submitted_at    = Carbon::now();
+            $classification->save();
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "servicecapability" => $classification->servicecapability, 
-            "general" => $classification->general, 
-            "specialty" => $classification->specialty, 
-            "specialtyspecify" => $classification->specialtyspecify, 
-            "traumacapability" => $classification->traumacapability, 
-            "natureofownership" => $classification->natureofownership, 
-            "government" => $classification->government, 
-            "national" => $classification->national, 
-            "local" => $classification->local, 
-            "private" => $classification->private,
-            "reportingyear" => 2017,
-            "ownershipothers" => $classification->ownershipothers, 
-        ];
-
-        $response = $this->soapWrapper->call('Emr.genInfoClassification', $data);
-
-        $classification = Classification::where('reportingyear', 2019)->first();
-        $classification->submitted_at    = Carbon::now();
-        $classification->save();
-
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-        // exit;
     }
   	
 }

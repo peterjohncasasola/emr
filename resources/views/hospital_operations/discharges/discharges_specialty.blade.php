@@ -1,3 +1,106 @@
+<nav class="navbar navbar-expand-lg main-navbar">
+<a href="index.html" class="navbar-brand sidebar-gone-hide">Online Health Facility Statistical Report System</a>
+<a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+<div class="nav-collapse">
+    <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
+    <i class="fas fa-ellipsis-v"></i>
+    </a>
+    <ul class="navbar-nav">
+    <li class="nav-item"><a href="#" class="nav-link">Reports</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Forms</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+    </ul>
+</div>
+ 
+<form class="form-inline ml-auto">
+    <select class="form-control selectric" ng-model="dischargesSpecialtyCtrl.reportingyear" ng-change="dischargesSpecialtyCtrl.selectReportingYear(dischargesSpecialtyCtrl.reportingyear)">
+        <option value="<%reportingyear.year%>" ng-repeat="reportingyear in dischargesSpecialtyCtrl.reportingyears"> Reporting Year <%reportingyear.year%> </option>
+    </select>
+</form>
+
+<ul class="navbar-nav navbar-right">
+    <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+    @if(Config::get('defaults.default.is_local')==1)
+        <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+    @else
+        <img alt="image" src="public/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+    @endif
+    <div class="d-sm-none d-lg-inline-block">Hi, Administrator</div></a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a href="features-profile.html" class="dropdown-item has-icon">
+        <i class="far fa-user"></i> Profile
+        </a>
+        <a href="features-activities.html" class="dropdown-item has-icon">
+        <i class="fas fa-bolt"></i> Change Passord
+        </a>
+        <a href="features-settings.html" class="dropdown-item has-icon">
+        <i class="fas fa-cog"></i> Settings
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="auth-login.html" class="dropdown-item has-icon text-danger">
+        <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+    </li>
+</ul>
+</nav>
+
+<nav class="navbar navbar-secondary navbar-expand-lg">
+<div class="container">
+    <ul class="navbar-nav">
+    <!-- <li class="nav-item">
+        <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
+    </li> -->
+    <li class="nav-item" ui-sref="facility_profile({reportingyear:dischargesSpecialtyCtrl.reportingyear})">
+        <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
+    </li>
+    <li class="nav-item" ui-sref="general-info({reportingyear:dischargesSpecialtyCtrl.reportingyear})">
+        <a href="general-information.html" class="nav-link"><i class="far fa-list-alt"></i><span>General Information</span></a>
+    </li>
+    <li class="nav-item active dropdown">
+        <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Hospital Operations</span></a>
+        <ul class="dropdown-menu">
+        <li class="nav-item" ui-sref="hospital-operations-summary-of-patients({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link">Summary of Patients in the Hospital</a></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Discharges</a>
+            <ul class="dropdown-menu">
+            <li class="nav-item active" ui-sref="hospital-operations-discharges-specialty({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="hospital-operations/discharges-a.html" class="nav-link">Type of Service and Total Discharges According to Specialty</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-morbidity({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="hospital-operations/discharges-b.html" class="nav-link">Ten Leading causes of Morbidity/Diseases Disaggregated as to Age and Sex</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-number-deliveries({reportingyear:dischargesSpecialtyCtrl.reportingyear})"> <a href="#" class="nav-link">Total Number of Deliveries</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-opd({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#l" class="nav-link">Ten Leading OPD Consultations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-er({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link">Ten Leading ER Consultations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-testing({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link">Testing and Other Services</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-ev({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link">Emergency Visits</a></li>
+            </ul>
+        </li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Deaths</a>
+            <ul class="dropdown-menu">
+            <li class="nav-item" ui-sref="hospital-operations-death({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link">Total Number of Deaths</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-mortality-death({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="hospital-operations/deaths-b.html" class="nav-link">Ten Leading causes of Mortality/Deaths Disaggregated as to Age and Sex</a></li>
+            </ul>
+        </li>
+        <li class="nav-item" ui-sref="hospital-operations-hai({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="#" class="nav-link">Healthcare Associated Infections (HAI)</a></li>
+        <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Surgical Operations</a>
+            <ul class="dropdown-menu">
+            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-major({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="hospital-operations/surgical-a.html" class="nav-link">Ten Leading Major Operations (Not Applicable for Infirmary)</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-minor({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><a href="hospital-operations/surgical-b.html" class="nav-link">Ten Leading Minor Operations</a></li>
+            </ul>
+        </li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a href="#" class="nav-link" ui-sref="staffing-pattern({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
+    </li>
+    <li class="nav-item" ui-sref="expenses({reportingyear:dischargesSpecialtyCtrl.reportingyear})">
+        <a href="#" class="nav-link"><i class="far fa-check-square"></i><span>Expenses</span></a>
+    </li>
+    <li class="nav-item" ui-sref="revenues({reportingyear:dischargesSpecialtyCtrl.reportingyear})">
+        <a href="#" class="nav-link"><i class="far fa-money-bill-alt"></i><span>Revenues</span></a>
+    </li>
+    </ul>
+</div>
+</nav>
+
 <!-- Main Content -->
 <div class="main-content">
 <section class="section">
@@ -19,7 +122,7 @@
             <div class="card-header">
             <h4>Type of Service and Total Discharges According to Specialty</h4>
             <div class="card-header-action">
-                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputdischarges_d" ui-sref="hospital-operations-discharges-specialty-new({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
+                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputdischarges_d" ui-sref="hospital-operations-discharges-specialty-new({reportingyear:dischargesSpecialtyCtrl.reportingyear})"><i class="far fa-edit"></i> Input</a>
                 <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="dischargesSpecialtyCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
             </div>
             </div>
@@ -233,320 +336,6 @@
                         <td><%others.remarks%></td>
                         <td><a href="" class="fas fa-trash-alt text-danger" ng-click="dischargesSpecialtyCtrl.deleteDischargeSpecialtyBtn(others.id, 7)"></a></td>
                     </tr>
-                    <!-- <tr bgcolor="#e8e8e8">
-                    <td><b>Total</b></td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.nopatients+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.nopatients+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.nopatients+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.nopatients+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.nopatients+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.nopatients
-                        %>
-                    </td>
-                    <td style="border-right: 2px solid gray;">
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.totallengthstay+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.totallengthstay+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.totallengthstay+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.totallengthstay+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.totallengthstay+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.totallengthstay
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.nppay+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.nppay+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.nppay+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.nppay+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.nppay+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.nppay
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.nphservicecharity+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.nphservicecharity+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.nphservicecharity+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.nphservicecharity+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.nphservicecharity+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.nphservicecharity
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.nphtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.nphtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.nphtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.nphtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.nphtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.nphtotal
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.phtotal
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.phservice+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.phservice+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.phservice+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.phservice+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.phservice+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.phservice
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.phtotal
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.hmo+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.hmo+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.hmo+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.hmo+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.hmo+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.hmo
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.owwa+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.owwa+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.owwa+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.owwa+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.owwa+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.owwa
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.recoveredimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.recoveredimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.recoveredimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.recoveredimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.recoveredimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.recoveredimproved
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.transferred+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.transferred+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.transferred+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.transferred+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.transferred+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.transferred
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.hama+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.hama+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.hama+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.hama+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.hama+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.hama
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.absconded+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.absconded+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.absconded+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.absconded+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.absconded+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.absconded
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.unimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.unimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.unimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.unimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.unimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.unimproved
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.deathsbelow48+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.deathsbelow48+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.deathsbelow48+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.deathsbelow48+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.deathsbelow48+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.deathsbelow48
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.deathsover48+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.deathsover48+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.deathsover48+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.deathsover48+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.deathsover48+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.deathsover48
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.totaldeaths+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.totaldeaths+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.totaldeaths+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.totaldeaths+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.totaldeaths+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.totaldeaths
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[0].value.totaldischarges+
-                            dischargesSpecialtyCtrl.type_of_service_list[1].value.totaldischarges+
-                            dischargesSpecialtyCtrl.type_of_service_list[2].value.totaldischarges+
-                            dischargesSpecialtyCtrl.type_of_service_list[3].value.totaldischarges+
-                            dischargesSpecialtyCtrl.type_of_service_list[4].value.totaldischarges+
-                            dischargesSpecialtyCtrl.type_of_service_list[5].value.totaldischarges
-                        %>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    </tr>
-                    <tr bgcolor="#e8e8e8">
-                    <td><b>Total Newborn</b></td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.nopatients+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.nopatients
-                        %>
-                    </td>
-                    <td style="border-right: 2px solid gray;">
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.totallengthstay+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.totallengthstay
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.nppay+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.nppay
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.nphservicecharity+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.nphservicecharity
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.nphtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.nphtotal
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.phtotal
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.phservice+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.phservice
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.phtotal+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.phtotal
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.hmo+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.hmo
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.owwa+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.owwa
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.recoveredimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.recoveredimproved
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.transferred+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.transferred
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.hama+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.hama
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.absconded+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.absconded
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.unimproved+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.unimproved
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.deathsbelow48+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.deathsbelow48
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.deathsover48+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.deathsover48
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.totaldeaths+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.totaldeaths
-                        %>
-                    </td>
-                    <td>
-                        <%
-                            dischargesSpecialtyCtrl.type_of_service_list[7].value.totaldischarges+
-                            dischargesSpecialtyCtrl.type_of_service_list[8].value.totaldischarges
-                        %>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    </tr> -->
                     <tr>
                         <td><%dischargesSpecialtyCtrl.type_of_service_list[7].desc%></td>
                         <td><%dischargesSpecialtyCtrl.type_of_service_list[7].value.nopatients%></td> 
@@ -616,7 +405,7 @@
     <div class="modal-content">
     <div class="modal-header">
     <h5 class="modal-title">Type of Service and Total Discharges According to Specialty</h5>
-        <button type="button" class="close" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-specialty({reporting_year:2019})">
+        <button type="button" class="close" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-specialty({reportingyear:dischargesSpecialtyCtrl.reportingyear})">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -728,7 +517,7 @@
             </div>
 
         <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-number-deliveries({reporting_year:2019})">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-number-deliveries({reportingyear:dischargesSpecialtyCtrl.reportingyear})">Close</button>
             <button type="button" class="btn btn-primary" ng-if="!dischargesSpecialtyCtrl.collection_copy" ng-click="dischargesSpecialtyCtrl.createDischargeSpecialtyBtn(dischargesSpecialtyCtrl.collection)">Save changes</button>
         </div>
     </div>
@@ -740,7 +529,7 @@
     <div class="modal-content">
     <div class="modal-header">
     <h5 class="modal-title">Type of Service and Total Discharges According to Specialty</h5>
-        <button type="button" class="close" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-specialty({reporting_year:2019})">
+        <button type="button" class="close" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-specialty({reportingyear:dischargesSpecialtyCtrl.reportingyear})">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -850,7 +639,7 @@
             </div>
 
         <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-number-deliveries({reporting_year:2019})">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesSpecialtyCtrl.close()" ui-sref="hospital-operations-discharges-number-deliveries({reportingyear:dischargesSpecialtyCtrl.reportingyear})">Close</button>
             <button type="button" class="btn btn-primary" ng-if="dischargesSpecialtyCtrl.collection_copy" ng-click="dischargesSpecialtyCtrl.updateDischargeSpecialtyBtn(dischargesSpecialtyCtrl.collection)">Update changes</button>
         </div>
     </div>

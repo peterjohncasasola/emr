@@ -6,12 +6,27 @@
         .controller('DischargesTestingCreateCtrl', DischargesTestingCreateCtrl)
         .controller('DischargesTestingActionModalInsatanceCtrl', DischargesTestingActionModalInsatanceCtrl)
 
-        DischargesTestingCtrl.$inject = ['DischargesTestingSrvcs', '$stateParams', '$uibModal', '$window'];
-        function DischargesTestingCtrl(DischargesTestingSrvcs, $stateParams, $uibModal, $window){
+        DischargesTestingCtrl.$inject = ['DischargesTestingSrvcs', '$stateParams', '$state', '$uibModal', '$window'];
+        function DischargesTestingCtrl(DischargesTestingSrvcs, $stateParams, $state, $uibModal, $window){
             var vm = this;
             var data = {};
 
-            DischargesTestingSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-discharges-testing', {reportingyear:reportingyear});
+            }
+
+            DischargesTestingSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.testing = response.data.data;
@@ -21,8 +36,9 @@
             }, function (){ alert('Bad Request!!!') })
 
             vm.sendDataDoh = function(){
-                DischargesTestingSrvcs.send_data_doh().then (function (response) {
-                    alert('Success!')
+                data['reportingyear'] = $stateParams.reportingyear;
+                DischargesTestingSrvcs.send_data_doh(data).then (function (response) {
+                    alert('Successfully submitted!')
                 }, function (){ alert('Bad Request!!!') })
             }
 
@@ -36,9 +52,9 @@
             var vm = this;
             var data = {}; 
 
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                DischargesTestingSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                DischargesTestingSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data;
@@ -83,13 +99,13 @@
             vm.collection_copy = collection.data;
 
             vm.createDischargeTestingBtn = function(data){
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 DischargesTestingSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
 
-                        DischargesTestingSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesTestingSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.testing = response.data.data[0];
@@ -98,7 +114,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('hospital-operations-discharges-testing', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-discharges-testing', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -110,14 +126,14 @@
 
             vm.updateDischargeTestingBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 DischargesTestingSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
 
-                        DischargesTestingSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                        DischargesTestingSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                             if(response.data.status == 200)
                             {
                                 vm.testing = response.data.data[0];
@@ -126,7 +142,7 @@
                             }
                         }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('hospital-operations-discharges-testing', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-discharges-testing', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

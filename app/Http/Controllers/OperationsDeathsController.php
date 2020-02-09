@@ -99,7 +99,7 @@ class OperationsDeathsController extends Controller {
                 $perations_deaths->ndrnumerator                         = $fields['ndrnumerator'];
                 $perations_deaths->ndrdenominator                       = $fields['ndrdenominator'];
                 $perations_deaths->netdeathrate                         = ($fields['ndrnumerator']*100)/$fields['ndrdenominator'];
-                $perations_deaths->reportingyear                        = 2019;
+                $perations_deaths->reportingyear                        = $fields['reportingyear'];;
                 $perations_deaths->save();
 
                 return response()->json([
@@ -152,7 +152,7 @@ class OperationsDeathsController extends Controller {
             $perations_deaths->ndrnumerator                         = $fields['ndrnumerator'];
             $perations_deaths->ndrdenominator                       = $fields['ndrdenominator'];
             $perations_deaths->netdeathrate                         = ($fields['ndrnumerator']*100)/$fields['ndrdenominator'];
-            $perations_deaths->reportingyear                        = 2019;
+            $perations_deaths->reportingyear                        = $fields['reportingyear'];;
             $perations_deaths->save();
 
             return response()->json([
@@ -204,65 +204,82 @@ class OperationsDeathsController extends Controller {
    	 	return $transaction;
   	}
 
-    public function send_data_doh(){
-
-        $perations_deaths = DB::table('hospitaloperationsdeaths as operationsDeaths')
-            ->select( 
-                'operationsDeaths.id',
-                'operationsDeaths.hfhudcode',
-                'operationsDeaths.totaldeaths',
-                'operationsDeaths.totaldeaths48down',
-                'operationsDeaths.totaldeaths48up',
-                'operationsDeaths.totalerdeaths',
-                'operationsDeaths.totaldoa',
-                'operationsDeaths.totalstillbirths',
-                'operationsDeaths.totalneonataldeaths',
-                'operationsDeaths.totalmaternaldeaths',
-                'operationsDeaths.totaldeathsnewborn',
-                'operationsDeaths.totaldischargedeaths',
-                'operationsDeaths.grossdeathrate',
-                'operationsDeaths.ndrnumerator',
-                'operationsDeaths.ndrdenominator',
-                'operationsDeaths.netdeathrate',
-                'operationsDeaths.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($perations_deaths as $perations_death) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "totaldeaths" => $perations_death->totaldeaths,
-                "totaldeaths48down" => $perations_death->totaldeaths48down,
-                "totaldeaths48up" => $perations_death->totaldeaths48up,
-                "totalerdeaths" => $perations_death->totalerdeaths,
-                "totaldoa" => $perations_death->totaldoa,
-                "totalstillbirths" => $perations_death->totalstillbirths,
-                "totalneonataldeaths" => $perations_death->totalneonataldeaths,
-                "totalmaternaldeaths" => $perations_death->totalmaternaldeaths,
-                "totaldeathsnewborn" => $perations_death->totaldeathsnewborn,
-                "totaldischargedeaths" => $perations_death->totaldischargedeaths,
-                "grossdeathrate" => $perations_death->grossdeathrate,
-                "ndrnumerator" => $perations_death->ndrnumerator,
-                "ndrdenominator" => $perations_death->ndrdenominator,
-                "netdeathrate" => $perations_death->netdeathrate,
-                "reportingyear" => 2017
-            ];
+    public function send_data_doh(Request $request){
         
-            $response = $this->soapWrapper->call('Emr.hospitalOperationsDeaths', $data);
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $perations_deaths = DB::table('hospitaloperationsdeaths as operationsDeaths')
+                ->select( 
+                    'operationsDeaths.id',
+                    'operationsDeaths.hfhudcode',
+                    'operationsDeaths.totaldeaths',
+                    'operationsDeaths.totaldeaths48down',
+                    'operationsDeaths.totaldeaths48up',
+                    'operationsDeaths.totalerdeaths',
+                    'operationsDeaths.totaldoa',
+                    'operationsDeaths.totalstillbirths',
+                    'operationsDeaths.totalneonataldeaths',
+                    'operationsDeaths.totalmaternaldeaths',
+                    'operationsDeaths.totaldeathsnewborn',
+                    'operationsDeaths.totaldischargedeaths',
+                    'operationsDeaths.grossdeathrate',
+                    'operationsDeaths.ndrnumerator',
+                    'operationsDeaths.ndrdenominator',
+                    'operationsDeaths.netdeathrate',
+                    'operationsDeaths.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($perations_deaths as $perations_death) {
+                // code
+                $data = [
+                    "hfhudcode" => $perations_death->hfhudcode,
+                    "totaldeaths" => $perations_death->totaldeaths,
+                    "totaldeaths48down" => $perations_death->totaldeaths48down,
+                    "totaldeaths48up" => $perations_death->totaldeaths48up,
+                    "totalerdeaths" => $perations_death->totalerdeaths,
+                    "totaldoa" => $perations_death->totaldoa,
+                    "totalstillbirths" => $perations_death->totalstillbirths,
+                    "totalneonataldeaths" => $perations_death->totalneonataldeaths,
+                    "totalmaternaldeaths" => $perations_death->totalmaternaldeaths,
+                    "totaldeathsnewborn" => $perations_death->totaldeathsnewborn,
+                    "totaldischargedeaths" => $perations_death->totaldischargedeaths,
+                    "grossdeathrate" => $perations_death->grossdeathrate,
+                    "ndrnumerator" => $perations_death->ndrnumerator,
+                    "ndrdenominator" => $perations_death->ndrdenominator,
+                    "netdeathrate" => $perations_death->netdeathrate,
+                    "reportingyear" => $perations_death->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.hospitalOperationsDeaths', $data);
+            }
+
         }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
     }
   	
 }

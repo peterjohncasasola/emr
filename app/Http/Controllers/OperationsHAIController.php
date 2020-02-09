@@ -99,7 +99,7 @@ class OperationsHAIController extends Controller {
                 $operations_HAI->totalproceduresdone                = $fields['totalproceduresdone'];
                 $operations_HAI->resultssi                          = ($fields['numssi']*100)/$fields['totalproceduresdone'];
 
-                $operations_HAI->reportingyear                      = 2019;
+                $operations_HAI->reportingyear                      = $fields['reportingyear'];
                 $operations_HAI->save();
 
                 return response()->json([
@@ -166,71 +166,86 @@ class OperationsHAIController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
+    public function send_data_doh(Request $request){
+        
+        $fields = Input::post();
 
-        $operations_HAI = DB::table('hospitaloperationshai as operationsHAI')
-            ->select( 
-                'operationsHAI.id',
-                'operationsHAI.hfhudcode',
-                'operationsHAI.numhai',
-                'operationsHAI.numdischarges',
-                'operationsHAI.infectionrate',
-                'operationsHAI.patientnumvap',
-                'operationsHAI.totalventilatordays',
-                'operationsHAI.resultvap',
-                'operationsHAI.patientnumbsi',
-                'operationsHAI.totalnumcentralline',
-                'operationsHAI.resultbsi',
-                'operationsHAI.patientnumuti',
-                'operationsHAI.totalcatheterdays',
-                'operationsHAI.resultuti',
-                'operationsHAI.numssi',
-                'operationsHAI.totalproceduresdone',
-                'operationsHAI.resultssi',
-                'operationsHAI.reportingyear'
-            )->where('reportingyear', 2019)->first();
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
 
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
+            $operations_HAI = DB::table('hospitaloperationshai as operationsHAI')
+                ->select( 
+                    'operationsHAI.id',
+                    'operationsHAI.hfhudcode',
+                    'operationsHAI.numhai',
+                    'operationsHAI.numdischarges',
+                    'operationsHAI.infectionrate',
+                    'operationsHAI.patientnumvap',
+                    'operationsHAI.totalventilatordays',
+                    'operationsHAI.resultvap',
+                    'operationsHAI.patientnumbsi',
+                    'operationsHAI.totalnumcentralline',
+                    'operationsHAI.resultbsi',
+                    'operationsHAI.patientnumuti',
+                    'operationsHAI.totalcatheterdays',
+                    'operationsHAI.resultuti',
+                    'operationsHAI.numssi',
+                    'operationsHAI.totalproceduresdone',
+                    'operationsHAI.resultssi',
+                    'operationsHAI.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $data = [
+                "hfhudcode" => $operations_HAI->hfhudcode, 
+                "numhai" => $operations_HAI->numhai, 
+                "numdischarges" => $operations_HAI->numdischarges,
+                "infectionrate" => $operations_HAI->infectionrate,
+                "patientnumvap" => $operations_HAI->patientnumvap,
+                "totalventilatordays" => $operations_HAI->totalventilatordays,
+                "resultvap" => $operations_HAI->resultvap,
+                "patientnumbsi" => $operations_HAI->patientnumbsi,
+                "totalnumcentralline" => $operations_HAI->totalnumcentralline,
+                "resultbsi" => $operations_HAI->resultbsi,
+                "patientnumuti" => $operations_HAI->patientnumuti,
+                "totalcatheterdays" => $operations_HAI->totalcatheterdays,
+                "resultuti" => $operations_HAI->resultuti,
+                "numssi" => $operations_HAI->numssi,
+                "totalproceduresdone" => $operations_HAI->totalproceduresdone,
+                "resultssi" => $operations_HAI->resultssi,
+                "reportingyear" => $operations_HAI->reportingyear
+            ];
+
+            $response = $this->soapWrapper->call('Emr.hospitalOperationsHAI', $data);
+
+            $operations_HAI = OperationsHAI::where('reportingyear', $fields['reportingyear'])->first();
+            $operations_HAI->submitted_at    = Carbon::now();
+            $operations_HAI->save();
+
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
         });
 
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "numhai" => $operations_HAI->numhai, 
-            "numdischarges" => $operations_HAI->numdischarges,
-            "infectionrate" => $operations_HAI->infectionrate,
-            "patientnumvap" => $operations_HAI->patientnumvap,
-            "totalventilatordays" => $operations_HAI->totalventilatordays,
-            "resultvap" => $operations_HAI->resultvap,
-            "patientnumbsi" => $operations_HAI->patientnumbsi,
-            "totalnumcentralline" => $operations_HAI->totalnumcentralline,
-            "resultbsi" => $operations_HAI->resultbsi,
-            "patientnumuti" => $operations_HAI->patientnumuti,
-            "totalcatheterdays" => $operations_HAI->totalcatheterdays,
-            "resultuti" => $operations_HAI->resultuti,
-            "numssi" => $operations_HAI->numssi,
-            "totalproceduresdone" => $operations_HAI->totalproceduresdone,
-            "resultssi" => $operations_HAI->resultssi,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.hospitalOperationsHAI', $data);
-
-        $operations_HAI = OperationsHAI::where('reportingyear', 2019)->first();
-        $operations_HAI->submitted_at    = Carbon::now();
-        $operations_HAI->save();
-
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-        // exit;
  
     }
   	

@@ -81,7 +81,7 @@ class SummaryOfPatientsController extends Controller {
                 $summary_of_patients->totalinpatienttransto         = $fields['totalinpatienttransto'];
                 $summary_of_patients->totalinpatienttransfrom       = $fields['totalinpatienttransfrom'];
                 $summary_of_patients->totalpatientsremaining        = $fields['totalpatientsremaining'];
-                $summary_of_patients->reportingyear                 = 2019;
+                $summary_of_patients->reportingyear                 = $fields['reportingyear'];;
                 $summary_of_patients->save();
 
                 return response()->json([
@@ -143,57 +143,71 @@ class SummaryOfPatientsController extends Controller {
         return $transaction;
     }
 
-    public function send_data_doh(){
-
-        $summary_of_patients = DB::table('hospoptsummaryofpatients as summaryOfPatients')
-            ->select( 
-                'summaryOfPatients.id',
-                'summaryOfPatients.hfhudcode',
-                'summaryOfPatients.totalinpatients',
-                'summaryOfPatients.totalnewborn',
-                'summaryOfPatients.totaldischarges',
-                'summaryOfPatients.totalpad',
-                'summaryOfPatients.totalibd',
-                'summaryOfPatients.totalinpatienttransto',
-                'summaryOfPatients.totalinpatienttransfrom',
-                'summaryOfPatients.totalpatientsremaining',
-                'summaryOfPatients.reportingyear'
-            )->where('reportingyear', 2019)->first();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        $data = [
-            "hfhudcode" => "NEHEHRSV201900093", 
-            "totalinpatients" => $summary_of_patients->totalinpatients, 
-            "totalnewborn" => $summary_of_patients->totalnewborn, 
-            "totaldischarges" => $summary_of_patients->totaldischarges,
-            "totalpad" => $summary_of_patients->totalpad,
-            "totalibd" => $summary_of_patients->totalibd,
-            "totalinpatienttransto" => $summary_of_patients->totalinpatienttransto,
-            "totalinpatienttransfrom" => $summary_of_patients->totalinpatienttransfrom,
-            "totalpatientsremaining" => $summary_of_patients->totalpatientsremaining,
-            "reportingyear" => 2017
-        ];
-
-        $response = $this->soapWrapper->call('Emr.hospOptSummaryOfPatients', $data);
-
-        $summary_of_patients = SummaryOfPatient::where('reportingyear', 2019)->first(); 
-        $summary_of_patients->submitted_at    = Carbon::now();
-        $summary_of_patients->save();
+    public function send_data_doh(Request $request){
         
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-        // exit;
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+            $summary_of_patients = DB::table('hospoptsummaryofpatients as summaryOfPatients')
+                ->select( 
+                    'summaryOfPatients.id',
+                    'summaryOfPatients.hfhudcode',
+                    'summaryOfPatients.totalinpatients',
+                    'summaryOfPatients.totalnewborn',
+                    'summaryOfPatients.totaldischarges',
+                    'summaryOfPatients.totalpad',
+                    'summaryOfPatients.totalibd',
+                    'summaryOfPatients.totalinpatienttransto',
+                    'summaryOfPatients.totalinpatienttransfrom',
+                    'summaryOfPatients.totalpatientsremaining',
+                    'summaryOfPatients.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->first();
+
+            $data = [
+                "hfhudcode" => $summary_of_patients->hfhudcode, 
+                "totalinpatients" => $summary_of_patients->totalinpatients, 
+                "totalnewborn" => $summary_of_patients->totalnewborn, 
+                "totaldischarges" => $summary_of_patients->totaldischarges,
+                "totalpad" => $summary_of_patients->totalpad,
+                "totalibd" => $summary_of_patients->totalibd,
+                "totalinpatienttransto" => $summary_of_patients->totalinpatienttransto,
+                "totalinpatienttransfrom" => $summary_of_patients->totalinpatienttransfrom,
+                "totalpatientsremaining" => $summary_of_patients->totalpatientsremaining,
+                "reportingyear" => $summary_of_patients->reportingyear
+            ];
+
+            $response = $this->soapWrapper->call('Emr.hospOptSummaryOfPatients', $data);
+
+            $summary_of_patients = SummaryOfPatient::where('reportingyear', $fields['reportingyear'])->first(); 
+            $summary_of_patients->submitted_at    = Carbon::now();
+            $summary_of_patients->save();
+          
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
     }
   	
 }

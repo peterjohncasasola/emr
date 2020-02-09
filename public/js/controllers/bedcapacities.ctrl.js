@@ -9,10 +9,11 @@
         function BedCapacitiesCreateCtrl(BedCapacitiesSrvcs, $stateParams, $uibModal, $window){
             var vm = this;
             var data = {}; 
+ 
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                BedCapacitiesSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                BedCapacitiesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -49,15 +50,18 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+            vm.reportingyear = $stateParams.reportingyear; 
+
+            vm.reportingyear = $stateParams.reportingyear; 
 
             vm.createBedCapacityBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 BedCapacitiesSrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('general-info', {reporting_year:$stateParams.reporting_year});
+                        $state.go('general-info', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -69,13 +73,13 @@
 
             vm.updateBedCapacityBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 BedCapacitiesSrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('general-info', {reporting_year:$stateParams.reporting_year});
+                        $state.go('general-info', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

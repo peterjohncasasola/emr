@@ -6,15 +6,31 @@
         .controller('OperationsHAICreateCtrl', OperationsHAICreateCtrl)
         .controller('OperationsHAIActionModalInsatanceCtrl', OperationsHAIActionModalInsatanceCtrl)
 
-        OperationsHAICtrl.$inject = ['OperationsHAISrvcs', '$stateParams', '$uibModal', '$window'];
-        function OperationsHAICtrl(OperationsHAISrvcs, $stateParams, $uibModal, $window){
+        OperationsHAICtrl.$inject = ['OperationsHAISrvcs', '$stateParams', '$state', '$uibModal', '$window'];
+        function OperationsHAICtrl(OperationsHAISrvcs, $stateParams, $state, $uibModal, $window){
             var vm = this;
             var data = {};
+
+            vm.reportingyear = $stateParams.reportingyear; 
+ 
+            var counter = 1;
+            vm.reportingyears = [];
+            for(var year=2010; year<=2019; year++){
+                vm.reportingyears.push({id:counter, year:year})
+                counter++;
+            }
+
+            console.log(vm.reportingyears)
+
+            vm.selectReportingYear = function(reportingyear){
+                $state.go('hospital-operations-hai', {reportingyear:reportingyear});
+            }
+ 
 
             vm.is_loader_disabled = false;
             vm.is_submit_disabled = false;
 
-            OperationsHAISrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+            OperationsHAISrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.hai = response.data.data[0];
@@ -27,10 +43,12 @@
                 vm.is_loader_disabled = true;
                 vm.is_submit_disabled = true;
 
-                OperationsHAISrvcs.send_data_doh().then (function (response) {
+                data['reportingyear'] = $stateParams.reportingyear;
+
+                OperationsHAISrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
 
-                    OperationsHAISrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                    OperationsHAISrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
                         {
                             vm.hai = response.data.data[0];
@@ -38,7 +56,7 @@
                             console.log(vm.hai)
                         }
                     }, function (){ alert('Bad Request!!!') })
-                    
+
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;
 
@@ -55,9 +73,9 @@
             var vm = this;
             var data = {}; 
         
-            if($stateParams.reporting_year){
+            if($stateParams.reportingyear){
 
-                OperationsHAISrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
+                OperationsHAISrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                     if(response.data.status == 200)
                     {
                         vm.data = response.data.data[0];
@@ -97,12 +115,12 @@
 
             vm.createOperationsHAIBtn = function(data){
                 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
                 OperationsHAISrvcs.store(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-hai', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-hai', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {
@@ -114,13 +132,13 @@
 
             vm.updateOperationsHAIBtn = function(data){
 
-                data['reportingyear'] = $stateParams.reporting_year;
+                data['reportingyear'] = $stateParams.reportingyear;
                 console.log(data);
 
                 OperationsHAISrvcs.update(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('hospital-operations-hai', {reporting_year:$stateParams.reporting_year});
+                        $state.go('hospital-operations-hai', {reportingyear:$stateParams.reportingyear});
                         $uibModalInstance.close();
                     }
                     else {

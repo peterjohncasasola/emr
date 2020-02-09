@@ -28,7 +28,7 @@ Route::get('/api/v2/expenses','ExpensesController@show2');
 Route::get('/api/v1/expenses/{id}','ExpensesController@show');
 Route::post('/api/v1/expense/store','ExpensesController@store');
 Route::post('/api/v1/expense/update','ExpensesController@update');
-Route::get('/api/v1/expense/send_data_doh','ExpensesController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/expense/send_data_doh','ExpensesController@send_data_doh');//SEND TO DOH
 
 // -- REVENUES -- //
 Route::get('/revenues','RevenuesController@index');
@@ -39,7 +39,7 @@ Route::get('/api/v1/revenues','RevenuesController@show');
 Route::get('/api/v1/revenues/{revenue_code}','RevenuesController@show');
 Route::post('/api/v1/revenue/store','RevenuesController@store');
 Route::post('/api/v1/revenue/update','RevenuesController@update');
-Route::get('/api/v1/revenue/send_data_doh','RevenuesController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/revenue/send_data_doh','RevenuesController@send_data_doh');//SEND TO DOH
 
 // -- GENERAL INFO -- //
 Route::get('/general-info','ClassificationsController@index');
@@ -54,7 +54,7 @@ Route::get('/general-info/classifications/{reporting_year}/details','Classificat
 Route::get('/api/v1/classifications','ClassificationsController@show');
 Route::post('/api/v1/classification/store','ClassificationsController@store');
 Route::post('/api/v1/classification/update','ClassificationsController@update');
-Route::get('/api/v1/classification/send_data_doh','ClassificationsController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/classification/send_data_doh','ClassificationsController@send_data_doh');//SEND TO DOH
 
 // -- GENERAL INFO -- BED CAPACITY //
 Route::get('/general-info/bed-capacity','BedCapacitiesController@index');
@@ -64,7 +64,7 @@ Route::get('/general-info/bed-capacity/{reporting_year}/details','BedCapacitiesC
 Route::get('/api/v1/bed-capacities','BedCapacitiesController@show');
 Route::post('/api/v1/bed-capacity/store','BedCapacitiesController@store');
 Route::post('/api/v1/bed-capacity/update','BedCapacitiesController@update');
-Route::get('/api/v1/bed-capacity/send_data_doh','BedCapacitiesController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/bed-capacity/send_data_doh','BedCapacitiesController@send_data_doh');//SEND TO DOH
 
 // -- GENERAL INFO --  QUALITY MANAGEMENT //
 Route::get('/general-info/quality-management','QualityManagementController@index');
@@ -74,7 +74,7 @@ Route::get('/general-info/quality-management/{reporting_year}/details','QualityM
 Route::get('/api/v1/quality-management','QualityManagementController@show');
 Route::post('/api/v1/quality-management/store','QualityManagementController@store');
 Route::post('/api/v1/quality-management/update','QualityManagementController@update');
-Route::get('/api/v1/quality-management/send_data_doh','QualityManagementController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/quality-management/send_data_doh','QualityManagementController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> SUMMARY OF PATIENT //
 Route::get('/hospital-operations/hai','SummaryOfPatientsController@index');
@@ -84,7 +84,7 @@ Route::get('/hospital-operations/summary-of-patients/{reporting_year}/details','
 Route::get('/api/v1/summary-of-patients','SummaryOfPatientsController@show');
 Route::post('/api/v1/summary-of-patient/store','SummaryOfPatientsController@store');
 Route::post('/api/v1/summary-of-patient/update','SummaryOfPatientsController@update');
-Route::get('/api/v1/summary-of-patient/send_data_doh','SummaryOfPatientsController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/summary-of-patient/send_data_doh','SummaryOfPatientsController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> OPERATIONS HAI //
 Route::get('/hospital-operations/hai','OperationsHAIController@index');
@@ -94,7 +94,7 @@ Route::get('/hospital-operations/hai/{reporting_year}/details','OperationsHAICon
 Route::get('/api/v1/operations-hai','OperationsHAIController@show');
 Route::post('/api/v1/operations-hai/store','OperationsHAIController@store');
 Route::post('/api/v1/operations-hai/update','OperationsHAIController@update');
-Route::get('/api/v1/operations-hai/send_data_doh','OperationsHAIController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/operations-hai/send_data_doh','OperationsHAIController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> SPECIALTY //
 Route::get('/hospital-operations/discharges-specialty','DischargesSpecialtiesController@index');
@@ -107,7 +107,7 @@ Route::get('/api/v1/discharges-specialty-others','DischargesSpecialtiesControlle
 Route::post('/api/v1/discharges-specialty/store','DischargesSpecialtiesController@store');
 Route::post('/api/v1/discharges-specialty/update','DischargesSpecialtiesController@update');
 Route::post('/api/v1/discharges-specialty/remove','DischargesSpecialtiesController@remove');
-Route::get('/api/v1/discharges-specialty/send_data_doh','DischargesSpecialtiesController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-specialty/send_data_doh','DischargesSpecialtiesController@send_data_doh');//SEND TO DOH
 
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> NUMBER OF DELIVERIES //
@@ -118,7 +118,7 @@ Route::get('/hospital-operations/discharges-number-deliveries/{reporting_year}/d
 Route::get('/api/v1/discharges-number-deliveries','DischargesNumberDeliveriesController@show');
 Route::post('/api/v1/discharges-number-delivery/store','DischargesNumberDeliveriesController@store');
 Route::post('/api/v1/discharges-number-delivery/update','DischargesNumberDeliveriesController@update');
-Route::get('/api/v1/discharges-number-delivery/send_data_doh','DischargesNumberDeliveriesController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-number-delivery/send_data_doh','DischargesNumberDeliveriesController@send_data_doh');//SEND TO DOH
 
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> TESTING //
@@ -129,7 +129,7 @@ Route::get('/hospital-operations/discharges-testing/{reporting_year}/details','D
 Route::get('/api/v1/discharges-testing','DischargesTestingController@show');
 Route::post('/api/v1/discharges-testing/store','DischargesTestingController@store');
 Route::post('/api/v1/discharges-testing/update','DischargesTestingController@update');
-Route::get('/api/v1/discharges-testing/send_data_doh','DischargesTestingController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-testing/send_data_doh','DischargesTestingController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> OPV //
 Route::get('/hospital-operations/discharges-opv','DischargesOPVController@index');
@@ -139,7 +139,7 @@ Route::get('/hospital-operations/discharges-opv/{reporting_year}/details','Disch
 Route::get('/api/v1/discharges-opv','DischargesOPVController@show');
 Route::post('/api/v1/discharges-opv/store','DischargesOPVController@store');
 Route::post('/api/v1/discharges-opv/update','DischargesOPVController@update');
-Route::get('/api/v1/discharges-opv/send_data_doh','DischargesOPVController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-opv/send_data_doh','DischargesOPVController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> EV //
 Route::get('/hospital-operations/discharges-ev','DischargesEVController@index');
@@ -149,7 +149,7 @@ Route::get('/hospital-operations/discharges-ev/{reporting_year}/details','Discha
 Route::get('/api/v1/discharges-ev','DischargesEVController@show');
 Route::post('/api/v1/discharges-ev/store','DischargesEVController@store');
 Route::post('/api/v1/discharges-ev/update','DischargesEVController@update');
-Route::get('/api/v1/discharges-ev/send_data_doh','DischargesEVController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-ev/send_data_doh','DischargesEVController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> ER //
 Route::get('/hospital-operations/discharges-er','DischargesERController@index');
@@ -160,7 +160,7 @@ Route::get('/api/v1/discharges-er','DischargesERController@show');
 Route::post('/api/v1/discharges-er/store','DischargesERController@store');
 // Route::post('/api/v1/discharges-er/update','DischargesERController@update');
 Route::post('/api/v1/discharges-er/remove','DischargesERController@remove');
-Route::get('/api/v1/discharges-er/send_data_doh','DischargesERController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-er/send_data_doh','DischargesERController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> OPD //
 Route::get('/hospital-operations/discharges-opd','DischargesOPDController@index');
@@ -171,7 +171,7 @@ Route::get('/api/v1/discharges-opd','DischargesOPDController@show');
 Route::post('/api/v1/discharges-opd/store','DischargesOPDController@store');
 // Route::post('/api/v1/discharges-opd/update','DischargesOPDController@update');
 Route::post('/api/v1/discharges-opd/remove','DischargesOPDController@remove');
-Route::get('/api/v1/discharges-opd/send_data_doh','DischargesOPDController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-opd/send_data_doh','DischargesOPDController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DISCHARGES -> MORBIDITY //
 Route::get('/hospital-operations/discharges-morbidity','DischargesMorbidityController@index');
@@ -184,7 +184,7 @@ Route::get('/api/v1/discharges-morbidity','DischargesMorbidityController@show');
 Route::post('/api/v1/discharges-morbidity/store','DischargesMorbidityController@store');
 Route::post('/api/v1/discharges-morbidity/update','DischargesMorbidityController@update');
 Route::post('/api/v1/discharges-morbidity/remove','DischargesMorbidityController@remove');
-Route::get('/api/v1/discharges-morbidity/send_data_doh','DischargesMorbidityController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/discharges-morbidity/send_data_doh','DischargesMorbidityController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DEATH -> OPERATIONS DEATH //
 Route::get('/hospital-operations/death','OperationsDeathsController@index');
@@ -195,7 +195,7 @@ Route::get('/api/v1/death','OperationsDeathsController@show');
 Route::post('/api/v1/death/store','OperationsDeathsController@store');
 Route::post('/api/v1/death/update','OperationsDeathsController@update');
 Route::post('/api/v1/death/remove','OperationsDeathsController@remove');
-Route::get('/api/v1/death/send_data_doh','OperationsDeathsController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/death/send_data_doh','OperationsDeathsController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> DEATH -> OPERATIONS MORTALITY DEATH //
 Route::get('/hospital-operations/mortality-death','OperationsMortalityDeathsController@index');
@@ -208,7 +208,7 @@ Route::get('/api/v1/mortality-death','OperationsMortalityDeathsController@show')
 Route::post('/api/v1/mortality-death/store','OperationsMortalityDeathsController@store');
 Route::post('/api/v1/mortality-death/update','OperationsMortalityDeathsController@update');
 Route::post('/api/v1/mortality-death/remove','OperationsMortalityDeathsController@remove');
-Route::get('/api/v1/mortality-death/send_data_doh','OperationsMortalityDeathsController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/mortality-death/send_data_doh','OperationsMortalityDeathsController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MAJOR OPERATIONS //
 Route::get('/hospital-operations/surgical-operations-major','SurgicalOperationsMajorController@index');
@@ -219,7 +219,7 @@ Route::get('/api/v1/surgical-operations-major','SurgicalOperationsMajorControlle
 Route::post('/api/v1/surgical-operation-major/store','SurgicalOperationsMajorController@store');
 // Route::post('/api/v1/surgical-operation-major/update','SurgicalOperationsMajorController@update');
 Route::post('/api/v1/surgical-operation-major/remove','SurgicalOperationsMajorController@remove');
-Route::get('/api/v1/surgical-operation-major/send_data_doh','SurgicalOperationsMajorController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/surgical-operation-major/send_data_doh','SurgicalOperationsMajorController@send_data_doh');//SEND TO DOH
 
 // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MINOR OPERATIONS //
 Route::get('/hospital-operations/surgical-operations-minor','SurgicalOperationsMinorController@index');
@@ -230,7 +230,7 @@ Route::get('/api/v1/surgical-operations-minor','SurgicalOperationsMinorControlle
 Route::post('/api/v1/surgical-operation-minor/store','SurgicalOperationsMinorController@store');
 // Route::post('/api/v1/surgical-operation-minor/update','SurgicalOperationsMinorController@update');
 Route::post('/api/v1/surgical-operation-minor/remove','SurgicalOperationsMinorController@remove');
-Route::get('/api/v1/surgical-operation-minor/send_data_doh','SurgicalOperationsMinorController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/surgical-operation-minor/send_data_doh','SurgicalOperationsMinorController@send_data_doh');//SEND TO DOH
 
 
 // --STAFFING PATTERN //
@@ -245,7 +245,7 @@ Route::get('/api/v1/staffing-pattern','StaffingPatternController@show');
 Route::post('/api/v1/staffing-pattern/store','StaffingPatternController@store');
 Route::post('/api/v1/staffing-pattern/update','StaffingPatternController@update');
 Route::post('/api/v1/staffing-pattern/remove','StaffingPatternController@remove');
-Route::get('/api/v1/staffing-pattern/send_data_doh','StaffingPatternController@send_data_doh');//SEND TO DOH
+Route::post('/api/v1/staffing-pattern/send_data_doh','StaffingPatternController@send_data_doh');//SEND TO DOH
 
 
 

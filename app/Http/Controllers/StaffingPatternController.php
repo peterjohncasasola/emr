@@ -25,6 +25,11 @@ class StaffingPatternController extends Controller {
     
     public function show(Request $request){
 
+        $data = array(
+            'id'=>$request->input('id'),
+            'reportingyear'=>$request->input('reportingyear'),
+        );
+
         $rpositions = DB::table('rposition_lib as rposition')
             ->select( 
                 'rposition.poscode',
@@ -47,7 +52,13 @@ class StaffingPatternController extends Controller {
                 'staffingPattern.activerotatingaffiliate',
                 'staffingPattern.outsourced',
                 'staffingPattern.reportingyear'
-            )->get();
+            );
+
+            if ($data['reportingyear']){
+                $staffing_patterns = $staffing_patterns->where('staffingPattern.reportingyear', $data['reportingyear']);
+            }
+            
+            $staffing_patterns = $staffing_patterns->get(); 
 
         foreach($rpositions as $key=>$rposition){
 
@@ -131,22 +142,45 @@ class StaffingPatternController extends Controller {
 
             for($counter=0; $counter<$total_count; $counter++) {
 
-                $staffing_pattern = StaffingPattern::where('reportingyear', $fields[$counter]['reportingyear'])
+                $staffing_pattern_count = StaffingPattern::where('reportingyear', $fields[$counter]['reportingyear'])
                                                 ->where('hfhudcode', 'NEHEHRSV201900093')
                                                 ->where('professiondesignation', $fields[$counter]['poscode'])
-                                                ->first();
+                                                ->count();
 
-                $staffing_pattern->hfhudcode                    = 'NEHEHRSV201900093';
-                $staffing_pattern->professiondesignation        = $fields[$counter]['poscode'];
-                $staffing_pattern->specialtyboardcertified      = $fields[$counter]['values']['specialtyboardcertified'];
-                $staffing_pattern->fulltime40permanent          = $fields[$counter]['values']['fulltime40permanent'];
-                $staffing_pattern->fulltime40contractual        = $fields[$counter]['values']['fulltime40contractual'];
-                $staffing_pattern->parttimepermanent            = $fields[$counter]['values']['parttimepermanent'];
-                $staffing_pattern->parttimecontractual          = $fields[$counter]['values']['parttimecontractual'];
-                $staffing_pattern->activerotatingaffiliate      = $fields[$counter]['values']['activerotatingaffiliate'];
-                $staffing_pattern->outsourced                   = $fields[$counter]['values']['outsourced'];
-                $staffing_pattern->reportingyear                = $fields[$counter]['reportingyear'];
-                $staffing_pattern->save();
+                if($staffing_pattern_count>0){
+
+                    $staffing_pattern = StaffingPattern::where('reportingyear', $fields[$counter]['reportingyear'])
+                    ->where('hfhudcode', 'NEHEHRSV201900093')
+                    ->where('professiondesignation', $fields[$counter]['poscode'])
+                    ->first();
+
+                    $staffing_pattern->hfhudcode                    = 'NEHEHRSV201900093';
+                    $staffing_pattern->professiondesignation        = $fields[$counter]['poscode'];
+                    $staffing_pattern->specialtyboardcertified      = $fields[$counter]['values']['specialtyboardcertified'];
+                    $staffing_pattern->fulltime40permanent          = $fields[$counter]['values']['fulltime40permanent'];
+                    $staffing_pattern->fulltime40contractual        = $fields[$counter]['values']['fulltime40contractual'];
+                    $staffing_pattern->parttimepermanent            = $fields[$counter]['values']['parttimepermanent'];
+                    $staffing_pattern->parttimecontractual          = $fields[$counter]['values']['parttimecontractual'];
+                    $staffing_pattern->activerotatingaffiliate      = $fields[$counter]['values']['activerotatingaffiliate'];
+                    $staffing_pattern->outsourced                   = $fields[$counter]['values']['outsourced'];
+                    $staffing_pattern->reportingyear                = $fields[$counter]['reportingyear'];
+                    $staffing_pattern->save();
+
+                }else{
+                    $staffing_pattern = new StaffingPattern;
+                    $staffing_pattern->hfhudcode                    = 'NEHEHRSV201900093';
+                    $staffing_pattern->professiondesignation        = $fields[$counter]['poscode'];
+                    $staffing_pattern->specialtyboardcertified      = $fields[$counter]['values']['specialtyboardcertified'];
+                    $staffing_pattern->fulltime40permanent          = $fields[$counter]['values']['fulltime40permanent'];
+                    $staffing_pattern->fulltime40contractual        = $fields[$counter]['values']['fulltime40contractual'];
+                    $staffing_pattern->parttimepermanent            = $fields[$counter]['values']['parttimepermanent'];
+                    $staffing_pattern->parttimecontractual          = $fields[$counter]['values']['parttimecontractual'];
+                    $staffing_pattern->activerotatingaffiliate      = $fields[$counter]['values']['activerotatingaffiliate'];
+                    $staffing_pattern->outsourced                   = $fields[$counter]['values']['outsourced'];
+                    $staffing_pattern->reportingyear                = $fields[$counter]['reportingyear'];
+                    $staffing_pattern->save();
+                    
+                }
 
             }
 
@@ -199,53 +233,71 @@ class StaffingPatternController extends Controller {
    	 	return $transaction;
   	}
 
-    public function send_data_doh(){
-
-        $staffing_patterns = DB::table('staffingpattern as staffingPattern')
-            ->select( 
-                'staffingPattern.id',
-                'staffingPattern.hfhudcode',
-                'staffingPattern.professiondesignation',
-                'staffingPattern.specialtyboardcertified',
-                'staffingPattern.fulltime40permanent',
-                'staffingPattern.fulltime40contractual',
-                'staffingPattern.parttimepermanent',
-                'staffingPattern.parttimecontractual',
-                'staffingPattern.activerotatingaffiliate',
-                'staffingPattern.outsourced',
-                'staffingPattern.reportingyear'
-            )->where('reportingyear', 2019)->get();
-
-        $request = $this->soapWrapper->add('Emr', function ($service) {
-            $service
-            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
-            ->trace(false);
-        });
-
-        $data = [
-            'login' => 'NEHEHRSV201900093',
-            'password' => '123456'
-        ];
-        $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-        // return response($response, 200)->header('Content-Type', 'application/xml');
-
-        foreach ($staffing_patterns as $staffing_pattern) {
-            // code
-            $data = [
-                "hfhudcode" => "NEHEHRSV201900093", 
-                "professiondesignation" => $staffing_pattern->professiondesignation, 
-                "specialtyboardcertified" => $staffing_pattern->specialtyboardcertified, 
-                "fulltime40permanent" => $staffing_pattern->fulltime40permanent,
-                "fulltime40contractual" => $staffing_pattern->fulltime40contractual,
-                "parttimepermanent" => $staffing_pattern->parttimepermanent,
-                "parttimecontractual" => $staffing_pattern->parttimecontractual,
-                "activerotatingaffiliate" => $staffing_pattern->activerotatingaffiliate,
-                "outsourced" => $staffing_pattern->outsourced,
-                "reportingyear" => 2017
-            ];
+    public function send_data_doh(Request $request){
         
-            $response = $this->soapWrapper->call('Emr.staffingPattern', $data);
+        $fields = Input::post();
+
+        $transaction = DB::transaction(function($field) use($fields){
+        try{
+
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
+
+            $data = [
+                'login' => 'NEHEHRSV201900093',
+                'password' => '123456'
+            ];
+            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
+            // return response($response, 200)->header('Content-Type', 'application/xml');
+
+
+            $staffing_patterns = DB::table('staffingpattern as staffingPattern')
+                ->select( 
+                    'staffingPattern.id',
+                    'staffingPattern.hfhudcode',
+                    'staffingPattern.professiondesignation',
+                    'staffingPattern.specialtyboardcertified',
+                    'staffingPattern.fulltime40permanent',
+                    'staffingPattern.fulltime40contractual',
+                    'staffingPattern.parttimepermanent',
+                    'staffingPattern.parttimecontractual',
+                    'staffingPattern.activerotatingaffiliate',
+                    'staffingPattern.outsourced',
+                    'staffingPattern.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($staffing_patterns as $staffing_pattern) {
+                // code
+                $data = [
+                    "hfhudcode" => $staffing_pattern->hfhudcode, 
+                    "professiondesignation" => $staffing_pattern->professiondesignation, 
+                    "specialtyboardcertified" => $staffing_pattern->specialtyboardcertified, 
+                    "fulltime40permanent" => $staffing_pattern->fulltime40permanent,
+                    "fulltime40contractual" => $staffing_pattern->fulltime40contractual,
+                    "parttimepermanent" => $staffing_pattern->parttimepermanent,
+                    "parttimecontractual" => $staffing_pattern->parttimecontractual,
+                    "activerotatingaffiliate" => $staffing_pattern->activerotatingaffiliate,
+                    "outsourced" => $staffing_pattern->outsourced,
+                    "reportingyear" => $staffing_pattern->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.staffingPattern', $data);
+            }
+
         }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
+        
+        });
     }
   	
 }
