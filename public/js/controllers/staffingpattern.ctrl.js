@@ -55,8 +55,6 @@
             var vm = this;
             var data = {}; 
 
-            alert('med')
-
             if($stateParams.reporting_year){
 
                 StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
@@ -101,8 +99,6 @@
             var vm = this;
             var data = {}; 
 
-            alert('allied med')
-
             if($stateParams.reporting_year){
 
                 StaffingPatternSrvcs.list({id:'', reporting_year:$stateParams.reporting_year}).then (function (response) {
@@ -146,8 +142,6 @@
         function StaffingPatternNonMedicalCreateCtrl(StaffingPatternSrvcs, $stateParams, $uibModal, $window){
             var vm = this;
             var data = {}; 
-
-            alert('non med')
 
             if($stateParams.reporting_year){
 

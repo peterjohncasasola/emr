@@ -132,7 +132,7 @@
                         <td><%staffingPatternCtrl.staffingPatterns[8].values.activerotatingaffiliate%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[8].values.outsourced%></td>
                     </tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[9].posdesc%>     </td>
+                    <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[9].posdesc%>     </td>
                         <td><%staffingPatternCtrl.staffingPatterns[9].values.specialtyboardcertified%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[9].values.fulltime40permanent%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[9].values.fulltime40contractual%></td>
@@ -182,7 +182,7 @@
                         <td><%staffingPatternCtrl.staffingPatterns[13].values.outsourced%></td>
                     </tr>
                     <tr>
-                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[14].posdesc%>    </td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[14].posdesc%> </td>
                         <td><%staffingPatternCtrl.staffingPatterns[14].values.specialtyboardcertified%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[14].values.fulltime40permanent%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[14].values.fulltime40contractual%></td>
@@ -192,7 +192,7 @@
                         <td><%staffingPatternCtrl.staffingPatterns[14].values.outsourced%></td>
                     </tr>
                     <tr>
-                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[15].posdesc%>    </td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[15].posdesc%>    </td>
                         <td><%staffingPatternCtrl.staffingPatterns[15].values.specialtyboardcertified%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[15].values.fulltime40permanent%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[15].values.fulltime40contractual%></td>
@@ -200,66 +200,56 @@
                         <td><%staffingPatternCtrl.staffingPatterns[15].values.parttimecontractual%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[15].values.activerotatingaffiliate%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[15].values.outsourced%></td>
+                    </tr> 
+                    <tr>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[16].posdesc%>    </td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.specialtyboardcertified%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[16].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">2. Post-Graduate Fellows(Indicate specialty/subspecialty)</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[17].posdesc%>   </td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.specialtyboardcertified%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[17].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">3. Residents  </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[18].posdesc%>   </td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.specialtyboardcertified%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[18].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;3.1. Internal Medicine  </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[19].posdesc%>   </td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.specialtyboardcertified%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[19].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;3.2. Obstetricts-Gynecology </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    </tr>
-                    <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;3.3. Pediatrics </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    </tr>
-                    <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;3.4. Surgery  </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[20].posdesc%>   </td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.specialtyboardcertified%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[20].values.outsourced%></td>
                     </tr>
                     <tr>
                     <td class="row-left">&nbsp;&nbsp;&nbsp;3.5. Others (Specify) </td>
@@ -286,8 +276,8 @@
             <div class="card-header">
             <h4>B. Allied Medical  </h4>
             <div class="card-header-action">
-                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputallied"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes=""><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputpatients" ui-sref="staffing-pattern-allied-medical-details({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
+                <button class="btn btn-icon icon-left btn-info" ng-disabled="staffingPatternCtrl.is_submit_disabled" ng-click="staffingPatternCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="staffingPatternCtrl.is_loader_disabled"></div></button>
             </div>
             </div>
             <div class="card-body">
@@ -311,135 +301,135 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td class="row-left">1. Nurses   </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[21].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[21].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[21].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">2. Midwives </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[22].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[22].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[22].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;a. Generalist    </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[23].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[23].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[23].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">3. Nursing Aides  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[24].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[24].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[24].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">4. Nutritionist </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <tr>
-                    <td class="row-left">5. Physical Therapist  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[25].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[25].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[25].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">6. Pharmacists   </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[26].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[26].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[26].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">7. Medical Technologist  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[27].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[27].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[27].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">8. Laboratory Technician   </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[28].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[28].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[28].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">9. X-Ray Technologist/X-Ray Technician   </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[29].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[29].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[29].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">10. Medical Equipment Technician   </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[29].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[29].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[29].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">11. Social Worker  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[30].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[30].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[30].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">12. Medical Records Officer/ Hospital Health Information Officer   </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[31].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[31].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[31].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[32].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[32].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[32].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                     <td class="row-left">13. Others (Specify)    </td>
                     <td>0</td>
                     <td>0</td>
@@ -464,8 +454,8 @@
             <div class="card-header">
             <h4>C. Non-Medical  </h4>
             <div class="card-header-action">
-                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputnonmedical"><i class="far fa-edit"></i> Input</a>
-                <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes=""><i class="fas fa-paper-plane"></i> Submit Data</a>
+                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputpatients" ui-sref="staffing-pattern-non-medical-details({reporting_year:2019})"><i class="far fa-edit"></i> Input</a>
+                <button class="btn btn-icon icon-left btn-info" ng-disabled="staffingPatternCtrl.is_submit_disabled" ng-click="staffingPatternCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="staffingPatternCtrl.is_loader_disabled"></div></button>
             </div>
             </div>
             <div class="card-body">
@@ -489,134 +479,134 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td class="row-left">1. Chief Administrative Officer </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[33].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[33].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[33].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">2. Accountant </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[34].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[34].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[34].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">3. Budget officer </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[35].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[35].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[35].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">4. Cashier  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[36].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[36].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[36].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">5. Clerk  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[37].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[37].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[37].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">6. Engineer </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[38].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[38].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[38].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">7. Driver </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[39].posdesc%>   </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[39].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[39].values.fulltime40contractual%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                    <td class="row-left">8. Others (Specify)   </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">8. Others (Specify)   </td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                     </tr>
                     <tr>
-                    <td class="row-left">9. General Support Staff  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left"><%staffingPatternCtrl.staffingPatterns[40].posdesc%>    </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[40].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[40].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[40].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[40].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[40].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[40].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;- Janitorial  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[41].posdesc%> </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[41].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[41].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[41].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[41].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[41].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[41].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;- Maintenance </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[42].posdesc%> </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[42].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[42].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[42].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[42].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[42].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[42].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;- Security  </td>
-                    <td></td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[43].posdesc%> </td>
+                        <td></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[43].values.fulltime40permanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[43].values.fulltime40contractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[43].values.parttimepermanent%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[43].values.parttimecontractual%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[43].values.activerotatingaffiliate%></td>
+                        <td><%staffingPatternCtrl.staffingPatterns[43].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;- Others (Specify)   </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;- Others (Specify)   </td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
                     </tr>
                 </tbody>
                 </table>
@@ -632,668 +622,14 @@
     </div>
 </section>
 
-<!-- MODAL A. MEDICAL *********** -->        
-<div class="modal fade" tabindex="-1" role="dialog" id="inputmedical">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">A. Medical</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm table-staffing">
-            <thead>
-                <tr>
-                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
-                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
-                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
-                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
-                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
-                <th rowspan="2" class="align-middle">Outsourced</th>
-                </tr>
-                <tr>
-                <th> Number of permanent<br> full time staff   </th>
-                <th> Number of contractual<br> full time staff </th>
-                <th> Number of permanent<br> part time staff   </th>
-                <th> Number of contractual<br> part time staff </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td class="row-left">1. Consultants  </td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                <td><input type="number" class="form-control" name="consultant[]" placeholder="" ng-model="staffingPatternCtrl.collection.consultant"></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.1 Internal Medicine   </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;a. Generalist    </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;b. Cardiologist    </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;c. Endocrinologist     </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;d. Gastro-Enterologist     </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;e. Pulmonologist       </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;f. Nephrologist     </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;g. Neurologist      </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr class="row-left row-gray">
-                <td colspan="8">&nbsp;&nbsp;&nbsp;h. Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
-                </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.2. Obstetrics/ Gynecology (and sub-specialty) </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.3. Pediatrics (and sub-specialty) </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.4. Surgery (and sub-specialty)  </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.5. Anesthesiologist </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.6. Radiologist  </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;1.7. Pathologist  </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">2. Post-Graduate Fellows(Indicate specialty/subspecialty)</td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr class="row-left row-gray">
-                <td colspan="8">&nbsp;&nbsp;&nbsp;Specify<a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
-                </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">3. Residents  </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;3.1. Internal Medicine  </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;3.2. Obstetricts-Gynecology </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;3.3. Pediatrics </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;3.4. Surgery  </td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr class="row-left row-gray">
-                <td colspan="8">3.5 Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
-                </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>                     
-            </tbody>
-            </table>
-            </div>
-        </div>
-        <div class="modal-footer bg-whitesmoke br">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="staffingPatternCtrl.clickme(staffingPatternCtrl.collection.values)">Save changes 1</button>
-        </div>
-    </div>
-    </div>
-</div>
-
-<!-- MODAL B. ALLIED MEDICAL *********** -->
-<div class="modal fade" tabindex="-1" role="dialog" id="inputallied">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">B. Allied Medical</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm table-staffing">
-            <thead>
-                <tr>
-                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
-                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
-                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
-                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
-                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
-                <th rowspan="2" class="align-middle">Outsourced</th>
-                </tr>
-                <tr>
-                <th> Number of permanent<br> full time staff   </th>
-                <th> Number of contractual<br> full time staff </th>
-                <th> Number of permanent<br> part time staff   </th>
-                <th> Number of contractual<br> part time staff </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td class="row-left">1. Nurses </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">2. Midwives   </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;   a. Generalist  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">3. Nursing Aides  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">4. Nutritionist   </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">5. Physical Therapist   </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">6. Pharmacists  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">7. Medical Technologist   </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">8. Laboratory Technician  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">9. X-Ray Technologist/X-Ray Technician  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">10. Medical Equipment Technician  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">11. Social Worker   </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">12. Medical Records Officer/<br>Hospital Health Information Officer  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr class="row-left row-gray">
-                <td colspan="8">Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
-                </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-            </tbody>
-            </table>
-            </div>
-        </div>
-        <div class="modal-footer bg-whitesmoke br">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-    </div>
-</div>
-
-<!-- MODAL C. NON- MEDICAL *********** -->
-<div class="modal fade" tabindex="-1" role="dialog" id="inputnonmedical">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-        <h5 class="modal-title">C. Non-Medical</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm table-staffing">
-            <thead>
-                <tr>
-                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
-                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
-                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
-                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
-                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
-                <th rowspan="2" class="align-middle">Outsourced</th>
-                </tr>
-                <tr>
-                <th> Number of permanent<br> full time staff   </th>
-                <th> Number of contractual<br> full time staff </th>
-                <th> Number of permanent<br> part time staff   </th>
-                <th> Number of contractual<br> part time staff </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <td class="row-left">1. Chief Administrative Officer </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">2. Accountant </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">3. Budget officer </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">4. Cashier  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">5. Clerk  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">6. Engineer </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr>
-                <td class="row-left">7. Driver </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                </tr>
-                <tr class="row-left row-gray">
-                <td colspan="8">8. Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
-                </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">9. General Support Staff  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;- Janitorial  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;- Maintenance </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                <td class="row-left">&nbsp;&nbsp;&nbsp;- Security  </td>
-                <td></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr class="row-left row-gray">
-                <td colspan="8">&nbsp;&nbsp;&nbsp;- Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
-                </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-            </tbody>
-            </table>
-            </div>
-        </div>
-        <div class="modal-footer bg-whitesmoke br">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-    </div>
-    </div>
-</div>
-
 </div>
 
 
 <script type="text/ng-template" id="add-staffing-pattern-medical-modal">
     <div class="modal-content">
     <div class="modal-header">
-        <h5 class="modal-title">Summary of Patients in the Hospital</h5>
-        <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="hospital-operations-summary-of-patients({reporting_year:2019})">
+        <h5 class="modal-title">A. Medical</h5>
+        <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reporting_year:2019})">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
@@ -1546,16 +882,6 @@
                     <td></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td class="row-left"><%staffingPatternCtrl.collection[21].posdesc%>   </td>
-                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[21].values.specialtyboardcertified"></td>
-                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[21].values.fulltime40permanent"></td>
-                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[21].values.fulltime40contractual"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
                 <tr class="row-left row-gray">
                 <td colspan="8">3.5 Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
                 </tr>
@@ -1575,7 +901,366 @@
         </div>
 
         <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="staffingPatternCtrl.close()" ui-sref="hospital-operations-discharges-number-deliveries({reporting_year:2019})">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reporting_year:2019})">Close</button>
+            <button type="button" class="btn btn-primary"  ng-if="!staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.createStaffingPatternBtn(staffingPatternCtrl.collection)">Save changes</button>
+            <button type="button" class="btn btn-primary" ng-if="staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.updateStaffingPatternBtn(staffingPatternCtrl.collection)">Update changes</button>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="add-staffing-pattern-allied-medical-modal">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">B. Allied Medical</h5>
+        <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reporting_year:2019})">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm table-staffing">
+            <thead>
+                <tr>
+                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
+                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
+                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
+                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
+                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
+                <th rowspan="2" class="align-middle">Outsourced</th>
+                </tr>
+                <tr>
+                <th> Number of permanent<br> full time staff   </th>
+                <th> Number of contractual<br> full time staff </th>
+                <th> Number of permanent<br> part time staff   </th>
+                <th> Number of contractual<br> part time staff </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[21].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[21].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[21].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[22].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[22].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[22].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[23].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[23].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[23].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[24].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[24].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[24].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[25].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[25].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[25].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[26].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[26].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[26].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[27].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[27].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[27].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[28].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[28].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[28].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[29].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[29].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[29].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[30].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[30].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[30].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[31].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[31].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[31].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[32].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[32].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[32].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row-left row-gray">
+                <td colspan="8">Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                </tr>
+                <tr>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                </tr>                     
+            </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="modal-footer bg-whitesmoke br">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reporting_year:2019})">Close</button>
+            <button type="button" class="btn btn-primary"  ng-if="!staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.createStaffingPatternBtn(staffingPatternCtrl.collection)">Save changes</button>
+            <button type="button" class="btn btn-primary" ng-if="staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.updateStaffingPatternBtn(staffingPatternCtrl.collection)">Update changes</button>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="add-staffing-pattern-non-medical-modal">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">C. Non-Medical </h5>
+        <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reporting_year:2019})">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+
+    <div class="modal-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm table-staffing">
+            <thead>
+                <tr>
+                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
+                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
+                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
+                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
+                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
+                <th rowspan="2" class="align-middle">Outsourced</th>
+                </tr>
+                <tr>
+                <th> Number of permanent<br> full time staff   </th>
+                <th> Number of contractual<br> full time staff </th>
+                <th> Number of permanent<br> part time staff   </th>
+                <th> Number of contractual<br> part time staff </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[33].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[33].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[33].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[34].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[34].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[34].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[35].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[35].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[35].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[36].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[36].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[36].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[37].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[37].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[37].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[38].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[38].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[38].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[39].posdesc%>  </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[39].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[39].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="row-left row-gray">
+                <td colspan="8">8. Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                </tr> 
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[40].posdesc%>   </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[40].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[40].values.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[40].values.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[40].values.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[40].values.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[40].values.outsourced"></td>
+                </tr>
+                <tr>
+                    <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.collection[41].posdesc%>   </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[41].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[41].values.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[41].values.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[41].values.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[41].values.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[41].values.outsourced"></td>
+                </tr>
+                <tr>
+                    <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.collection[42].posdesc%>   </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[42].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[42].values.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[42].values.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[42].values.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[42].values.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[42].values.outsourced"></td>
+                </tr>
+                <tr>
+                    <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.collection[43].posdesc%>   </td>
+                    <td></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.outsourced"></td>
+                </tr>
+                <tr class="row-left row-gray">
+                <td colspan="8">&nbsp;&nbsp;&nbsp; - Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                </tr>
+                <tr>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                    <td><input type="number" class="form-control" id="" placeholder=""></td>
+                </tr>                     
+            </tbody>
+            </table>
+            </div>
+        </div>
+
+        <div class="modal-footer bg-whitesmoke br">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reporting_year:2019})">Close</button>
             <button type="button" class="btn btn-primary"  ng-if="!staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.createStaffingPatternBtn(staffingPatternCtrl.collection)">Save changes</button>
             <button type="button" class="btn btn-primary" ng-if="staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.updateStaffingPatternBtn(staffingPatternCtrl.collection)">Update changes</button>
         </div>
