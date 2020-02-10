@@ -247,10 +247,10 @@
                 <tbody>
                     <tr ng-repeat="quality_management in generalInfoCtrl.quality_management">
                         <td> <% $index %> </td>
-                        <td><%quality_management.qualitymgmttype%></td>
+                        <td><%quality_management.qualitymgmttypedesc%></td>
                         <td><%quality_management.certifyingbody%></td>
                         <td><%quality_management.description%></td>
-                        <td><%quality_management.philhealthaccreditation%></td>
+                        <td><%quality_management.philhealthaccreditationdesc%></td>
                         <td><%quality_management.validityfrom%></td>
                         <td><%quality_management.validityto%></td>
                     </tr>

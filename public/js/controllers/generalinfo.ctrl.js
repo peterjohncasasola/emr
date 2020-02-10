@@ -21,7 +21,7 @@
             console.log(vm.reportingyears)
 
             vm.selectReportingYear = function(reportingyear){
-                alert(reportingyear)
+                 
                 $state.go('general-info', {reportingyear:reportingyear});
 
                 BedCapacitiesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
@@ -209,6 +209,47 @@
                     vm.quality_management = response.data.data;
                     vm.quality_management_count = response.data.count;
                     console.log(vm.quality_management)
+
+                    vm.qualitymgmttypes = [
+                        {id:1, name:'ISO Certified'},
+                        {id:2, name:'International Accreditation'},
+                        {id:3, name:'PhilHealth Accreditation'},
+                        {id:4, name:'PCAHO'}
+                    ];
+
+                    angular.forEach(vm.qualitymgmttypes, function(v, k){
+                        
+                        angular.forEach(vm.quality_management, function(v1, k1){
+
+                            if(v.id == v1.qualitymgmttype){
+                                v1['qualitymgmttypedesc'] = v.name;
+                            }
+
+                        });
+                        
+                    });
+        
+                    vm.philhealthaccreditation = [
+                        {id:0, name:''},
+                        {id:1, name:'Basic Participation'},
+                        {id:2, name:'Advanced Participation'}
+                    ];
+
+                    angular.forEach(vm.philhealthaccreditation, function(v, k){
+                        
+                        angular.forEach(vm.quality_management, function(v1, k1){
+
+                            if(v.id == v1.philhealthaccreditation){
+                                v1['philhealthaccreditationdesc'] = v.name;
+                            }
+
+                        });
+                        
+                    });
+
+                    
+
+
                 }
             }, function (){ alert('Bad Request!!!') })
             
