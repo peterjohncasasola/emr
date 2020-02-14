@@ -27,6 +27,9 @@
                 $state.go('hospital-operations-discharges-specialty', {reportingyear:reportingyear});
             }
 
+            vm.is_loader_disabled = false;
+            vm.is_submit_disabled = false;
+
             vm.type_of_service_list = [
                 {id:1, desc:"Medicine", value:{}},
                 {id:2, desc:"Obstetrics", value:{}},
@@ -135,9 +138,15 @@
 
             vm.sendDataDoh = function(){
 
+                vm.is_loader_disabled = true;
+                vm.is_submit_disabled = true;
+
                 data['reportingyear'] = $stateParams.reportingyear;
                 DischargesSpecialtySrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
+
+                    vm.is_loader_disabled = false;
+                    vm.is_submit_disabled = false;
                 }, function (){ alert('Bad Request!!!') })
             }
 

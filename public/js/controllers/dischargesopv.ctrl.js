@@ -18,13 +18,16 @@
             for(var year=2010; year<=2019; year++){
                 vm.reportingyears.push({id:counter, year:year})
                 counter++;
-            }
+            } 
 
-            console.log(vm.reportingyears)
+            
 
             vm.selectReportingYear = function(reportingyear){
                 $state.go('hospital-operations-discharges-opv', {reportingyear:reportingyear});
             }
+
+            vm.is_loader_disabled = false;
+            vm.is_submit_disabled = false;
 
             DischargesOPVSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
@@ -37,10 +40,22 @@
 
             vm.sendDataDoh = function(){
 
+                vm.is_loader_disabled = true;
+                vm.is_submit_disabled = true;
+
                 data['reportingyear'] = $stateParams.reportingyear;
                 DischargesOPVSrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
+
+
+                    vm.is_loader_disabled = false;
+                    vm.is_submit_disabled = false;
+                    
                 }, function (){ alert('Bad Request!!!') })
+
+                
+                
+
             }
 
             vm.routeTo = function(route){

@@ -8,8 +8,13 @@ use App\Ricd;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use DataTables;
 
 class RicdController extends Controller {
+
+    public function index(){
+        return view('layout.index');
+    }
 
     public function show(Request $request){
 
@@ -60,6 +65,20 @@ class RicdController extends Controller {
         // ],200,[], JSON_NUMERIC_CHECK);
     }
 
+    public function show3(Request $request){
+
+        $data = array(
+            'id'=>$request->input('id'),
+            'icd10code'=>$request->input('icd10code'),
+            'name'=>$request->input('name'),
+        );
+
+        $ricd = Ricd::select('id', 'icd10desc', 'icd10code');
+        return DataTables::of($ricd)->make(true);
+
+        
+    }
+
     public function store(Request $request){
 
         $fields = Input::post();
@@ -92,6 +111,8 @@ class RicdController extends Controller {
 
         return $transaction;
     }
+
+
 
   	
 }

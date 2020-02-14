@@ -79,10 +79,7 @@ class OperationsDeathsController extends Controller {
 
                 $perations_deaths = new OperationsDeath;
                 $perations_deaths->hfhudcode                            = "NEHEHRSV201900093";
-                $perations_deaths->totaldeaths                          = $fields['totaldeaths48down']+$fields['totaldeaths48up']+
-                                                                        $fields['totalerdeaths']+$fields['totaldoa']+
-                                                                        $fields['totalstillbirths']+$fields['totalneonataldeaths']+
-                                                                        $fields['totalmaternaldeaths'];
+                $perations_deaths->totaldeaths                          = $fields['totaldeaths48down']+$fields['totaldeaths48up'];
 
                 $perations_deaths->totaldeaths48down                    = $fields['totaldeaths48down'];
                 $perations_deaths->totaldeaths48up                      = $fields['totaldeaths48up'];
@@ -132,10 +129,7 @@ class OperationsDeathsController extends Controller {
 
             $perations_deaths = OperationsDeath::where('reportingyear', $fields['reportingyear'])->first();
             $perations_deaths->hfhudcode                            = "NEHEHRSV201900093";
-            $perations_deaths->totaldeaths                          = $fields['totaldeaths48down']+$fields['totaldeaths48up']+
-                                                                    $fields['totalerdeaths']+$fields['totaldoa']+
-                                                                    $fields['totalstillbirths']+$fields['totalneonataldeaths']+
-                                                                    $fields['totalmaternaldeaths'];
+            $perations_deaths->totaldeaths                          = $fields['totaldeaths48down']+$fields['totaldeaths48up'];
 
             $perations_deaths->totaldeaths48down                    = $fields['totaldeaths48down'];
             $perations_deaths->totaldeaths48up                      = $fields['totaldeaths48up'];

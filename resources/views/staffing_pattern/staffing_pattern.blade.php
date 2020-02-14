@@ -294,15 +294,39 @@
                         <td><%staffingPatternCtrl.staffingPatterns[14].values.activerotatingaffiliate%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[14].values.outsourced%></td>
                     </tr>
+                    <!-- consultants -->
+                    <tr ng-repeat="consultant in staffingPatternCtrl.consultantList[0].values">
+
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%consultant.professiondesignation%> </td>
+                        <td><%consultant.specialtyboardcertified%> </td>
+                        <td><%consultant.fulltime40permanent%> </td>
+                        <td><%consultant.fulltime40contractual%> </td>
+                        <td><%consultant.parttimepermanent%> </td>
+                        <td><%consultant.parttimecontractual%> </td>
+                        <td><%consultant.activerotatingaffiliate%> </td>
+                        <td><%consultant.outsourced%> </td>
+                    </tr> 
                     <tr>
                         <td class="row-left"><%staffingPatternCtrl.staffingPatterns[15].posdesc%>    </td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.specialtyboardcertified%></td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.fulltime40permanent%></td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.fulltime40contractual%></td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.parttimepermanent%></td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.parttimecontractual%></td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.activerotatingaffiliate%></td>
-                        <td><%staffingPatternCtrl.staffingPatterns[15].values.outsourced%></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr> 
+                    <!-- Graduate Fellows -->
+                    <tr ng-repeat="consultant in staffingPatternCtrl.consultantList[1].values"> 
+
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%consultant.professiondesignation%> </td>
+                        <td><%consultant.specialtyboardcertified%> </td>
+                        <td><%consultant.fulltime40permanent%> </td>
+                        <td><%consultant.fulltime40contractual%> </td>
+                        <td><%consultant.parttimepermanent%> </td>
+                        <td><%consultant.parttimecontractual%> </td>
+                        <td><%consultant.activerotatingaffiliate%> </td>
+                        <td><%consultant.outsourced%> </td>
                     </tr> 
                     <tr>
                         <td class="row-left"><%staffingPatternCtrl.staffingPatterns[16].posdesc%>    </td>
@@ -313,9 +337,9 @@
                         <td><%staffingPatternCtrl.staffingPatterns[16].values.parttimecontractual%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[16].values.activerotatingaffiliate%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[16].values.outsourced%></td>
-                    </tr>
+                    </tr> 
                     <tr>
-                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[17].posdesc%>   </td>
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.staffingPatterns[17].posdesc%>  </td>
                         <td><%staffingPatternCtrl.staffingPatterns[17].values.specialtyboardcertified%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[17].values.fulltime40permanent%></td>
                         <td><%staffingPatternCtrl.staffingPatterns[17].values.fulltime40contractual%></td>
@@ -355,15 +379,27 @@
                         <td><%staffingPatternCtrl.staffingPatterns[20].values.outsourced%></td>
                     </tr>
                     <tr>
-                    <td class="row-left">&nbsp;&nbsp;&nbsp;3.5. Others (Specify) </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td class="row-left">&nbsp;&nbsp;&nbsp;3.5. Others (Specify) 1 </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     </tr>
+                    <!-- Graduate Fellows -->
+                    <tr ng-repeat="other in staffingPatternCtrl.consultantList[2].values"> 
+
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%other.professiondesignation%> </td>
+                        <td><%other.specialtyboardcertified%> </td>
+                        <td><%other.fulltime40permanent%> </td>
+                        <td><%other.fulltime40contractual%> </td>
+                        <td><%other.parttimepermanent%> </td>
+                        <td><%other.parttimecontractual%> </td>
+                        <td><%other.activerotatingaffiliate%> </td>
+                        <td><%other.outsourced%> </td>
+                    </tr> 
                 </tbody>
                 </table>
             </div>
@@ -378,12 +414,13 @@
         <div class="card card-primary">
             <div class="card-header">
             <h4>B. Allied Medical  </h4>
-            <div class="card-header-action">
+            <!-- <div class="card-header-action">
                 <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputpatients" ui-sref="staffing-pattern-allied-medical-details({reportingyear:staffingPatternCtrl.reportingyear})"><i class="far fa-edit"></i> Input</a>
                 <button class="btn btn-icon icon-left btn-info" ng-disabled="staffingPatternCtrl.is_submit_disabled" ng-click="staffingPatternCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="staffingPatternCtrl.is_loader_disabled"></div></button>
-            </div>
+            </div> -->
             </div>
             <div class="card-body">
+
             <div class="table-responsive">
                 <table class="table table-bordered table-hover table-sm table-staffing" border="1">
                 <thead>
@@ -533,15 +570,18 @@
                         <td></td>
                         <td></td>
                     </tr>
-                    <td class="row-left">13. Others (Specify)    </td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>0</td>
-                    </tr>
+                
+                    <!-- Allied medical -->
+                    <tr ng-repeat="other in staffingPatternCtrl.consultantList[3].values"> 
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%other.professiondesignation%> </td>
+                        <td><%other.specialtyboardcertified%> </td>
+                        <td><%other.fulltime40permanent%> </td>
+                        <td><%other.fulltime40contractual%> </td>
+                        <td><%other.parttimepermanent%> </td>
+                        <td><%other.parttimecontractual%> </td>
+                        <td><%other.activerotatingaffiliate%> </td>
+                        <td><%other.outsourced%> </td>
+                    </tr> 
                 </tbody>
                 </table>
             </div>
@@ -556,10 +596,7 @@
         <div class="card card-primary">
             <div class="card-header">
             <h4>C. Non-Medical  </h4>
-            <div class="card-header-action">
-                <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputpatients" ui-sref="staffing-pattern-non-medical-details({reportingyear:staffingPatternCtrl.reportingyear})"><i class="far fa-edit"></i> Input</a>
-                <button class="btn btn-icon icon-left btn-info" ng-disabled="staffingPatternCtrl.is_submit_disabled" ng-click="staffingPatternCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="staffingPatternCtrl.is_loader_disabled"></div></button>
-            </div>
+            
             </div>
             <div class="card-body">
             <div class="table-responsive">
@@ -653,13 +690,24 @@
                     </tr>
                     <tr>
                         <td class="row-left">8. Others (Specify)   </td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <!-- Non medical -->
+                    <tr ng-repeat="other in staffingPatternCtrl.consultantList[4].values"> 
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%other.professiondesignation%> </td>
+                        <td><%other.specialtyboardcertified%> </td>
+                        <td><%other.fulltime40permanent%> </td>
+                        <td><%other.fulltime40contractual%> </td>
+                        <td><%other.parttimepermanent%> </td>
+                        <td><%other.parttimecontractual%> </td>
+                        <td><%other.activerotatingaffiliate%> </td>
+                        <td><%other.outsourced%> </td>
                     </tr>
                     <tr>
                         <td class="row-left"><%staffingPatternCtrl.staffingPatterns[40].posdesc%>    </td>
@@ -703,13 +751,25 @@
                     </tr>
                     <tr>
                         <td class="row-left">&nbsp;&nbsp;&nbsp;- Others (Specify)   </td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <!-- Non medical -->
+                    <tr ng-repeat="other in staffingPatternCtrl.consultantList[5].values"> 
+                        <td class="row-left">&nbsp;&nbsp;&nbsp;<%other.professiondesignation%> </td>
+                        <td><%other.specialtyboardcertified%> </td>
+                        <td><%other.fulltime40permanent%> </td>
+                        <td><%other.fulltime40contractual%> </td>
+                        <td><%other.parttimepermanent%> </td>
+                        <td><%other.parttimecontractual%> </td>
+                        <td><%other.activerotatingaffiliate%> </td>
+                        <td><%other.outsourced%> </td>
                     </tr>
                 </tbody>
                 </table>
@@ -730,16 +790,15 @@
 
 <script type="text/ng-template" id="add-staffing-pattern-medical-modal">
     <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title">A. Medical</h5>
+
+    <div class="modal-header"> 
         <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reportingyear:staffingPatternCtrl.reportingyear})">
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
 
     <div class="modal-body">
-
-    <div class="modal-body">
+    
         <div class="table-responsive">
             <table class="table table-bordered table-hover table-sm table-staffing">
             <thead>
@@ -759,6 +818,9 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td colspan="8"> <h5 class="modal-title">A. Medical</h5> </td>
+                </tr>
                 <tr>
                     <td class="row-left"><%staffingPatternCtrl.collection[0].posdesc%>  </td>
                     <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[0].values.specialtyboardcertified"></td>
@@ -850,17 +912,29 @@
                     <td></td>
                 </tr>
                 <tr class="row-left row-gray">
-                <td colspan="8">&nbsp;&nbsp;&nbsp;h. Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                <td colspan="8">&nbsp;&nbsp;&nbsp;h. Others (Specify) <a href="#" ng-click="staffingPatternCtrl.createNewConsultantBtn($event)" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
                 </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
+                <tr ng-repeat="consultant in staffingPatternCtrl.others[0].values">
+                    <td><input type="text" class="form-control" placeholder="" ng-model="consultant.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.outsourced"></td>
+                </tr>
+                <tr ng-repeat="consultant in staffingPatternCtrl.newConsultantList">
+                    <td>
+                        <a href="#" class="fas fa-trash-alt text-danger" ng-click="staffingPatternCtrl.newConsultantList.splice($index, 1)"></a> 
+                        <input type="text" class="form-control" placeholder="" ng-model="consultant.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="consultant.outsourced"></td>
                 </tr>
                 <tr>
                     <td class="row-left">&nbsp;&nbsp;&nbsp;<%staffingPatternCtrl.collection[9].posdesc%>   </td>
@@ -933,20 +1007,43 @@
                     <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[15].values.outsourced"></td>
                 </tr>
                 <tr class="row-left row-gray">
-                <td colspan="8">&nbsp;&nbsp;&nbsp;Specify<a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                <td colspan="8">&nbsp;&nbsp;&nbsp;Specify<a href="#" ng-click="staffingPatternCtrl.createNewPostGraduateFellowsBtn($event)" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                </tr>
+                <tr ng-repeat="postGraduate in staffingPatternCtrl.others[1].values">
+                    <td>
+                        <input type="text" class="form-control" placeholder="" ng-model="postGraduate.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.outsourced"></td>
+                </tr> 
+                <tr ng-repeat="postGraduate in staffingPatternCtrl.newPostGraduateFellowList">
+                    <td>
+                        <a href="#" class="fas fa-trash-alt text-danger" ng-click="staffingPatternCtrl.newPostGraduateFellowList.splice($index, 1)"></a>
+                        <input type="text" class="form-control" placeholder="" ng-model="postGraduate.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="postGraduate.outsourced"></td>
+                </tr> 
+                <tr>
+                    <td class="row-left"><%staffingPatternCtrl.collection[16].posdesc%> </td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[16].values.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[16].values.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[16].values.fulltime40contractual"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>
-                <tr>
-                    <td class="row-left"><%staffingPatternCtrl.collection[17].posdesc%>   </td>
+                    <td class="row-left"><%staffingPatternCtrl.collection[17].posdesc%> </td>
                     <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[17].values.specialtyboardcertified"></td>
                     <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[17].values.fulltime40permanent"></td>
                     <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[17].values.fulltime40contractual"></td>
@@ -986,63 +1083,35 @@
                     <td></td>
                 </tr>
                 <tr class="row-left row-gray">
-                <td colspan="8">3.5 Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                <td colspan="8">3.5 Others (Specify) <a href="#" ng-click="staffingPatternCtrl.createNewResidentsBtn($event)" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
                 </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>                     
-            </tbody>
-            </table>
-            </div>
-        </div>
-
-        <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reportingyear:staffingPatternCtrl.reportingyear})">Close</button>
-            <button type="button" class="btn btn-primary"  ng-if="!staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.createStaffingPatternBtn(staffingPatternCtrl.collection)">Save changes</button>
-            <button type="button" class="btn btn-primary" ng-if="staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.updateStaffingPatternBtn(staffingPatternCtrl.collection)">Update changes</button>
-        </div>
-    </div>
-
-</script>
-
-<script type="text/ng-template" id="add-staffing-pattern-allied-medical-modal">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title">B. Allied Medical</h5>
-        <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reportingyear:staffingPatternCtrl.reportingyear})">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-
-    <div class="modal-body">
-
-    <div class="modal-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm table-staffing">
-            <thead>
-                <tr>
-                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
-                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
-                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
-                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
-                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
-                <th rowspan="2" class="align-middle">Outsourced</th>
+                <tr ng-repeat="resident in staffingPatternCtrl.others[2].values">
+                    <td>
+                        <input type="text" class="form-control" placeholder="" ng-model="resident.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.outsourced"></td>
                 </tr>
+                <tr ng-repeat="resident in staffingPatternCtrl.newResidentsList">
+                    <td> 
+                        <a href="#" class="fas fa-trash-alt text-danger" ng-click="staffingPatternCtrl.newResidentsList.splice($index, 1)"></a>
+                        <input type="text" class="form-control" placeholder="" ng-model="resident.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="resident.outsourced"></td>
+                </tr>  
                 <tr>
-                <th> Number of permanent<br> full time staff   </th>
-                <th> Number of contractual<br> full time staff </th>
-                <th> Number of permanent<br> part time staff   </th>
-                <th> Number of contractual<br> part time staff </th>
+                    <td colspan="8"> <h5 class="modal-title">B. Allied Medical</h5> </td>
                 </tr>
-            </thead>
-            <tbody>
+
                 <tr>
                     <td class="row-left"><%staffingPatternCtrl.collection[21].posdesc%>  </td>
                     <td></td>
@@ -1164,63 +1233,36 @@
                     <td></td>
                 </tr>
                 <tr class="row-left row-gray">
-                <td colspan="8">Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                <td colspan="8">Others (Specify) <a href="#" ng-click="staffingPatternCtrl.createNewAlliedMedicalBtn($event)" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
                 </tr>
-                <tr>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>                     
-            </tbody>
-            </table>
-            </div>
-        </div>
-
-        <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reportingyear:staffingPatternCtrl.reportingyear})">Close</button>
-            <button type="button" class="btn btn-primary"  ng-if="!staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.createStaffingPatternBtn(staffingPatternCtrl.collection)">Save changes</button>
-            <button type="button" class="btn btn-primary" ng-if="staffingPatternCtrl.collection_copy" ng-click="staffingPatternCtrl.updateStaffingPatternBtn(staffingPatternCtrl.collection)">Update changes</button>
-        </div>
-    </div>
-
-</script>
-
-<script type="text/ng-template" id="add-staffing-pattern-non-medical-modal">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title">C. Non-Medical </h5>
-        <button type="button" class="close" ng-click="staffingPatternCtrl.close()" ui-sref="staffing-pattern({reportingyear:staffingPatternCtrl.reportingyear})">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-
-    <div class="modal-body">
-
-    <div class="modal-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm table-staffing">
-            <thead>
-                <tr>
-                <th rowspan="2" width="30%" class="align-left row-left">Profession/Position/Designation </th>
-                <th rowspan="2" class="align-middle">Specialty Board Certified</th>
-                <th colspan="2" class="align-middle">Total staff working full time<br>(at least 40 hours/week)  </th>
-                <th colspan="2" class="align-middle" class="align-middle">Total staff working part time<br>(at least 20 hours/week)  </th>
-                <th rowspan="2" class="align-middle">Active Rotating or Visiting/ Affiliate</th>
-                <th rowspan="2" class="align-middle">Outsourced</th>
+                <tr ng-repeat="other in staffingPatternCtrl.others[3].values">
+                    <td>
+                        <input type="text" class="form-control" placeholder="" ng-model="other.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.outsourced"></td>
                 </tr>
+                <tr ng-repeat="other in staffingPatternCtrl.newAlliedMedicalList">
+                    <td>
+                    <a href="#" class="fas fa-trash-alt text-danger" ng-click="staffingPatternCtrl.newAlliedMedicalList.splice($index, 1)"></a>
+                        <input type="text" class="form-control" placeholder="" ng-model="other.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.outsourced"></td>
+                </tr>      
+
                 <tr>
-                <th> Number of permanent<br> full time staff   </th>
-                <th> Number of contractual<br> full time staff </th>
-                <th> Number of permanent<br> part time staff   </th>
-                <th> Number of contractual<br> part time staff </th>
-                </tr>
-            </thead>
-            <tbody>
+                    <td colspan="8"> <h5 class="modal-title">C. Non Medical</h5> </td>
+                </tr>   
+
                 <tr>
                     <td class="row-left"><%staffingPatternCtrl.collection[33].posdesc%>  </td>
                     <td></td>
@@ -1292,18 +1334,31 @@
                     <td></td>
                 </tr>
                 <tr class="row-left row-gray">
-                <td colspan="8">8. Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                <td colspan="8">8. Others (Specify) <a href="#" ng-click="staffingPatternCtrl.createNewNonMedicalBtn($event)"  class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
                 </tr>
-                <tr>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr> 
+                <tr ng-repeat="other in staffingPatternCtrl.others[4].values">
+                    <td>
+                        <input type="text" class="form-control" placeholder="" ng-model="other.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.outsourced"></td>
+                </tr>
+                <tr ng-repeat="other in staffingPatternCtrl.newNonMedicalList">
+                    <td>
+                    <a href="#" class="fas fa-trash-alt text-danger" ng-click="staffingPatternCtrl.newNonMedicalList.splice($index, 1)"></a>
+                        <input type="text" class="form-control" placeholder="" ng-model="other.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.outsourced"></td>
+                </tr>  
                 <tr>
                     <td class="row-left"><%staffingPatternCtrl.collection[40].posdesc%>   </td>
                     <td></td>
@@ -1345,18 +1400,32 @@
                     <td><input type="number" class="form-control" placeholder="" ng-model="staffingPatternCtrl.collection[43].values.outsourced"></td>
                 </tr>
                 <tr class="row-left row-gray">
-                <td colspan="8">&nbsp;&nbsp;&nbsp; - Others (Specify) <a href="#" class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                <td colspan="8">&nbsp;&nbsp;&nbsp; - Others (Specify) <a href="#" ng-click="staffingPatternCtrl.createNewGeneralStaffBtn($event)"  class="btn btn-sm btn-icon icon-left btn-light"><i class="far fa-arrow-alt-circle-down"></i> Add Row</td>
+                </tr> 
+                <tr ng-repeat="other in staffingPatternCtrl.others[5].values">
+                    <td>
+                        <input type="text" class="form-control" placeholder="" ng-model="other.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.outsourced"></td>
                 </tr>
-                <tr>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                    <td><input type="number" class="form-control" id="" placeholder=""></td>
-                </tr>                     
+                <tr ng-repeat="other in staffingPatternCtrl.newGeneralStaffList">
+                    <td>
+                    <a href="#" class="fas fa-trash-alt text-danger" ng-click="staffingPatternCtrl.newGeneralStaffList.splice($index, 1)"></a>
+                        <input type="text" class="form-control" placeholder="" ng-model="other.professiondesignation"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.specialtyboardcertified"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40permanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.fulltime40contractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimepermanent"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.parttimecontractual"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.activerotatingaffiliate"></td>
+                    <td><input type="number" class="form-control" placeholder="" ng-model="other.outsourced"></td>
+                </tr> 
+                
             </tbody>
             </table>
             </div>

@@ -116,13 +116,15 @@
         </div>
 
         <div class="section-body">
+
+        <div id="cover-spin" ng-if="operationsMortalityDeathCtrl.is_loader_disabled"></div>
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
             <div class="card card-primary">
                 <div class="card-header">
                 <h4>Ten Leading Causes of Mortality/Deaths Disaggregated as to Age and Sex  </h4>
                 <div class="card-header-action">
-                    <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputmortality" ng-click="operationsMortalityDeathCtrl.selectIcdType()"><i class="far fa-edit"></i> Select</a>
+                    <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputmortality" ng-click="operationsMortalityDeathCtrl.selectIcdType()"><i class="far fa-edit"></i> Input</a>
                     <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="operationsMortalityDeathCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
                 </div>
                 </div>

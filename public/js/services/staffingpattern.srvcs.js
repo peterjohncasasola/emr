@@ -16,6 +16,14 @@
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
+                list_others: function(data) {
+                    return $http({
+                        method: 'GET',
+                        data: data,
+                        url: '/api/v1/staffing-pattern-others?id='+data.id+'&reportingyear='+data.reportingyear,
+                        headers: {'Content-Type': 'application/json'}
+                    })
+                },
                 store: function(data) {
                     return $http({
                         method: 'POST',
@@ -24,10 +32,26 @@
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
+                store_others: function(data) {
+                    return $http({
+                        method: 'POST',
+                        url: '/api/v1/staffing-pattern/store-others',
+                        data: data,
+                        headers: {'Content-Type': 'application/json'}
+                    })
+                },
                 update: function(data) {
                     return $http({
                         method: 'POST',
                         url: '/api/v1/staffing-pattern/update',
+                        data: data,
+                        headers: {'Content-Type': 'application/json'}
+                    })
+                },
+                update_others: function(data) {
+                    return $http({
+                        method: 'POST',
+                        url: '/api/v1/staffing-pattern/update-others',
                         data: data,
                         headers: {'Content-Type': 'application/json'}
                     })

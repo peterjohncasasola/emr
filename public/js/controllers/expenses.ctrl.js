@@ -6,8 +6,8 @@
         .controller('ExpensesCreateCtrl', ExpensesCreateCtrl)
         .controller('ExpenseActionModalInsatanceCtrl', ExpenseActionModalInsatanceCtrl)
 
-        ExpensesCtrl.$inject = ['ExpensesSrvcs', '$stateParams', '$state', '$uibModal', '$window'];
-        function ExpensesCtrl(ExpensesSrvcs, $stateParams, $state, $uibModal, $window){
+        ExpensesCtrl.$inject = ['ExpensesSrvcs', 'RicbSrvcs', '$scope', '$stateParams', '$state', '$uibModal', '$window', 'DTOptionsBuilder', 'DTColumnBuilder'];
+        function ExpensesCtrl(ExpensesSrvcs, RicbSrvcs, $scope, $stateParams, $state, $uibModal, $window, DTOptionsBuilder, DTColumnBuilder){
             var vm = this;
             var data = {};
 
@@ -29,16 +29,36 @@
             vm.is_loader_disabled = false;
             vm.is_submit_disabled = false;
 
-            ExpensesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
-                if(response.data.status == 200)
-                {
-                    vm.expense = response.data.data[0];
-                    vm.expense_count = response.data.count;
-                    console.log(vm.expense)
-                }
-            }, function (){ alert('Bad Request!!!') })
+            vm.getExpenses = (id, reportingyear) => {
+                return new Promise(resolve => {
+                    ExpensesSrvcs.list({id:id, reportingyear:reportingyear}).then (function (response) {
+                        if(response.data.status == 200)
+                        {
+                            resolve(response.data.data[0]);
+                        }
+                    }, function (){ alert('Bad Request!!!') })
+                });
+            };
 
-            vm.sendDataDoh = function(){
+            vm.init = async (id, reportingyear) => {
+                    const data = await vm.getExpenses(id, reportingyear);
+                    $scope.$apply(() => vm.expense = {
+                        ...data
+                    });
+            };
+
+            vm.init('', $stateParams.reportingyear);
+
+            // ExpensesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
+            //     if(response.data.status == 200)
+            //     {
+            //         vm.expense = response.data.data[0];
+            //         vm.expense_count = response.data.count;
+            //         console.log(vm.expense)
+            //     }
+            // }, function (){ alert('Bad Request!!!') })
+
+            vm.sendDataDoh = async function() {
                 vm.is_loader_disabled = true;
                 vm.is_submit_disabled = true;
 
@@ -46,6 +66,11 @@
 
                 ExpensesSrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
+
+                    // const data = vm.getExpenses('', $stateParams.reportingyear);
+                    // $scope.$apply(() => vm.expense = {
+                    //     ...data
+                    // });
 
                     ExpensesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
@@ -66,15 +91,67 @@
                 $window.location.href = route;
             }; 
 
-         
+
+            // sample only
+            vm.authorized = false;
+
+            RicbSrvcs.list({id:'', icd10code:''}).then (function (response) {
+                if(response.data.status == 200)
+                {
+                    vm.ricd10 = response.data.data;
+                    vm.ricd10_count = response.data.count;
+                    console.log(vm.ricd10)
+                }
+            }, function (){ alert('Bad Request!!!') })
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('ajax', {
+                url: 'api/v1/ricd3',
+                type: 'GET'
+            })
+            
+            // or here
+            .withDataProp('data')
+                .withOption('processing', true)
+                .withOption('serverSide', true)
+                .withPaginationType('full_numbers');
+            vm.dtColumns = [
+                DTColumnBuilder.newColumn('id').withTitle('ID'),
+                DTColumnBuilder.newColumn('icd10desc').withTitle('First name')
+            ];
+
+
+            // sample
+
+            var counter=0;
+            vm.questionelemnt = [ {id:counter, question : 'Question-Click on me to edit!', answer : '', answer2 : '', inline:true} ];
+        
+            vm.newItem = function($event){
+                counter++;
+                vm.questionelemnt.push(  { id:counter, question : 'Question-Click on me to edit!', answer : '',answer2 : '',inline:true} );
+                $event.preventDefault();
+            }
+            vm.inlinef= function($event,inlinecontrol){
+                var checkbox = $event.target;
+                if(checkbox.checked){
+                    $('#'+ inlinecontrol).css('display','inline');
+                }else{
+                    $('#'+ inlinecontrol).css('display','');
+                }
+        
+            }
+            vm.showitems = function($event){
+                $('#displayitems').css('visibility','none');
+            }
+            
+            // sample
+            
         }
 
         ExpensesCreateCtrl.$inject = ['ExpensesSrvcs', '$stateParams', '$uibModal', '$window'];
         function ExpensesCreateCtrl(ExpensesSrvcs, $stateParams, $uibModal, $window){
             var vm = this;
             var data = {};
-
-
             
             if($stateParams.reportingyear){
 
@@ -113,8 +190,8 @@
             }; 
         }
 
-        ExpenseActionModalInsatanceCtrl.$inject = ['collection', 'ExpensesSrvcs', '$state', '$stateParams', '$uibModalInstance', '$window'];
-        function ExpenseActionModalInsatanceCtrl (collection, ExpensesSrvcs, $state, $stateParams, $uibModalInstance, $window) {
+        ExpenseActionModalInsatanceCtrl.$inject = ['collection', 'ExpensesSrvcs', 'RicbSrvcs', '$state', '$stateParams', '$uibModalInstance', '$window', 'DTOptionsBuilder', 'DTColumnBuilder'];
+        function ExpenseActionModalInsatanceCtrl (collection, ExpensesSrvcs, RicbSrvcs, $state, $stateParams, $uibModalInstance, $window, DTOptionsBuilder, DTColumnBuilder) {
 
             var vm = this;
             vm.collection = collection.data;
@@ -185,6 +262,26 @@
             vm.close = function() {
                 $uibModalInstance.close();
             };
+
+
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('ajax', {
+                // Either you specify the AjaxDataProp here
+                // dataSrc: 'data',
+                url: 'api/v1/ricd3',
+                type: 'GET'
+            })
+            // or here
+            .withDataProp('data')
+                .withOption('processing', true)
+                .withOption('serverSide', true)
+                .withPaginationType('full_numbers');
+            vm.dtColumns = [
+                DTColumnBuilder.newColumn('id').withTitle('ID'),
+                DTColumnBuilder.newColumn('icd10desc').withTitle('First name')
+            ];
+
         }
 
 })();

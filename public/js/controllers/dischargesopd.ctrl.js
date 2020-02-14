@@ -25,21 +25,23 @@
                 $state.go('hospital-operations-discharges-opd', {reportingyear:reportingyear});
             }
 
+            vm.is_loader_disabled = false;
+            vm.is_submit_disabled = false;
+
             DischargesOPDSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                 if(response.data.status == 200)
                 {
                     vm.discharges_opd = response.data.data;
                     vm.discharges_opd_count = response.data.count;
                     console.log(vm.discharges_opd)
-                }
-            }, function (){ alert('Bad Request!!!') })
 
-
-            vm.dtOptions = DTOptionsBuilder.newOptions()
+                    vm.dtOptions = DTOptionsBuilder.newOptions()
                 .withOption('ajax', {
                 // Either you specify the AjaxDataProp here
                 // dataSrc: 'data',
-                url: 'api/v1/ricd',
+                url: 'api/v1/ricd3',
+                type: 'GET'
+
             })
             // or here
             .withDataProp('data')
@@ -51,9 +53,16 @@
             vm.dtColumns = [
                 DTColumnBuilder.newColumn('id').withTitle('ID'),
                 DTColumnBuilder.newColumn('icd10code').withTitle('CODE'),
-                DTColumnBuilder.newColumn('icd10desc').withTitle('DESC').notVisible()
+                DTColumnBuilder.newColumn('icd10desc').withTitle('DESC')
             ];
+            
+                }
+            }, function (){ alert('Bad Request!!!') })
 
+
+            
+
+    
             // RicbSrvcs.list({id:'', icd10code:''}).then (function (response) {
             //     if(response.data.status == 200)
             //     {
@@ -135,10 +144,16 @@
 
 
             vm.sendDataDoh = function(){
+
+                vm.is_loader_disabled = true;
+                vm.is_submit_disabled = true;
                 
                 data['reportingyear'] = $stateParams.reportingyear;
                 DischargesOPDSrvcs.send_data_doh(data).then (function (response) {
                     alert('Successfully submitted!')
+
+                    vm.is_loader_disabled = false;
+                    vm.is_submit_disabled = false;
                 }, function (){ alert('Bad Request!!!') })
             }
 

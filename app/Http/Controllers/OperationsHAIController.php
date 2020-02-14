@@ -134,16 +134,19 @@ class OperationsHAIController extends Controller {
             // $operations_HAI->infectionrate                      = $fields['infectionrate'];
             $operations_HAI->patientnumvap                      = $fields['patientnumvap'];
             $operations_HAI->totalventilatordays                = $fields['totalventilatordays'];
-            $operations_HAI->resultvap                          = $fields['resultvap'];
+            $operations_HAI->resultvap                          = ($fields['patientnumvap']*1000)/$fields['totalventilatordays'];
+
             $operations_HAI->patientnumbsi                      = $fields['patientnumbsi'];
             $operations_HAI->totalnumcentralline                = $fields['totalnumcentralline'];
-            $operations_HAI->resultbsi                          = $fields['resultbsi'];
+            $operations_HAI->resultbsi                          = ($fields['patientnumbsi']*1000)/$fields['totalnumcentralline'];
+
             $operations_HAI->patientnumuti                      = $fields['patientnumuti'];
             $operations_HAI->totalcatheterdays                  = $fields['totalcatheterdays'];
-            $operations_HAI->resultuti                          = $fields['resultuti'];
+            $operations_HAI->resultuti                          = ($fields['patientnumuti']*1000)/$fields['totalcatheterdays'];
+
             $operations_HAI->numssi                             = $fields['numssi'];
             $operations_HAI->totalproceduresdone                = $fields['totalproceduresdone'];
-            $operations_HAI->resultssi                          = $fields['resultssi'];
+            $operations_HAI->resultssi                          = ($fields['numssi']*100)/$fields['totalproceduresdone'];
             $operations_HAI->save();
 
             return response()->json([

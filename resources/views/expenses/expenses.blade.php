@@ -115,11 +115,6 @@
     <div class="section-body">
     <div id="cover-spin" ng-if="expensesCtrl.is_loader_disabled"></div>
 
-    <!-- <h2 class="section-title">Cards</h2>
-    <p class="section-lead">
-        Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
-    </p> -->
-
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">
         <div class="card card-primary">
@@ -131,12 +126,8 @@
             </div>
             </div>
             <div class="card-body">
-
- 
-           
             <div class="table-responsive">
 
-                
                 <table class="table table-bordered table-hover table-md" >
                 <thead>
                     <tr>
@@ -211,11 +202,23 @@
     </div>
     </div>
 </section>
-</div>
+ 
 
-<!-- Main Content -->
+
+
+ 
+
+ 
+<!-- <table datatable="" dt-options="expensesCtrl.dtOptions" dt-columns="expensesCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
+</div> -->
+
+ 
+ 
+ 
 
 <script type="text/ng-template" id="add-expense-modal">
+
+
 <div class="modal-content">
     <div class="modal-header">
         <h5 class="modal-title">Expenses</h5>
@@ -224,6 +227,8 @@
         </button>
     </div>
     <div class="modal-body">
+
+    <br>
         <div class="form-group row">
             <div class="col-sm-3">
             <input type="number" class="form-control" id="" placeholder="" ng-model="expensesCtrl.collection.salarieswages">
@@ -319,3 +324,5 @@
         </div>
 </div>
 </script>
+
+

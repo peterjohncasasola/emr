@@ -114,10 +114,8 @@
         </div>
 
         <div class="section-body">
-        <!-- <h2 class="section-title">Cards</h2>
-        <p class="section-lead">
-            Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
-        </p> -->
+        <div id="cover-spin" ng-if="dischargesOPVCtrl.is_loader_disabled"></div>
+
 
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
@@ -126,7 +124,7 @@
                 <h4>Outpatient Visits, including Emergency Care  </h4>
                 <div class="card-header-action">
                     <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputdischarges_d" ui-sref="hospital-operations-discharges-opv-details({reportingyear:dischargesOPVCtrl.reportingyear})"><i class="far fa-edit"></i> Input</a>
-                    <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="dischargesOPVCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a>
+                    <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="dischargesOPVCtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data </a>
                 </div>
                 </div>
                 <div class="card-body">

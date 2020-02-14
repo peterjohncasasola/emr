@@ -117,10 +117,8 @@
         </div>
 
         <div class="section-body">
-        <!-- <h2 class="section-title">Cards</h2>
-        <p class="section-lead">
-            Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
-        </p> -->
+
+        <div id="cover-spin" ng-if="operationsDeathCtrl.is_loader_disabled"></div>
 
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
@@ -225,8 +223,6 @@
         </div>
         </div>
     </section>
-
- 
 </div>
 
 <script type="text/ng-template" id="add-operations-death-modal">
@@ -251,7 +247,7 @@
             <tbody>
                 <tr>
                 <td class="text-bold">Total number of inpatient deaths  </td>
-                <td><input type="number" disabled="" class="form-control" ng-model="operationsDeathCtrl.collection.totaldeaths"></td>
+                <td><input type="number" disabled="" class="form-control" ng-value="operationsDeathCtrl.collection.totaldeaths48down+operationsDeathCtrl.collection.totaldeaths48up"></td>
                 </tr>
                 <tr>
                 <td class="align-middle">▪ Total deaths < 48 hours </td>

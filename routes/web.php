@@ -242,8 +242,11 @@ Route::get('/staffing-pattern-allied-medical/{reporting_year}/{index}','Staffing
 Route::get('/staffing-pattern-non-medical/{reporting_year}/{index}','StaffingPatternController@index');
 
 Route::get('/api/v1/staffing-pattern','StaffingPatternController@show');
+Route::get('/api/v1/staffing-pattern-others','StaffingPatternController@show_others');
 Route::post('/api/v1/staffing-pattern/store','StaffingPatternController@store');
+Route::post('/api/v1/staffing-pattern/store-others','StaffingPatternController@store_others');
 Route::post('/api/v1/staffing-pattern/update','StaffingPatternController@update');
+Route::post('/api/v1/staffing-pattern/update-others','StaffingPatternController@update_others');
 Route::post('/api/v1/staffing-pattern/remove','StaffingPatternController@remove');
 Route::post('/api/v1/staffing-pattern/send_data_doh','StaffingPatternController@send_data_doh');//SEND TO DOH
 
@@ -255,7 +258,8 @@ Route::get('/api/v1/surgeries','SurgeriesController@show');
 Route::post('/api/v1/surgery/store','SurgeriesController@store');
 
 Route::get('/api/v1/ricd','RicdController@show');
-Route::post('/api/v1/ricd2','RicdController@show');
+Route::get('/api/v1/ricd2','RicdController@show2');
+Route::get('/api/v1/ricd3','RicdController@show3');
 Route::post('/api/v1/ricd/store','RicdController@store');
 
 // -- SOAP -- //

@@ -116,6 +116,8 @@
         </div>
 
         <div class="section-body">
+        <div id="cover-spin" ng-if="surgicalOperationsMinorCtrl.is_loader_disabled"></div>
+
         <p class="section-lead">
             (If no available data for this module: In the first row, search for "Not Applicable" then put Number zero (0) and Save)
         </p>

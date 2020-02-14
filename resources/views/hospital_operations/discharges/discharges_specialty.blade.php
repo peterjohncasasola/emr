@@ -114,6 +114,8 @@
     </div>
 
     <div class="section-body">
+    <div id="cover-spin" ng-if="dischargesSpecialtyCtrl.is_loader_disabled"></div>
+
     <div class="row">
 
 

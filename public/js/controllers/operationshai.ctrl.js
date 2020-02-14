@@ -95,7 +95,7 @@
                                     };
                                 }
                             },
-                            size: 'lg'
+                            size: 'xlg'
                         });
                     }
                 }, function (){ alert('Bad Request!!!') })
@@ -112,6 +112,7 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+            vm.reportingyear = $stateParams.reportingyear; 
 
             vm.createOperationsHAIBtn = function(data){
                 

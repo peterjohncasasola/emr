@@ -114,10 +114,7 @@
     </div>
 
     <div class="section-body">
-    <!-- <h2 class="section-title">Cards</h2>
-    <p class="section-lead">
-        Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.
-    </p> -->
+    <div id="cover-spin" ng-if="dischargesNumberDeliveriesCtrl.is_loader_disabled"></div>
 
     <div class="row">
         <div class="col-12 col-md-12 col-lg-12">

@@ -116,6 +116,9 @@
         </div>
 
         <div class="section-body">
+
+        <div id="cover-spin" ng-if="dischargesEVCtrl.is_loader_disabled"></div>
+
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
             <div class="card card-primary">
@@ -207,12 +210,14 @@
 
                     </tbody>
                     </table>
-                </div>
+                
 
         <div class="modal-footer bg-whitesmoke br">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesEVCtrl.close()" ui-sref="hospital-operations-discharges-ev({reportingyear:dischargesEVCtrl.reportingyear})">Close</button>
             <button type="button" class="btn btn-primary" ng-if="!dischargesEVCtrl.collection_copy" ng-click="dischargesEVCtrl.createDischargeEVBtn(dischargesEVCtrl.collection)">Save changes</button>
             <button type="button" class="btn btn-primary" ng-if="dischargesEVCtrl.collection_copy" ng-click="dischargesEVCtrl.updateDischargeEVBtn(dischargesEVCtrl.collection)">Update changes</button>
+        </div>
+
         </div>
     </div>
 

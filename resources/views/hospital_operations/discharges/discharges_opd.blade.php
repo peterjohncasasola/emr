@@ -114,6 +114,7 @@
     </div>
 
     <div class="section-body">
+    <div id="cover-spin" ng-if="dischargesOPDCtrl.is_loader_disabled"></div>
     <p class="section-lead">
         (If no available data for this module: In the first row, search for "Not Applicable" then put Number zero (0) and Save)
     </p>
@@ -185,6 +186,8 @@
 </section>
 
 
+<table   datatable="" dt-options="dischargesOPDCtrl.dtOptions" dt-columns="dischargesOPDCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
+
 <script type="text/ng-template" id="add-discharges-er-modal">
 <div class="modal-content">
 <div class="modal-header">
@@ -212,7 +215,29 @@
                 </tr>
         </tbody>
         </table>
+
+
+        <table class="table table-bordered table-hover table-md" datatable="ng" >
+                <thead>
+                    <tr>
+                    <th>Expenses</th>
+                    <th>Amount in Peso (Php)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amount spent on personnel salaries and wages  </td>
+                        <td>1 </td>
+                    </tr>
+                    <tr>
+                        <td>Amount spent on benefits for employees (benefits are in addition to wages/salaries. Benefits include for example: social security contributions, health insurance)  </td>
+                        <td align="right">2</td>
+            </tr>
+            </tbody>
+            </table>
     </div>
+
+
 </div>
 
 </script>

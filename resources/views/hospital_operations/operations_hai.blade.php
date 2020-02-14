@@ -16,7 +16,7 @@
 
 <form class="form-inline ml-auto">
 <select class="form-control selectric" ng-model="operationsHAICtrl.reportingyear" ng-change="operationsHAICtrl.selectReportingYear(operationsHAICtrl.reportingyear)">
-    <option value="<%reportingyear.year%>" ng-repeat="reportingyear in operationsHAICtrl.reportingyears"> Reporting Year <%reportingyear.year%> </option>
+    <option value="<%reportingyear.year%>" ng-repeat="reportingyear in operationsHAICtrl.reportingyears"> Reporting Year <%reportingyear.year%></option>
 </select>
 </form>
 
@@ -131,8 +131,7 @@
                 <h4>Healthcare Associated Infections (HAI)    </h4>
                 <div class="card-header-action">
                     <a href="#" class="btn btn-icon icon-left btn-primary" data-toggle="modal" data-target="#inputhai" ui-sref="hospital-operations-hai-details({reportingyear:operationsHAICtrl.reportingyear})"><i class="far fa-edit"></i> Input</a>
-                    <button class="btn btn-icon icon-left btn-info" ng-disabled="operationsHAICtrl.is_submit_disabled" ng-click="operationsHAICtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <div id="cover-spin" ng-if="operationsHAICtrl.is_loader_disabled"></div></button>
-                    <!-- <a href="#" class="btn btn-icon icon-left btn-info" data-confirm="Confirmation?|Do you want to submit these data?" data-confirm-yes="" ng-click="operationsHAICtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data</a> -->
+                    <button class="btn btn-icon icon-left btn-info" ng-disabled="operationsHAICtrl.is_submit_disabled" ng-click="operationsHAICtrl.sendDataDoh()"><i class="fas fa-paper-plane"></i> Submit Data <%operationsHAICtrl.is_submit_disabled%> </button>
                 </div>
                 </div>
                 <div class="card-body">
@@ -202,11 +201,11 @@
                             <td rowspan="2" class="align-middle"><%operationsHAICtrl.hai.resultssi%></td>
                             <td rowspan="2" class="align-middle">=</td>
                             <td align="right"><%operationsHAICtrl.hai.numssi%></td>
-                            <td rowspan="2" class="align-middle">x1000</td>
+                            <td rowspan="2" class="align-middle">x100</td>
                             <td rowspan="2" class="align-middle"><b>Surgical Site Infections (SSI) </b></td>
                             <td rowspan="2" class="align-middle">=</td>
                             <td>Number of Surgical Site Infections</td>
-                            <td rowspan="2" class="align-middle">x1000</td>
+                            <td rowspan="2" class="align-middle">x100</td>
                         </tr>
                         <tr align="center">
                             <td align="right"><%operationsHAICtrl.hai.totalproceduresdone%></td>
@@ -253,9 +252,8 @@
                 </tr>
                 <tr align="center">
                 <td rowspan="2" class="align-middle">1</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled=""
-                ng-init="operationsHAICtrl.collection.resultvap=(operationsHAICtrl.collection.patientnumvap*1000)/operationsHAICtrl.collection.totalventilatordays"
-                ng-model="operationsHAICtrl.collection.resultvap">
+                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" 
+                ng-value="(operationsHAICtrl.collection.patientnumvap*1000)/operationsHAICtrl.collection.totalventilatordays">
                 </td>
                 <td rowspan="2" class="align-middle">=</td>
                 <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumvap"></td>
@@ -272,7 +270,9 @@
 
                 <tr align="center">
                 <td rowspan="2" class="align-middle">2</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultbsi"></td>
+                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" 
+                ng-value="(operationsHAICtrl.collection.patientnumbsi*1000)/operationsHAICtrl.collection.totalnumcentralline">
+                </td>
                 <td rowspan="2" class="align-middle">=</td>
                 <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumbsi"></td>
                 <td rowspan="2" class="align-middle">x1000</td>
@@ -288,7 +288,9 @@
 
                 <tr align="center">
                 <td rowspan="2" class="align-middle">3</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultuti"></td>
+                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" 
+                ng-value="(operationsHAICtrl.collection.patientnumuti*1000)/operationsHAICtrl.collection.totalcatheterdays">
+                </td>
                 <td rowspan="2" class="align-middle">=</td>
                 <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.patientnumuti"></td>
                 <td rowspan="2" class="align-middle">x1000</td>
@@ -307,14 +309,16 @@
                 </tr>
                 <tr align="center">
                 <td rowspan="2" class="align-middle">4</td>
-                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" ng-model="operationsHAICtrl.collection.resultssi"></td>
+                <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" 
+                ng-value="(operationsHAICtrl.collection.numssi*1000)/operationsHAICtrl.collection.totalproceduresdone">
+                </td>
                 <td rowspan="2" class="align-middle">=</td>
                 <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.numssi"></td>
-                <td rowspan="2" class="align-middle">x1000</td>
+                <td rowspan="2" class="align-middle">x100</td>
                 <td rowspan="2" class="align-middle"><b>Surgical Site Infections (SSI) </b></td>
                 <td rowspan="2" class="align-middle">=</td>
                 <td>Number of Surgical Site Infections</td>
-                <td rowspan="2" class="align-middle">x1000</td>
+                <td rowspan="2" class="align-middle">x100</td>
                 </tr>
                 <tr align="center">
                 <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.totalproceduresdone"></td>

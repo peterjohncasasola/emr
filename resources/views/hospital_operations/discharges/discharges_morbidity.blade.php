@@ -114,6 +114,7 @@
         </div>
 
         <div class="section-body">
+        <div id="cover-spin" ng-if="dischargesMorbidityCtrl.is_loader_disabled"></div>
         <div class="row">
             <div class="col-12 col-md-12 col-lg-12">
             <div class="card card-primary">

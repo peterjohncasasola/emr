@@ -109,7 +109,7 @@ class OperationsMortalityDeathsController extends Controller {
                 $fields['fsubtotal'] = 50;
                 $fields['grandtotal'] = 100;
 
-                if(MortalityDeath::count()<10){
+                if(MortalityDeath::where('reportingyear', $fields['reportingyear'])->count()<10){
 
                     $check_duplicate = MortalityDeath::where('icd10code', $fields['icd10code'])->where('reportingyear', $fields['reportingyear'])->count();
                     if($check_duplicate<=0){

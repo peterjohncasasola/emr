@@ -126,6 +126,7 @@
 
 <!-- scripit init-->
 <!-- General JS Scripts -->
+
 <script src="public/assets/modules/jquery.min.js"></script>
 <script src="public/assets/modules/popper.js"></script>
 <script src="public/assets/modules/tooltip.js"></script>

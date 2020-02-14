@@ -109,7 +109,7 @@ class DischargesMorbidityController extends Controller {
                 $fields['fsubtotal'] = 50;
                 $fields['grandtotal'] = 100;
 
-                if(DischargesMorbidity::count()<10){
+                if(DischargesMorbidity::where('reportingyear', $fields['reportingyear'])->count()<10){
 
                     $check_duplicate = DischargesMorbidity::where('icd10code', $fields['icd10code'])
                                                             ->where('reportingyear', $fields['reportingyear'])->count();

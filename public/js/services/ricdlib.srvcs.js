@@ -14,6 +14,14 @@
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
+                list3: function(data) {
+                    return $http({
+                        method: 'GET',
+                        data: data,
+                        url: '/api/v1/ricd3?id='+data.id+'&icd10code='+data.icd10code,
+                        headers: {'Content-Type': 'application/json'}
+                    })
+                },
                 store: function(data) {
                     return $http({
                         method: 'POST',
