@@ -310,7 +310,7 @@
                 <tr align="center">
                 <td rowspan="2" class="align-middle">4</td>
                 <td rowspan="2" class="align-middle"><input type="number" class="form-control" id="" disabled="" 
-                ng-value="(operationsHAICtrl.collection.numssi*1000)/operationsHAICtrl.collection.totalproceduresdone">
+                ng-value="(operationsHAICtrl.collection.numssi*100)/operationsHAICtrl.collection.totalproceduresdone">
                 </td>
                 <td rowspan="2" class="align-middle">=</td>
                 <td><input type="number" class="form-control" id="" ng-model="operationsHAICtrl.collection.numssi"></td>

@@ -54,6 +54,7 @@
 
 <!-- Controllers -->
 
+<script src="{{URL::to('js/controllers/users.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/expenses.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/revenues.ctrl.js')}}"></script>
 
@@ -87,6 +88,7 @@
 <script src="{{URL::to('js/controllers/surgerieslib.ctrl.js')}}"></script>
 
 <!-- Services -->
+<script src="{{URL::to('js/services/users.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/expenses.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/revenues.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/classifications.srvcs.js')}}"></script>
@@ -179,6 +181,7 @@
 <script src="{{asset('public/js/emrApp.js')}}"></script>
 
 <!-- Controllers -->
+<script src="{{asset('public/js/controllers/users.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/expenses.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/revenues.ctrl.js')}}"></script>
 
@@ -210,6 +213,7 @@
 <script src="{{asset('public/js/controllers/surgerieslib.ctrl.js')}}"></script>
 
 <!-- Services -->
+<script src="{{asset('public/js/services/users.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/expenses.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/revenues.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/classifications.srvcs.js')}}"></script>

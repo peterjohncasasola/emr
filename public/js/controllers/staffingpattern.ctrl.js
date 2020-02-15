@@ -233,7 +233,7 @@
 
             vm.newConsultantList = [ 
                 {
-                    id:counter, parent:1, professiondesignation: '', specialtyboardcertified: '',
+                    id:counter, parent:10, professiondesignation: '', specialtyboardcertified: '',
                     fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                     activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                 }
@@ -243,7 +243,7 @@
                 counter++;
                 vm.newConsultantList.push(
                     {
-                        id:counter, parent:1, professiondesignation: '', specialtyboardcertified: '',
+                        id:counter, parent:10, professiondesignation: '', specialtyboardcertified: '',
                         fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                         activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                     }
@@ -253,7 +253,7 @@
 
             vm.newPostGraduateFellowList = [ 
                 {
-                    id:counter, parent:16, professiondesignation: '', specialtyboardcertified: '',
+                    id:counter, parent:17, professiondesignation: '', specialtyboardcertified: '',
                     fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                     activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                 }
@@ -263,7 +263,7 @@
                 counter++;
                 vm.newPostGraduateFellowList.push(
                     {
-                        id:counter, parent:16, professiondesignation: '', specialtyboardcertified: '',
+                        id:counter, parent:17, professiondesignation: '', specialtyboardcertified: '',
                         fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                         activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                     }
@@ -273,7 +273,7 @@
 
             vm.newResidentsList = [ 
                 {
-                    id:counter, parent:17, professiondesignation: '', specialtyboardcertified: '',
+                    id:counter, parent:22, professiondesignation: '', specialtyboardcertified: '',
                     fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                     activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                 }
@@ -283,7 +283,7 @@
                 counter++;
                 vm.newResidentsList.push(
                     {
-                        id:counter, parent:17, professiondesignation: '', specialtyboardcertified: '',
+                        id:counter, parent:22, professiondesignation: '', specialtyboardcertified: '',
                         fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                         activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                     }
@@ -293,7 +293,7 @@
 
             vm.newAlliedMedicalList = [ 
                 {
-                    id:counter, parent:33, professiondesignation: '', specialtyboardcertified: '',
+                    id:counter, parent:35, professiondesignation: '', specialtyboardcertified: '',
                     fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                     activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                 }
@@ -303,7 +303,7 @@
                 counter++;
                 vm.newAlliedMedicalList.push(
                     {
-                        id:counter, parent:33, professiondesignation: '', specialtyboardcertified: '',
+                        id:counter, parent:35, professiondesignation: '', specialtyboardcertified: '',
                         fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                         activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                     }
@@ -313,7 +313,7 @@
 
             vm.newNonMedicalList = [ 
                 {
-                    id:counter, parent:41, professiondesignation: '', specialtyboardcertified: '',
+                    id:counter, parent:42, professiondesignation: '', specialtyboardcertified: '',
                     fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                     activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                 }
@@ -323,7 +323,7 @@
                 counter++;
                 vm.newNonMedicalList.push(
                     {
-                        id:counter, parent:41, professiondesignation: '', specialtyboardcertified: '',
+                        id:counter, parent:42, professiondesignation: '', specialtyboardcertified: '',
                         fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                         activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                     }
@@ -333,7 +333,7 @@
 
             vm.newGeneralStaffList = [ 
                 {
-                    id:counter, parent:42, professiondesignation: '', specialtyboardcertified: '',
+                    id:counter, parent:46, professiondesignation: '', specialtyboardcertified: '',
                     fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                     activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                 }
@@ -343,7 +343,7 @@
                 counter++;
                 vm.newGeneralStaffList.push(
                     {
-                        id:counter, parent:42, professiondesignation: '', specialtyboardcertified: '',
+                        id:counter, parent:46, professiondesignation: '', specialtyboardcertified: '',
                         fulltime40permanent: '',fulltime40contractual:'',parttimepermanent:'',parttimecontractual:'',
                         activerotatingaffiliate: '',outsourced:'', reportingyear:$stateParams.reportingyear
                     }
@@ -351,46 +351,46 @@
                 $event.preventDefault();
             }
 
-            vm.createStaffingPatternBtn = function(data){
+            // vm.createStaffingPatternBtn = function(data){
             
-                angular.forEach(data, function(v, k){
-                    v['reportingyear'] = $stateParams.reportingyear;
-                })
+            //     angular.forEach(data, function(v, k){
+            //         v['reportingyear'] = $stateParams.reportingyear;
+            //     })
 
-                console.log(data)
+            //     console.log(data)
 
-                StaffingPatternSrvcs.store(data).then(function(response){
+            //     StaffingPatternSrvcs.store(data).then(function(response){
 
-                    console.log(response.data);
+            //         console.log(response.data);
 
-                    if (response.data.status == 200) {
-                        alert(response.data.message);
+            //         if (response.data.status == 200) {
+            //             alert(response.data.message);
 
-                        StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
-                            if(response.data.status == 200)
-                            {
-                                vm.testing = response.data.data[0];
-                                vm.testing_count = response.data.count;
-                                console.log(vm.testing)
-                            }
-                        }, function (){ alert('Bad Request!!!') })
+            //             StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
+            //                 if(response.data.status == 200)
+            //                 {
+            //                     vm.testing = response.data.data[0];
+            //                     vm.testing_count = response.data.count;
+            //                     console.log(vm.testing)
+            //                 }
+            //             }, function (){ alert('Bad Request!!!') })
 
-                        $state.go('staffing-pattern', {reportingyear:$stateParams.reportingyear});
-                        $uibModalInstance.close();
-                    }
-                    else {
-                        alert(response.data.message);
-                    }
-                    console.log(response.data);
-                });
-            };
+            //             $state.go('staffing-pattern', {reportingyear:$stateParams.reportingyear});
+            //             $uibModalInstance.close();
+            //         }
+            //         else {
+            //             alert(response.data.message);
+            //         }
+            //         console.log(response.data);
+            //     });
+            // };
 
             vm.updateStaffingPatternBtn = function(data){
 
                 angular.forEach(data, function(v, k){
 
-                    v.values['parent'] = 0;
-                    v['reportingyear'] = $stateParams.reportingyear;
+                    v.values['parent'] = 0; 
+                    v.values['reportingyear'] = $stateParams.reportingyear;
                 })
 
                 var datatypes = {
@@ -399,6 +399,7 @@
 
                 datatypes.orginal.push(data);//original fields
 
+                console.log(data)
                 datatypes.others.push(vm.others);
 
                 datatypes.newothers.push(vm.newConsultantList);

@@ -64,7 +64,7 @@ class StaffingPatternController extends Controller {
 
         foreach($rpositions as $key=>$rposition){
 
-            $rposition->values = array('id'=>null, 'hfhudcode'=>'', 'professiondesignation'=>0, 'specialtyboardcertified'=>0, 
+            $rposition->values = array('id'=>null, 'hfhudcode'=>'', 'professiondesignation'=>$rposition->poscode, 'specialtyboardcertified'=>0, 
                         'fulltime40permanent'=>0, 'fulltime40contractual'=>0, 'parttimepermanent'=>0, 'parttimecontractual'=>0,
                         'activerotatingaffiliate'=>0, 'outsourced'=>0, 'reportingyear'=>0
                     );
@@ -188,58 +188,6 @@ class StaffingPatternController extends Controller {
         return $transaction;
     }
 
-    public function store_others(Request $request){
-
-        $fields = Input::post();
-
-        $transaction = DB::transaction(function($field) use($fields){
-            // try{
-
-                    $total_count = count($fields);
-
-                    for($counter=0; $counter<$total_count; $counter++) {
-
-                        if($fields[$counter]['professiondesignation']){
-
-                        $staffing_pattern = new StaffingPatternOthers;
-                        $staffing_pattern->hfhudcode                    = 'NEHEHRSV201900093';
-                        $staffing_pattern->parent                       = $fields[$counter]['parent'];
-                        $staffing_pattern->professiondesignation        = $fields[$counter]['professiondesignation'];
-                        $staffing_pattern->specialtyboardcertified      = $fields[$counter]['specialtyboardcertified'];
-                        $staffing_pattern->fulltime40permanent          = $fields[$counter]['fulltime40permanent'];
-                        $staffing_pattern->fulltime40contractual        = $fields[$counter]['fulltime40contractual'];
-                        $staffing_pattern->parttimepermanent            = $fields[$counter]['parttimepermanent'];
-                        $staffing_pattern->parttimecontractual          = $fields[$counter]['parttimecontractual'];
-                        $staffing_pattern->activerotatingaffiliate      = $fields[$counter]['activerotatingaffiliate'];
-                        $staffing_pattern->outsourced                   = $fields[$counter]['outsourced'];
-                        $staffing_pattern->reportingyear                = 2019;
-                        $staffing_pattern->save();
-
-                        }
-
-                    }
-
-                    return response()->json([
-                        'status' => 200,
-                        'data' => null,
-                        'message' => 'Successfully saved.'
-                    ]);
-            
-            // }
-            // catch (\Exception $e) 
-            // {
-            //     return response()->json([
-            //         'status' => 500,
-            //         'data' => null,
-            //         'message' => 'Error, please try again!'
-            //     ]);
-            // }
-
-        });
-
-        return $transaction;
-    }
-
     public function update(Request $request){
 
         $fields = Input::post();
@@ -293,12 +241,6 @@ class StaffingPatternController extends Controller {
 
             }
 
-
-
-
-            
-
-
             return response()->json([
                 'status' => 200,
                 'data' => null,
@@ -320,12 +262,6 @@ class StaffingPatternController extends Controller {
     }
 
     public function update_others(Request $request){
-
-        // $data = array(
-        //     'id'=>$request->input('id'),
-        //     'reportingyear'=>$request->input('reportingyear'),
-        //     'reportingyear'=>$request->input('reportingyear'),
-        // );
 
         $fields = Input::post();
 

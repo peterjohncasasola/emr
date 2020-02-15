@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
 
-class Expense extends Model
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AudtitableContract;
+
+class Expense extends Model implements AudtitableContract
 {
+    use Auditable;
+    
     protected $primaryKey = 'id';
     protected $table = "expenses";
     protected $cast = [

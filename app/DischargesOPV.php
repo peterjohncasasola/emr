@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AudtitableContract;
 
-class DischargesOPV extends Model
+class DischargesOPV extends Model implements AudtitableContract
 {
+    use Auditable;
     protected $primaryKey = 'id';
     protected $table = "hospoptdischargesopv";
 

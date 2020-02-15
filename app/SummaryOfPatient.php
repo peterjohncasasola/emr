@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use OwenIt\Auditing\Auditable;
+use OwenIt\Auditing\Contracts\Auditable as AudtitableContract;
 
-class SummaryOfPatient extends Model
+class SummaryOfPatient extends Model implements AudtitableContract
 {
+    use Auditable;
     protected $primaryKey = 'id';
     protected $table = "hospoptsummaryofpatients";
 

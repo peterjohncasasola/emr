@@ -3,6 +3,10 @@
 @endsection
 @section('content')
 
+<!-- Users -->
+<script type="text/ng-template" id="nda.view">
+    @include('nda.nda')
+</script>
 
 <script type="text/ng-template" id="facility_profile.view">
     @include('facility_profile.facility_profile')

@@ -136,7 +136,7 @@ class DischargesSpecialtiesController extends Controller {
         $fields = Input::post();
 
         $transaction = DB::transaction(function($field) use($fields){
-            try{
+            // try{
                 if($fields['typeofservice']!=7){
 
                     $check_duplicate = DischargesSpecialty::where('reportingyear', $fields['reportingyear'])
@@ -228,15 +228,15 @@ class DischargesSpecialtiesController extends Controller {
                     ]);
                 }
 
-            }
-            catch (\Exception $e) 
-            {
-                return response()->json([
-                    'status' => 500,
-                    'data' => null,
-                    'message' => 'Error, please try again!'
-                ]);
-            }
+            // }
+            // catch (\Exception $e) 
+            // {
+            //     return response()->json([
+            //         'status' => 500,
+            //         'data' => null,
+            //         'message' => 'Error, please try again!'
+            //     ]);
+            // }
 
 
         });

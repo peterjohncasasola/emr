@@ -42,13 +42,11 @@
             $stateProvider
             .state('main-view', main)
 
-            //-- Employees --//
-
-            // .state('expenses', {
-            //     url: '/expenses',
-            //     controller: 'ExpensesCtrl as expensesCtrl',
-            //     templateUrl: 'expenses.view'
-            // })
+            .state('nda', {
+                url: '/nda',
+                controller: 'UsersCtrl as UsersCtrl',
+                templateUrl: 'nda.view'
+            })
 
             .state('expenses', {
                 url: '/expenses/:reportingyear',

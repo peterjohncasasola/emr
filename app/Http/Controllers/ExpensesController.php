@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Input;
 use Config;
 
 use DB;
+use Auth;
 use App\Expense;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
@@ -14,6 +16,7 @@ use Artisaninweb\SoapWrapper\SoapWrapper;
 class ExpensesController extends Controller {
 
     protected $soapWrapper;
+
  
     public function __construct(SoapWrapper $soapWrapper)
     {
@@ -25,7 +28,6 @@ class ExpensesController extends Controller {
     }
     
     public function show(Request $request){
-        
         $data = array(
             'id'=>$request->input('id'),
             'reportingyear'=>$request->input('reportingyear'),
