@@ -18,7 +18,7 @@ class AllowIfNdaAccepted
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->is_nda_accepted === 1) {
+        if (Auth::user()->is_nda_accepted==1) {
             return $next($request);
         } else {
             return redirect('/nda');

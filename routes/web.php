@@ -23,6 +23,10 @@ Route::get('/logout','LoginController@logout');
 Route::post('/auth', ['uses'=>'LoginController@login', 'as'=>'auth']);
 Route::group(['middleware'=>'auth'], function(){
 
+    Route::get('get_accept_status', function () {
+        return Auth::user()->is_nda_accepted;
+    });
+
     // -- NDA -- //
     Route::get('','UsersController@index');
     Route::get('/nda','UsersController@index');
