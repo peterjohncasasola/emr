@@ -24,7 +24,7 @@ class LoginController extends Controller {
             $user->is_nda_accepted               = 0;
             $user->nda_accepted_at               = null;
             $user->save();
-            return redirect()->intended('nda');
+            return redirect('nda');
         }
         else
         {
