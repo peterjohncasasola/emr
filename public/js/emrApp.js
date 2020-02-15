@@ -317,7 +317,7 @@
                 templateUrl: 'facility_profile.view'
             })
 
-            $urlRouterProvider.otherwise('/hospital-operations/discharges-number-deliveries/2019');
+            $urlRouterProvider.otherwise('/');
             // $urlRouterProvider.otherwise('/index');
 
         }
