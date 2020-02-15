@@ -74,7 +74,6 @@ class StaffingPatternController extends Controller {
                 if($staffing_pattern->professiondesignation==$rposition->poscode){
                     $rposition->values = $staffing_pattern;
                 }
-
             }
         }
 
@@ -469,7 +468,7 @@ class StaffingPatternController extends Controller {
                 'password' => '123456'
             ];
             $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-
+            // return response($response, 200)->header('Content-Type', 'application/xml');
 
             $staffing_patterns = DB::table('staffingpattern as staffingPattern')
                 ->select( 
@@ -502,6 +501,41 @@ class StaffingPatternController extends Controller {
                 ];
             
                 $response = $this->soapWrapper->call('Emr.staffingPattern', $data);
+            }
+
+            $staffing_patterns_others = DB::table('staffingpatternothers as staffingPatternOthers')
+                ->select( 
+                    'staffingPatternOthers.id',
+                    'staffingPatternOthers.hfhudcode',
+                    'staffingPatternOthers.parent',
+                    'staffingPatternOthers.professiondesignation',
+                    'staffingPatternOthers.specialtyboardcertified',
+                    'staffingPatternOthers.fulltime40permanent',
+                    'staffingPatternOthers.fulltime40contractual',
+                    'staffingPatternOthers.parttimepermanent',
+                    'staffingPatternOthers.parttimecontractual',
+                    'staffingPatternOthers.activerotatingaffiliate',
+                    'staffingPatternOthers.outsourced',
+                    'staffingPatternOthers.reportingyear'
+                )->where('reportingyear', $fields['reportingyear'])->get();
+
+            foreach ($staffing_patterns_others as $staffing_patterns_other) {
+                // code
+                $data = [
+                    "hfhudcode" => $staffing_patterns_other->hfhudcode, 
+                    "parent" => $staffing_patterns_other->parent, 
+                    "professiondesignation" => $staffing_patterns_other->professiondesignation, 
+                    "specialtyboardcertified" => $staffing_patterns_other->specialtyboardcertified, 
+                    "fulltime40permanent" => $staffing_patterns_other->fulltime40permanent,
+                    "fulltime40contractual" => $staffing_patterns_other->fulltime40contractual,
+                    "parttimepermanent" => $staffing_patterns_other->parttimepermanent,
+                    "parttimecontractual" => $staffing_patterns_other->parttimecontractual,
+                    "activerotatingaffiliate" => $staffing_patterns_other->activerotatingaffiliate,
+                    "outsourced" => $staffing_patterns_other->outsourced,
+                    "reportingyear" => $staffing_patterns_other->reportingyear
+                ];
+            
+                $response = $this->soapWrapper->call('Emr.staffingPatternOthers', $data);
             }
 
         }

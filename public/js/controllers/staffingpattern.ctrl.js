@@ -48,12 +48,15 @@
                     alert('Successfully submitted!')
 
                     StaffingPatternSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
-                        if(response.data.status == 200)
-                        {
+                        if(response.data.status == 200){
                             vm.staffingPatterns = response.data.data;
                             console.log(vm.staffingPatterns)
                         }
-                    }, function (){ alert('Bad Request!!!') })
+                    }, function (){ 
+                        vm.is_loader_disabled = true;
+                        vm.is_submit_disabled = true;
+                        alert('Bad Request!!!') 
+                    })
                     
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;
