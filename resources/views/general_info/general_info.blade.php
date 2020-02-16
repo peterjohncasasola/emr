@@ -108,6 +108,16 @@
 </div>
 </nav>
 
+<!-- Folating Submitted Report -->
+<a href="submitted-reports.html" class="float" ui-sref="submitted-reports({reportingyear:generalInfoCtrl.reportingyear})">
+<i class="fa fa-paper-plane my-float"></i>
+</a>
+<div class="label-container">
+<div class="label-text">Submitted Reports</div>
+<i class="fa fa-play label-arrow"></i>
+</div>
+<!-- End Floating Submitted Report -->    
+
 <!-- Main Content -->
 <div class="main-content">
 <section class="section">
@@ -249,17 +259,20 @@
                         <th>PhilHealth Accreditation</th>
                         <th>Validity From</th>
                         <th>Validity To</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="quality_management in generalInfoCtrl.quality_management">
-                        <td> <% $index %> </td>
+                        <td> <% $index+1 %> </td>
                         <td><%quality_management.qualitymgmttypedesc%></td>
                         <td><%quality_management.certifyingbody%></td>
                         <td><%quality_management.description%></td>
                         <td><%quality_management.philhealthaccreditationdesc%></td>
                         <td><%quality_management.validityfrom%></td>
                         <td><%quality_management.validityto%></td>
+                        <!-- <td><a href="" class="fas fa-edit text-warning" data-toggle="modal" data-target="#inputquality"></a> </td> -->
+                        <td><a href="" class="fas fa-trash-alt text-danger" ng-click="generalInfoCtrl.deleteQualityManagementBtn(quality_management.id)"></a></td>
                     </tr>
                     <tr>
                 </tbody>

@@ -54,6 +54,18 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/api/v1/expense/store','ExpensesController@store');
         Route::post('/api/v1/expense/update','ExpensesController@update');
         Route::post('/api/v1/expense/send_data_doh','ExpensesController@send_data_doh');//SEND TO DOH
+
+        // -- FACILITY PROFILE -- //
+        Route::get('/facility-profile','ExpensesController@index');
+        Route::get('/facility-profile/{reportingyear}','ExpensesController@index');
+        // Route::get('/expenses/{reportingyear}/details','ExpensesController@index');
+        
+        // Route::get('/api/v1/expenses','ExpensesController@show');
+        // Route::get('/api/v2/expenses','ExpensesController@show2');
+        // Route::get('/api/v1/expenses/{id}','ExpensesController@show');
+        // Route::post('/api/v1/expense/store','ExpensesController@store');
+        // Route::post('/api/v1/expense/update','ExpensesController@update');
+        // Route::post('/api/v1/expense/send_data_doh','ExpensesController@send_data_doh');//SEND TO DOH
         
         // -- REVENUES -- //
         Route::get('/revenues','RevenuesController@index');
@@ -69,7 +81,6 @@ Route::group(['middleware'=>'auth'], function(){
         // -- GENERAL INFO -- //
         Route::get('/general-info','ClassificationsController@index');
         Route::get('/general-info/{reportingyear}','ClassificationsController@index');
-        
         
         // -- GENERAL INFO -- CLASSIFICATION //
         Route::get('/general-info/classifications','ClassificationsController@index');
@@ -99,6 +110,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/api/v1/quality-management','QualityManagementController@show');
         Route::post('/api/v1/quality-management/store','QualityManagementController@store');
         Route::post('/api/v1/quality-management/update','QualityManagementController@update');
+        Route::post('/api/v1/quality-management/remove','QualityManagementController@remove');
         Route::post('/api/v1/quality-management/send_data_doh','QualityManagementController@send_data_doh');//SEND TO DOH
         
         // -- HOSPITAL OPERATIONS -> SUMMARY OF PATIENT //
@@ -274,6 +286,17 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/api/v1/staffing-pattern/update-others','StaffingPatternController@update_others');
         Route::post('/api/v1/staffing-pattern/remove','StaffingPatternController@remove');
         Route::post('/api/v1/staffing-pattern/send_data_doh','StaffingPatternController@send_data_doh');//SEND TO DOH
+
+        // -- SUBMITTED REPORTS -- //
+        Route::get('/submitted-reports','SubmittedReportsController@index');
+        Route::get('/submitted-report/{reportingyear}','SubmittedReportsController@index');
+        Route::get('/submitted-report/{reportingyear}/details','SubmittedReportsController@index');
+        
+        Route::get('/api/v1/submitted-reports','SubmittedReportsController@show');
+        Route::get('/api/v1/submitted-report/{id}','SubmittedReportsController@show');
+        Route::post('/api/v1/submitted-report/store','SubmittedReportsController@store');
+        Route::post('/api/v1/submitted-report/update','SubmittedReportsController@update');
+        Route::post('/api/v1/submitted-report/send_data_doh','SubmittedReportsController@send_data_doh');//SEND TO DOH
         
         
         // LIBRARIES //

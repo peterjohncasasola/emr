@@ -12,30 +12,21 @@
         
             if($stateParams.reportingyear){
 
-                QualityManagementSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
-                    if(response.data.status == 200)
-                    {
-                        vm.data = response.data.data[0];
-                        vm.data_count = response.data.count;
-                        console.log(vm.data)
-
-                        $uibModal.open({
-                            templateUrl: 'add-quality-management-modal',
-                            controller: 'QualityManagementActionModalInsatanceCtrl',
-                            controllerAs: 'qualityManagementCtrl',
-                            backdrop: 'static',
-                            keyboard  : false,
-                            resolve :{
-                                collection: function () {
-                                    return {
-                                        data: vm.data
-                                    };
-                                }
-                            },
-                            size: 'lg'
-                        });
-                    }
-                }, function (){ alert('Bad Request!!!') })
+                    $uibModal.open({
+                        templateUrl: 'add-quality-management-modal',
+                        controller: 'QualityManagementActionModalInsatanceCtrl',
+                        controllerAs: 'qualityManagementCtrl',
+                        backdrop: 'static',
+                        keyboard  : false,
+                        resolve :{
+                            collection: function () {
+                                return {
+                                    data: null
+                                };
+                            }
+                        },
+                        size: 'lg'
+                    });
             }
 
             vm.routeTo = function(route){
@@ -79,6 +70,7 @@
                     }
                     console.log(response.data);
                 });
+                
             };
 
             vm.updateQualityManagementBtn = function(data){

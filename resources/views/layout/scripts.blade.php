@@ -72,16 +72,13 @@
 <script src="{{URL::to('js/controllers/dischargesopd.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargesmorbidity.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/dischargestesting.ctrl.js')}}"></script>
-
 <script src="{{URL::to('js/controllers/operationsdeath.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/operationsmortalitydeath.ctrl.js')}}"></script>
-
 <script src="{{URL::to('js/controllers/surgicaloperationsmajor.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/surgicaloperationsminor.ctrl.js')}}"></script>
-
 <script src="{{URL::to('js/controllers/operationshai.ctrl.js')}}"></script>
-
 <script src="{{URL::to('js/controllers/staffingpattern.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/submittedreports.ctrl.js')}}"></script>
 
 
 <!-- Libraries -->
@@ -113,6 +110,7 @@
 
 <script src="{{URL::to('js/services/operationshai.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/staffingpattern.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/submittedreports.srvcs.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{URL::to('js/services/surgerieslib.srvcs.js')}}"></script>
@@ -208,6 +206,7 @@
 
 <script src="{{asset('public/js/controllers/operationshai.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/staffingpattern.ctrl.js')}}"></script>
+<script src="{{asset('public/js/controllers/submittedreports.ctrl.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{asset('public/js/controllers/surgerieslib.ctrl.js')}}"></script>
@@ -238,6 +237,7 @@
 
 <script src="{{asset('public/js/services/operationshai.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/staffingpattern.srvcs.js')}}"></script>
+<script src="{{asset('public/js/services/submittedreports.srvcs.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{asset('public/js/services/surgerieslib.srvcs.js')}}"></script>

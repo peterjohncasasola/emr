@@ -30,6 +30,14 @@
                         headers: {'Content-Type': 'application/json'}
                     })
                 },
+                remove: function(data) {
+                    return $http({
+                        method: 'POST',
+                        url: '/api/v1/quality-management/remove',
+                        data: data,
+                        headers: {'Content-Type': 'application/json'}
+                    })
+                },
                 send_data_doh: function(data) {
                     return $http({
                         method: 'POST',

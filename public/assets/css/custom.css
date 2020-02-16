@@ -10,6 +10,8 @@
 /*Global Modal customized*/
 .modal-lg {max-width: 1300px !important;}
 .row-gray {background: #F0F0F0;}
+thead {font-size: 13px;}
+.text-bold {font-weight: 800;}
 
 /*Custom CSS for longtable*/
 .table-inputage, .long-table td {text-align: center;}
@@ -21,3 +23,67 @@ input.input-age  {height: 35px !important;}
 .table-staffing thead {font-size: 13px;text-align: center;vertical-align: middle;}
 .table-staffing tbody {text-align: center;}
 .table-staffing .row-left {text-align: left;vertical-align: middle;}
+
+/*Custom CSS EULA*/
+.eula ol {
+  counter-reset: item}
+.eula li {
+  display: block}
+.eula li:before {
+  content: counters(item, ".") " ";
+  counter-increment: item}
+
+/*Custom CSS for Floating Submitted Report*/
+.label-container{
+	position:fixed;
+	bottom:48px;
+	right:105px;
+	display:table;
+	visibility: hidden;
+}
+
+.label-text{
+	color:#FFF;
+	background:rgba(51,51,51,0.5);
+	display:table-cell;
+	vertical-align:middle;
+	padding:10px;
+	border-radius:3px;
+}
+
+.label-arrow{
+	display:table-cell;
+	vertical-align:middle;
+	color:#333;
+	opacity:0.5;
+}
+
+.float{
+	position:fixed;
+	width:70px;
+	height:70px;
+	bottom:40px;
+	right:40px;
+	background-color:#6777ef;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	font-size:31px;
+	margin-top:20px;
+	margin-right:1px;
+}
+
+a.float + div.label-container {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease;
+}
+
+a.float:hover + div.label-container{
+  visibility: visible;
+  opacity: 1;
+}

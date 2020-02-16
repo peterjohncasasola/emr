@@ -109,6 +109,16 @@
 </ul>
 </div>
 </nav>
+
+<!-- Folating Submitted Report -->
+<a href="submitted-reports.html" class="float" ui-sref="submitted-reports({reportingyear:surgicalOperationsMinorCtrl.reportingyear})">
+<i class="fa fa-paper-plane my-float"></i>
+</a>
+<div class="label-container">
+<div class="label-text">Submitted Reports</div>
+<i class="fa fa-play label-arrow"></i>
+</div>
+<!-- End Floating Submitted Report -->    
     
     <!-- Main Content -->
     <div class="main-content">

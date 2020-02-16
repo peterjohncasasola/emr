@@ -93,6 +93,11 @@
     @include('staffing_pattern.staffing_pattern')
 </script>
 
+<!-- Submitted Reports -->
+<script type="text/ng-template" id="submitted_report.view">
+    @include('submitted_reports.submitted_reports')
+</script>
+
 @endsection
 @section('additionalScripts')
 @endsection

@@ -329,7 +329,17 @@
                 templateUrl: 'staffing_pattern.view'
             })
 
-            
+            .state('submitted-reports', {
+                url: '/submitted-report/:reportingyear',
+                controller: 'SubmittedReportsCtrl as SubmittedReportsCtrl',
+                templateUrl: 'submitted_report.view'
+            })
+
+            .state('submitted-reports-details', {
+                url: '/submitted-report/:reportingyear/details',
+                controller: 'SubmittedReportsCreateCtrl as SubmittedReportsCtrl',
+                templateUrl: 'submitted_report.view'
+            })
 
             $urlRouterProvider.otherwise('/');
             // $urlRouterProvider.otherwise('/index');
