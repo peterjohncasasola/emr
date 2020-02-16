@@ -41,7 +41,7 @@
             
             $stateProvider
             .state('main-view', main)
-
+            
             .state('nda', {
                 url: '/nda/:reportingyear',
                 controller: 'UsersCtrl as UsersCtrl',

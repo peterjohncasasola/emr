@@ -42,8 +42,8 @@
                 {{ csrf_field() }}
             </form>
             <a class="dropdown-item has-icon text-danger" href="" 
-                onclick="event.preventDefault(); 
-                document.getElementById('logout-form').submit();"> 
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" ng-click="UsersCtrl.routeTo('logout')"> 
                 <i class="fas fa-sign-out-alt"></i>Sign out
             </a>
     </div>
