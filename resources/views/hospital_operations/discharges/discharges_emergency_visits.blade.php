@@ -44,7 +44,7 @@
         </form>
         <a class="dropdown-item has-icon text-danger" href="" 
             onclick="event.preventDefault(); 
-            document.getElementById('logout-form').submit();"> 
+            document.getElementById('logout-form').submit();" ng-click="dischargesEVCtrl.routeTo('logout')"> 
             <i class="fas fa-sign-out-alt"></i>Sign out
         </a>
 </div>
