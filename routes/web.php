@@ -29,7 +29,7 @@ Route::group(['middleware'=>'auth'], function(){
 
     // -- NDA -- //
     Route::get('','UsersController@index');
-    Route::get('/nda','UsersController@index');
+    Route::get('/nda/{reportingyear}','UsersController@index');
     Route::post('/api/v1/user/update-accept-nda-status','UsersController@accept_nda');
     Route::get('/logout','LoginController@logout');
 
@@ -44,8 +44,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- EXPENSES -- //
         Route::get('/expenses','ExpensesController@index');
-        Route::get('/expenses/{reporting_year}','ExpensesController@index');
-        Route::get('/expenses/{reporting_year}/details','ExpensesController@index');
+        Route::get('/expenses/{reportingyear}','ExpensesController@index');
+        Route::get('/expenses/{reportingyear}/details','ExpensesController@index');
         
         Route::get('/api/v1/expenses','ExpensesController@show');
         Route::get('/api/v2/expenses','ExpensesController@show2');
@@ -56,8 +56,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- REVENUES -- //
         Route::get('/revenues','RevenuesController@index');
-        Route::get('/revenues/{reporting_year}','RevenuesController@index');
-        Route::get('/revenues/{reporting_year}/details','RevenuesController@index');
+        Route::get('/revenues/{reportingyear}','RevenuesController@index');
+        Route::get('/revenues/{reportingyear}/details','RevenuesController@index');
         
         Route::get('/api/v1/revenues','RevenuesController@show');
         Route::get('/api/v1/revenues/{revenue_code}','RevenuesController@show');
@@ -67,13 +67,13 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- GENERAL INFO -- //
         Route::get('/general-info','ClassificationsController@index');
-        Route::get('/general-info/{reporting_year}','ClassificationsController@index');
+        Route::get('/general-info/{reportingyear}','ClassificationsController@index');
         
         
         // -- GENERAL INFO -- CLASSIFICATION //
         Route::get('/general-info/classifications','ClassificationsController@index');
-        Route::get('/general-info/classifications/{reporting_year}','ClassificationsController@index');
-        Route::get('/general-info/classifications/{reporting_year}/details','ClassificationsController@index');
+        Route::get('/general-info/classifications/{reportingyear}','ClassificationsController@index');
+        Route::get('/general-info/classifications/{reportingyear}/details','ClassificationsController@index');
         
         Route::get('/api/v1/classifications','ClassificationsController@show');
         Route::post('/api/v1/classification/store','ClassificationsController@store');
@@ -82,8 +82,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- GENERAL INFO -- BED CAPACITY //
         Route::get('/general-info/bed-capacity','BedCapacitiesController@index');
-        Route::get('/general-info/bed-capacity/{reporting_year}','BedCapacitiesController@index');
-        Route::get('/general-info/bed-capacity/{reporting_year}/details','BedCapacitiesController@index');
+        Route::get('/general-info/bed-capacity/{reportingyear}','BedCapacitiesController@index');
+        Route::get('/general-info/bed-capacity/{reportingyear}/details','BedCapacitiesController@index');
         
         Route::get('/api/v1/bed-capacities','BedCapacitiesController@show');
         Route::post('/api/v1/bed-capacity/store','BedCapacitiesController@store');
@@ -92,8 +92,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- GENERAL INFO --  QUALITY MANAGEMENT //
         Route::get('/general-info/quality-management','QualityManagementController@index');
-        Route::get('/general-info/quality-management/{reporting_year}','QualityManagementController@index');
-        Route::get('/general-info/quality-management/{reporting_year}/details','QualityManagementController@index');
+        Route::get('/general-info/quality-management/{reportingyear}','QualityManagementController@index');
+        Route::get('/general-info/quality-management/{reportingyear}/details','QualityManagementController@index');
         
         Route::get('/api/v1/quality-management','QualityManagementController@show');
         Route::post('/api/v1/quality-management/store','QualityManagementController@store');
@@ -102,8 +102,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> SUMMARY OF PATIENT //
         Route::get('/hospital-operations/hai','SummaryOfPatientsController@index');
-        Route::get('/hospital-operations/summary-of-patients/{reporting_year}','SummaryOfPatientsController@index');
-        Route::get('/hospital-operations/summary-of-patients/{reporting_year}/details','SummaryOfPatientsController@index');
+        Route::get('/hospital-operations/summary-of-patients/{reportingyear}','SummaryOfPatientsController@index');
+        Route::get('/hospital-operations/summary-of-patients/{reportingyear}/details','SummaryOfPatientsController@index');
         
         Route::get('/api/v1/summary-of-patients','SummaryOfPatientsController@show');
         Route::post('/api/v1/summary-of-patient/store','SummaryOfPatientsController@store');
@@ -112,8 +112,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> OPERATIONS HAI //
         Route::get('/hospital-operations/hai','OperationsHAIController@index');
-        Route::get('/hospital-operations/hai/{reporting_year}','OperationsHAIController@index');
-        Route::get('/hospital-operations/hai/{reporting_year}/details','OperationsHAIController@index');
+        Route::get('/hospital-operations/hai/{reportingyear}','OperationsHAIController@index');
+        Route::get('/hospital-operations/hai/{reportingyear}/details','OperationsHAIController@index');
         
         Route::get('/api/v1/operations-hai','OperationsHAIController@show');
         Route::post('/api/v1/operations-hai/store','OperationsHAIController@store');
@@ -122,9 +122,9 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> SPECIALTY //
         Route::get('/hospital-operations/discharges-specialty','DischargesSpecialtiesController@index');
-        Route::get('/hospital-operations/discharges-specialty/{reporting_year}','DischargesSpecialtiesController@index');
-        Route::get('/hospital-operations/discharges-specialty/{reporting_year}/details','DischargesSpecialtiesController@index');
-        Route::get('/hospital-operations/discharges-specialty/{reporting_year}/new','DischargesSpecialtiesController@index');
+        Route::get('/hospital-operations/discharges-specialty/{reportingyear}','DischargesSpecialtiesController@index');
+        Route::get('/hospital-operations/discharges-specialty/{reportingyear}/details','DischargesSpecialtiesController@index');
+        Route::get('/hospital-operations/discharges-specialty/{reportingyear}/new','DischargesSpecialtiesController@index');
         
         Route::get('/api/v1/discharges-specialty','DischargesSpecialtiesController@show');
         Route::get('/api/v1/discharges-specialty-others','DischargesSpecialtiesController@show_others');
@@ -136,8 +136,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> NUMBER OF DELIVERIES //
         Route::get('/hospital-operations/discharges-number-deliveries','DischargesNumberDeliveriesController@index');
-        Route::get('/hospital-operations/discharges-number-deliveries/{reporting_year}','DischargesNumberDeliveriesController@index');
-        Route::get('/hospital-operations/discharges-number-deliveries/{reporting_year}/details','DischargesNumberDeliveriesController@index');
+        Route::get('/hospital-operations/discharges-number-deliveries/{reportingyear}','DischargesNumberDeliveriesController@index');
+        Route::get('/hospital-operations/discharges-number-deliveries/{reportingyear}/details','DischargesNumberDeliveriesController@index');
         
         Route::get('/api/v1/discharges-number-deliveries','DischargesNumberDeliveriesController@show');
         Route::post('/api/v1/discharges-number-delivery/store','DischargesNumberDeliveriesController@store');
@@ -147,8 +147,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> TESTING //
         Route::get('/hospital-operations/discharges-testing','DischargesTestingController@index');
-        Route::get('/hospital-operations/discharges-testing/{reporting_year}','DischargesTestingController@index');
-        Route::get('/hospital-operations/discharges-testing/{reporting_year}/details','DischargesTestingController@index');
+        Route::get('/hospital-operations/discharges-testing/{reportingyear}','DischargesTestingController@index');
+        Route::get('/hospital-operations/discharges-testing/{reportingyear}/details','DischargesTestingController@index');
         
         Route::get('/api/v1/discharges-testing','DischargesTestingController@show');
         Route::post('/api/v1/discharges-testing/store','DischargesTestingController@store');
@@ -157,8 +157,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> OPV //
         Route::get('/hospital-operations/discharges-opv','DischargesOPVController@index');
-        Route::get('/hospital-operations/discharges-opv/{reporting_year}','DischargesOPVController@index');
-        Route::get('/hospital-operations/discharges-opv/{reporting_year}/details','DischargesOPVController@index');
+        Route::get('/hospital-operations/discharges-opv/{reportingyear}','DischargesOPVController@index');
+        Route::get('/hospital-operations/discharges-opv/{reportingyear}/details','DischargesOPVController@index');
         
         Route::get('/api/v1/discharges-opv','DischargesOPVController@show');
         Route::post('/api/v1/discharges-opv/store','DischargesOPVController@store');
@@ -167,8 +167,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> EV //
         Route::get('/hospital-operations/discharges-ev','DischargesEVController@index');
-        Route::get('/hospital-operations/discharges-ev/{reporting_year}','DischargesEVController@index');
-        Route::get('/hospital-operations/discharges-ev/{reporting_year}/details','DischargesEVController@index');
+        Route::get('/hospital-operations/discharges-ev/{reportingyear}','DischargesEVController@index');
+        Route::get('/hospital-operations/discharges-ev/{reportingyear}/details','DischargesEVController@index');
         
         Route::get('/api/v1/discharges-ev','DischargesEVController@show');
         Route::post('/api/v1/discharges-ev/store','DischargesEVController@store');
@@ -177,8 +177,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> ER //
         Route::get('/hospital-operations/discharges-er','DischargesERController@index');
-        Route::get('/hospital-operations/discharges-er/{reporting_year}','DischargesERController@index');
-        Route::get('/hospital-operations/discharges-er/{reporting_year}/details','DischargesERController@index');
+        Route::get('/hospital-operations/discharges-er/{reportingyear}','DischargesERController@index');
+        Route::get('/hospital-operations/discharges-er/{reportingyear}/details','DischargesERController@index');
         
         Route::get('/api/v1/discharges-er','DischargesERController@show');
         Route::post('/api/v1/discharges-er/store','DischargesERController@store');
@@ -188,8 +188,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> OPD //
         Route::get('/hospital-operations/discharges-opd','DischargesOPDController@index');
-        Route::get('/hospital-operations/discharges-opd/{reporting_year}','DischargesOPDController@index');
-        Route::get('/hospital-operations/discharges-opd/{reporting_year}/details','DischargesOPDController@index');
+        Route::get('/hospital-operations/discharges-opd/{reportingyear}','DischargesOPDController@index');
+        Route::get('/hospital-operations/discharges-opd/{reportingyear}/details','DischargesOPDController@index');
         
         Route::get('/api/v1/discharges-opd','DischargesOPDController@show');
         Route::post('/api/v1/discharges-opd/store','DischargesOPDController@store');
@@ -199,10 +199,10 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DISCHARGES -> MORBIDITY //
         Route::get('/hospital-operations/discharges-morbidity','DischargesMorbidityController@index');
-        Route::get('/hospital-operations/discharges-morbidity/{reporting_year}','DischargesMorbidityController@index');
-        Route::get('/hospital-operations/discharges-morbidity/{reporting_year}/{icd_code}','DischargesMorbidityController@index');
-        Route::get('/hospital-operations/discharges-morbidity/{reporting_year}/{icd_code}/{action}','DischargesMorbidityController@index');
-        Route::get('/hospital-operations/discharges-morbidity/{reporting_year}/details','DischargesMorbidityController@index');
+        Route::get('/hospital-operations/discharges-morbidity/{reportingyear}','DischargesMorbidityController@index');
+        Route::get('/hospital-operations/discharges-morbidity/{reportingyear}/{icd_code}','DischargesMorbidityController@index');
+        Route::get('/hospital-operations/discharges-morbidity/{reportingyear}/{icd_code}/{action}','DischargesMorbidityController@index');
+        Route::get('/hospital-operations/discharges-morbidity/{reportingyear}/details','DischargesMorbidityController@index');
         
         Route::get('/api/v1/discharges-morbidity','DischargesMorbidityController@show');
         Route::post('/api/v1/discharges-morbidity/store','DischargesMorbidityController@store');
@@ -212,8 +212,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DEATH -> OPERATIONS DEATH //
         Route::get('/hospital-operations/death','OperationsDeathsController@index');
-        Route::get('/hospital-operations/death/{reporting_year}','OperationsDeathsController@index');
-        Route::get('/hospital-operations/death/{reporting_year}/details','OperationsDeathsController@index');
+        Route::get('/hospital-operations/death/{reportingyear}','OperationsDeathsController@index');
+        Route::get('/hospital-operations/death/{reportingyear}/details','OperationsDeathsController@index');
         
         Route::get('/api/v1/death','OperationsDeathsController@show');
         Route::post('/api/v1/death/store','OperationsDeathsController@store');
@@ -223,10 +223,10 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> DEATH -> OPERATIONS MORTALITY DEATH //
         Route::get('/hospital-operations/mortality-death','OperationsMortalityDeathsController@index');
-        Route::get('/hospital-operations/mortality-death/{reporting_year}','OperationsMortalityDeathsController@index');
-        Route::get('/hospital-operations/mortality-death/{reporting_year}/{icd_code}','OperationsMortalityDeathsController@index');
-        Route::get('/hospital-operations/mortality-death/{reporting_year}/{icd_code}/{action}','OperationsMortalityDeathsController@index');
-        Route::get('/hospital-operations/mortality-death/{reporting_year}/details','OperationsMortalityDeathsController@index');
+        Route::get('/hospital-operations/mortality-death/{reportingyear}','OperationsMortalityDeathsController@index');
+        Route::get('/hospital-operations/mortality-death/{reportingyear}/{icd_code}','OperationsMortalityDeathsController@index');
+        Route::get('/hospital-operations/mortality-death/{reportingyear}/{icd_code}/{action}','OperationsMortalityDeathsController@index');
+        Route::get('/hospital-operations/mortality-death/{reportingyear}/details','OperationsMortalityDeathsController@index');
         
         Route::get('/api/v1/mortality-death','OperationsMortalityDeathsController@show');
         Route::post('/api/v1/mortality-death/store','OperationsMortalityDeathsController@store');
@@ -236,8 +236,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MAJOR OPERATIONS //
         Route::get('/hospital-operations/surgical-operations-major','SurgicalOperationsMajorController@index');
-        Route::get('/hospital-operations/surgical-operations-major/{reporting_year}','SurgicalOperationsMajorController@index');
-        Route::get('/hospital-operations/surgical-operations-major/{reporting_year}/{index}','SurgicalOperationsMajorController@index');
+        Route::get('/hospital-operations/surgical-operations-major/{reportingyear}','SurgicalOperationsMajorController@index');
+        Route::get('/hospital-operations/surgical-operations-major/{reportingyear}/{index}','SurgicalOperationsMajorController@index');
         
         Route::get('/api/v1/surgical-operations-major','SurgicalOperationsMajorController@show');
         Route::post('/api/v1/surgical-operation-major/store','SurgicalOperationsMajorController@store');
@@ -247,8 +247,8 @@ Route::group(['middleware'=>'auth'], function(){
         
         // -- HOSPITAL OPERATIONS -> SURGICAL OPERATIONS -> MINOR OPERATIONS //
         Route::get('/hospital-operations/surgical-operations-minor','SurgicalOperationsMinorController@index');
-        Route::get('/hospital-operations/surgical-operations-minor/{reporting_year}','SurgicalOperationsMinorController@index');
-        Route::get('/hospital-operations/surgical-operations-minor/{reporting_year}/{index}','SurgicalOperationsMinorController@index');
+        Route::get('/hospital-operations/surgical-operations-minor/{reportingyear}','SurgicalOperationsMinorController@index');
+        Route::get('/hospital-operations/surgical-operations-minor/{reportingyear}/{index}','SurgicalOperationsMinorController@index');
         
         Route::get('/api/v1/surgical-operations-minor','SurgicalOperationsMinorController@show');
         Route::post('/api/v1/surgical-operation-minor/store','SurgicalOperationsMinorController@store');
@@ -259,11 +259,11 @@ Route::group(['middleware'=>'auth'], function(){
         
         // --STAFFING PATTERN //
         Route::get('/staffing-pattern','StaffingPatternController@index');
-        Route::get('/staffing-pattern/{reporting_year}','StaffingPatternController@index');
-        Route::get('/staffing-pattern/{reporting_year}/{index}','StaffingPatternController@index');
-        Route::get('/staffing-pattern-medical/{reporting_year}/{index}','StaffingPatternController@index');
-        Route::get('/staffing-pattern-allied-medical/{reporting_year}/{index}','StaffingPatternController@index');
-        Route::get('/staffing-pattern-non-medical/{reporting_year}/{index}','StaffingPatternController@index');
+        Route::get('/staffing-pattern/{reportingyear}','StaffingPatternController@index');
+        Route::get('/staffing-pattern/{reportingyear}/{index}','StaffingPatternController@index');
+        Route::get('/staffing-pattern-medical/{reportingyear}/{index}','StaffingPatternController@index');
+        Route::get('/staffing-pattern-allied-medical/{reportingyear}/{index}','StaffingPatternController@index');
+        Route::get('/staffing-pattern-non-medical/{reportingyear}/{index}','StaffingPatternController@index');
         
         Route::get('/api/v1/staffing-pattern','StaffingPatternController@show');
         Route::get('/api/v1/staffing-pattern-others','StaffingPatternController@show_others');
@@ -287,6 +287,7 @@ Route::group(['middleware'=>'auth'], function(){
         // -- SOAP -- //
         Route::get('/soap','SoapController@show');
         Route::get('/soap/gettable','SoapController@gettable');
+        Route::get('/soap/gettable2','SoapController@gettable2');
         
         Route::get('/sample','ExpensesController@sample');
     

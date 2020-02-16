@@ -43,9 +43,21 @@
             .state('main-view', main)
 
             .state('nda', {
-                url: '/nda',
+                url: '/nda/:reportingyear',
                 controller: 'UsersCtrl as UsersCtrl',
                 templateUrl: 'nda.view'
+            })
+
+            .state('facility_profile', {
+                url: '/facility-profile/:reportingyear',
+                controller: 'ExpensesCtrl as expensesCtrl',
+                templateUrl: 'facility_profile.view'
+            })
+
+            .state('facility_profile-details', {
+                url: '/facility-profile-details/:reportingyear',
+                controller: 'ExpensesCtrl as expensesCtrl',
+                templateUrl: 'facility_profile.view'
             })
 
             .state('expenses', {
@@ -311,11 +323,7 @@
                 templateUrl: 'staffing_pattern.view'
             })
 
-            .state('facility_profile', {
-                url: '/facility-profile/:reportingyear',
-                controller: 'ExpensesCtrl as expensesCtrl',
-                templateUrl: 'facility_profile.view'
-            })
+            
 
             $urlRouterProvider.otherwise('/');
             // $urlRouterProvider.otherwise('/index');

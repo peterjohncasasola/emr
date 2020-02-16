@@ -30,7 +30,7 @@
                 UsersSrvcs.update_accept_nda_status(data).then(function(response){
                     if (response.data.status == 200) {
                         alert(response.data.message);
-                        $state.go('expenses', {reportingyear:2019});
+                        $state.go('general-info', {reportingyear:2019});
                     }
                     else {
                         alert(response.data.message);

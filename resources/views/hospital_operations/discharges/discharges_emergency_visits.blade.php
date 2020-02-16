@@ -10,6 +10,7 @@
 <li class="nav-item"><a href="#" class="nav-link">Reports</a></li>
 <li class="nav-item"><a href="#" class="nav-link">Forms</a></li>
 <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+<li class="nav-item"><a href="#" ui-sref="nda({reportingyear:dischargesEVCtrl.reportingyear})" class="nav-link">NDA</a></li>
 </ul>
 </div>
 
@@ -38,9 +39,14 @@
     <i class="fas fa-cog"></i> Settings
     </a>
     <div class="dropdown-divider"></div>
-    <a href="auth-login.html" class="dropdown-item has-icon text-danger">
-    <i class="fas fa-sign-out-alt"></i> Logout
-    </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            {{ csrf_field() }}
+        </form>
+        <a class="dropdown-item has-icon text-danger" href="" 
+            onclick="event.preventDefault(); 
+            document.getElementById('logout-form').submit();"> 
+            <i class="fas fa-sign-out-alt"></i>Sign out
+        </a>
 </div>
 </li>
 </ul>
