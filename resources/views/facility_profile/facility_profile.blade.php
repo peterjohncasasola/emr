@@ -69,7 +69,7 @@
     <!-- <li class="nav-item">
         <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
     </li> -->
-    <li class="nav-item" ui-sref="facility_profile({reportingyear:expensesCtrl.reportingyear})">
+    <li class="nav-item active" ui-sref="facility_profile({reportingyear:expensesCtrl.reportingyear})">
         <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
     </li>
     <li class="nav-item" ui-sref="general-info({reportingyear:expensesCtrl.reportingyear})">
@@ -109,7 +109,7 @@
     <li class="nav-item">
         <a href="#" class="nav-link" ui-sref="staffing-pattern({reportingyear:expensesCtrl.reportingyear})"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
     </li>
-    <li class="nav-item active" ui-sref="expenses({reportingyear:expensesCtrl.reportingyear})">
+    <li class="nav-item" ui-sref="expenses({reportingyear:expensesCtrl.reportingyear})">
         <a href="#" class="nav-link"><i class="far fa-check-square"></i><span>Expenses</span></a>
     </li>
     <li class="nav-item" ui-sref="revenues({reportingyear:expensesCtrl.reportingyear})">

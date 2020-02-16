@@ -195,9 +195,7 @@ class SubmittedReportsController extends Controller {
                 "department" => $submittedreport->department, 
                 "datereported" => $submittedreport->datereported, 
                 "validatedby" => $submittedreport->validatedby, 
-                "totalmooe" => $submittedreport->totalmooe, 
-                "datevalidated" => $submittedreport->datevalidated, 
-                "submissionmode" => $submittedreport->submissionmode
+                "datevalidated" => $submittedreport->datevalidated
             ];
 
             $response = $this->soapWrapper->call('Emr.submittedReports', $data);

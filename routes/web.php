@@ -312,8 +312,9 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/soap','SoapController@show');
         Route::get('/soap/gettable','SoapController@gettable');
         Route::get('/soap/gettable2','SoapController@gettable2');
+        Route::get('/soap/checksubmittedreports','SoapController@checksubmittedreports');
         
         Route::get('/sample','ExpensesController@sample');
-    
+        
     });
 });

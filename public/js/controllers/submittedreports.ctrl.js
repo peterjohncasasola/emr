@@ -85,10 +85,10 @@
                             console.log(vm.submitted_report)
         
                             vm.reportingstatus = [
-                                {id:0, name:''},
-                                {id:1, name:'Submitted'},
-                                {id:2, name:'Rejected'},
-                                {id:3, name:'Validated'}
+                                {id:'', name:''},
+                                {id:'S', name:'Submitted'},
+                                {id:'I', name:'Rejected'},
+                                {id:'V', name:'Validated'}
                             ];
         
                             angular.forEach(vm.reportingstatus, function(v, k){
@@ -157,15 +157,13 @@
             vm.collection_copy = collection.data;
             vm.reportingyear = $stateParams.reportingyear;
 
-       
-
             console.log(vm.collection)
 
             vm.reportingstatus = [
-                {id:1, name:"Submitted"},
-                {id:2, name:"Rejected"},
-                {id:3, name:"Validated"}
-            ]
+                {id:'S', name:'Submitted'},
+                {id:'I', name:'Rejected'},
+                {id:'V', name:'Validated'}
+            ];
 
             vm.createSubmittedReportBtn = function(data){
                 data['reportingyear'] = $stateParams.reportingyear;
