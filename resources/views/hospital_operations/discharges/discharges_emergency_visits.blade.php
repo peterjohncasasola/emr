@@ -10,7 +10,8 @@
 <li class="nav-item"><a href="#" class="nav-link">Reports</a></li>
 <li class="nav-item"><a href="#" class="nav-link">Forms</a></li>
 <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-<li class="nav-item"><a href="#" ui-sref="nda({reportingyear:dischargesEVCtrl.reportingyear})" class="nav-link">NDA</a></li>
+<li class="nav-item"><a href="#" ng-click="dischargesEVCtrl.routeTo('nda/2019')"  class="nav-link">NDA</a></li>
+    <li class="nav-item"><a href="#" ng-click="dischargesEVCtrl.routeTo('eula/2019')"  class="nav-link">EULA</a></li>
 </ul>
 </div>
 

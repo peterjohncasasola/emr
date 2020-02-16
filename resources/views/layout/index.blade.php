@@ -8,6 +8,10 @@
     @include('nda.nda')
 </script>
 
+<script type="text/ng-template" id="eula.view">
+    @include('nda.eula')
+</script>
+
 <script type="text/ng-template" id="facility_profile.view">
     @include('facility_profile.facility_profile')
 </script>

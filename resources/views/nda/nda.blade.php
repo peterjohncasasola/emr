@@ -9,7 +9,8 @@
     <li class="nav-item"><a href="#" class="nav-link">Reports</a></li>
     <li class="nav-item"><a href="#" class="nav-link">Forms</a></li>
     <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-    <li class="nav-item active"><a href="#" ui-sref="nda({reportingyear:UsersCtrl.reportingyear})" class="nav-link">NDA</a></li>
+    <li class="nav-item active"><a href="#" ng-click="UsersCtrl.routeTo('nda/2019')"  class="nav-link">NDA</a></li>
+    <li class="nav-item"><a href="#" ng-click="UsersCtrl.routeTo('eula/2019')"  class="nav-link">EULA</a></li>
     </ul>
 </div>
  
@@ -52,63 +53,65 @@
 </nav>
 
 <nav class="navbar navbar-secondary navbar-expand-lg">
-<!-- <div class="container">
+@if(Auth::user()->is_nda_accepted==1)
+<div class="container">
     <ul class="navbar-nav">
-    <li class="nav-item" ui-sref="facility_profile({reportingyear:expensesCtrl.reportingyear})">
+    <li class="nav-item" ui-sref="facility_profile({reportingyear:UsersCtrl.reportingyear})">
         <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
     </li>
-    <li class="nav-item" ui-sref="general-info({reportingyear:expensesCtrl.reportingyear})">
+    <li class="nav-item" ui-sref="general-info({reportingyear:UsersCtrl.reportingyear})">
         <a href="general-information.html" class="nav-link"><i class="far fa-list-alt"></i><span>General Information</span></a>
     </li>
     <li class="nav-item dropdown">
         <a href="#" data-toggle="dropdown" class="nav-link has-dropdown"><i class="far fa-clone"></i><span>Hospital Operations</span></a>
         <ul class="dropdown-menu">
-        <li class="nav-item" ui-sref="hospital-operations-summary-of-patients({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link">Summary of Patients in the Hospital</a></li>
+        <li class="nav-item" ui-sref="hospital-operations-summary-of-patients({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link">Summary of Patients in the Hospital</a></li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Discharges</a>
             <ul class="dropdown-menu">
-            <li class="nav-item" ui-sref="hospital-operations-discharges-specialty({reportingyear:expensesCtrl.reportingyear})"><a href="hospital-operations/discharges-a.html" class="nav-link">Type of Service and Total Discharges According to Specialty</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-morbidity({reportingyear:expensesCtrl.reportingyear})"><a href="hospital-operations/discharges-b.html" class="nav-link">Ten Leading causes of Morbidity/Diseases Disaggregated as to Age and Sex</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-number-deliveries({reportingyear:expensesCtrl.reportingyear})"> <a href="#" class="nav-link">Total Number of Deliveries</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-opd({reportingyear:expensesCtrl.reportingyear})"><a href="#l" class="nav-link">Ten Leading OPD Consultations</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-er({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link">Ten Leading ER Consultations</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-testing({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link">Testing and Other Services</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-discharges-ev({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link">Emergency Visits</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-specialty({reportingyear:UsersCtrl.reportingyear})"><a href="hospital-operations/discharges-a.html" class="nav-link">Type of Service and Total Discharges According to Specialty</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-morbidity({reportingyear:UsersCtrl.reportingyear})"><a href="hospital-operations/discharges-b.html" class="nav-link">Ten Leading causes of Morbidity/Diseases Disaggregated as to Age and Sex</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-number-deliveries({reportingyear:UsersCtrl.reportingyear})"> <a href="#" class="nav-link">Total Number of Deliveries</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-opv({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link"> Outpatient Visits</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-opd({reportingyear:UsersCtrl.reportingyear})"><a href="#l" class="nav-link">Ten Leading OPD Consultations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-er({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link">Ten Leading ER Consultations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-testing({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link">Testing and Other Services</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-discharges-ev({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link">Emergency Visits</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Deaths</a>
             <ul class="dropdown-menu">
-            <li class="nav-item" ui-sref="hospital-operations-death({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link">Total Number of Deaths</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-mortality-death({reportingyear:expensesCtrl.reportingyear})"><a href="hospital-operations/deaths-b.html" class="nav-link">Ten Leading causes of Mortality/Deaths Disaggregated as to Age and Sex</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-death({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link">Total Number of Deaths</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-mortality-death({reportingyear:UsersCtrl.reportingyear})"><a href="hospital-operations/deaths-b.html" class="nav-link">Ten Leading causes of Mortality/Deaths Disaggregated as to Age and Sex</a></li>
             </ul>
         </li>
-        <li class="nav-item" ui-sref="hospital-operations-hai({reportingyear:expensesCtrl.reportingyear})"><a href="#" class="nav-link">Healthcare Associated Infections (HAI)</a></li>
+        <li class="nav-item" ui-sref="hospital-operations-hai({reportingyear:UsersCtrl.reportingyear})"><a href="#" class="nav-link">Healthcare Associated Infections (HAI)</a></li>
         <li class="nav-item dropdown"><a href="#" class="nav-link has-dropdown">Surgical Operations</a>
             <ul class="dropdown-menu">
-            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-major({reportingyear:expensesCtrl.reportingyear})"><a href="hospital-operations/surgical-a.html" class="nav-link">Ten Leading Major Operations (Not Applicable for Infirmary)</a></li>
-            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-minor({reportingyear:expensesCtrl.reportingyear})"><a href="hospital-operations/surgical-b.html" class="nav-link">Ten Leading Minor Operations</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-major({reportingyear:UsersCtrl.reportingyear})"><a href="hospital-operations/surgical-a.html" class="nav-link">Ten Leading Major Operations (Not Applicable for Infirmary)</a></li>
+            <li class="nav-item" ui-sref="hospital-operations-surgical-operations-minor({reportingyear:UsersCtrl.reportingyear})"><a href="hospital-operations/surgical-b.html" class="nav-link">Ten Leading Minor Operations</a></li>
             </ul>
         </li>
         </ul>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link" ui-sref="staffing-pattern({reportingyear:expensesCtrl.reportingyear})"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
+        <a href="#" class="nav-link" ui-sref="staffing-pattern({reportingyear:UsersCtrl.reportingyear})"><i class="far fa-user"></i><span>Staffing Pattern</span></a>
     </li>
-    <li class="nav-item" ui-sref="expenses({reportingyear:expensesCtrl.reportingyear})">
+    <li class="nav-item" ui-sref="expenses({reportingyear:UsersCtrl.reportingyear})">
         <a href="#" class="nav-link"><i class="far fa-check-square"></i><span>Expenses</span></a>
     </li>
-    <li class="nav-item" ui-sref="revenues({reportingyear:expensesCtrl.reportingyear})">
+    <li class="nav-item" ui-sref="revenues({reportingyear:UsersCtrl.reportingyear})">
         <a href="#" class="nav-link"><i class="far fa-money-bill-alt"></i><span>Revenues</span></a>
     </li>
     </ul>
-</div> -->
+</div>
+@endif
 </nav>
 
 <!-- Main Content -->
 <div class="main-content">
 <section class="section">
     <div class="section-header">
-    <h1>Non Disclosure Agreement (NDA)  </h1>
+    <h1>Non Disclosure Agreement (NDA) </h1>
     </div>
 
     <div class="section-body">

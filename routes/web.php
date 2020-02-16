@@ -30,6 +30,7 @@ Route::group(['middleware'=>'auth'], function(){
     // -- NDA -- //
     Route::get('','UsersController@index');
     Route::get('/nda/{reportingyear}','UsersController@index');
+    Route::get('/eula/{reportingyear}','UsersController@index');
     Route::post('/api/v1/user/update-accept-nda-status','UsersController@accept_nda');
     Route::get('/logout','LoginController@logout');
 

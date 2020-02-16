@@ -48,6 +48,12 @@
                 templateUrl: 'nda.view'
             })
 
+            .state('eula', {
+                url: '/eula/:reportingyear',
+                controller: 'UsersCtrl as UsersCtrl',
+                templateUrl: 'eula.view'
+            })
+
             .state('facility_profile', {
                 url: '/facility-profile/:reportingyear',
                 controller: 'ExpensesCtrl as expensesCtrl',

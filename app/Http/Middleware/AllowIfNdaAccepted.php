@@ -21,7 +21,7 @@ class AllowIfNdaAccepted
         if (Auth::user()->is_nda_accepted==1) {
             return $next($request);
         } else {
-            return redirect('/nda');
+            return redirect('/nda/2019');
         }
     }
 }
