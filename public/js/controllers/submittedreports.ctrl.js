@@ -21,7 +21,8 @@
             }
 
             vm.selectReportingYear = function(reportingyear){
-                $state.go('SubmittedReports', {reportingyear:reportingyear});
+
+                $state.go('submitted-reports', {reportingyear:reportingyear});
             }
  
             vm.is_loader_disabled = false;
@@ -54,10 +55,9 @@
                     console.log(vm.submitted_report)
 
                     vm.reportingstatus = [
-                        {id:0, name:''},
-                        {id:1, name:'Submitted'},
-                        {id:2, name:'Rejected'},
-                        {id:3, name:'Validated'}
+                        {id:'S', name:'Submitted'},
+                        {id:'I', name:'Rejected'},
+                        {id:'V', name:'Validated'}
                     ];
 
                     angular.forEach(vm.reportingstatus, function(v, k){
@@ -84,8 +84,7 @@
                             vm.submitted_report = response.data.data[0]; 
                             console.log(vm.submitted_report)
         
-                            vm.reportingstatus = [
-                                {id:'', name:''},
+                            vm.reportingstatus = [ 
                                 {id:'S', name:'Submitted'},
                                 {id:'I', name:'Rejected'},
                                 {id:'V', name:'Validated'}
