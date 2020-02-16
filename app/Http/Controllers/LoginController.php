@@ -28,7 +28,7 @@ class LoginController extends Controller {
         }
         else
         {
-            return redirect('login')->with('status', 'Login failed; Invalid email or password.');
+            return redirect('login')->with('status', 'Login failed; Invalid username or password.');
         }
 
 
