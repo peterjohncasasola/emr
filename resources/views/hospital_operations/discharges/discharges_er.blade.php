@@ -215,22 +215,7 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="table-1" datatable="ng">
-            <thead>                                 
-                <tr>
-                    <th>ICD-10 Code</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                </tr>
-                </thead>
-                <tbody>                                 
-                    <tr ng-repeat="ricd10 in dischargesERCtrl.ricd10">
-                        <td><a href="" ng-click="dischargesERCtrl.chooseRicd10Code(ricd10.icd10code)"> <%ricd10.icd10code%> </a></td>
-                        <td><%ricd10.icd10desc%></td>
-                        <td><%ricd10.icd10cat%></td>
-                    </tr>
-            </tbody>
-            </table>
+        <table datatable="" dt-options="dischargesERCtrl.dtOptions" dt-columns="dischargesERCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
         </div>
     </div>
 

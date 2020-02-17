@@ -19,7 +19,7 @@
                 counter++;
             }
 
-            console.log(vm.reportingyears)
+            // console.log(vm.reportingyears)
 
             vm.selectReportingYear = function(reportingyear){
            

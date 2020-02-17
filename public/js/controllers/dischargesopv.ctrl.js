@@ -20,8 +20,6 @@
                 counter++;
             } 
 
-            
-
             vm.selectReportingYear = function(reportingyear){
                 $state.go('hospital-operations-discharges-opv', {reportingyear:reportingyear});
             }
@@ -53,10 +51,9 @@
                     
                 }, function (){ alert('Bad Request!!!') })
 
-                
-                
-
             }
+
+            
 
             vm.routeTo = function(route){
                 $window.location.href = route;

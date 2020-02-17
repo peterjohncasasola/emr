@@ -213,20 +213,7 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="table-1" datatable="ng">
-            <thead>                                 
-                <tr>
-                <th>Code</th>
-                <th>Surgical Operation</th>
-                </tr>
-                </thead>
-                <tbody>                                 
-                    <tr ng-repeat="sergery in surgicalOperationsMinorCtrl.serguries">
-                        <td><a href="" ng-click="surgicalOperationsMinorCtrl.chooseOperaCode(sergery.proccode)"> <%sergery.proccode%> </a></td>
-                        <td><%sergery.procdesc%></td>
-                    </tr>
-            </tbody>
-            </table>
+        <table datatable="" dt-options="surgicalOperationsMinorCtrl.dtOptions" dt-columns="surgicalOperationsMinorCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
         </div>
     </div>
 

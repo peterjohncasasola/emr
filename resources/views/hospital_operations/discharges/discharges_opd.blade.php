@@ -202,11 +202,11 @@
     </div>
 </section>
 
-
-<table   datatable="" dt-options="dischargesOPDCtrl.dtOptions" dt-columns="dischargesOPDCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
-
+</div>
+ 
 <script type="text/ng-template" id="add-discharges-er-modal">
 <div class="modal-content">
+
 <div class="modal-header">
 <h5 class="modal-title">ICD-10 | PHILIPPINE MODIFICATION</h5>
     <button type="button" class="close" ng-click="dischargesOPDCtrl.close()" ui-sref="hospital-operations-discharges-opd({reportingyear:dischargesOPDCtrl.reportingyear})">
@@ -216,45 +216,8 @@
 
 <div class="modal-body">
     <div class="table-responsive">
-        <table class="table table-striped" datatable="ng">
-        <thead>                                 
-            <tr>
-                <th>ICD-10 Code</th>
-                <th>Description</th>
-                <th>Category</th>
-            </tr>
-            </thead>
-            <tbody>                                 
-                <tr ng-repeat="ricd10 in dischargesOPDCtrl.ricd10">
-                    <td><a href="" ng-click="dischargesOPDCtrl.chooseRicd10Code(ricd10.icd10code)"> <%ricd10.icd10code%> </a></td>
-                    <td><%ricd10.icd10desc%></td>
-                    <td><%ricd10.icd10cat%></td>
-                </tr>
-        </tbody>
-        </table>
-
-
-        <table class="table table-bordered table-hover table-md" datatable="ng" >
-                <thead>
-                    <tr>
-                    <th>Expenses</th>
-                    <th>Amount in Peso (Php)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Amount spent on personnel salaries and wages  </td>
-                        <td>1 </td>
-                    </tr>
-                    <tr>
-                        <td>Amount spent on benefits for employees (benefits are in addition to wages/salaries. Benefits include for example: social security contributions, health insurance)  </td>
-                        <td align="right">2</td>
-            </tr>
-            </tbody>
-            </table>
+    <table datatable="" dt-options="dischargesOPDCtrl.dtOptions" dt-columns="dischargesOPDCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
     </div>
-
-
 </div>
 
 </script>

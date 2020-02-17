@@ -202,11 +202,16 @@
         </div>
     </section>
 
+    <!-- <table datatable="" dt-options="dischargesOPVCtrl.dtOptions" dt-columns="dischargesOPVCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table> -->
+
+</div>
     
 
 
     <script type="text/ng-template" id="add-discharges-opv-modal">
     <div class="modal-content">
+
+
     <div class="modal-header">
         <h5 class="modal-title">Outpatient Visits, including Emergency Care</h5>
         <button type="button" class="close" ng-click="dischargesOPVCtrl.close()" ui-sref="hospital-operations-discharges-opv({reportingyear:dischargesOPVCtrl.reportingyear})">

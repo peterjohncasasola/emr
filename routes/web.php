@@ -301,12 +301,10 @@ Route::group(['middleware'=>'auth'], function(){
         
         // LIBRARIES //
         Route::get('/api/v1/surgeries','SurgeriesController@show');
-        Route::post('/api/v1/surgery/store','SurgeriesController@store');
+        Route::get('/api/v1/surgeries2','SurgeriesController@show2');
         
         Route::get('/api/v1/ricd','RicdController@show');
         Route::get('/api/v1/ricd2','RicdController@show2');
-        Route::get('/api/v1/ricd3','RicdController@show3');
-        Route::post('/api/v1/ricd/store','RicdController@store');
         
         // -- SOAP -- //
         Route::get('/soap','SoapController@show');

@@ -8,6 +8,7 @@ use App\Surgery;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use DataTables;
 
 class SurgeriesController extends Controller {
 
@@ -45,37 +46,9 @@ class SurgeriesController extends Controller {
         ],200,[], JSON_NUMERIC_CHECK);
     }
 
-    public function store(Request $request){
-
-        $fields = Input::post();
-
-        $transaction = DB::transaction(function($field) use($fields){
-            // try{
-
-                $surgery = new Surgery;
-                $surgery->proccode                           = $fields['proccode'];
-                $surgery->procdesc                           = $fields['procdesc'];
-                $surgery->save();
-
-                return response()->json([
-                    'status' => 200,
-                    'data' => null,
-                    'message' => 'Successfully saved.'
-                ]);
-
-            // }
-            // catch (\Exception $e) 
-            // {
-            //     return response()->json([
-            //         'status' => 500,
-            //         'data' => null,
-            //         'message' => 'Error, please try again!'
-            //     ]);
-            // }
-        });
-
-        return $transaction;
+    public function show2(Request $request){
+        $surgery = Surgery::select('id', 'proccode', 'procdesc');
+        return DataTables::of($surgery)->make(true);
     }
-
   	
 }

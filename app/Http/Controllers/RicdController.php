@@ -40,10 +40,6 @@ class RicdController extends Controller {
             $ricd = $ricd->where('ricd.icd10code', $data['icd10code']);
         }
 
-        // if ($data['name']){
-        //     $ricd = $ricd->where('ricd.icd10desc','LIKE', '%'.$data['name'].'%');
-        // }
-
         $ricd = $ricd->get();
         
         return response()->json([
@@ -55,17 +51,9 @@ class RicdController extends Controller {
             'count'=>$ricd->count(),
             'message'=>''
         ],200,[], JSON_NUMERIC_CHECK);
-
-        // return response()->json([
-        //     'draw'=>1,
-        //     'recordsTotal'=>$ricd->count(),
-        //     'recordsFiltered'=>10,
-        //     'status'=>200,
-        //     'data'=>$ricd
-        // ],200,[], JSON_NUMERIC_CHECK);
     }
 
-    public function show3(Request $request){
+    public function show2(Request $request){
 
         $data = array(
             'id'=>$request->input('id'),
@@ -76,43 +64,5 @@ class RicdController extends Controller {
         $ricd = Ricd::select('id', 'icd10desc', 'icd10code');
         return DataTables::of($ricd)->make(true);
 
-        
     }
-
-    public function store(Request $request){
-
-        $fields = Input::post();
-
-        $transaction = DB::transaction(function($field) use($fields){
-            // try{
-
-                $ricd = new Ricd;
-                $ricd->icd10code                            = $fields['icd10code'];
-                $ricd->icd10desc                            = $fields['icd10desc'];
-                $ricd->icd10cat                             = $fields['icd10cat'];
-                $ricd->save();
-
-                return response()->json([
-                    'status' => 200,
-                    'data' => null,
-                    'message' => 'Successfully saved.'
-                ]);
-
-            // }
-            // catch (\Exception $e) 
-            // {
-            //     return response()->json([
-            //         'status' => 500,
-            //         'data' => null,
-            //         'message' => 'Error, please try again!'
-            //     ]);
-            // }
-        });
-
-        return $transaction;
-    }
-
-
-
-  	
 }

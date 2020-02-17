@@ -130,8 +130,8 @@
 
         }
 
-        SurgicalOperationsMinorActionModalInsatanceCtrl.$inject = ['collection', 'SurgicalOperationsMinorSrvcs', 'SurgeriesSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope'];
-        function SurgicalOperationsMinorActionModalInsatanceCtrl (collection, SurgicalOperationsMinorSrvcs, SurgeriesSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope) {
+        SurgicalOperationsMinorActionModalInsatanceCtrl.$inject = ['collection', 'SurgicalOperationsMinorSrvcs', 'SurgeriesSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder'];
+        function SurgicalOperationsMinorActionModalInsatanceCtrl (collection, SurgicalOperationsMinorSrvcs, SurgeriesSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope, $compile, DTOptionsBuilder, DTColumnBuilder) {
 
             var vm = this;
             vm.collection = collection.data;
@@ -160,6 +160,31 @@
                 }, function (){ alert('Bad Request!!!') })
 
             }
+
+            vm.render = function(data) {
+                return ' <a href="#" ng-click="surgicalOperationsMinorCtrl.chooseOperaCode(\'' + data + '\');"> ' + data + '</a>';
+            }
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('ajax', {
+                // Either you specify the AjaxDataProp here
+                // dataSrc: 'data',
+                url: 'api/v1/surgeries2',
+                type: 'GET'
+            })
+            // or here
+            .withDataProp('data')
+                .withOption('processing', true)
+                .withOption('serverSide', true)
+                .withPaginationType('full_numbers');
+            vm.dtColumns = [
+                DTColumnBuilder.newColumn('id').withTitle('ID'),
+                DTColumnBuilder.newColumn('proccode').withTitle('CODE').renderWith(vm.render)
+                .withOption('createdCell', function(cell, cellData, rowData, rowIndex, colIndex) {
+                    $compile(angular.element(cell).contents())($scope);
+                }), 
+                DTColumnBuilder.newColumn('procdesc').withTitle('DESC')
+            ];
 
             
 
