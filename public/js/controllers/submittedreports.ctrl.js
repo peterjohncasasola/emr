@@ -107,6 +107,9 @@
                     vm.is_submit_disabled = false;
 
                 }, function (){ alert('Bad Request!!!') })
+
+                vm.routeTo('submitted-report/'+$stateParams.reportingyear);
+
             }
 
             vm.routeTo = function(route){

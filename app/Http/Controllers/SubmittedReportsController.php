@@ -156,7 +156,7 @@ class SubmittedReportsController extends Controller {
      
 
         $transaction = DB::transaction(function($field) use($fields){
-        // try{
+        try{
 
             $request = $this->soapWrapper->add('Emr', function ($service) {
                 $service
@@ -212,18 +212,19 @@ class SubmittedReportsController extends Controller {
             return response()->json([
                 'status' => 200,
                 'data' => null,
+                'response_code' => $array['response_code'],
                 'message' => $array['response_code']." ".$array['response_desc']
             ]);
         
-        // }
-        // catch (\Exception $e) 
-        // {
-        //     return response()->json([
-        //         'status' => 500,
-        //         'data' => null,
-        //         'message' => 'Error, please try again!'
-        //     ]);
-        // }
+        }
+        catch (\Exception $e) 
+        {
+            return response()->json([
+                'status' => 500,
+                'data' => null,
+                'message' => 'Error, please try again!'
+            ]);
+        }
         
         });
 
