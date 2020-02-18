@@ -266,6 +266,16 @@ class ExpensesController extends Controller {
             $expense = Expense::where('reportingyear', $fields['reportingyear'])->first();
             $expense->submitted_at    = Carbon::now();
             $expense->save();
+
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
         
         }
         catch (\Exception $e) 
@@ -278,6 +288,8 @@ class ExpensesController extends Controller {
         }
         
         });
+
+        return $transaction;
 
     }
   	

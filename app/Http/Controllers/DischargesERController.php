@@ -203,7 +203,6 @@ class DischargesERController extends Controller {
                 'password' => '123456'
             ];
             $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
 
             $discharges_ER = DB::table('hospoptdischargeser as dischargesER')
                 ->select( 
@@ -229,6 +228,16 @@ class DischargesERController extends Controller {
             
                 $response = $this->soapWrapper->call('Emr.hospOptDischargesER', $data);
             }
+
+            // $xml = simplexml_load_string($response);
+            // $json = json_encode($xml);
+            // $array = json_decode($json, true);
+
+            // return response()->json([
+            //     'status' => 200,
+            //     'data' => null,
+            //     'message' => $array['response_code']." ".$array['response_desc']
+            // ]);
 
         }
         catch (\Exception $e) 

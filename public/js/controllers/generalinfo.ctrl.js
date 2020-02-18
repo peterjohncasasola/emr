@@ -317,7 +317,9 @@
                 data['reportingyear'] = $stateParams.reportingyear;
                
                 ClassificationsSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+ 
+
+                    alert(response.data.message)
 
                     ClassificationsSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
@@ -327,6 +329,8 @@
                             console.log(vm.classification)
                         }
                     }, function (){ alert('Bad Request!!!') })
+                    
+                    
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled_classification = false;
@@ -345,7 +349,8 @@
                 data['reportingyear'] = $stateParams.reportingyear;
 
                 BedCapacitiesSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                        
+                    alert(response.data.message)
 
                     BedCapacitiesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
@@ -355,6 +360,7 @@
                             console.log(vm.general_info)
                         }
                     }, function (){ alert('Bad Request!!!') })
+                
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled_classification = false;

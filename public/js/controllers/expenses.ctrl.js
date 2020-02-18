@@ -65,12 +65,10 @@
                 data['reportingyear'] = $stateParams.reportingyear;
 
                 ExpensesSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                     
+                    // if(response.data.status==200){
 
-                    // const data = vm.getExpenses('', $stateParams.reportingyear);
-                    // $scope.$apply(() => vm.expense = {
-                    //     ...data
-                    // });
+                    alert(response.data.message)
 
                     ExpensesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
@@ -80,6 +78,8 @@
                             console.log(vm.expense)
                         }
                     }, function (){ alert('Bad Request!!!') })
+
+                    // }
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;

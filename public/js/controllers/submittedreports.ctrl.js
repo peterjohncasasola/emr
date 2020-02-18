@@ -76,7 +76,10 @@
                 data['reportingyear'] = $stateParams.reportingyear;
 
                 SubmittedReportsSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                   
+                    // if(response.data.status==200){
+
+                    alert(response.data.message)
 
                     SubmittedReportsSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
@@ -97,6 +100,8 @@
                             });
                         }
                     }, function (){ alert('Bad Request!!!') })
+
+                    // }
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;

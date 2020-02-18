@@ -298,7 +298,6 @@ Route::group(['middleware'=>'auth'], function(){
         Route::post('/api/v1/submitted-report/update','SubmittedReportsController@update');
         Route::post('/api/v1/submitted-report/send_data_doh','SubmittedReportsController@send_data_doh');//SEND TO DOH
         
-        
         // LIBRARIES //
         Route::get('/api/v1/surgeries','SurgeriesController@show');
         Route::get('/api/v1/surgeries2','SurgeriesController@show2');
@@ -310,6 +309,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/soap','SoapController@show');
         Route::get('/soap/gettable','SoapController@gettable');
         Route::get('/soap/gettable2','SoapController@gettable2');
+        Route::get('/soap/gettable3','SoapController@gettable3');
         Route::get('/soap/checksubmittedreports','SoapController@checksubmittedreports');
         
         Route::get('/sample','ExpensesController@sample');

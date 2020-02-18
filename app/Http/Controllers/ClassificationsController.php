@@ -276,6 +276,16 @@ class ClassificationsController extends Controller {
             $classification->submitted_at    = Carbon::now();
             $classification->save();
 
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
         }
         catch (\Exception $e) 
         {
@@ -287,6 +297,8 @@ class ClassificationsController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
   	
 }

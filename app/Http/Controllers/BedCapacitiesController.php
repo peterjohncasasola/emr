@@ -147,7 +147,6 @@ class BedCapacitiesController extends Controller {
                 'password' => '123456'
             ];
             $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
 
             $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
                 ->select( 
@@ -173,6 +172,16 @@ class BedCapacitiesController extends Controller {
             $bed_capacity->submitted_at    = Carbon::now();
             $bed_capacity->save();
 
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
         }
         catch (\Exception $e) 
         {
@@ -184,6 +193,8 @@ class BedCapacitiesController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
   	
 }
