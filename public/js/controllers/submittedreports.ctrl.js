@@ -77,38 +77,43 @@
 
                 SubmittedReportsSrvcs.send_data_doh(data).then (function (response) {
                    
-                    // if(response.data.status==200){
+                    if(response.data.response_code==104){
 
-                    alert(response.data.message)
+                        alert(response.data.message)
 
-                    SubmittedReportsSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
-                        if(response.data.status == 200)
-                        {
-                            vm.submitted_report = response.data.data[0]; 
-                            console.log(vm.submitted_report)
-        
-                            vm.reportingstatus = [ 
-                                {id:'S', name:'Submitted'},
-                                {id:'I', name:'Rejected'},
-                                {id:'V', name:'Validated'}
-                            ];
-        
-                            angular.forEach(vm.reportingstatus, function(v, k){
-                                if(v.id == vm.submitted_report.reportingstatus){
-                                    vm.submitted_report['reportingstatusdesc'] = v.name;
-                                }
-                            });
-                        }
-                    }, function (){ alert('Bad Request!!!') })
-
-                    // }
+                        SubmittedReportsSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
+                            if(response.data.status == 200)
+                            {
+                                vm.submitted_report = response.data.data[0]; 
+                                console.log(vm.submitted_report)
+            
+                                vm.reportingstatus = [ 
+                                    {id:'S', name:'Submitted'},
+                                    {id:'I', name:'Rejected'},
+                                    {id:'V', name:'Validated'}
+                                ];
+            
+                                angular.forEach(vm.reportingstatus, function(v, k){
+                                    if(v.id == vm.submitted_report.reportingstatus){
+                                        vm.submitted_report['reportingstatusdesc'] = v.name;
+                                    }
+                                });
+                            }
+                        }, function (){ alert('Bad Request!!!') })
+                    
+                    }else{
+                        alert(response.data.message)
+                        vm.routeTo('submitted-report/'+$stateParams.reportingyear);
+                    }
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;
 
+                    
+
                 }, function (){ alert('Bad Request!!!') })
 
-                vm.routeTo('submitted-report/'+$stateParams.reportingyear);
+                
 
             }
 
