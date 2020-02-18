@@ -279,29 +279,10 @@
 
     <div class="modal-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="table-1" datatable="ng">
-            <thead>                                 
-                <tr>
-                    <th>ICD-10 Code</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="ricd10 in operationsMortalityDeathCtrl.ricd10">
-                        <td><a href="" ng-click="operationsMortalityDeathCtrl.chooseRicd10Code(ricd10.icd10code)"> <%ricd10.icd10code%> </a></td>
-                        <td><%ricd10.icd10desc%></td>
-                        <td><%ricd10.icd10cat%></td>
-                    </tr>
-            </tbody>
-            </table>
+        <table datatable="" dt-options="operationsMortalityDeathCtrl.dtOptions" dt-columns="operationsMortalityDeathCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
         </div>
+    </div>
 
-        <!-- <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="operationsMortalityDeathCtrl.close()" ui-sref="hospital-operations-surgical-operations({reportingyear:operationsMortalityDeathCtrl.reportingyear})">Close</button>
-            <button type="button" class="btn btn-primary" ng-if="!operationsMortalityDeathCtrl.collection_copy" ng-click="operationsMortalityDeathCtrl.createDischargeOPVBtn(operationsMortalityDeathCtrl.collection)">Save changes</button>
-            <button type="button" class="btn btn-primary" ng-if="operationsMortalityDeathCtrl.collection_copy" ng-click="operationsMortalityDeathCtrl.updateDischargeOPVBtn(operationsMortalityDeathCtrl.collection)">Update changes</button>
-        </div> -->
     </div>
 
 </script>

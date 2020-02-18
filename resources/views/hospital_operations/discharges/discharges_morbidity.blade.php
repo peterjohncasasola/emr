@@ -276,6 +276,12 @@
 
     <div class="modal-body">
         <div class="table-responsive">
+        <table datatable="" dt-options="dischargesMorbidityCtrl.dtOptions" dt-columns="dischargesMorbidityCtrl.dtColumns" class="table table-bordered table-hover table-md" ></table>
+        </div>
+    </div>
+
+    <!-- <div class="modal-body">
+        <div class="table-responsive">
             <table class="table table-striped" id="table-1" datatable="ng">
             <thead>                                 
                 <tr>
@@ -294,12 +300,7 @@
             </table>
         </div>
 
-        <!-- <div class="modal-footer bg-whitesmoke br">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="dischargesMorbidityCtrl.close()" ui-sref="hospital-operations-surgical-operations({reportingyear:dischargesMorbidityCtrl.reportingyear})">Close</button>
-            <button type="button" class="btn btn-primary" ng-if="!dischargesMorbidityCtrl.collection_copy" ng-click="dischargesMorbidityCtrl.createDischargeOPVBtn(dischargesMorbidityCtrl.collection)">Save changes</button>
-            <button type="button" class="btn btn-primary" ng-if="dischargesMorbidityCtrl.collection_copy" ng-click="dischargesMorbidityCtrl.updateDischargeOPVBtn(dischargesMorbidityCtrl.collection)">Update changes</button>
-        </div> -->
-    </div>
+    </div> -->
 
 </script>
 

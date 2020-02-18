@@ -159,8 +159,8 @@
 
         }
 
-        OperationsMortalityDeathActionModalInsatanceCtrl.$inject = ['collection', 'OperationsMortalityDeathSrvcs', 'RicbSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope'];
-        function OperationsMortalityDeathActionModalInsatanceCtrl (collection, OperationsMortalityDeathSrvcs, RicbSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope) {
+        OperationsMortalityDeathActionModalInsatanceCtrl.$inject = ['collection', 'OperationsMortalityDeathSrvcs', 'RicbSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder'];
+        function OperationsMortalityDeathActionModalInsatanceCtrl (collection, OperationsMortalityDeathSrvcs, RicbSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope, $compile, DTOptionsBuilder, DTColumnBuilder) {
 
             var vm = this;
             vm.collection = collection.data;
@@ -175,19 +175,6 @@
                     console.log(vm.ricd10)
                 }
             }, function (){ alert('Bad Request!!!') })
-           
-            // vm.ricd10 = [
-            //     { 'icd10code': 'A01.1', 'icd10desc': 'Paratyphoid fever A', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A01.2', 'icd10desc': 'Paratyphoid fever B', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A01.3', 'icd10desc': 'Paratyphoid fever C', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A01.4', 'icd10desc': 'Paratyphoid fever, unspecified', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A02.1', 'icd10desc': 'Salmonella septicemia', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A02.2', 'icd10desc': 'Localized salmonella infections', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A02.8', 'icd10desc': 'Other specified salmonella infections', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A02.9', 'icd10desc': 'Salmonella infection, unspecified', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A03.0', 'icd10desc': 'Shigellosis due to Shigella dysenteriae', 'icd10cat': 'A00-A09'},
-            //     { 'icd10code': 'A15.2', 'icd10desc': 'Tuberculosis of lung, confirmed histologically', 'icd10cat': 'A15-A19'}
-            // ];
 
             vm.chooseRicd10Code = function(icd10code){
  
@@ -201,6 +188,31 @@
                 }, function (){ alert('Bad Request!!!') })
 
             }
+
+            vm.render = function(data) {
+                return ' <a href="#" ng-click="operationsMortalityDeathCtrl.chooseRicd10Code(\'' + data + '\');"> ' + data + '</a>';
+            }
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('ajax', {
+                // Either you specify the AjaxDataProp here
+                // dataSrc: 'data',
+                url: 'api/v1/ricd2',
+                type: 'GET'
+            })
+            // or here
+            .withDataProp('data')
+                .withOption('processing', true)
+                .withOption('serverSide', true)
+                .withPaginationType('full_numbers');
+            vm.dtColumns = [
+                DTColumnBuilder.newColumn('id').withTitle('ID'),
+                DTColumnBuilder.newColumn('icd10code').withTitle('CODE').renderWith(vm.render)
+                .withOption('createdCell', function(cell, cellData, rowData, rowIndex, colIndex) {
+                    $compile(angular.element(cell).contents())($scope);
+                }), 
+                DTColumnBuilder.newColumn('icd10desc').withTitle('DESC')
+            ];
 
             vm.createOperationsMortalityDeathBtn = function(data){
  

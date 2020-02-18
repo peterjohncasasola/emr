@@ -22,7 +22,6 @@
             // console.log(vm.reportingyears)
 
             vm.selectReportingYear = function(reportingyear){
-           
                 $state.go('hospital-operations-discharges-morbidity', {reportingyear:reportingyear});
             }
 
@@ -160,8 +159,8 @@
 
         }
 
-        DischargesMorbidityActionModalInsatanceCtrl.$inject = ['collection', 'DischargesMorbiditySrvcs', 'RicbSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope'];
-        function DischargesMorbidityActionModalInsatanceCtrl (collection, DischargesMorbiditySrvcs, RicbSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope) {
+        DischargesMorbidityActionModalInsatanceCtrl.$inject = ['collection', 'DischargesMorbiditySrvcs', 'RicbSrvcs', 'mySharedService', '$state', '$stateParams', '$uibModalInstance', '$window', '$rootScope','$scope', '$compile', 'DTOptionsBuilder', 'DTColumnBuilder'];
+        function DischargesMorbidityActionModalInsatanceCtrl (collection, DischargesMorbiditySrvcs, RicbSrvcs, mySharedService, $state, $stateParams, $uibModalInstance, $window, $rootScope, $scope, $compile, DTOptionsBuilder, DTColumnBuilder) {
 
             var vm = this;
             vm.collection = collection.data;
@@ -190,6 +189,31 @@
                 }, function (){ alert('Bad Request!!!') })
 
             }
+
+            vm.render = function(data) {
+                return ' <a href="#" ng-click="dischargesMorbidityCtrl.chooseRicd10Code(\'' + data + '\');"> ' + data + '</a>';
+            }
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('ajax', {
+                // Either you specify the AjaxDataProp here
+                // dataSrc: 'data',
+                url: 'api/v1/ricd2',
+                type: 'GET'
+            })
+            // or here
+            .withDataProp('data')
+                .withOption('processing', true)
+                .withOption('serverSide', true)
+                .withPaginationType('full_numbers');
+            vm.dtColumns = [
+                DTColumnBuilder.newColumn('id').withTitle('ID'),
+                DTColumnBuilder.newColumn('icd10code').withTitle('CODE').renderWith(vm.render)
+                .withOption('createdCell', function(cell, cellData, rowData, rowIndex, colIndex) {
+                    $compile(angular.element(cell).contents())($scope);
+                }), 
+                DTColumnBuilder.newColumn('icd10desc').withTitle('DESC')
+            ];
 
             vm.createDischargesMorbidityBtn = function(data){
  
