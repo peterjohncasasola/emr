@@ -153,8 +153,6 @@ class SubmittedReportsController extends Controller {
         
         $fields = Input::post();
 
-     
-
         $transaction = DB::transaction(function($field) use($fields){
         try{
 
@@ -164,26 +162,11 @@ class SubmittedReportsController extends Controller {
                 ->trace(false);
             });
 
-            $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-
             $submittedreport = DB::table('submittedreports as submittedreport')
-                ->select( 
-                    'submittedreport.id',
-                    'submittedreport.hfhudcode',
-                    'submittedreport.reportingyear',
-                    'submittedreport.reportingstatus',
-                    'submittedreport.reportedby',
-                    'submittedreport.designation',
-                    'submittedreport.section',
-                    'submittedreport.department',
-                    'submittedreport.datereported',
-                    'submittedreport.validatedby',
-                    'submittedreport.datevalidated',
-                    'submittedreport.submissionmode'
+                ->select('submittedreport.id', 'submittedreport.hfhudcode', 'submittedreport.reportingyear',
+                'submittedreport.reportingstatus', 'submittedreport.reportedby', 'submittedreport.designation',
+                'submittedreport.section', 'submittedreport.department', 'submittedreport.datereported','submittedreport.validatedby',
+                'submittedreport.datevalidated', 'submittedreport.submissionmode'
                 )->where('reportingyear', $fields['reportingyear'])->first();
 
             $data = [
