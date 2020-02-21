@@ -117,7 +117,7 @@ class RevenuesController extends Controller {
         try{
 
             $revenue = Revenue::where('reportingyear', $fields['reportingyear'])->first();
-            $revenue->hfhudcode                     = "SAMPLECODE01";
+            $revenue->hfhudcode                     = "NEHEHRSV201900093";
             $revenue->amountfromdoh                 = $fields['amountfromdoh'];
             $revenue->amountfromlgu                 = $fields['amountfromlgu'];
             $revenue->amountfromdonor               = $fields['amountfromdonor'];
@@ -214,6 +214,16 @@ class RevenuesController extends Controller {
             $revenue->submitted_at    = Carbon::now();
             $revenue->save();
 
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+            
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
         }
         catch (\Exception $e) 
         {
@@ -225,6 +235,10 @@ class RevenuesController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
+
+   
   	
 }

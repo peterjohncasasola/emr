@@ -12,6 +12,7 @@
             var data = {};
 
             vm.reportingyear = $stateParams.reportingyear; 
+            
  
             var counter = 1;
             vm.reportingyears = [];
@@ -45,7 +46,9 @@
                 data['reportingyear'] = $stateParams.reportingyear;
 
                 RevenuesSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                    // alert('Successfully submitted!')
+
+                    alert(response.data.message)
 
                     RevenuesSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)
@@ -114,6 +117,8 @@
             var vm = this;
             vm.collection = collection.data;
             vm.collection_copy = collection.data;
+
+            vm.reportingyear = $stateParams.reportingyear; 
 
             vm.createRevenueBtn = function(data){
                 data['reportingyear'] = $stateParams.reportingyear;
