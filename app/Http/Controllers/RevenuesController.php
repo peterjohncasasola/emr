@@ -18,6 +18,8 @@ class RevenuesController extends Controller {
     {
       $this->soapWrapper = $soapWrapper;
     }
+
+    
     
 	public function index(){
         return view('layout.index');
@@ -150,6 +152,19 @@ class RevenuesController extends Controller {
         return $transaction;
     }
 
+    public function emr(){
+        $request = $this->soapWrapper->add('Emr', function ($service) {
+            $service
+            ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+            ->trace(false);
+        });
+
+        $data = [
+            'login' => 'NEHEHRSV201900093',
+            'password' => '1234567'
+        ];
+    }
+
     public function send_data_doh(Request $request){
         
         $fields = Input::post();
@@ -157,9 +172,11 @@ class RevenuesController extends Controller {
         $transaction = DB::transaction(function($field) use($fields){
         try{
 
-            
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
+            $request = $this->soapWrapper->add('Emr', function ($service) {
+                $service
+                ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
+                ->trace(false);
+            });
 
             $revenue = DB::table('revenues as revenue')
                 ->select(

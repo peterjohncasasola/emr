@@ -142,12 +142,6 @@ class BedCapacitiesController extends Controller {
                 ->trace(false);
             });
 
-            $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-
             $bed_capacity = DB::table('geninfobedcapacity as bedCapacity')
                 ->select( 
                     'bedCapacity.id',
