@@ -192,11 +192,18 @@ class SubmittedReportsController extends Controller {
             $json = json_encode($xml);
             $array = json_decode($json, true);
 
+            if($array['response_code']==103){
+                $message = $array['response_code']." ".$array['response_desc']." (Please ensure all modules are incorporated with corresponding data)";
+            }else{
+                $message = $array['response_code']." ".$array['response_desc'];
+            }
+            
+
             return response()->json([
                 'status' => 200,
                 'data' => null,
                 'response_code' => $array['response_code'],
-                'message' => $array['response_code']." ".$array['response_desc']
+                'message' => $message
             ]);
         
         }
