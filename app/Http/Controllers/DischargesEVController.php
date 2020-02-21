@@ -170,6 +170,18 @@ class DischargesEVController extends Controller {
             ];
 
             $response = $this->soapWrapper->call('Emr.hospOptDischargesEV', $data);
+
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
+            
             
 
         }
@@ -183,6 +195,8 @@ class DischargesEVController extends Controller {
         }
         
         });
+
+        return $transaction;
  
     }
   	

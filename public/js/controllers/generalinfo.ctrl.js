@@ -379,7 +379,9 @@
                 data['reportingyear'] = $stateParams.reportingyear;
 
                 QualityManagementSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                    // alert('Successfully submitted!')
+
+                    alert(response.data.message)
 
                     QualityManagementSrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)

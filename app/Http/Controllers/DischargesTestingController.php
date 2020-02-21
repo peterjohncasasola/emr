@@ -274,13 +274,6 @@ class DischargesTestingController extends Controller {
                 ->trace(false);
             });
 
-            $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
-
             $discharges_testing = DB::table('hospoptdischargestesting as dischargesTesting')
                 ->select( 
                     'dischargesTesting.id',
@@ -304,6 +297,16 @@ class DischargesTestingController extends Controller {
                 $response = $this->soapWrapper->call('Emr.hospOptDischargesTesting', $data);
             }
 
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
         }
         catch (\Exception $e) 
         {
@@ -315,6 +318,8 @@ class DischargesTestingController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
   	
 }

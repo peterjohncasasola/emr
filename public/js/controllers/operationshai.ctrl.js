@@ -46,7 +46,8 @@
                 data['reportingyear'] = $stateParams.reportingyear;
 
                 OperationsHAISrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                    // alert('Successfully submitted!')
+                    alert(response.data.message)
 
                     OperationsHAISrvcs.list({id:'', reportingyear:$stateParams.reportingyear}).then (function (response) {
                         if(response.data.status == 200)

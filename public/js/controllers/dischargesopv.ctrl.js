@@ -43,7 +43,9 @@
 
                 data['reportingyear'] = $stateParams.reportingyear;
                 DischargesOPVSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                    // alert('Successfully submitted!')
+
+                    alert(response.data.message)
 
 
                     vm.is_loader_disabled = false;

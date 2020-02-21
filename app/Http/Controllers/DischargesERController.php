@@ -229,15 +229,15 @@ class DischargesERController extends Controller {
                 $response = $this->soapWrapper->call('Emr.hospOptDischargesER', $data);
             }
 
-            // $xml = simplexml_load_string($response);
-            // $json = json_encode($xml);
-            // $array = json_decode($json, true);
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
 
-            // return response()->json([
-            //     'status' => 200,
-            //     'data' => null,
-            //     'message' => $array['response_code']." ".$array['response_desc']
-            // ]);
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
 
         }
         catch (\Exception $e) 
@@ -250,6 +250,8 @@ class DischargesERController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
   	
 }

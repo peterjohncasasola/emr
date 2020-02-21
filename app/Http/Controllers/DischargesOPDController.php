@@ -228,6 +228,16 @@ class DischargesOPDController extends Controller {
             
                 $response = $this->soapWrapper->call('Emr.hospOptdischargesOPD', $data);
             }
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
         }
         catch (\Exception $e) 
         {
@@ -239,6 +249,8 @@ class DischargesOPDController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
   	
 }

@@ -197,6 +197,16 @@ class SummaryOfPatientsController extends Controller {
             $summary_of_patients->submitted_at    = Carbon::now();
             $summary_of_patients->save();
           
+            $xml = simplexml_load_string($response);
+            $json = json_encode($xml);
+            $array = json_decode($json, true);
+
+            return response()->json([
+                'status' => 200,
+                'data' => null,
+                'message' => $array['response_code']." ".$array['response_desc']
+            ]);
+
         }
         catch (\Exception $e) 
         {
@@ -208,6 +218,8 @@ class SummaryOfPatientsController extends Controller {
         }
         
         });
+
+        return $transaction;
     }
   	
 }

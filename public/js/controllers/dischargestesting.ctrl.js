@@ -45,7 +45,8 @@
 
                 data['reportingyear'] = $stateParams.reportingyear;
                 DischargesTestingSrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                    // alert('Successfully submitted!')
+                    alert(response.data.message)
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;
