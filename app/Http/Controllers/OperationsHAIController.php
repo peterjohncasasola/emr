@@ -205,13 +205,6 @@ class OperationsHAIController extends Controller {
             });
 
             $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
-
-            $data = [
                 "hfhudcode" => $operations_HAI->hfhudcode, 
                 "numhai" => $operations_HAI->numhai, 
                 "numdischarges" => $operations_HAI->numdischarges,

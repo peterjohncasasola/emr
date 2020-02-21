@@ -328,13 +328,6 @@ class OperationsMortalityDeathsController extends Controller {
                 ->trace(false);
             });
 
-            $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
-
             $mortality_deaths = DB::table('hospitaloperationsmortalitydeaths as mortalityDeaths')
                 ->select(
                     'mortalityDeaths.id',

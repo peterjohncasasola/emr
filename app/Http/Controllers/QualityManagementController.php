@@ -189,13 +189,6 @@ class QualityManagementController extends Controller {
                 ->trace(false);
             });
 
-            $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
-
             $qualityManagements = DB::table('geninfoqualitymanagement as qualityManagement')
                 ->select( 
                     'qualityManagement.id',

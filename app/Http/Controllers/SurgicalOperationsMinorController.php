@@ -192,13 +192,6 @@ class SurgicalOperationsMinorController extends Controller {
                 ->wsdl('http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl')
                 ->trace(false);
             });
-
-            $data = [
-                'login' => 'NEHEHRSV201900093',
-                'password' => '123456'
-            ];
-            $response = $this->soapWrapper->call('Emr.authenticationTest', $data);
-            // return response($response, 200)->header('Content-Type', 'application/xml');
                 
             $minor_operations = DB::table('hospitaloperationsminoropt as operationsMInorOpt')
                 ->select( 
