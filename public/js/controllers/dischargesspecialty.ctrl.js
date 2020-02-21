@@ -141,12 +141,17 @@
                 vm.is_loader_disabled = true;
                 vm.is_submit_disabled = true;
 
+                
+
                 data['reportingyear'] = $stateParams.reportingyear;
                 DischargesSpecialtySrvcs.send_data_doh(data).then (function (response) {
-                    alert('Successfully submitted!')
+                    // alert('Successfully submitted!')
+                    
+                    alert(response.data.message)
 
                     vm.is_loader_disabled = false;
                     vm.is_submit_disabled = false;
+                    
                 }, function (){ alert('Bad Request!!!') })
             }
 
