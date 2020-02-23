@@ -72,7 +72,7 @@ class LoginController extends Controller {
             }
                   
         }catch(\Exception  $e){
-            return "error";
+            return redirect('login')->with('status', "There was a problem with getting data, try to contact the administrator");
         }
 
 

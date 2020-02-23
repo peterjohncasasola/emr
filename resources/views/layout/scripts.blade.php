@@ -185,8 +185,8 @@
 <script type="text/javascript" src="{{URL::to('public/node_modules/angular-datatables/dist/angular-datatables.min.js')}}"></script>
 
 <!-- Chart Js -->
-<script type="text/javascript" src="{{URL::to('public/node_modules/chart.js/Chart.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('public/node_modules/angular-chart.js/dist/angular-chart.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::to('public/node_modules/angular-chart.js/chart.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::to('public/node_modules/angular-chart.js/angular-chart.min.js')}}"></script>
 
 <!-- Main App -->
 <script src="{{asset('public/js/emrApp.js')}}"></script>
