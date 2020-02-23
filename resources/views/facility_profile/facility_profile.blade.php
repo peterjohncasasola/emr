@@ -69,6 +69,9 @@
     <!-- <li class="nav-item">
         <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
     </li> -->
+    <li class="nav-item" ui-sref="dashboard({reportingyear:expensesCtrl.reportingyear})">
+        <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
+    </li>
     <li class="nav-item active" ui-sref="facility_profile({reportingyear:expensesCtrl.reportingyear})">
         <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
     </li>

@@ -42,6 +42,11 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/api/v1/users','UsersController@show');
         Route::post('/api/v1/user/store','UsersController@store');
         Route::post('/api/v1/user/update','UsersController@update');
+
+        // -- DASHBOARD -- //
+        Route::get('/dashboard/{reportingyear}','ExpensesController@index');
+        Route::get('/api/v1/dashboard-expenses-vs-revenues','DashboardController@expenses_vs_revenues');
+        Route::get('/api/v1/dashboard-progress','DashboardController@progress');
         
         // -- EXPENSES -- //
         Route::get('/expenses','ExpensesController@index');
@@ -313,6 +318,7 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/soap/checksubmittedreports','SoapController@checksubmittedreports');
         
         Route::get('/sample','ExpensesController@sample');
+
         
     });
 });

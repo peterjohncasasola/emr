@@ -13,16 +13,19 @@
           // 'datatables.buttons'
           // 'ui.utils.masks', 
           // 'checklist-model'
+          'chart.js',
         ])
         .config(Config)
         .controller('MainCtrl', MainCtrl)
 
-        Config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$interpolateProvider', 'dynamicNumberStrategyProvider'];
-        function Config($stateProvider, $urlRouterProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $interpolateProvider, dynamicNumberStrategyProvider){
+        Config.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$controllerProvider', '$compileProvider', '$filterProvider', '$provide', '$interpolateProvider', 'dynamicNumberStrategyProvider', 'ChartJsProvider'];
+        function Config($stateProvider, $urlRouterProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide, $interpolateProvider, dynamicNumberStrategyProvider, ChartJsProvider){
             console.log("App here!");
             $interpolateProvider.startSymbol('<%');
             $interpolateProvider.endSymbol('%>');
             $locationProvider.html5Mode(true);
+
+            ChartJsProvider.setOptions({ colors : [ '#DCDCDC', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#803690', '#00ADF9'] });
 
             var main = {
                 url: '/index',
@@ -52,6 +55,13 @@
                 url: '/eula/:reportingyear',
                 controller: 'UsersCtrl as UsersCtrl',
                 templateUrl: 'eula.view'
+            })
+
+            .state('dashboard', {
+                url: '/dashboard/:reportingyear',
+                // controller: 'ExpensesCtrl as expensesCtrl',
+                controller: 'DashboardCtrl as DashboardCtrl',
+                templateUrl: 'dashboard.view'
             })
 
             .state('facility_profile', {

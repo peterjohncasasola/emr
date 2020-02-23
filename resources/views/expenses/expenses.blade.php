@@ -55,9 +55,9 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
 <div class="container">
     <ul class="navbar-nav">
-    <!-- <li class="nav-item">
+    <li class="nav-item" ui-sref="dashboard({reportingyear:expensesCtrl.reportingyear})">
         <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
-    </li> -->
+    </li>
     <li class="nav-item" ui-sref="facility_profile({reportingyear:expensesCtrl.reportingyear})">
         <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
     </li>
@@ -133,6 +133,17 @@
     <div id="cover-spin" ng-if="expensesCtrl.is_loader_disabled"></div>
 
     <div class="row">
+
+ 
+ 
+    <div class="mb-4">
+            <div class="text-small float-right font-weight-bold text-muted">11%</div>
+            <div class="font-weight-bold mb-1">Hospital Operations</div>
+            <div class="progress " data-height="3">
+                <div class="progress-bar" role="progressbar" data-width="11%" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            </div>
+
         <div class="col-12 col-md-12 col-lg-12">
         <div class="card card-primary">
             <div class="card-header">

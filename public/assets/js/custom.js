@@ -6,3 +6,18 @@
  */
 
 "use strict";
+
+$("#long-table").dataTable({
+'select': {
+	'style': 'single'
+},
+'columnDefs': [
+         {
+            'targets': 0,
+            'checkboxes': {	
+               'selectRow': true
+            }
+         }
+      ],
+
+});

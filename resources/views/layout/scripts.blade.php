@@ -6,14 +6,14 @@
 <script src="assets/modules/jquery.min.js"></script>
 <script src="assets/modules/popper.js"></script>
 <script src="assets/modules/tooltip.js"></script>
-<script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+<!-- <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script> -->
 <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
 <script src="assets/modules/moment.min.js"></script>
 <script src="assets/js/stisla.js"></script>
 
 <!-- JS Libraies -->
 <script src="assets/modules/datatables/datatables.min.js"></script>
-<script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script> 
+<!-- <script src="assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>  -->
 
 <!-- Page Specific JS File -->
 <script src="assets/modules/jquery-selectric/jquery.selectric.min.js"></script>  
@@ -21,7 +21,7 @@
 <!-- Template JS File -->
 <script src="assets/js/scripts.js"></script>
 <script src="assets/js/custom.js"></script>
-<script src="assets/js/page/modules-datatables.js"></script>
+<!-- <script src="assets/js/page/modules-datatables.js"></script> -->
 
 <!-- Additional plugins -->
 
@@ -45,9 +45,16 @@
 
 <!-- angular-ui -->
 <script type="text/javascript" src="{{URL::to('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js')}}"></script>
+<!-- <script type="text/javascript" src="{{URL::to('node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls-3.0.6.min.js')}}"></script> -->
 
 <!-- DataTables -->
 <script type="text/javascript" src="{{URL::to('node_modules/angular-datatables/dist/angular-datatables.min.js')}}"></script>
+
+<!-- Chart Js -->
+<script type="text/javascript" src="{{URL::to('node_modules/angular-chart.js/chart.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::to('node_modules/angular-chart.js/angular-chart.min.js')}}"></script>
+
+
 
 <!-- Main App -->
 <script src="{{URL::to('js/emrApp.js')}}"></script>
@@ -79,6 +86,7 @@
 <script src="{{URL::to('js/controllers/operationshai.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/staffingpattern.ctrl.js')}}"></script>
 <script src="{{URL::to('js/controllers/submittedreports.ctrl.js')}}"></script>
+<script src="{{URL::to('js/controllers/dashboard.ctrl.js')}}"></script>
 
 
 <!-- Libraries -->
@@ -111,6 +119,7 @@
 <script src="{{URL::to('js/services/operationshai.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/staffingpattern.srvcs.js')}}"></script>
 <script src="{{URL::to('js/services/submittedreports.srvcs.js')}}"></script>
+<script src="{{URL::to('js/services/dashboard.srvcs.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{URL::to('js/services/surgerieslib.srvcs.js')}}"></script>
@@ -175,6 +184,10 @@
 <!-- DataTables -->
 <script type="text/javascript" src="{{URL::to('public/node_modules/angular-datatables/dist/angular-datatables.min.js')}}"></script>
 
+<!-- Chart Js -->
+<script type="text/javascript" src="{{URL::to('public/node_modules/chart.js/Chart.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::to('public/node_modules/angular-chart.js/dist/angular-chart.min.js')}}"></script>
+
 <!-- Main App -->
 <script src="{{asset('public/js/emrApp.js')}}"></script>
 
@@ -207,6 +220,7 @@
 <script src="{{asset('public/js/controllers/operationshai.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/staffingpattern.ctrl.js')}}"></script>
 <script src="{{asset('public/js/controllers/submittedreports.ctrl.js')}}"></script>
+<script src="{{asset('public/js/controllers/dashboard.ctrl.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{asset('public/js/controllers/surgerieslib.ctrl.js')}}"></script>
@@ -238,6 +252,7 @@
 <script src="{{asset('public/js/services/operationshai.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/staffingpattern.srvcs.js')}}"></script>
 <script src="{{asset('public/js/services/submittedreports.srvcs.js')}}"></script>
+<script src="{{asset('public/js/services/dashboard.srvcs.js')}}"></script>
 
 <!-- Libraries -->
 <script src="{{asset('public/js/services/surgerieslib.srvcs.js')}}"></script>

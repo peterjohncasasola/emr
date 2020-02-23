@@ -65,9 +65,9 @@
 <nav class="navbar navbar-secondary navbar-expand-lg">
 <div class="container">
     <ul class="navbar-nav">
-    <!-- <li class="nav-item">
+    <li class="nav-item" ui-sref="dashboard({reportingyear:revenuesCtrl.reportingyear})">
         <a href="dashboard.html" class="nav-link"><i class="far fa-chart-bar"></i><span>Dashboard</span></a>
-    </li> -->
+    </li>
     <li class="nav-item" ui-sref="facility_profile({reportingyear:revenuesCtrl.reportingyear})">
         <a href="facility-profile.html" class="nav-link"><i class="far fa-hospital"></i><span>Facility Profile</span></a>
     </li>
