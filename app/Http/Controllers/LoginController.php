@@ -19,23 +19,15 @@ class LoginController extends Controller {
     }
 
     public function login(Request $request){
-
-        // $credentials = $request->only('email', 'password');
-
-        // if (Auth::attempt($credentials)) {
-        //     // Authentication passed...
-        //     $user = User::where('email', Auth::user()->email)->first();
-        //     $user->is_nda_accepted               = 0;
-        //     $user->nda_accepted_at               = null;
-        //     $user->save();
-        //     return redirect('nda/2019');
-        // }
-        // else
-        // {
-        //     return redirect('login')->with('status', 'Login failed; Invalid username or password.');
-        // }
         
         try{
+
+            // $param = array( "login" => $request->email, "password" => $request->password);
+            // $soap = new SoapClient("http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl");
+            // $response = $soap->__soapCall("authenticationTest", $param);
+
+            // header("Content-Type: text/xml");
+            // echo $xml;
 
             $this->soapWrapper->add('Emr', function ($service) {
                 $service
@@ -60,19 +52,19 @@ class LoginController extends Controller {
 
                 $user = User::where('email', $request->email)->first();
                 if(count($user)>0){
+
                     Auth::login($user);
-                    $user->is_nda_accepted               = 0;
-                    $user->nda_accepted_at               = null;
+                    $user->is_nda_accepted        = 0;
+                    $user->nda_accepted_at        = null;
                     $user->save();
                     return redirect('nda/2019');
                 }
-
             }else{
                 return redirect('login')->with('status', $array['response_code']." ".$array['response_desc']);
             }
                   
         }catch(\Exception  $e){
-            return redirect('login')->with('status', "There was a problem with getting data, try to contact the administrator");
+            return redirect('login')->with('status', "There was a problem with in getting the data, try to contact the administrator");
         }
 
 

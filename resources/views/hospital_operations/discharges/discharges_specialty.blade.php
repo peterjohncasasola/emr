@@ -408,7 +408,7 @@
             </div>
             </div>
             <div class="card-footer bg-whitesmoke">
-            Submission Status: <span class="badge badge-secondary">No Data Submitted</span>
+            Submission Status: <span class="badge badge-success"></span>
             </div>
         </div>
         </div>              

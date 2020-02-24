@@ -103,7 +103,6 @@ class SoapController extends Controller {
 
     public function checksubmittedreports(){
         $param = array( "hfhudcode" => "NEHEHRSV201900093", "year" => 2019, "table" => "submittedReports", );
-
         $soap = new SoapClient("http://uhmistrn.doh.gov.ph/ahsr/webservice/index.php?wsdl");
         $xml = $soap->__soapCall("getDataTable", $param);
         header("Content-Type: text/xml");

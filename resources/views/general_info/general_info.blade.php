@@ -280,7 +280,7 @@
             </div>
             </div>
             <div class="card-footer bg-whitesmoke">
-            Submission Status: <span class="badge badge-danger">Failed: Jan 20, 2020 07:07</span>
+            Submission Status: <span class="badge badge-success"><%generalInfoCtrl.quality_management[0].submitted_at%></span>
             </div>
         </div>
         </div>

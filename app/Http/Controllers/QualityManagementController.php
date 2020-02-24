@@ -40,7 +40,8 @@ class QualityManagementController extends Controller {
                 'qualityManagement.philhealthaccreditation',
                 'qualityManagement.validityfrom',
                 'qualityManagement.validityto',
-                'qualityManagement.reportingyear'
+                'qualityManagement.reportingyear',
+                'qualityManagement.submitted_at'
             );
 
         if ($data['id']){
@@ -218,10 +219,20 @@ class QualityManagementController extends Controller {
                 $response = $this->soapWrapper->call('Emr.genInfoqualityManagement', $data);
             }
 
+
             $xml = simplexml_load_string($response);
             $json = json_encode($xml);
             $array = json_decode($json, true);
 
+            foreach ($qualityManagements as $qualityManagement) {
+                // code
+                
+                $data = QualityManagement::where('reportingyear', $fields['reportingyear'])->where('id', $qualityManagement->id)->first();
+                $data->submitted_at    = date('Y-m-d h:i:s', strtotime($array['response_datetime']));
+                $data->save();
+            
+            }
+            
             return response()->json([
                 'status' => 200,
                 'data' => null,

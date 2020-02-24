@@ -173,7 +173,7 @@
                 <thead>
                     <tr>
                     <th width="4%">Rank</th>
-                    <th width="70%">Ten Leading ER Consultations</th>
+                    <th width="70%">Ten Leading OPD Consultations</th>
                     <th width="8%">Number</th>
                     <th width="12%">ICD-10 Code</th>
                     <th width="12%">ICD-10 Category</th>

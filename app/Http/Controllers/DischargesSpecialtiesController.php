@@ -56,7 +56,8 @@ class DischargesSpecialtiesController extends Controller {
                 'dischargesSpecialty.totaldeaths',
                 'dischargesSpecialty.totaldischarges',
                 'dischargesSpecialty.remarks',
-                'dischargesSpecialty.reportingyear'
+                'dischargesSpecialty.reportingyear',
+                'dischargesSpecialty.submitted_at'
             );
 
         if ($data['id']){
@@ -394,7 +395,7 @@ class DischargesSpecialtiesController extends Controller {
         $fields = Input::post();
 
         $transaction = DB::transaction(function($field) use($fields){
-        try{
+        // try{
 
             $request = $this->soapWrapper->add('Emr', function ($service) {
                 $service
@@ -402,7 +403,7 @@ class DischargesSpecialtiesController extends Controller {
                 ->trace(false);
             });
 
-            $discharges_specialty = DB::table('hospoptdischargesspecialty as dischargesSpecialty')
+            $discharges_specialties = DB::table('hospoptdischargesspecialty as dischargesSpecialty')
                 ->select( 
                     'dischargesSpecialty.id',
                     'dischargesSpecialty.hfhudcode',
@@ -430,7 +431,7 @@ class DischargesSpecialtiesController extends Controller {
                     'dischargesSpecialty.reportingyear'
                 )->where('reportingyear', $fields['reportingyear'])->get();
 
-            foreach ($discharges_specialty as $discharges_specialty) {
+            foreach ($discharges_specialties as $discharges_specialty) {
                 // code
                 $data = [
                     "hfhudcode" => $discharges_specialty->hfhudcode, 
@@ -525,21 +526,40 @@ class DischargesSpecialtiesController extends Controller {
             $json = json_encode($xml);
             $array = json_decode($json, true);
 
+
+            foreach ($discharges_specialties as $discharges_specialty) {
+
+                // code 
+                $data = DischargesSpecialty::where('reportingyear', $fields['reportingyear'])->where('id', $discharges_specialty->id)->first();
+                $data->submitted_at    = date('Y-m-d h:i:s', strtotime($array['response_datetime']));
+                $data->save();
+            
+            }
+
+            foreach ($discharges_specialty_others as $discharges_specialty_other) {
+                // code
+                
+                $data = DischargesSpecialtyOthers::where('reportingyear', $fields['reportingyear'])->where('id', $discharges_specialty_other->id)->first();
+                $data->submitted_at    = date('Y-m-d h:i:s', strtotime($array['response_datetime']));
+                $data->save();
+            
+            }
+
             return response()->json([
                 'status' => 200,
                 'data' => null,
                 'message' => $array['response_code']." ".$array['response_desc']
             ]);
 
-        }
-        catch (\Exception $e) 
-        {
-            return response()->json([
-                'status' => 500,
-                'data' => null,
-                'message' => 'Error, please try again!'
-            ]);
-        }
+        // }
+        // catch (\Exception $e) 
+        // {
+        //     return response()->json([
+        //         'status' => 500,
+        //         'data' => null,
+        //         'message' => 'Error, please try again!'
+        //     ]);
+        // }
         
         });
 
